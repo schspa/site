@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2020-05-02 Sat 09:09 -->
+<!-- 2020-06-14 Sun 15:56 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Module Of Front End</title>
@@ -22,23 +22,23 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7fc8812">模块化的基础</a></li>
-<li><a href="#org38ac541">服务器端模块化</a>
+<li><a href="#org5c4b417">模块化的基础</a></li>
+<li><a href="#org6131578">服务器端模块化</a>
 <ul>
-<li><a href="#org0be8cc3">CommonJS</a></li>
-<li><a href="#orgdcb903c">NodeJS 如何实现不同模块可以使用相同的变量名</a></li>
-<li><a href="#org5f396fd">模块的输出 module.exports 如何实现</a></li>
-<li><a href="#org88ac7ca">exports 和 module.exports 的异同</a></li>
+<li><a href="#org23e2614">CommonJS</a></li>
+<li><a href="#orga45e6a5">NodeJS 如何实现不同模块可以使用相同的变量名</a></li>
+<li><a href="#org13061c6">模块的输出 module.exports 如何实现</a></li>
+<li><a href="#orgc6673c6">exports 和 module.exports 的异同</a></li>
 </ul>
 </li>
-<li><a href="#org8f7db35">浏览器端模块化</a>
+<li><a href="#orge0ceedc">浏览器端模块化</a>
 <ul>
-<li><a href="#org9bfc0cf">AMD·RequireJS</a></li>
-<li><a href="#orga4d1e05">CMD·SeaJS</a></li>
+<li><a href="#org877e7a5">AMD·RequireJS</a></li>
+<li><a href="#org0b4290e">CMD·SeaJS</a></li>
 </ul>
 </li>
-<li><a href="#orgcc97fe9">ES6 模块化</a></li>
-<li><a href="#orgf668700">总结</a></li>
+<li><a href="#org37d9418">ES6 模块化</a></li>
+<li><a href="#org81167e8">总结</a></li>
 </ul>
 </div>
 </div>
@@ -58,9 +58,9 @@
 下面一起来看一下， JavaScript 模块化规范的血泪历程！
 </p>
 
-<div id="outline-container-org7fc8812" class="outline-2">
-<h2 id="org7fc8812">模块化的基础</h2>
-<div class="outline-text-2" id="text-org7fc8812">
+<div id="outline-container-org5c4b417" class="outline-2">
+<h2 id="org5c4b417">模块化的基础</h2>
+<div class="outline-text-2" id="text-org5c4b417">
 <p>
 <span class="underline">1. 函数封装</span>
 </p>
@@ -159,13 +159,13 @@
 </div>
 </div>
 
-<div id="outline-container-org38ac541" class="outline-2">
-<h2 id="org38ac541">服务器端模块化</h2>
-<div class="outline-text-2" id="text-org38ac541">
+<div id="outline-container-org6131578" class="outline-2">
+<h2 id="org6131578">服务器端模块化</h2>
+<div class="outline-text-2" id="text-org6131578">
 </div>
-<div id="outline-container-org0be8cc3" class="outline-3">
-<h3 id="org0be8cc3">CommonJS</h3>
-<div class="outline-text-3" id="text-org0be8cc3">
+<div id="outline-container-org23e2614" class="outline-3">
+<h3 id="org23e2614">CommonJS</h3>
+<div class="outline-text-3" id="text-org23e2614">
 <p>
 CommonJS 是 NodeJS 在服务端的模块化规范：
 </p>
@@ -224,9 +224,9 @@ CommonJS 中的 <code>require</code> 加载是 <span class="underline">同步的
 </div>
 </div>
 
-<div id="outline-container-orgdcb903c" class="outline-3">
-<h3 id="orgdcb903c">NodeJS 如何实现不同模块可以使用相同的变量名<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h3>
-<div class="outline-text-3" id="text-orgdcb903c">
+<div id="outline-container-orga45e6a5" class="outline-3">
+<h3 id="orga45e6a5">NodeJS 如何实现不同模块可以使用相同的变量名<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h3>
+<div class="outline-text-3" id="text-orga45e6a5">
 <p>
 JavaScript 语言本身并没有一种机制来保证不同的模块可以使用相同的变量名，那么 Node.js 是如何实现这一点的呢？
 </p>
@@ -273,9 +273,9 @@ JavaScript 是一种函数式编程语言，它支持闭包 &#x2013; 把一段 J
 </div>
 </div>
 
-<div id="outline-container-org5f396fd" class="outline-3">
-<h3 id="org5f396fd">模块的输出 module.exports 如何实现</h3>
-<div class="outline-text-3" id="text-org5f396fd">
+<div id="outline-container-org13061c6" class="outline-3">
+<h3 id="org13061c6">模块的输出 module.exports 如何实现</h3>
+<div class="outline-text-3" id="text-org13061c6">
 <p>
 Node 利用 JavaScript 的函数式编程的特性，轻而易举实现了模块的隔离。但是，模块的输出 <code>module.exports</code> 怎么实现呢？
 </p>
@@ -326,9 +326,9 @@ Node 会把 <code>module</code> 变量保存到某个地方，i.e. Node 保存�
 </div>
 </div>
 
-<div id="outline-container-org88ac7ca" class="outline-3">
-<h3 id="org88ac7ca">exports 和 module.exports 的异同</h3>
-<div class="outline-text-3" id="text-org88ac7ca">
+<div id="outline-container-orgc6673c6" class="outline-3">
+<h3 id="orgc6673c6">exports 和 module.exports 的异同</h3>
+<div class="outline-text-3" id="text-orgc6673c6">
 <p>
 默认情况下，Node 准备的 <code>export</code> 变量和 <code>module.exports</code> 变量实际上是同一个变量，并且初始化为空对象 <code>{}</code> ，如此你就可以直接往里面加东西，如：
 </p>
@@ -357,7 +357,7 @@ Node 会把 <code>module</code> 变量保存到某个地方，i.e. Node 保存�
 </p>
 
 <p>
-其实，从 <a href="#org5f396fd">模块的输出 module.exports 如何实现 ↑</a> 章节的 <code>load</code> 加载函数中就可以知道，最终返回的只有 <code>module.exports</code> ！ <code>exports</code> 不过是指向 <code>module.exports</code> ，也就是说， <code>exports</code> 的内存地址中的值存储的是指向 <code>module.exports</code> 的指针， <code>module.exports</code> 中的值才是真正返回的对象。
+其实，从 <a href="#org13061c6">模块的输出 module.exports 如何实现 ↑</a> 章节的 <code>load</code> 加载函数中就可以知道，最终返回的只有 <code>module.exports</code> ！ <code>exports</code> 不过是指向 <code>module.exports</code> ，也就是说， <code>exports</code> 的内存地址中的值存储的是指向 <code>module.exports</code> 的指针， <code>module.exports</code> 中的值才是真正返回的对象。
 </p>
 
 <pre class="example">
@@ -377,9 +377,9 @@ otherObjectOne
 </div>
 </div>
 
-<div id="outline-container-org8f7db35" class="outline-2">
-<h2 id="org8f7db35">浏览器端模块化</h2>
-<div class="outline-text-2" id="text-org8f7db35">
+<div id="outline-container-orge0ceedc" class="outline-2">
+<h2 id="orge0ceedc">浏览器端模块化</h2>
+<div class="outline-text-2" id="text-orge0ceedc">
 <p>
 浏览器端，加载 JavaScript 文件的方式，是在文档头部插入 <code>&lt;script&gt;</code> 标签，但是脚本标签天生 <span class="underline">异步</span> ，传统的 CommonJS 模块在浏览器环境中就变成了 <span class="underline">普通的 <code>.js</code> 文件</span> &#x2013; 即没有避免全局变量污染，也没有解决依赖性。
 </p>
@@ -397,9 +397,9 @@ otherObjectOne
 </p>
 </div>
 
-<div id="outline-container-org9bfc0cf" class="outline-3">
-<h3 id="org9bfc0cf">AMD·RequireJS</h3>
-<div class="outline-text-3" id="text-org9bfc0cf">
+<div id="outline-container-org877e7a5" class="outline-3">
+<h3 id="org877e7a5">AMD·RequireJS</h3>
+<div class="outline-text-3" id="text-org877e7a5">
 <p>
 → <a href="https://requirejs.org/">RequireJS</a>
 </p>
@@ -523,9 +523,9 @@ Proj
 </div>
 </div>
 
-<div id="outline-container-orga4d1e05" class="outline-3">
-<h3 id="orga4d1e05">CMD·SeaJS</h3>
-<div class="outline-text-3" id="text-orga4d1e05">
+<div id="outline-container-org0b4290e" class="outline-3">
+<h3 id="org0b4290e">CMD·SeaJS</h3>
+<div class="outline-text-3" id="text-org0b4290e">
 <p>
 → <a href="https://seajs.github.io/seajs/docs/">SeaJS</a>
 </p>
@@ -623,9 +623,9 @@ CMD 加载完某个依赖模块后并不执行，只是下载而已，在所有�
 </div>
 </div>
 
-<div id="outline-container-orgcc97fe9" class="outline-2">
-<h2 id="orgcc97fe9">ES6 模块化<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h2>
-<div class="outline-text-2" id="text-orgcc97fe9">
+<div id="outline-container-org37d9418" class="outline-2">
+<h2 id="org37d9418">ES6 模块化<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h2>
+<div class="outline-text-2" id="text-org37d9418">
 <p>
 ES6 模块的设计思想是尽量的 <span class="underline">静态化</span> ，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。 CommondJS 和 AMD 模块，都只能在运行时确定这些东西。比如， CommonJS 模块就是对象，输入时必须查找对象属性。
 </p>
@@ -730,9 +730,9 @@ ES6 的模块化语法： <code>export</code> 命令用于规定模块的对外�
 </div>
 </div>
 
-<div id="outline-container-orgf668700" class="outline-2">
-<h2 id="orgf668700">总结</h2>
-<div class="outline-text-2" id="text-orgf668700">
+<div id="outline-container-org81167e8" class="outline-2">
+<h2 id="org81167e8">总结</h2>
+<div class="outline-text-2" id="text-org81167e8">
 <p>
 小结一下：
 </p>
@@ -761,7 +761,7 @@ ES6 的模块化语法： <code>export</code> 命令用于规定模块的对外�
 <div id="postamble" class="status">
 <p class="date">Date: 2020-01-19 Sun 19:49</p>
 <p class="author">Author: Jack Liu</p>
-<p class="date">Created: 2020-05-02 Sat 09:09</p>
+<p class="date">Created: 2020-06-14 Sun 15:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

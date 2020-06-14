@@ -28,7 +28,6 @@ A pure site based on org mode.
 | [[./simple-shell.org][Simple Shell]]        |
 | [[./document-style.org][Document Style]]      |
 | [[./regular-expression.org][Regular Expression]]  |
-| [[./home.org][Home]]                |
 
 | [[./gtd.org][GTD]]                   |
 |-----------------------|
@@ -40,15 +39,6 @@ A pure site based on org mode.
 | [[./web-developer-roadmap.org][Web Developer Roadmap]] |
 | [[./module-of-front-end.org][Module of Front End]]   |
 | [[./async-and-sync.org][Async and Sync]]        |
-
-| CSS            |
-|----------------|
-| [[./flexbox-layout.org][Flexbox Layout]] |
-
-| Java                   |
-|------------------------|
-| [[./java-developer-roadmap.org][Java Developer Roadmap]] |
-| [[./java.org][Java]]                   |
 
 | 读书 |
 |------|
@@ -71,7 +61,7 @@ A pure site based on org mode.
     <a href="//space.bilibili.com/11608450" target="_blank"><i class="fas fa-play-circle animated heartBeat delay-2s slower"></i></a>
   </div>
   <div id="wechat">
-    <img src="/images/wechat.jpg" width="20%" style="" />
+    <img src="/images/bg/wechat.jpg" width="20%" style="" />
   </div>
 </div>
 #+END_EXPORT

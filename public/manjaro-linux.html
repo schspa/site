@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2020-05-12 Tue 21:29 -->
+<!-- 2020-06-14 Sun 15:56 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Manjaro Linux</title>
@@ -22,45 +22,45 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org92a8c64">安装</a></li>
-<li><a href="#orgfa14ac4">换源</a></li>
-<li><a href="#orgb020fcc">映射 Caps Lock</a>
+<li><a href="#orga8ff9d6">安装</a></li>
+<li><a href="#org889c9d1">换源</a></li>
+<li><a href="#orgaf90f6e">映射 Caps Lock</a>
 <ul>
-<li><a href="#org5f87b42">使用 Xmodmap 工具 </a></li>
+<li><a href="#org3e7bd4e">使用 Xmodmap 工具 </a></li>
 </ul>
 </li>
-<li><a href="#org7229d5c">中文输入法</a></li>
-<li><a href="#org3e92788">五笔输入</a></li>
-<li><a href="#org1de3de4">中文字体</a></li>
-<li><a href="#org32c590a">美化</a></li>
-<li><a href="#org353f2f5">工具</a></li>
-<li><a href="#org6f2d4a8">FAQ</a>
+<li><a href="#org13e8afe">中文输入法</a></li>
+<li><a href="#orgc84ad7d">五笔输入</a></li>
+<li><a href="#org8aef1f3">中文字体</a></li>
+<li><a href="#org9668bf6">美化</a></li>
+<li><a href="#org4a5d2e5">工具</a></li>
+<li><a href="#orgd4a91ff">FAQ</a>
 <ul>
-<li><a href="#orge5dd352">OBS 录制窗口撕裂</a></li>
+<li><a href="#orgb3a8177">OBS 录制窗口撕裂</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org92a8c64" class="outline-2">
-<h2 id="org92a8c64">安装</h2>
-<div class="outline-text-2" id="text-org92a8c64">
+<div id="outline-container-orga8ff9d6" class="outline-2">
+<h2 id="orga8ff9d6">安装</h2>
+<div class="outline-text-2" id="text-orga8ff9d6">
 <p>
 去 <a href="https://manjaro.org/">Manjaro</a> 官网下载镜像 ISO ，使用 <a href="https://rufus.ie/">rufus</a> 刻录，安装过程……
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgfa14ac4" class="outline-2">
-<h2 id="orgfa14ac4">换源</h2>
-<div class="outline-text-2" id="text-orgfa14ac4">
+<div id="outline-container-org889c9d1" class="outline-2">
+<h2 id="org889c9d1">换源</h2>
+<div class="outline-text-2" id="text-org889c9d1">
 <p>
 <span class="underline">1. 编辑</span>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #FF1493;">cd</span> /etc/pacman.d
+<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #F92672;">cd</span> /etc/pacman.d
 <span class="linenr">2: </span>cp mirrorlist mirrorlist.bak
 <span class="linenr">3: </span>nano mirrorlist
 </pre>
@@ -83,7 +83,7 @@ Server = https://mirrors.ustc.edu.cn/manjaro/stable/$repo/$arch
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #FF1493;">cd</span> /etc
+<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #F92672;">cd</span> /etc
 <span class="linenr">2: </span>nano pacman.conf
 </pre>
 </div>
@@ -113,16 +113,16 @@ Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr">1: </span>sudo pacman -Syy
-<span class="linenr">2: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#28378;&#21160;&#21319;&#32423;&#19968;&#19979;&#65288;&#21487;&#36873;&#65289;</span>
+<span class="linenr">2: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#28378;&#21160;&#21319;&#32423;&#19968;&#19979;&#65288;&#21487;&#36873;&#65289;</span>
 <span class="linenr">3: </span>sudo pacman -Syyu
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgb020fcc" class="outline-2">
-<h2 id="orgb020fcc">映射 Caps Lock</h2>
-<div class="outline-text-2" id="text-orgb020fcc">
+<div id="outline-container-orgaf90f6e" class="outline-2">
+<h2 id="orgaf90f6e">映射 Caps Lock</h2>
+<div class="outline-text-2" id="text-orgaf90f6e">
 <p>
 编辑 <code>.zshrc</code> 或 <code>.bashrc</code> ，添加如下内容：
 </p>
@@ -136,20 +136,20 @@ setxkbmap -option ctrl:swapcaps
 </p>
 </div>
 
-<div id="outline-container-org5f87b42" class="outline-3">
-<h3 id="org5f87b42">使用 Xmodmap 工具 <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> <sup>, </sup><sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
-<div class="outline-text-3" id="text-org5f87b42">
+<div id="outline-container-org3e7bd4e" class="outline-3">
+<h3 id="org3e7bd4e">使用 Xmodmap 工具 <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> <sup>, </sup><sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
+<div class="outline-text-3" id="text-org3e7bd4e">
 <div class="org-src-container">
-<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#33258;&#23450;&#20041;&#26144;&#23556;&#34920;</span>
+<pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#33258;&#23450;&#20041;&#26144;&#23556;&#34920;</span>
 <span class="linenr"> 2: </span>xmodmap -pke &gt; ~/.Xmodmap
 <span class="linenr"> 3: </span>
-<span class="linenr"> 4: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#22312; ~/.Xmodmap &#20013;&#20570;&#22909;&#24819;&#35201;&#30340;&#20462;&#25913;</span>
-<span class="linenr"> 5: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#22914;&#65292;&#25226; `Shift_R` &#26144;&#23556;&#20026; `Esc`</span>
-<span class="linenr"> 6: </span>keycode <span style="color: #FF8C00;">62</span> = Escape NoSymbol Escape
-<span class="linenr"> 7: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#22914;&#65292;&#25226; `Caps_Lock` &#26144;&#23556;&#20026; `Control_L`</span>
-<span class="linenr"> 8: </span>keycode <span style="color: #FF8C00;">66</span> = Control_L NoSymbol Control_L
+<span class="linenr"> 4: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#22312; ~/.Xmodmap &#20013;&#20570;&#22909;&#24819;&#35201;&#30340;&#20462;&#25913;</span>
+<span class="linenr"> 5: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#22914;&#65292;&#25226; `Shift_R` &#26144;&#23556;&#20026; `Esc`</span>
+<span class="linenr"> 6: </span>keycode 62 = Escape NoSymbol Escape
+<span class="linenr"> 7: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#22914;&#65292;&#25226; `Caps_Lock` &#26144;&#23556;&#20026; `Control_L`</span>
+<span class="linenr"> 8: </span>keycode 66 = Control_L NoSymbol Control_L
 <span class="linenr"> 9: </span>
-<span class="linenr">10: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#27979;&#35797;&#26032;&#30340;&#37197;&#32622;&#25991;&#20214;</span>
+<span class="linenr">10: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#27979;&#35797;&#26032;&#30340;&#37197;&#32622;&#25991;&#20214;</span>
 <span class="linenr">11: </span>xmodmap ~/.Xmodmap
 </pre>
 </div>
@@ -157,9 +157,9 @@ setxkbmap -option ctrl:swapcaps
 </div>
 </div>
 
-<div id="outline-container-org7229d5c" class="outline-2">
-<h2 id="org7229d5c">中文输入法</h2>
-<div class="outline-text-2" id="text-org7229d5c">
+<div id="outline-container-org13e8afe" class="outline-2">
+<h2 id="org13e8afe">中文输入法</h2>
+<div class="outline-text-2" id="text-org13e8afe">
 <p>
 安装 <code>fcitx</code> 及其相关依赖，如下：
 </p>
@@ -185,9 +185,9 @@ export XMODIFIERS="@im=fcitx"
 </div>
 </div>
 
-<div id="outline-container-org3e92788" class="outline-2">
-<h2 id="org3e92788">五笔输入</h2>
-<div class="outline-text-2" id="text-org3e92788">
+<div id="outline-container-orgc84ad7d" class="outline-2">
+<h2 id="orgc84ad7d">五笔输入</h2>
+<div class="outline-text-2" id="text-orgc84ad7d">
 <blockquote>
 <p>
 Windows 上使用的极品五笔，感觉很不错。 Linux 上的 fcitx 也是包含 Wubi 输入的，但是词库有点可怜， 所以 rime 是一个不错的选择，它是一个输入法框架，可以按需引入。
@@ -199,7 +199,7 @@ Windows 上使用的极品五笔，感觉很不错。 Linux 上的 fcitx 也是�
 </p>
 
 <p>
-去 <a href="https://rime.im/">rime</a> 官网下载，如果使用拼音输入的话，按照其教程操作后即可，以下内容针对 fcitx 五笔的初始化（ibus 的皮肤不好看，官方的是针对 ibus 的）， fcitx 的安装见 <a href="#org7229d5c">中文输入法 ↑</a> 。
+去 <a href="https://rime.im/">rime</a> 官网下载，如果使用拼音输入的话，按照其教程操作后即可，以下内容针对 fcitx 五笔的初始化（ibus 的皮肤不好看，官方的是针对 ibus 的）， fcitx 的安装见 <a href="#org13e8afe">中文输入法 ↑</a> 。
 </p>
 
 <p>
@@ -209,8 +209,8 @@ Windows 上使用的极品五笔，感觉很不错。 Linux 上的 fcitx 也是�
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr">1: </span>sudo pacman -S fcitx-rime
 <span class="linenr">2: </span>
-<span class="linenr">3: </span><span style="color: #FF1493;">cd</span> ~/.config/fcitx/rime/
-<span class="linenr">4: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#20811;&#38534;&#26497;&#28857;&#20116;&#31508;&#30340;&#37197;&#32622;&#65292;&#36275;&#22815;&#22909;&#29992;</span>
+<span class="linenr">3: </span><span style="color: #F92672;">cd</span> ~/.config/fcitx/rime/
+<span class="linenr">4: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#20811;&#38534;&#26497;&#28857;&#20116;&#31508;&#30340;&#37197;&#32622;&#65292;&#36275;&#22815;&#22909;&#29992;</span>
 <span class="linenr">5: </span>git clone https://github.com/KyleBing/rime-wubi86-jidian.git
 <span class="linenr">6: </span>cp rime-wubi86-jidian/* ./
 </pre>
@@ -225,7 +225,7 @@ Windows 上使用的极品五笔，感觉很不错。 Linux 上的 fcitx 也是�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#23433;&#35013;</span>
+<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#23433;&#35013;</span>
 <span class="linenr">2: </span>sudo pacman -S ibus ibus-rime rime-wubi
 </pre>
 </div>
@@ -245,20 +245,20 @@ ibus-daemon -x -d
 </div>
 </div>
 
-<div id="outline-container-org1de3de4" class="outline-2">
-<h2 id="org1de3de4">中文字体<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></h2>
-<div class="outline-text-2" id="text-org1de3de4">
+<div id="outline-container-org8aef1f3" class="outline-2">
+<h2 id="org8aef1f3">中文字体<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></h2>
+<div class="outline-text-2" id="text-org8aef1f3">
 <div class="org-src-container">
-<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#25991;&#27849;&#39551;&#23383;&#20307;</span>
+<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#25991;&#27849;&#39551;&#23383;&#20307;</span>
 <span class="linenr">2: </span>sudo pacman -S wqy-bitmapfont wqy-microhei wqy-microhei-lite wqy-zenhei
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org32c590a" class="outline-2">
-<h2 id="org32c590a">美化</h2>
-<div class="outline-text-2" id="text-org32c590a">
+<div id="outline-container-org9668bf6" class="outline-2">
+<h2 id="org9668bf6">美化</h2>
+<div class="outline-text-2" id="text-org9668bf6">
 <table>
 
 <colgroup>
@@ -297,9 +297,9 @@ ibus-daemon -x -d
 </div>
 </div>
 
-<div id="outline-container-org353f2f5" class="outline-2">
-<h2 id="org353f2f5">工具</h2>
-<div class="outline-text-2" id="text-org353f2f5">
+<div id="outline-container-org4a5d2e5" class="outline-2">
+<h2 id="org4a5d2e5">工具</h2>
+<div class="outline-text-2" id="text-org4a5d2e5">
 <table>
 
 <colgroup>
@@ -328,13 +328,13 @@ ibus-daemon -x -d
 </div>
 </div>
 
-<div id="outline-container-org6f2d4a8" class="outline-2">
-<h2 id="org6f2d4a8">FAQ</h2>
-<div class="outline-text-2" id="text-org6f2d4a8">
+<div id="outline-container-orgd4a91ff" class="outline-2">
+<h2 id="orgd4a91ff">FAQ</h2>
+<div class="outline-text-2" id="text-orgd4a91ff">
 </div>
-<div id="outline-container-orge5dd352" class="outline-3">
-<h3 id="orge5dd352">OBS 录制窗口撕裂</h3>
-<div class="outline-text-3" id="text-orge5dd352">
+<div id="outline-container-orgb3a8177" class="outline-3">
+<h3 id="orgb3a8177">OBS 录制窗口撕裂</h3>
+<div class="outline-text-3" id="text-orgb3a8177">
 <pre class="example">
 System Settings → Display and Monitor → Compositor → Tearing prevention ("vsync")
 </pre>
@@ -366,7 +366,7 @@ System Settings → Display and Monitor → Compositor → Tearing prevention ("
 <div id="postamble" class="status">
 <p class="date">Date: 2020-05-06 Wed 14:47</p>
 <p class="author">Author: Jack Liu</p>
-<p class="date">Created: 2020-05-12 Tue 21:29</p>
+<p class="date">Created: 2020-06-14 Sun 15:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

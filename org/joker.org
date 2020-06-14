@@ -6,7 +6,7 @@
 
 #+BEGIN_EXPORT html
 <img
-src="/images/joker.gif"
+src="/images/bg/joker.gif"
 width="20%"
 style="float: right;"
 />

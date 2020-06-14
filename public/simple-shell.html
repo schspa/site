@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2020-05-16 Sat 03:48 -->
+<!-- 2020-06-14 Sun 15:56 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Simple Shell</title>
@@ -22,29 +22,29 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org10a8626">第一个 shell 脚本</a></li>
-<li><a href="#org02187dc">变量</a></li>
-<li><a href="#org1c2f83e">字符串</a></li>
-<li><a href="#orgf36a122">数组</a></li>
-<li><a href="#org6fa77af">注释</a></li>
-<li><a href="#org494ba6f">脚本传参</a></li>
-<li><a href="#orgd54024e">基本运算</a></li>
-<li><a href="#org441091d">流程控制</a>
+<li><a href="#orgb03012e">第一个 shell 脚本</a></li>
+<li><a href="#orge8d44d7">变量</a></li>
+<li><a href="#org1a076ac">字符串</a></li>
+<li><a href="#orgf7360af">数组</a></li>
+<li><a href="#orgfd7f0e9">注释</a></li>
+<li><a href="#org65918d8">脚本传参</a></li>
+<li><a href="#orgf049f43">基本运算</a></li>
+<li><a href="#orgf496e72">流程控制</a>
 <ul>
-<li><a href="#org56dacc7">条件</a></li>
-<li><a href="#org54b8959">循环</a></li>
+<li><a href="#org37c1f0b">条件</a></li>
+<li><a href="#org5904396">循环</a></li>
 </ul>
 </li>
-<li><a href="#orgd829912">函数</a></li>
-<li><a href="#orgc265036">输入/输出重定向</a></li>
-<li><a href="#org6a0e058">文件包含</a></li>
+<li><a href="#org28965e3">函数</a></li>
+<li><a href="#org4182f6a">输入/输出重定向</a></li>
+<li><a href="#orgc13d9c7">文件包含</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org10a8626" class="outline-2">
-<h2 id="org10a8626">第一个 shell 脚本</h2>
-<div class="outline-text-2" id="text-org10a8626">
+<div id="outline-container-orgb03012e" class="outline-2">
+<h2 id="orgb03012e">第一个 shell 脚本</h2>
+<div class="outline-text-2" id="text-orgb03012e">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr">1: </span><span style="color: #75715E;">#</span><span style="color: #75715E;">!/bin/</span><span style="color: #F92672;">sh</span>
 <span class="linenr">2: </span><span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"Hello World!"</span>
@@ -53,9 +53,9 @@
 </div>
 </div>
 
-<div id="outline-container-org02187dc" class="outline-2">
-<h2 id="org02187dc">变量</h2>
-<div class="outline-text-2" id="text-org02187dc">
+<div id="outline-container-orge8d44d7" class="outline-2">
+<h2 id="orge8d44d7">变量</h2>
+<div class="outline-text-2" id="text-orge8d44d7">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#23450;&#20041;&#21464;&#37327;</span>
 <span class="linenr"> 2: </span><span style="color: #FD971F;">dec_var</span>=<span style="color: #E6DB74;">"declare variable"</span>
@@ -78,9 +78,9 @@
 </div>
 </div>
 
-<div id="outline-container-org1c2f83e" class="outline-2">
-<h2 id="org1c2f83e">字符串</h2>
-<div class="outline-text-2" id="text-org1c2f83e">
+<div id="outline-container-org1a076ac" class="outline-2">
+<h2 id="org1a076ac">字符串</h2>
+<div class="outline-text-2" id="text-org1a076ac">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #FD971F;">u_name</span>=<span style="color: #E6DB74;">"Jack"</span>
 <span class="linenr"> 2: </span><span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"hello, ${u_name}!"</span>        <span style="color: #75715E;"># </span><span style="color: #75715E;">&#8594; hello, Jack!</span>
@@ -108,17 +108,17 @@
 </div>
 </div>
 
-<div id="outline-container-orgf36a122" class="outline-2">
-<h2 id="orgf36a122">数组</h2>
-<div class="outline-text-2" id="text-orgf36a122">
+<div id="outline-container-orgf7360af" class="outline-2">
+<h2 id="orgf7360af">数组</h2>
+<div class="outline-text-2" id="text-orgf7360af">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#23450;&#20041;&#25968;&#32452;</span>
 <span class="linenr"> 2: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">arr_name=(val1 val2 ... valN)</span>
 <span class="linenr"> 3: </span><span style="color: #FD971F;">arr_one_name</span>=<span style="color: #AE81FF;">(</span>0 1 2 3 4 5<span style="color: #AE81FF;">)</span>
 <span class="linenr"> 4: </span>
-<span class="linenr"> 5: </span><span style="color: #FD971F;">arr_two_name</span><span style="color: #AE81FF;">[</span>0<span style="color: #AE81FF;">]</span>=<span style="color: #E6DB74;">"val0"</span>
-<span class="linenr"> 6: </span><span style="color: #FD971F;">arr_two_name</span><span style="color: #AE81FF;">[</span>1<span style="color: #AE81FF;">]</span>=<span style="color: #E6DB74;">"val1"</span>
-<span class="linenr"> 7: </span><span style="color: #FD971F;">arr_two_name</span><span style="color: #AE81FF;">[</span>n<span style="color: #AE81FF;">]</span>=<span style="color: #E6DB74;">"valN"</span>
+<span class="linenr"> 5: </span>arr_two_name<span style="color: #AE81FF;">[</span>0<span style="color: #AE81FF;">]</span>=<span style="color: #E6DB74;">"val0"</span>
+<span class="linenr"> 6: </span>arr_two_name<span style="color: #AE81FF;">[</span>1<span style="color: #AE81FF;">]</span>=<span style="color: #E6DB74;">"val1"</span>
+<span class="linenr"> 7: </span>arr_two_name<span style="color: #AE81FF;">[</span>n<span style="color: #AE81FF;">]</span>=<span style="color: #E6DB74;">"valN"</span>
 <span class="linenr"> 8: </span>
 <span class="linenr"> 9: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#35835;&#21462;&#25968;&#32452;</span>
 <span class="linenr">10: </span><span style="color: #F92672;">echo</span> $<span style="color: #AE81FF;">{</span><span style="color: #FD971F;">arr_two_name</span><span style="color: #66D9EF;">[</span>n<span style="color: #66D9EF;">]</span><span style="color: #AE81FF;">}</span>         <span style="color: #75715E;"># </span><span style="color: #75715E;">&#8594; valN</span>
@@ -133,9 +133,9 @@
 </div>
 </div>
 
-<div id="outline-container-org6fa77af" class="outline-2">
-<h2 id="org6fa77af">注释</h2>
-<div class="outline-text-2" id="text-org6fa77af">
+<div id="outline-container-orgfd7f0e9" class="outline-2">
+<h2 id="orgfd7f0e9">注释</h2>
+<div class="outline-text-2" id="text-orgfd7f0e9">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#36825;&#26159;&#19968;&#20010;&#21333;&#34892;&#27880;&#37322;</span>
 <span class="linenr"> 2: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">---------------------------------</span>
@@ -159,9 +159,9 @@
 </div>
 </div>
 
-<div id="outline-container-org494ba6f" class="outline-2">
-<h2 id="org494ba6f">脚本传参</h2>
-<div class="outline-text-2" id="text-org494ba6f">
+<div id="outline-container-org65918d8" class="outline-2">
+<h2 id="org65918d8">脚本传参</h2>
+<div class="outline-text-2" id="text-org65918d8">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">!/bin/sh</span>
 <span class="linenr"> 2: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">test.sh</span>
@@ -185,9 +185,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgd54024e" class="outline-2">
-<h2 id="orgd54024e">基本运算</h2>
-<div class="outline-text-2" id="text-orgd54024e">
+<div id="outline-container-orgf049f43" class="outline-2">
+<h2 id="orgf049f43">基本运算</h2>
+<div class="outline-text-2" id="text-orgf049f43">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">1. &#31639;&#26415;&#36816;&#31639;&#31526; + - * / % = == !=</span>
 <span class="linenr"> 2: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#21407;&#29983; bash &#19981;&#25903;&#25345;&#31616;&#21333;&#30340;&#25968;&#23383;&#36816;&#31639;&#65292;&#38656;&#35201;&#36890;&#36807;&#20854;&#20182;&#21629;&#20196;&#26469;&#23454;&#29616;&#65292;&#22914; awk &#25110; expr</span>
@@ -231,13 +231,13 @@
 </div>
 </div>
 
-<div id="outline-container-org441091d" class="outline-2">
-<h2 id="org441091d">流程控制</h2>
-<div class="outline-text-2" id="text-org441091d">
+<div id="outline-container-orgf496e72" class="outline-2">
+<h2 id="orgf496e72">流程控制</h2>
+<div class="outline-text-2" id="text-orgf496e72">
 </div>
-<div id="outline-container-org56dacc7" class="outline-3">
-<h3 id="org56dacc7">条件</h3>
-<div class="outline-text-3" id="text-org56dacc7">
+<div id="outline-container-org37c1f0b" class="outline-3">
+<h3 id="org37c1f0b">条件</h3>
+<div class="outline-text-3" id="text-org37c1f0b">
 <div class="org-src-container">
 <pre class="src src-sh"><span class="linenr"> 1: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">sh &#30340;&#27969;&#31243;&#25511;&#21046;&#19981;&#21487;&#20026;&#31354;</span>
 <span class="linenr"> 2: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#22914;&#26524; else &#20998;&#25903;&#27809;&#26377;&#35821;&#21477;&#25191;&#34892;&#65292;&#23601;&#19981;&#35201;&#20889;&#36825;&#20010; else</span>
@@ -272,9 +272,9 @@
 </div>
 </div>
 
-<div id="outline-container-org54b8959" class="outline-3">
-<h3 id="org54b8959">循环</h3>
-<div class="outline-text-3" id="text-org54b8959">
+<div id="outline-container-org5904396" class="outline-3">
+<h3 id="org5904396">循环</h3>
+<div class="outline-text-3" id="text-org5904396">
 <p>
 <span class="underline">1. for 循环</span>
 </p>
@@ -367,9 +367,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgd829912" class="outline-2">
-<h2 id="orgd829912">函数</h2>
-<div class="outline-text-2" id="text-orgd829912">
+<div id="outline-container-org28965e3" class="outline-2">
+<h2 id="org28965e3">函数</h2>
+<div class="outline-text-2" id="text-org28965e3">
 <p>
 函数定义格式：
 </p>
@@ -422,9 +422,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgc265036" class="outline-2">
-<h2 id="orgc265036">输入/输出重定向</h2>
-<div class="outline-text-2" id="text-orgc265036">
+<div id="outline-container-org4182f6a" class="outline-2">
+<h2 id="org4182f6a">输入/输出重定向</h2>
+<div class="outline-text-2" id="text-org4182f6a">
 <pre class="example">
 command &gt; file                  # 输出重定向
 command &gt;&gt; file                 # 输出追加重定向
@@ -440,9 +440,9 @@ n &lt;&amp; m                          # 将输入文件 m 和 n 合并
 </div>
 </div>
 
-<div id="outline-container-org6a0e058" class="outline-2">
-<h2 id="org6a0e058">文件包含</h2>
-<div class="outline-text-2" id="text-org6a0e058">
+<div id="outline-container-orgc13d9c7" class="outline-2">
+<h2 id="orgc13d9c7">文件包含</h2>
+<div class="outline-text-2" id="text-orgc13d9c7">
 <p>
 语法格式如下：
 </p>
@@ -462,7 +462,7 @@ source filename
 <div id="postamble" class="status">
 <p class="date">Date: 2020-05-15 Fri 22:46</p>
 <p class="author">Author: Jack Liu</p>
-<p class="date">Created: 2020-05-16 Sat 03:48</p>
+<p class="date">Created: 2020-06-14 Sun 15:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
