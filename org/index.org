@@ -8,30 +8,22 @@
 # </audio>
 # #+END_EXPORT
 
-A pure site based on org mode.
+A [[./org-to-site-tutor.org][pure site]] based on org mode.
 
 [[./nav.org][_Nav_]] ➭ [[./idea.org][_Idea_]] ➯ [[./wiki.org][_Wiki_]]
-
-| ➭ Site Tutor      |
-|-------------------|
-| [[./org-to-site-tutor.org][Org to Site Tutor]] |
-| [[./org-to-site.org][Site Demo]]         |
 
 | Misc                |
 |---------------------|
 | [[./tmux.org][Tmux]]                |
 | [[./wubi.org][WuBi Cheat Sheet]]    |
 | [[./xue-wubi.org][Learn WuBi]]          |
-| [[./git-cheat-sheet.org][Git Cheat Sheet]]     |
 | [[./manjaro-linux.org][Manjaro Linux]]       |
 | [[./source-code-compile.org][Source Code Compile]] |
-| [[./simple-shell.org][Simple Shell]]        |
 | [[./document-style.org][Document Style]]      |
-| [[./regular-expression.org][Regular Expression]]  |
 
 | [[./gtd.org][GTD]]                   |
 |-----------------------|
-| [[./get-things-done-zh.org][Get Things Done]]       |
+| [[./get-things-done.org][Get Things Done]]       |
 | [[./gtd-management-system.org][GTD Management System]] |
 
 | Web                   |
@@ -43,7 +35,6 @@ A pure site based on org mode.
 | 读书 |
 |------|
 | [[./yi-jing.org][易经]] |
-| [[./si-shu.org][四书]] |
 | [[./lao-zi.org][老子]] |
 
 | 有趣的数理化 |
