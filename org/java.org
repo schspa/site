@@ -1,0 +1,756 @@
+#+SETUPFILE: ../theme-rose.setup
+#+DATE: <2020-01-25 Sat 17:10>
+#+TITLE: Java
+
+** 介绍
+
+Java 学习路线如下：
+- Java SE ，掌握 Java 语言核心、 Java 核心开发技术以及 Java 标准库的使用；
+- Java EE ，需要学习 Spring 框架、数据库开发、分布式架构；
+- 大数据开发，需要学习 Hadoop、Spark、Flink 等大数据平台；
+- 移动开发，需要学习 Android 平台开发。
+
+例行，先输出 =Hello World.= ，看代码：
+
+#+BEGIN_SRC java -n
+  // Hello.java
+  public class Hello{
+      public static void main(String[] args) {
+          System.out.println("Hello World.");
+      }
+  }
+#+END_SRC
+
+如何运行 Java 程序？
+
+[[../images/java/run-process.jpg]]
+
+** Java 基础知识
+
+Java 是面向对象的语言，一个程序的 _基本单位_ 就是 =class= ，可以这样理解，Java 的所有数据和逻辑都是 **封装** 在 class 中的。
+
+*** 数据类型
+
+在 Java 中，变量分为两种：基本类型、引用类型，必须 _先定义后使用_ ，类型不能重复定义。
+
+什么是基本数据类型呢？基本数据类型是 CPU 可以直接进行运算的类型，Java 定义了一下集中基本数据类型：
+- 整数类型： byte、short、int、long ；
+- 浮点类型： float、double ；
+- 字符类型： char ；
+- 布尔类型： boolean 。
+
+Java 基本数据类型占用的字节数，如下：
+
+[[../images/java/primitive-type.jpg]]
+
+=byte= 恰好就是一个字节，等于 8 个 =bit= 。
+
+**字符串数据类型** 需要注意什么？
+
+Java 的字符串除了是一个引用类型外，还有个重要特点，就是字符串不可变。对字符串变量重新赋值，其实是 JVM 另外开辟了一个空间，然后把变量指向它。
+
+**数组** 有几个特点？如下：
+- 数组所有元素初始化为默认值，整型都是 =0= ，浮点型是 =0.0= ，布尔型是 =false= ；
+- 数组一旦创建后，大小就不可变。
+
+如何初始化数组呢？通过 new 初始化或直接指定初始化的元素或字面量初始化，如下：
+
+#+BEGIN_SRC java -n
+  public class Main {
+      public static void main(String[] args) {
+          // new 初始化，后通过索引赋值
+          int[] arr = new int[5];
+          arr[0] = 11;
+          arr[1] = 22;
+          // ...
+          arr[4] = 55;
+          // 索引超出范围，运行时将报错
+          arr[5] = ...
+
+          // 直接指定初始化的元素
+          int[] _arr = new int[] { 1, 2, 3, 4, 5 };
+
+          // 字面量初始化
+          int[] __arr = { 1, 2, 3, 4, 5 };
+      }
+  }
+#+END_SRC
+
+#+BEGIN_QUOTE
+注意：后续代码片段如果没有写类名，默认都写在含有 =main= 方法的类中。
+#+END_QUOTE
+
+关于 **字符串数组** ，应该知道？
+
+如果数组元素不是基本类型，而是一个引用类型，其实数组的元素实际上是引用类型的 **引用地址** 。
+
+*** 类型初始化
+
+**** 数组
+
+_1. 声明数组变量_
+
+#+BEGIN_EXAMPLE
+  dataType[] arrayRefVar;         // 首选方法
+  // OR
+  dataType arrayRefVar[];         // C/C++ 风格，效果相同（不推荐）
+#+END_EXAMPLE
+↓
+#+BEGIN_SRC java -n
+  double[] myList;                // 首选方法
+  // OR
+  double myList[];                // 效果相同（不推荐）
+#+END_SRC
+
+_2. 创建数组_
+
+#+BEGIN_EXAMPLE
+  dataType[] arrayRefVar;                // 声明数组变量 arrayRefVar
+  arrayRefVar = new dataType[arraySize]; // 创建数组，然后赋值给声明的数组变量 arrayRefVar
+
+  // new 创建数组 → 声明变量 → 赋值数组给声明的变量
+  dataType[] arrayRefVar = new dataType[arraySize];
+  // OR
+  dataType[] arrayRefvar = new dataType[]{ value0, value1, ..., valuek };
+
+  // 字面量方式创建数组 → 声明数组变量 → 赋值数组给声明的变量
+  dataType[] arrayRefVar = { value0, value1, ..., valuek};
+#+END_EXAMPLE
+↓
+#+BEGIN_SRC java -n
+  double[] myList;                // 声明数组变量 myList
+  myList = new dataType[9];       // 创建数组（长度为 9），并赋值给变量 myList
+
+  // new 运算符
+  double[] myList = new double[9];
+  // OR
+  double[] myList = new double[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+  // 字面量
+  double[] myList = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+#+END_SRC
+
+_3. 多维数组_
+
+#+BEGIN_EXAMPLE
+  type[][] typeName = new type[typeLength1][typeLength2];
+#+END_EXAMPLE
+↓
+#+BEGIN_SRC java -n
+  String str[][] = new String[3][4]; // 三行四列的数组
+#+END_SRC
+
+*** 数组的操作
+
+Java 中的数组的操作，包括：遍历、排序。
+
+如何遍历一个数组呢？
+- 通过 =for= 循环可以；
+- 通过 =for each= 循环，可以迭代数组的每个元素，但无法拿到数组的索引。
+
+#+BEGIN_QUOTE
+使用 =Arrarys.toString()= 可以快速获取数组内容。
+#+END_QUOTE
+
+如何排序一个数组呢？常用的排序算法有：
+- 冒泡排序；
+- 插入排序；
+- 快速排序。
+
+#+BEGIN_QUOTE
+Java 的标准库已经内置了排序功能，只需要调用 JDK 提供的 =Arrays.sort()= 就可以排序。
+#+END_QUOTE
+
+*** 命令行参数
+
+Java 程序的入口是 =main= 方法，儿 =main= 方法可以接受一个命令行参数，它是一个 =String[]= 数组。这个命令行参数由 JVM 接收用户输入并传给 =main= 方法：
+
+#+BEGIN_SRC java -n
+  public class Main {
+      public static void main(String[] args) {
+          for(String arg: args) {
+              System.out.println(arg);
+          }
+      }
+  }
+#+END_SRC
+
+我们可以利用接收到的命令行参数，根据不同的参数执行不同的代码，如实现一个 =-version= 参数，打印程序版本号：
+
+#+BEGIN_SRC java -n
+  // ...
+  for(String arg: args) {
+      if("-version".equals(arg)) {
+          System.out.println("v 1.0");
+          break;
+      }
+  }
+  // ...
+#+END_SRC
+
+** Java 数据结构
+
+→ [[https://www.runoob.com/java/java-data-structures.html][Java Data Structures]]
+
+Java 工具包提供了强大的数据结构，主要包括一下几种接口和类：枚举、位集合、向量、栈、字典、哈希表、属性、集合框架（Java2 引入）。
+
+*** 枚举
+
+i.e.Enumberation
+
+_枚举接口_ 本身 _不属于_ 数据结构，但它在其他数据结构的范畴里应用很广，它定义了一种从数据结构中 _取回连续元素_ 的方式。
+
+#+BEGIN_QUOTE
+枚举接口定义了一些方法，通过这些方法可以枚举（一次获得一个）对象集合中的元素。这种传统接口已被 _迭代器_ 取代，虽然枚举接口还未遗弃，但在现代代码中已经很少使用了。尽管如此，它还是在注入 Vector 和 Properties 这些传统类所定义的方法中，除此之外，还用在一些 API 类，并且在应用程序中也广泛被使用。
+#+END_QUOTE
+
+| 方法                        | 描述                                                             |
+|-----------------------------+------------------------------------------------------------------|
+| =boolean hasMoreElements()= | 测试此枚举是否包含更多的元素                                     |
+| =Object nextElement()=      | 如果此枚举对象至少还有一个可提供的元素，则返回此枚举的下一个元素 |
+
+#+BEGIN_SRC java -n
+  import java.util.Vector;
+  import java.util.Enumberation;
+
+  public class EnumberationTester {
+      public static void main(String[] args) {
+          Enumberation<String> days;
+          Vector<String> dayNames = new Vector<String>();
+
+          dayNames.add("Sunday");
+          dayNames.add("Monday");
+          dayNames.add("Tuesday");
+          dayNames.add("Wednesday");
+          dayNames.add("Thursday");
+          dayNames.add("Friday");
+          dayNames.add("Saturday");
+
+          days = dayNames.elements();
+
+          while(days.hasMoreElements()) {
+              System.out.println(days.nextElement());
+          }
+      }
+  }
+
+  // → Sunday
+  // → Monday
+  // → Tuesday
+  // → Wednesday
+  // → Thursday
+  // → Friday
+  // → Saturday
+#+END_SRC
+
+*** 位集合
+
+i.e. BitSet
+
+一个 Bitset 类创建一种特殊类型的数组来 _保存位值_ ，BitSet 中数组大小会随需要增加，和位向量（vector of bits）比较类似，在 Java2 中被完全重新设计，它定义了两个构造方法。
+
+#+BEGIN_EXAMPLE
+  BitSet()                        // 1 → 创建一个默认的对象
+  BitSet(int size)                // 2 → 允许用户指定初始大小，所有位初始化为 0
+#+END_EXAMPLE
+
+#+BEGIN_SRC java -n
+  import java.util.BitSet;
+
+  public class BitSetDemo {
+      public static void main(String[] args) {
+          BitSet bits1 = new BitSet(16);
+          BitSet bits2 = new BitSet(16);
+
+          // set some bits
+          for(int i = 0; i < 16; i++) {
+              if((i % 2) == 0) bits1.set(i);
+              if((i % 5) != 0) bits2.set(i);
+          }
+
+          System.out.println(bits1); // → {0, 2, 4, 6, 8, 10, 12, 14}
+          System.out.println(bits2); // → {1, 2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14}
+
+          // AND bits
+          bits2.and(bits1);
+          System.out.println(bits2); // → {2, 4, 6, 8, 12, 14}
+
+          // OR bits
+          bits2.or(bits1);
+          System.out.println(bits2); // → {0, 2, 4, 6, 8, 10, 12, 14}
+
+          // XOR bits
+          bits2.xor(bits1);
+          System.out.println(bits2); // → {}
+      }
+  }
+#+END_SRC
+
+其中，关于 set ，大致用法如下：
+| 方法                                                | 描述                          |
+|-----------------------------------------------------+-------------------------------|
+| =void set(int index)=                               | 指定索引处的位为 _true_       |
+| =void set(int index, boolean v)=                    | 指定索引处的位为 _指定的值_   |
+| =void set(int startIndex, int endIndex)=            | 指定索引范围的位为 _true_     |
+| =void set(int startIndex, int endIndex, boolean v)= | 指定索引范围的位为 _指定的值_ |
+
+*** 向量
+
+i.e. Vector
+
+向量类和传统数组非常相似，但是 Vector 的大小能根据需要动态的变化。
+
+Vector 类实现了一个动态数组，和 ArrayList 很相似，区别在于：
+- Vector 是同步访问的；
+- Vector 包含了许多传统的方法，这些方法不属于集合框架。
+
+Vector 类支持 4 种构造方法，如下：
+
+#+BEGIN_EXAMPLE
+  Vector()                        // 1 → 创建一个默认的向量，默认大小为 10
+  Vector(int size)                // 2 → 创建指定大小的向量
+  Vector(int size, int incr)      // 3 → 创建指定大小的向量，且指定增量 incr
+  Vertor(Collection c)            // 4 → 创建一个包含集合 c 元素的向量
+#+END_EXAMPLE
+
+*** 栈
+
+i.e. Stack
+
+栈是 Vector 的一个子类，它实现了一个标准的后进先出的栈。
+
+堆栈只定义了默认构造函数，用来创建一个空栈。
+
+#+BEGIN_EXAMPLE
+  Stack()                         // 创建一个空栈
+#+END_EXAMPLE
+
+除了由 Vector 定义的所有方法，Stack 也定义了一些方法：
+
+| 方法                          | 描述                                |
+|-------------------------------+-------------------------------------|
+| =boolean empty()=             | 测试堆栈是否为空                    |
+| =Object peek()=               | 查看堆栈顶部的对象                  |
+| =Object pop()=                | 移除并返回堆栈顶部的对象            |
+| =Object push(Object element)= | 把像压入堆栈顶部                    |
+| =int search(Object element)=  | 返回对象在堆栈种的位置，以 1 为基数 |
+
+#+BEGIN_SRC java -n
+  import java.util.*;
+
+  public class StackDemo {
+      static void showpush(Stack<Integer> st, int a) {
+          st.push(new Integer(a));
+          System.out.println("push(" + a + ")");
+          System.out.println("stack: " + st);
+      }
+
+      static void showpop(Stack<Integer> st) {
+          System.out.print("pop -> ");
+          Integer a = (Integer) st.pop();
+          System.out.println(a);
+          System.out.println("stack: " + st);
+      }
+
+      public static void main(String[] args) {
+          Stack<Integer> st = new Stack<Integer>();
+          System.out.println("stack: " + st);    // → stack: [ ]
+          showpush(st, 42);                      // → push(42)  stack: [42]
+          showpush(st, 66);                      // → push(66)  stack: [42, 66]
+          showpush(st, 99);                      // → push(99)  stack: [42, 66, 99]
+          showpop(st);                           // → pop -> 99 stack: [42, 66]
+          showpop(st);                           // → pop -> 66 stack: [42]
+          showpop(st);                           // → pop -> 42 stack: [ ]
+
+          try {
+              showpop(st);
+          } catch (EmptyStackException e) {
+              System.out.println("empty stack"); // → pop -> empty stack
+          }
+      }
+  }
+
+#+END_SRC
+
+*** 字典
+
+i.e. Dictionary
+
+字典是一个抽象类，用来存储键/值对，作用和 Map 类相似，它定义了键映射到值得数据结构，但没有提供特定的实现。当你想要通过特定的键，而不是整数索引来访问数据的时候，应该使用字典。
+
+#+BEGIN_QUOTE
+Dictionary 类已经过时了，在实际开发中，可以实现 Map 接口来获取键/值的存储功能。
+#+END_QUOTE
+
+让我们看一下 [[*Map %E6%8E%A5%E5%8F%A3][Map 接口]] ↓
+
+*** Map 接口
+
+Map 接口中键和值一一映射，可以通过键来获取值：
+- 给定一个键和一个值，你可以将该值存储在一个 Map 对象，之后，可以通过键来访问对应的值；
+- 当访问的值不存在的时候，方法就会抛出一个 =NoSuchElementException= 异常；
+- 当对象的类型和 Map 里元素类型不兼容的时候，就会抛出一个 =ClassCastException= 异常；
+- 当在不允许使用 =Null= 对象的 Map 中使用 Null 对象，会抛出一个 =NullPointerException= 异常；
+- 当尝试修改一个只读的 Map 时，会抛出一个 =UnsupportedPerationException= 异常。
+
+#+BEGIN_SRC java -n
+  import java.util.*;
+
+  public class CollectionsDemo {
+      public static void main(String[] args) {
+          Map m1 = new HashMap();
+          m1.put("Zara", "8");    // → 将指定的值与键关联
+          m1.put("Mahnaz", "31");
+          m1.put("Ayan", "12");
+          System.out.println(m1); // → { Ayan=12, Zara=8, Mahnaz=31}
+      }
+  }
+#+END_SRC
+
+*** 哈希表
+
+i.e. HashTable
+
+#+BEGIN_QUOTE
+Hashtable 类提供了一种在用户定义键构的基础上来组织数据的手段。例如，在地址列表的哈希表中，可以根据邮政编码作为存储和排序数据，而不是通过人名。哈希表键的具体含义完全取决于哈希表的使用情景和它包含的数据。
+#+END_QUOTE
+
+Hashtable 时原始的 =java.util= 的一部分，是一个 Dictionary 具体的实现。然而， Java2 重构的 Hashtable 实现了 Map 接口，因此，Hashtable 现在集成到了集合框架中。它和 HashMap 类很相似，但是它支持同步。
+
+像 HashMap 一样， Hashtable 在哈希表中存储键/值对。当使用一个哈希表，要指定用作键的对象，以及要链接到该键的值。然后，该键经过哈希处理，所得到的散列码被用作存储在该表中值的索引。
+
+Hashtable 定义了四个构造方法，如下：
+
+#+BEGIN_EXAMPLE
+  Hashtable()                             // 1 → 默认构造方法
+  Hashtable(int size)                     // 2 → 创建指定大小的哈希表
+  Hashtable(int size, float fillRatio)    // 3 → 创建一个指定大小的哈希表，并通过 fillRatio 指定填充比例（0.0 ~ 1.0）
+  Hashtable(Map m)                        // 4 → 创建一个以 M 中元素为初始化元素的哈希表，容量设置为 M 的两倍
+#+END_EXAMPLE
+
+*** 属性
+
+i.e. Properties
+
+Properties 继承于 Hashtable.Properties 类表示一个持久的属性集，属性列表中每个键及其对应值都是一个字符串，它被许多 Java 类使用，如获取环境变量时它就作为 =System.getProperties()= 方法的返回值。
+
+Properties 定义如下实例变量，这个实例变量持有一个 Properties 对象相关的默认属性列表。
+
+#+BEGIN_EXAMPLE
+  Properties defaults;
+#+END_EXAMPLE
+
+Properties 类定义了两个构造方法，如下：
+
+#+BEGIN_EXAMPLE
+  Properties()                       // 默认构造方法，没有默认值
+  Properties(Properties propDefault) // 使用 propDefault 作为默认值
+#+END_EXAMPLE
+
+** Java 面向对象
+
+[[../images/java/oop.jpg]]
+
+**面向对象** 是什么？面向对象，是一种对现实世界理解和抽象的方法，它把相关的数据和方法组织为一个整体看待，更贴近事物的自然运行模式。
+
+面向对象有三大特点：
+1. 封装；
+2. 继承；
+3. 多态。
+
+基于三大特点，来区分两组易混淆的概念：
+- 面向对象和面向过程；
+- 面向对象和基于对象。
+
+#+BEGIN_QUOTE
+浅谈“面向对象”：
+- 对象，是一种抽象，描述事物的状态和行为；
+- 封装，抽象对象为类的属性和方法；
+- 继承，复用类的属性和方法；
+- 多态，实际是哪个类，就用哪个类的方法。
+#+END_QUOTE
+
+*** 类的属性和方法
+
+#+BEGIN_SRC java -n
+  修饰符 class 类名 {
+      // 类的属性
+      修饰符 类型 属性1;
+      修饰符 类型 属性2;
+      // ...
+      修饰符 类型 属性n;
+
+      // 类的方法
+      修饰符 返回类型 方法名(参数列表) {
+          若干方法语句;
+          // ...
+
+          return 方法返回值;
+      }
+  }
+#+END_SRC
+
+修饰符是什么？ _本质_ 上是一种访问作用域限制，它可以用来修饰：类、属性和方法。关于修饰符有哪些，有什么用，稍后。
+
+方法返回值，通过 =return= 语句实现，如果没有返回值，返回类型设置为 =void= ，可以省略 =return= 。
+
+方法参数，可以包含 0 个或任意个参数，方法参数用于接收传递给方法的变量值，调用方法时，必须严格按照参数的定义一一传递。其中，可变参数用 =类型...= 定义，相当于数组类型。
+
+为什么要使用可变参数，而不直接使用一个数组作为参数呢？主要因为数组参数：
+- 调用方需要自己先构造 =String[]= ，比较麻烦；
+- 调用方可以传入 =null= ，而对于可变参数，传入 0 个参数时，接收到的实际值是一个空数组而不是 =null= 。
+
+关于 **参数绑定** 那些事儿，什么是参数绑定呢？调用方把参数传递给实例方法时，调用时传递的值会按参数位置一一绑定。需要注意：
+- 基本类型参数的传递，是调用方值的复制，双方各自的后续修改，互不影响；
+- 引用类型参数的传递，是调用方址的复制，调用方和接收的参数变量，指向的是同一个对象，双方任一方对这个对象的修改，都会影响对方。
+
+*** 类的构造方法
+
+什么是 **构造方法** ？为什么需要构造方法？有什么需要注意的地方？
+
+将一个 =class= 实例化为 =instance= 对象，实际上就是 _通过构造方法来初始化实例_ 的。定义一个构造方法，能在创建 =instance= 对象的时候，就完成对象状态的初始化。构造方法也是方法，但又和普通方法有所不同，如下：
+- 构造方法的名称就是类名；
+- 构造方法没有返回值（也没有 =void= ）；
+- 调用构造方法，必须用 =new= 操作符。
+
+是不是任何 =class= 都有构造方法？是！
+- 若一个类没有定义构造方法，编译器会自动生成一个默认构造方法，它没有参数，也没有执行语句；
+- 若一个类已经定义构造方法，编译器就不再自动创建默认构造方法；
+- 若既要能使用带参数的构造方法，又想保留不带参数的构造方法，只能把两个构造方法都定义出来。
+
+#+BEGIN_QUOTE
+没有在构造方法中初始化的字段，默认值：
+- 引用类型的字段默认是 =null= ；
+- 数值类型的字段用默认值， =int= 类型默认值是 =0= ；
+- 布尔类型默认值是 =false= 。
+#+END_QUOTE
+
+若类中定义了多个构造方法，通过 =new= 操作符调用的时候，编译器会通过构造方法的参数数量、位置和类型自动区分。
+
+*** 方法重载
+
+什么是方法重载？一系列实现相似功能， **同类同名不同参略返回** ，返回值类型通常相同的方法，称为方法重载 =Overload= 。它的目的在于，功能类似的方法使用同一名字，方便记忆，调用起来更简单。
+
+#+BEGIN_QUOTE
+方法重载和方法覆写不同，方法覆写是在继承的体系中，子类实现父类的 **异类同名同参同返回** 的方法。
+#+END_QUOTE
+
+*** 继承
+
+**继承** 是面向对象中非常强大的一种机制，可以复用代码。关于继承，需要注意：
+- Java 使用 =extends= 关键字来实现继承；
+- 任何类，除了 =Object= ，都会继承自某个类，对于没有明确些 =extends= 的类，编译器会自动加上 =extends Object= ；
+- Java 中类的继承是单继承，一个类有且仅有一个父类，只有 =Object= 特殊，它没有父类；
+- 子类无法访问父类的 =private= 修饰的属性字段和方法，可以用 =protected= 修饰，它可以把属性字段和方法的访问权限控制在继承树内部；
+- 子类引用父类的属性字段是，可以用 =super.fieldName= 。
+
+#+BEGIN_QUOTE
+在 Java 中，任何 =class= 的构造方法， _第一行语句_ 必须是调用父类的构造方法。
+- 如果没有明确地调用父类的构造方法，编译器会自动加上一句 =super()= ；
+- 如果父类没有默认的构造方法，子类就必须显示调用 =super(方法参数列表)= 以便让编译器定位到父类的一个合适的构造方法；
+#+END_QUOTE
+
+说明：子类不会继承任何父类的构造方法，子类默认的构造方法是编译器自动生成的，不是继承的。
+
+*** 多态
+
+#+BEGIN_QUOTE
+多态：父类方法 → 子类覆写；父类变量 → 子类实例。
+#+END_QUOTE
+
+多态的核心就是方法覆写（Override），代码中加上 =@Override= 可以让编译器帮助检查是否进行了正确的覆写，是非必需的。
+
+**多态** 是什么？Java 的实例方法调用是基于运行时的实际类型的动态调用，而非变量的声明类型。
+
+继承可以子类覆写父类的方法，如果一个父类不允许子类对它的某个方法进行覆写，可以把该方法标记为 =final= 。
+
+关于 =final= 修饰符：
+- 用 =final= 修饰的类不能被继承；
+- 用 =final= 修饰的属性字段必须在创建对象的时初始化，随后不可修改；
+- 用 =final= 修饰的方法不能被覆写。
+
+*** 抽象类和接口
+
+#+BEGIN_QUOTE
+- 抽象：抽象方法，仅有签名；不含语句，无法执行 → 类无实例，类必抽象，用于继承。
+- 接口：单纯抽象，仅有签名，不含语句，不含字段。
+- 实践：抽类公共逻辑，子类具体逻辑，接口层次抽象。
+#+END_QUOTE
+
+在继承关系中，如果父类的方法本身不需要实现任何功能，仅仅是为了定义方法签名，目的是让子类去覆写它，可以把父类的方法声明为抽象方法。把一个方法声明为 =abstract= ，表示它是一个抽象方法，本身没有实现任何方法语句。抽象方法本身是无法执行的，故包含这个抽象方法的类无法被实例化（因为编译器无法编译这个类）。所以， _包含抽象方法的类必须申明为抽象类_ 。
+
+无法实例化的抽象类有什么用？因为抽象类本身 _被设计成只能用于被继承_ ，因此，抽象类可以 _强迫子类实现其定义的抽象方法_ ，否则编译会报错。因此，抽象方法实际上相当于定义了“规范”。
+
+#+BEGIN_QUOTE
+尽量引用高层类型，避免引用实际子类型的方式，称之为面向抽象编程。
+#+END_QUOTE
+
+面向对象编程的 _本质_ 就是：
+- 上次代码之定义规范（如： =abstract class Person= ）;
+- 不许要子类就可以实现业务逻辑（正常编译）；
+- 具体的业务逻辑由不同的子类实现，调用者并不关心。
+
+#+BEGIN_QUOTE
+在抽象类中，抽象方法 _本质上是定义接口规范_ ：即规定高层类的接口，从而保证所有子类都有相同的接口实现，如此，多态就能发挥出威力。如果一个抽象类没有字段，所有方法全部都是抽象方法，就可以把该抽象类改写为接口 =interface= 。
+#+END_QUOTE
+
+什么是 **接口** ？就是比抽象类还要抽象的纯抽象接口，如：
+- 接口中连字段都不能有；
+- 接口定义的所有方法默认都是 =public abstruct= ；
+- 使用 =implements= 关键字来实现，且一个类可以实现多个 =interface= ;
+- 一个接口可以继承另一个接口，也使用 =extends= 关键字，相当于扩展了接口的方法。
+
+#+BEGIN_QUOTE
+合理设计 =interface= 和 =abstract class= 的继承关系，可以充分复用代码。一般来说：
+- 公共逻辑适合放在 =abstract class= 中；
+- 具体逻辑放到各个子类；
+- 接口层次代表抽象程度。
+#+END_QUOTE
+
+可以参考 Java 的集合类定义的一组接口、抽象类以及具体子类的继承关系：
+
+[[../images/java/interface-abstract.jpg]]
+
+在使用的时候，实例化的对象永远只能是某个具体的子类，但总是通过接口去引用它，因为它比抽象类更抽象。
+
+在接口中，可以定义 =default= 方法，实现这个接口的类不必覆写 =default= 方法，它的目的是当需要给接口新增一个方法时，会涉及到修改全部子类，如果新增的是 =default= 方法，那么子类就不必全部修改，只需要在需要覆写的地方去覆写新增方法。
+
+#+BEGIN_QUOTE
+=default= 方法和抽象类的普通方法是有所不同的，因为 =interface= 没有字段， =default= 方法无法访问字段，而抽象类的普通方法可以访问实例字段。
+#+END_QUOTE
+
+*** 静态字段和静态方法
+
+所谓“静态”，其实就是一个 =class= 的所有 =instance= 对象 **共享的** ，可以根据 =类名.静态XX= 来访问的。通过实例变量调用的 =实例名.静态XX= ，只是 _编译器自动把实例名改成了类名_ 而已。
+
+静态字段和静态方法都是属于 =class= 而不属于实例，因此，静态方法内部，无法访问 =this= 变量，也无法访问实例字段，只能访问静态字段。
+
+#+BEGIN_QUOTE
+静态方法经常用于工具类，如 =Arrays.sort()= 、 =Math.random()= 。也经常用于辅助方法，如 Java 程序的入口 =main()= 也是静态方法。
+#+END_QUOTE
+
+接口 =interface= 是一个纯抽象类，它没有实例字段，但可以有静态字段，且静态字段必须为 =final= 类型，实际上， =interface= 的字段只能是 =public static final= 类型，所以可省略不写，编译器会自动加上。
+
+#+BEGIN_SRC java -n
+  public interface Person {
+      public static final int NAME = 1;
+      public static final int FENAME = 2;
+
+      // 可省略 public static final
+      int AGE = 18;
+      int FEAGE = 19;
+  }
+#+END_SRC
+
+*** 包
+
+Java 定义了一种命名空间来解决命名冲突，称之为 **包** =package= ：
+- 一个类总是属于某个包；
+- 类名（如 =Person= ）只是一个简写，真正完整的类型是 =包名.类名= 。
+
+包可以是多层结构，用 =.= 隔开，如 =java.util= 。注意，包没有父子关系。 =java.util= 和 =java.util.zip= 是不同的包，两者没有任何继承关系。没有定义包名的 =class= ，使用的是默认包，易引起命名冲突，不推荐。
+
+项目中，需要按照包结构把 Java 文件组织起来，假设以 =package_sample= 作为根目录， =src= 作为源码目录，那么所有文件结构就是：
+
+[[../images/java/package-src.jpg]]
+
+#+BEGIN_QUOTE
+所有 Java 文件对应的目录层次要和包的层次一致。
+#+END_QUOTE
+
+编译后的 =.class= 文件也需要按照包结构存放，如 IDE 把编译后的 =.class= 文件放到 =bin= 目录下，编译的文件结构如下：
+
+[[../images/java/package-bin.jpg]]
+
+**包作用域** 是什么？不用 =public= 、 =protected= 、 =private= 修饰的字段和方法就是包作用域。
+
+在一个 =class= 中，总会引用其他的 =class= ，两种方式：
+- 直接写出完整类名（显然这种方式比较痛苦）；
+- 用 =import= 语句导入完整类名，也可以使用 =*= ，表示把这个包下面的所有 =class= 都导入进来（但不包括子包的 =class= ），不推荐，因为导入多个包后，不易区分使用的 =class= 属于哪个包；
+- 还有一种 =import static= 的语法，可以导入一个类的静态字段和静态方法，很少使用。
+
+#+BEGIN_SRC java -n
+  // Person.java
+  package pkg;
+
+  // 导入完整类名
+  import mr.man.Arrays;
+  // 导入 miss.girl包的所有 class
+  import miss.girl.*;
+  // 导入 System 类的所有静态字段和静态方法
+  import static java.lang.System.*;
+
+  public class Person {
+      public void run() {
+          Arrays arraysMan = new Arrarys();
+
+          // 直接使用完整的类名
+          mrs.woman.Arrarys arraysWoman = new mrs.woman.Arrays();
+      }
+  }
+  // ...
+#+END_SRC
+
+#+BEGIN_QUOTE
+注意，如果导入的两个 =class= 名称相同，如 =mr.man.Arrays= 和 =mrs.womam.Arrays= ，那么只能 =import= 其中一个，另一个必须写完整类名。
+#+END_QUOTE
+
+Java 编译器最终编译出的 =.class= 文件只使用完整类名，因此，在代码中，当编译器遇到一个 =class= 名称时：
+- 如果是完整类名，就直接根据完整类名查找这个 =class= ；
+- 如果是简单类名，按下面的顺序依次查找：
+  - 查找当前 =package= 是否存在这个 =class= ；
+  - 查找 =import= 的包是否包含这个 =class= ；
+  - 查找 =java.lang= 包是否包含这个 =class= ；
+- 如果按照上面的规则还无法确定类名，则编译报错。
+
+#+BEGIN_QUOTE
+编写 class 的时候，编译器会自动帮我们做两个 import 动作：
+- 默认自动 =import= 当前 =package= 的其他 =class= ；
+- 默认自动 =import java.lang.*= 。
+#+END_QUOTE
+
+来看一些最佳实践，如下：
+- 为了避免名字冲突，需要确定唯一的包名，推荐的做法是使用倒置的域名来确保唯一性，如：
+  - org.apache
+  - org.apache.commons.log
+  - com.jack.sample
+- 子包可以根据功能自行命名；
+- 注意不要和 =java.lang= 包（被编译器自动导入的包）的类重名，如：
+  - String
+  - System
+  - Runtime
+  - ...
+- 注意也不要和 JDK 常用的类重名：
+  - java.util.List
+  - java.text.Format
+  - ...
+
+*** 作用域
+
+在 Java 中，经常看到 =public= 、 =protected= 、 =private= 这些修饰符，用来限定访问作用域。
+- public
+  - 定义为 =public= 的 =class= 、 =interface= 可以被其他任何类访问；
+  - 定义为 =public= 的 =field= 、 =method= 可以被其他类访问，前提是首先有访问 =class= 的权限；
+- private
+  - 定位为 =private= 的 =field= 、 =method= 无法被其他类访问，推荐把 =private= 方法放到后面；
+  - 如果一个类内部还定义了嵌套类，那么，嵌套类拥有访问 =private= 的权限；
+- protected
+  - 作用于继承关系；
+  - 定义为 =protected= 的字段和方法可以被子类及其后代子类访问；
+- package
+  - 只要在同一个包，就可以访问 =package= 权限的 =class= 、 =field= 和 =method= ；
+- 局部变量
+  - 在方法内部定义的变量称为局部变量，局部变量作用域从变量声明出开始到对应的块结束；
+  - 注意，方法参数也是局部变量；
+- final
+  - =final= 与访问权限不冲突，它有很多作用；
+  - 用 =final= 修饰 =class= 可以阻止被继承；
+  - 用 =final= 修饰 =method= 可以被子类覆写；
+  - 用 =final= 修饰 =field= 可以阻止被重新赋值；
+  - 用 =final= 修饰局部变量可以阻止被重新赋值。
+
+来看一些最佳实践：
+- 如果不确实是否需要 =public= ，就不声明为 =public= ，即尽可能少地暴露对外的字段和方法；
+- 把方法定义为 =package= 权限有助于测试，因为测试类和被测试类只要位于同一个 =package= ，测试代码就可以访问被测试类的 =package= 权限方法；
+- 一个 =.java= 文件只能包含一个 =public= 类，但可以包含多个非 =public= 类，如果有 =public= 类，文件名必须和 =public= 类的名字相同。
+

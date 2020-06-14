@@ -1,0 +1,153 @@
+#+SETUPFILE: ../theme-rose.setup
+#+DATE: <2019-12-28 Sat 23:48>
+#+TITLE: Flexbox Layout
+
+→ [[https://css-tricks.com/snippets/css/a-guide-to-flexbox/][Flexbox Layout]]
+
+** Basics
+
+#+BEGIN_EXPORT html
+<img src="/images/flexbox/basic.svg" width="60%" />
+#+END_EXPORT
+
+** Container
+
+Properties for the Parent (flex container).
+
+#+BEGIN_EXPORT html
+<img src="/images/flexbox/container.svg" width="30%" />
+#+END_EXPORT
+
+*** flex-direction
+
+#+BEGIN_SRC css
+.container {
+  flex-direction: row | row-reverse | column | column-reverse;
+}
+#+END_SRC
+
+#+BEGIN_EXPORT html
+<img src="/images/flexbox/flex-direction.svg" width="40%" />
+#+END_EXPORT
+
+*** flex-wrap
+
+#+BEGIN_SRC css
+.container{
+  flex-wrap: nowrap | wrap | wrap-reverse;
+}
+#+END_SRC
+
+#+BEGIN_EXPORT html
+<img src="/images/flexbox/flex-wrap.svg" width="30%" />
+#+END_EXPORT
+
+*** flex-flow
+
+#+BEGIN_SRC css
+flex-flow: <'flex-direction'> || <'flex-wrap'>
+#+END_SRC
+
+*** justify-content
+
+#+BEGIN_SRC css
+.container {
+  justify-content: flex-start | flex-end | center | space-between |space-around | space-evenly;
+}
+#+END_SRC
+
+#+BEGIN_EXPORT html
+<img src="/images/flexbox/justify-content.svg" width="30%" />
+#+END_EXPORT
+
+*** align-items
+
+#+BEGIN_SRC css
+.container {
+  align-items: stretch | flex-start | flex-end | center | baseline;
+}
+#+END_SRC
+
+#+BEGIN_EXPORT html
+<img src="/images/flexbox/align-items.svg" width="30%" />
+#+END_EXPORT
+
+*** align-content
+
+#+BEGIN_SRC css
+.container {
+  align-content: flex-start | flex-end | center | space-between | space-around | space-evenly;
+}
+#+END_SRC
+
+#+BEGIN_EXPORT html
+<img src="/images/flexbox/align-content.svg" width="30%" />
+#+END_EXPORT
+
+** Items
+
+Properties for the Children (flex items).
+
+#+BEGIN_EXPORT html
+<img src="/images/flexbox/items.svg" width="30%" />
+#+END_EXPORT
+
+*** order
+
+#+BEGIN_SRC css
+.item {
+  order: <integer>; /* default is 0 */
+}
+#+END_SRC
+
+#+BEGIN_EXPORT html
+<img src="/images/flexbox/order.svg" width="30%" />
+#+END_EXPORT
+
+*** flex-grow
+
+#+BEGIN_SRC css
+.item {
+  flex-grow: <number>; /* default 0 */
+}
+#+END_SRC
+
+#+BEGIN_EXPORT html
+<img src="/images/flexbox/flex-grow.svg" width="30%" />
+#+END_EXPORT
+
+*** flex-shrink
+
+#+BEGIN_SRC css
+.item {
+  flex-shrink: <number>; /* default 1 */
+}
+#+END_SRC
+
+*** flex-basis
+
+#+BEGIN_SRC css
+.item {
+  flex-basis: <length> | auto; /* default auto */
+}
+#+END_SRC
+
+*** flex
+
+#+BEGIN_SRC css
+.item {
+  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+}
+#+END_SRC
+
+*** align-self
+
+#+BEGIN_SRC css
+.item {
+  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}
+#+END_SRC
+
+#+BEGIN_EXPORT html
+<img src="/images/flexbox/align-self.svg" width="30%" />
+#+END_EXPORT

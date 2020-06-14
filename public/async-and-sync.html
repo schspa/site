@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2020-05-20 Wed 20:04 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Async And Sync</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Jack Liu">
+<link rel="shortcut icon" href="/images/rose-red.png" type="image/x-icon" />
+<link rel="stylesheet" href="/css/animate.min.css" />
+<link rel="stylesheet" href="/css/all.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<script src="/js/jquery.min.js"></script>
+<script src="/js/darkreader.js"></script>
+<script src="/js/main.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Async And Sync</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org339241b">单线程的 JavaScript </a></li>
+<li><a href="#org8bbdcb6">JS 的运行机制</a></li>
+<li><a href="#org8cc1c16">同步和异步</a></li>
+<li><a href="#orgb58d111"><span class="done DONE">DONE</span> 关于定时器</a></li>
+<li><a href="#org820b156">Node 中的事件循环</a></li>
+<li><a href="#org97a737f">Stack 的三种含义</a></li>
+<li><a href="#orgc937205"><span class="todo NEXT">NEXT</span> JS 的异步编程方案</a>
+<ul>
+<li><a href="#org06caefd">回调函数</a></li>
+<li><a href="#orgfc17e38">事件监听</a></li>
+<li><a href="#org58887b1">发布订阅</a></li>
+<li><a href="#orga553f46">Promise</a></li>
+<li><a href="#org504944a">Gernerator</a></li>
+<li><a href="#org42189de">Async/Await</a></li>
+</ul>
+</li>
+<li><a href="#org4ff3173">总结</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org339241b" class="outline-2">
+<h2 id="org339241b">单线程的 JavaScript <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h2>
+<div class="outline-text-2" id="text-org339241b">
+<p>
+JavaScript 语言的核心特征之一就是 <span class="underline">单线程</span> ，即同一时间只能做一件事。作为浏览器脚本语言， JavaScript 的主要用途是与用户互动，以及操作 DOM ，这 <span class="underline">决定</span> 了它只能是单线程，否则会带来很复杂的同步问题。
+</p>
+
+<p>
+为了利用多核 CPU 的计算能力，HTML5 提出 Web Worker 标准，允许 JavaScript 脚本创建多个线程，但是子线程完全受主线程控制，且不得操作 DOM 。所以，这个新标准并没有改变 JavaScript 单线程的本质。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8bbdcb6" class="outline-2">
+<h2 id="org8bbdcb6">JS 的运行机制<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h2>
+<div class="outline-text-2" id="text-org8bbdcb6">
+<img src="http://www.ruanyifeng.com/blogimg/asset/2014/bg2014100802.png" width="50%" />
+
+<p>
+如图所示， <span class="underline">主线程</span> 运行的时候，产生堆（heap）和 <span class="underline">栈（stack）</span> ，栈中的代码调用各种 WebAPI ，它们在 <span class="underline">“任务队列”</span> 中加入各种事件，只要栈中的代码执行完毕，主线程就会去读取“任务队列”，一次执行那些事件所对应的 <span class="underline">回调函数</span> 。
+</p>
+
+<p>
+其中：
+</p>
+<ul class="org-ul">
+<li><span class="underline">回调函数</span> ，就是那些会被主线程挂起来的代码，异步任务必须指定回调函数，当主线程开始执行异步任务，就是执行对应的对调函数。</li>
+<li><span class="underline">任务队列</span> ，是一个 <span class="underline">先进先出</span> 的数据结构，排在前面的事件，优先被主线程读取。除了 IO 设备的事件以外，还包括一些用户产生的事件（比如鼠标点击、页面滚动等）及 <span class="underline">定时事件</span> 。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8cc1c16" class="outline-2">
+<h2 id="org8cc1c16">同步和异步<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></h2>
+<div class="outline-text-2" id="text-org8cc1c16">
+<img src="/images/web/async-and-sync.jpg" width="70%" />
+
+<p>
+JavaScript 是单线程的，同一时间只能做一件事，为了避免某些任务耗时过久造成页面响应迟钝，需要将此类任务异步执行。
+</p>
+
+<p>
+其实，除了广义的同步任务和异步任务，我们对任务有更精细的定义，如下：
+</p>
+<ul class="org-ul">
+<li><span class="underline">宏任务（Macro Task）</span> ，包括整体代码 script ，setTimeout ，setInterval ；</li>
+<li><span class="underline">微任务（Micro Task）</span> ，包括 Promise ， process.nextTick 。</li>
+</ul>
+
+<p>
+我们来看一段示例代码，如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr"> 1: </span>setTimeout<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">()</span> =&gt; <span style="color: #66D9EF;">{</span>
+<span class="linenr"> 2: </span>    console.log<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'setTimeout....'</span><span style="color: #A6E22E;">)</span>
+<span class="linenr"> 3: </span><span style="color: #66D9EF;">}</span>, 300<span style="color: #AE81FF;">)</span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #F92672;">new</span> <span style="color: #66D9EF;">Promise</span><span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">(</span>resolve<span style="color: #66D9EF;">)</span> =&gt; <span style="color: #66D9EF;">{</span>
+<span class="linenr"> 6: </span>    console.log<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'promise....'</span><span style="color: #A6E22E;">)</span>;
+<span class="linenr"> 7: </span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>.then<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">()</span> =&gt; <span style="color: #66D9EF;">{</span>
+<span class="linenr"> 8: </span>    console.log<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'then....'</span><span style="color: #A6E22E;">)</span>;
+<span class="linenr"> 9: </span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>console.log<span style="color: #AE81FF;">(</span><span style="color: #E6DB74;">'console....'</span><span style="color: #AE81FF;">)</span>;
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; promise....</span>
+<span class="linenr">14: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; console....</span>
+<span class="linenr">15: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; then....</span>
+<span class="linenr">16: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; setTimeout....</span>
+</pre>
+</div>
+
+<p>
+不同类型的任务会进入对应的任务队列，上述代码执行过程如下：
+</p>
+<ol class="org-ol">
+<li>读取该段代码作为宏任务，进入主线程；</li>
+<li>遇到 <code>setTimeout</code> ，调用定时器 API ，将其回调函数注册后分发到 <span class="underline">宏任务队列</span> ；</li>
+<li>接下来遇到了 <code>Promise</code> ， <code>new Promise</code> 立即执行， <code>then</code> 函数分发到 <span class="underline">微任务队列</span> ；</li>
+<li>遇到 <code>console.log()</code> ，立即执行；</li>
+<li>整体代码 script 作为第一个宏任务执行结束，看看有哪些微任务，发现了 <code>then</code> 在微任务里面，执行；</li>
+<li>第一轮事件循环结束了，开始第二轮循环，从宏任务队列开始&#x2026;.</li>
+<li>直到所有任务队列为空，结束。</li>
+</ol>
+
+<p>
+事件循环，宏任务，微任务的关系如图所示：
+</p>
+
+<img src="/images/web/macro-and-micro.jpg" width="70%" />
+
+<p>
+<span class="underline">总结</span>
+</p>
+
+<p>
+本质上，JavaScript 是单线程的，不管是新框架、新语法糖实现的所谓异步，其实都用同步的方法去模拟的。事件循环，是 JavaScript 实现异步的一种方法，也是 JavaScript 的执行机制。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb58d111" class="outline-2">
+<h2 id="orgb58d111"><span class="done DONE">DONE</span> 关于定时器</h2>
+<div class="outline-text-2" id="text-orgb58d111">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-23 Thu 09:31]</span></span></li>
+</ul>
+<p>
+除了放置异步任务的事件，“任务队列”还可以放置定时器事件，以指定某些代码在多少事件之后执行。
+</p>
+
+<p>
+定时器功能主要由 <code>setTimeout()</code> 和 <code>setInterval()</code> 这两个函数来完成，它们的内部运行机制完全一样，却别在于前者指定的代码是一次性执行，后者则为循环执行。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr">1: </span>setTimeout<span style="color: #AE81FF;">(</span><span style="color: #F92672;">function</span><span style="color: #66D9EF;">()</span> <span style="color: #66D9EF;">{</span>
+<span class="linenr">2: </span>    console.log<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'setTimeout....'</span><span style="color: #A6E22E;">)</span>;
+<span class="linenr">3: </span><span style="color: #66D9EF;">}</span>, 300<span style="color: #AE81FF;">)</span>
+</pre>
+</div>
+<p>
+其中， <code>setTimeout(fn, ms)</code> 接收两个参数，第一个是回调函数，第二个是推迟执行的毫秒数。
+</p>
+
+<p>
+当第二个参数 <code>ms</code> 为 <code>0</code> 时，表示指定某个任务在主线程最早可得的空闲时间执行，即尽可能早的执行。它在“任务队列”的尾部添加一个事件，因此要等到同步任务和“任务队列”中显示的事件都处理完，才会得到执行。
+</p>
+
+<p>
+需要注意的是， <code>setTimeout()</code> 只是将事件插入了“任务队列”，必须等到当前代码（执行栈）执行完，主线程才会去执行它指定的回调函数。要是当前代码耗时很长，有可能要等很久，所以 <span class="underline">并没有办法保证</span> 回调函数一定会在 <code>setTimeout()</code> 指定的时间执行。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org820b156" class="outline-2">
+<h2 id="org820b156">Node 中的事件循环</h2>
+<div class="outline-text-2" id="text-org820b156">
+<blockquote>
+<p>
+该章节摘录自 → <a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html">Mr.Ruan's Blog</a> ，仅供学习参考。
+</p>
+</blockquote>
+
+<p>
+NodeJS 也是单线程的 Event Loop ，但是它的运行机制不同于浏览器环境。如下图：
+</p>
+
+<img src="http://www.ruanyifeng.com/blogimg/asset/2014/bg2014100803.png" width="80%" />
+
+<p>
+其中，NodeJS 的运行机制如下：
+</p>
+<ol class="org-ol">
+<li>V8 引擎解析 JavaScript 脚本；</li>
+<li>解析后的代码，调用 Node API ；</li>
+<li><span class="underline">libuv 库</span> 负责 Node API 的执行，它将不同的任务分配给不同的线程，形成一个事件循环，以异步的方式将任务的执行结果返回给 V8 引擎；</li>
+<li>V8 引擎再将结果返回给用户。</li>
+</ol>
+
+<p>
+除了 setTimeout 和 setInterval 这两个方法， NodeJS 还提供了另外两个与“任务队列”有关的方法： <code>process.nextTick</code> 和 <code>setImmediate</code> 。
+</p>
+
+<p>
+<code>process.nextTick</code> 方法可以在当前“执行栈”的尾部 &#x2013; 下一次事件循环（主线程读取“任务队列”）之前 &#x2013; 触发回调函数。也就是说，它指定的任务总是发生在 <span class="underline">所有异步任务之前</span> 。 <code>setImmediate</code> 方法则是在当前“任务队列”的尾部添加事件，与 <code>setTimeout(fn, 0)</code> 很像。
+</p>
+
+<p>
+来看一段示例代码，如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr">1: </span>process.nextTick<span style="color: #AE81FF;">(</span><span style="color: #F92672;">function</span> A<span style="color: #66D9EF;">()</span> <span style="color: #66D9EF;">{</span>
+<span class="linenr">2: </span>  console.log<span style="color: #A6E22E;">(</span>1<span style="color: #A6E22E;">)</span>;
+<span class="linenr">3: </span>  process.nextTick<span style="color: #A6E22E;">(</span><span style="color: #F92672;">function</span> B<span style="color: #E6DB74;">(){</span>console.log<span style="color: #FD971F;">(</span>2<span style="color: #FD971F;">)</span>;<span style="color: #E6DB74;">}</span><span style="color: #A6E22E;">)</span>;
+<span class="linenr">4: </span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>;
+<span class="linenr">5: </span>
+<span class="linenr">6: </span>setTimeout<span style="color: #AE81FF;">(</span><span style="color: #F92672;">function</span> timeout<span style="color: #66D9EF;">()</span> <span style="color: #66D9EF;">{</span>
+<span class="linenr">7: </span>  console.log<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'TIMEOUT FIRED'</span><span style="color: #A6E22E;">)</span>;
+<span class="linenr">8: </span><span style="color: #66D9EF;">}</span>, 0<span style="color: #AE81FF;">)</span>
+</pre>
+</div>
+
+<p>
+执行结果如下 ↓↓↓
+</p>
+
+<pre class="example">
+// → 1
+// → 2
+// → TIMEOUT FIRED
+</pre>
+
+<p>
+注意，由于 <code>process.nextTick</code> 方法指定的回调函数，总是在当前“执行栈”尾部触发，所以不仅函数 A 比 setTimeout 指定的回调函数 timeout 先执行，而且函数 B 也比 timeout 先执行。这说明，如果有多个 <code>process.nextTick</code> 语句，不管它们是否嵌套，将全部在当前“执行栈”执行。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org97a737f" class="outline-2">
+<h2 id="org97a737f">Stack 的三种含义<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup></h2>
+<div class="outline-text-2" id="text-org97a737f">
+<p>
+在上述章节中，我们多次提到 <span class="underline">执行栈</span> ，那么 <span class="underline">栈（stack）</span> 到底是什么呢？
+</p>
+
+<p>
+<span class="underline">1. 数据结构</span>
+</p>
+
+<p>
+→ <a href="https://www.rosecoder.com/data-structures-reference.html#orgdff7e2f">stack</a>
+</p>
+
+<p>
+stack 的第一种含义是一组数据的存放方式，特点是 <span class="underline">后进先出</span> ，如下图：
+</p>
+
+<img src="http://www.ruanyifeng.com/blogimg/asset/201311/bg2013112901.png" width="40%" />
+
+<p>
+与这种结构配套的，是一些特定的方法，如下：
+</p>
+
+<pre class="example">
+- push → 在最顶层加入数据；
+- pop → 返回并移除最顶层的数据；
+- top → 返回最顶层的数据的值，但不移除它；
+- isempty → 返回一个布尔值，表示当前 stack 是否为空栈。
+</pre>
+
+<p>
+<span class="underline">2. 代码运行方式</span>
+</p>
+
+<p>
+stack 的第二种含义是“调用栈”（call stack），表示函数或子例程像堆积木一样存放，以实现层层调用。
+</p>
+
+<p>
+来看一段 Java 示例代码，如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #F92672;">class</span> <span style="color: #66D9EF;">Student</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">age</span>;
+<span class="linenr"> 3: </span>    <span style="color: #66D9EF;">String</span> <span style="color: #FD971F;">name</span>;
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span>    <span style="color: #F92672;">public</span> <span style="color: #A6E22E;">Student</span><span style="color: #66D9EF;">(</span><span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">Age</span>, <span style="color: #66D9EF;">String</span> <span style="color: #FD971F;">Name</span><span style="color: #66D9EF;">)</span> <span style="color: #66D9EF;">{</span>
+<span class="linenr"> 6: </span>        <span style="color: #F92672;">this</span>.age = Age;
+<span class="linenr"> 7: </span>        setName<span style="color: #A6E22E;">(</span>Name<span style="color: #A6E22E;">)</span>;
+<span class="linenr"> 8: </span>    <span style="color: #66D9EF;">}</span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span>    <span style="color: #F92672;">public</span> <span style="color: #66D9EF;">void</span> <span style="color: #A6E22E;">setName</span><span style="color: #66D9EF;">(</span><span style="color: #66D9EF;">String</span> <span style="color: #FD971F;">Name</span><span style="color: #66D9EF;">)</span> <span style="color: #66D9EF;">{</span>
+<span class="linenr">11: </span>        <span style="color: #F92672;">this</span>.name = Name;
+<span class="linenr">12: </span>    <span style="color: #66D9EF;">}</span>
+<span class="linenr">13: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">14: </span>
+<span class="linenr">15: </span><span style="color: #F92672;">public</span> <span style="color: #F92672;">class</span> <span style="color: #66D9EF;">Main</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr">16: </span>    <span style="color: #F92672;">public</span> <span style="color: #F92672;">static</span> <span style="color: #66D9EF;">void</span> <span style="color: #A6E22E;">main</span><span style="color: #66D9EF;">(</span><span style="color: #66D9EF;">String</span><span style="color: #A6E22E;">[]</span> <span style="color: #FD971F;">args</span><span style="color: #66D9EF;">)</span> <span style="color: #66D9EF;">{</span>
+<span class="linenr">17: </span>        <span style="color: #66D9EF;">Student</span> <span style="color: #FD971F;">s</span>;
+<span class="linenr">18: </span>        s = <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">Student</span><span style="color: #A6E22E;">(</span>23, <span style="color: #E6DB74;">"John"</span><span style="color: #A6E22E;">)</span>;
+<span class="linenr">19: </span>    <span style="color: #66D9EF;">}</span>
+<span class="linenr">20: </span><span style="color: #AE81FF;">}</span>
+</pre>
+</div>
+
+<p>
+上面这段代码运行的时候，首先调用 <code>main</code> 方法，里面需要生成一个 <code>Student</code> 的实例，于是又调用 <code>Student</code> 构造函数。在构造函数中，又调用到 <code>setName</code> 方法。
+</p>
+
+<img src="http://www.ruanyifeng.com/blogimg/asset/201311/bg2013112902.gif" width="60%" />
+
+<p>
+这三次调用像积木一样堆起来，就叫做“调用栈”。程序运行的时候，总是先完成最上层的调用，然后将它的值返回到下一层调用，直到完成整个调用栈，返回最后的结果。
+</p>
+
+<p>
+<span class="underline">3. 内存区域</span>
+</p>
+
+<p>
+stack 的第三种含义是存放数据的一种内存区域。程序运行的时候，需要内存空间存放数据。一般来说，系统会划分出两种不同的内存空间：栈（stack）和堆（heap）。它们的主要区别是：
+</p>
+<ul class="org-ul">
+<li>栈（stack）是有结构的，每个区块按照一定次序存放，可以明确知道每个区块的大小；</li>
+<li>堆（heap）是没有结构的，数据可以任意存放，寻址速度比栈慢；</li>
+<li>每个线程分配一个 stack ，是线程独占的创建的时候。大小是确定的，数据超过这个大小，就发生 <code>stack overflow</code> 错误；</li>
+<li>每个进程分配一个 heap ，是线程共用的。大小是不确定的，需要的话可以不断增加。</li>
+</ul>
+
+<p>
+根据上面的这些区别，数据存放的规则是：只要是局部的、占用空间确定的数据，一般都存放在 stack 里面，否则就放在 heap 里面。
+</p>
+
+<img src="http://www.ruanyifeng.com/blogimg/asset/201311/bg2013112905.jpg" width="60%" />
+
+<p>
+如图所示， <code>i</code> 、 <code>y</code> 和 <code>cls1</code> 都存放在 stack ，因为它们占用内存空间都是确定的，而且本身也属于局部变量。但是， <code>cls1</code> 指向的对象实例存放在 heap ，因为它的大小不确定。当 <code>Method1</code> 方法运行结束，整个 stack 会被清空， <code>i</code> 、 <code>y</code> 和 <code>cls1</code> 这三个变量小时，因为它们是局部变量，区块一旦结束，就没必要再存在了，而 heap 之中的那个对象实例继续存在，直到系统的垃圾清理机制（garbage collector）将这块内存回收。因此，一般来说，内存泄漏都发生在 heap ，即某些内存空间不再被使用了，却因为种种原因，没有被系统回收。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc937205" class="outline-2">
+<h2 id="orgc937205"><span class="todo NEXT">NEXT</span> JS 的异步编程方案<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup></h2>
+<div class="outline-text-2" id="text-orgc937205">
+<ul class="org-ul">
+<li>State "NEXT"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-01-23 Thu 09:31]</span></span></li>
+</ul>
+</div>
+
+<div id="outline-container-org06caefd" class="outline-3">
+<h3 id="org06caefd">回调函数</h3>
+<div class="outline-text-3" id="text-org06caefd">
+<p>
+回调函数是异步操作最基本的方法，缺点是容易写出 <span class="underline">回调地狱</span> ，如多个请求存在依赖性时，代码就会像下面这样：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr">1: </span>ajax<span style="color: #AE81FF;">(</span>url, <span style="color: #66D9EF;">()</span> =&gt; <span style="color: #66D9EF;">{</span>
+<span class="linenr">2: </span>    <span style="color: #75715E;">// </span><span style="color: #75715E;">todo....</span>
+<span class="linenr">3: </span>    ajax<span style="color: #A6E22E;">(</span>url1, <span style="color: #E6DB74;">()</span> =&gt; <span style="color: #E6DB74;">{</span>
+<span class="linenr">4: </span>        <span style="color: #75715E;">// </span><span style="color: #75715E;">todo....</span>
+<span class="linenr">5: </span>        ajax<span style="color: #FD971F;">(</span>url2, <span style="color: #F92672;">()</span> =&gt; <span style="color: #F92672;">{</span>
+<span class="linenr">6: </span>            <span style="color: #75715E;">// </span><span style="color: #75715E;">todo....</span>
+<span class="linenr">7: </span>        <span style="color: #F92672;">}</span><span style="color: #FD971F;">)</span>
+<span class="linenr">8: </span>    <span style="color: #E6DB74;">}</span><span style="color: #A6E22E;">)</span>
+<span class="linenr">9: </span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+</pre>
+</div>
+
+<p>
+回调函数 <span class="underline">优点</span> 是简单、容易理解和实现； <span class="underline">缺点</span> 是不利于代码的阅读和维护，各个部分之间高度耦合，使得程序结构混乱、流程难以追踪，且每个任务只能指定一个回调函数，此外它不能使用 try catch 捕获错误，不能直接 return <sup><a id="fnr.6" class="footref" href="#fn.6">6</a></sup>。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfc17e38" class="outline-3">
+<h3 id="orgfc17e38">事件监听</h3>
+<div class="outline-text-3" id="text-orgfc17e38">
+<p>
+这种方式下，异步任务的执行不取决于代码的顺序，而取决于某个事件是否发生。
+</p>
+
+<p>
+假如想要实现函数 f2 必须等到 f1 执行完成，才能执行，可以这样做：
+</p>
+<ol class="org-ol">
+<li>为 f1 绑定一个事件 <code>done</code> ；</li>
+<li>当 f1 执行完成，触发事件 <code>done</code> 。</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr">1: </span>f1.on<span style="color: #AE81FF;">(</span><span style="color: #E6DB74;">'done'</span>, f2<span style="color: #AE81FF;">)</span>;              <span style="color: #75715E;">// </span><span style="color: #75715E;">f1 &#32465;&#23450; done</span>
+<span class="linenr">2: </span>
+<span class="linenr">3: </span>funtion f1<span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr">4: </span>    setTimeout<span style="color: #66D9EF;">(</span><span style="color: #A6E22E;">()</span> =&gt; <span style="color: #A6E22E;">{</span>
+<span class="linenr">5: </span>        <span style="color: #75715E;">// </span><span style="color: #75715E;">todo....</span>
+<span class="linenr">6: </span>        f1.trigger<span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">'done'</span><span style="color: #E6DB74;">)</span>;     <span style="color: #75715E;">// </span><span style="color: #75715E;">&#35302;&#21457; done</span>
+<span class="linenr">7: </span>    <span style="color: #A6E22E;">}</span>, 1000<span style="color: #66D9EF;">)</span>
+<span class="linenr">8: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">9: </span>
+</pre>
+</div>
+
+<p>
+事件监听的 <span class="underline">优点</span> 是比较容易理解，可以绑定 <span class="underline">多个</span> 事件，每个事件可以指定 <span class="underline">多个</span> 回调函数，而且可以“去耦合”，有利于实现模块化； <span class="underline">缺点</span> 是整个程序都要变成事件驱动型，运行流程会变得不清晰，阅读代码的时候，很难看出主流程。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org58887b1" class="outline-3">
+<h3 id="org58887b1">发布订阅</h3>
+<div class="outline-text-3" id="text-org58887b1">
+<p>
+我们假定，存在一个 “信号中心” ，某个任务执行完成，就向信号中心 <span class="underline">“发布”</span> （publish）一个信号，其他任务可以向信号中心 <span class="underline">“订阅”</span>  (subscribe) 这个信号，从而知道什么时候自己可以开始执行。这就叫做 <span class="underline">“发布/订阅模式”</span> （publish-subscribe pattern），又称为 “观察者模式” （observer pattern）。
+</p>
+
+<p>
+同上，假如想要实现函数 f2 必须等到 f1 执行完成，才能执行，可以这样做：
+</p>
+<ol class="org-ol">
+<li>f2 向信号中心 jQuery 订阅 <code>done</code> 信号；</li>
+<li>f1 执行完成后，向信号中心 jQuery 发布 <code>done</code> 信号，从而引发 f2 执行；</li>
+<li>f2 完成执行后，可以取消订阅（unsubscribe）。</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr"> 1: </span>jQuery.subscribe<span style="color: #AE81FF;">(</span><span style="color: #E6DB74;">'done'</span>, f2<span style="color: #AE81FF;">)</span>;   <span style="color: #75715E;">// </span><span style="color: #75715E;">f2 &#35746;&#38405; done</span>
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #F92672;">function</span> <span style="color: #A6E22E;">f1</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr"> 4: </span>    setTimeout<span style="color: #66D9EF;">(</span><span style="color: #A6E22E;">()</span> =&gt; <span style="color: #A6E22E;">{</span>
+<span class="linenr"> 5: </span>        <span style="color: #75715E;">// </span><span style="color: #75715E;">....</span>
+<span class="linenr"> 6: </span>        jQuery.publish<span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">'done'</span><span style="color: #E6DB74;">)</span>; <span style="color: #75715E;">// </span><span style="color: #75715E;">f1 &#21457;&#24067;&#23436;&#25104;&#20449;&#21495; done</span>
+<span class="linenr"> 7: </span>    <span style="color: #A6E22E;">}</span>, 1000<span style="color: #66D9EF;">)</span>;
+<span class="linenr"> 8: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">f1();</span>
+<span class="linenr">11: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">jQuery.unsubscribe('done', f2);</span>
+</pre>
+</div>
+
+<p>
+这种方法的性质与“事件监听”类似，但是明显优于后者，因为可以通过查看 “消息中心” ，了解存在到少信号、每个信号有多少订阅者，从而监控程序的运行。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga553f46" class="outline-3">
+<h3 id="orga553f46">Promise</h3>
+<div class="outline-text-3" id="text-orga553f46">
+<p>
+Promise 在程序中的意思就是 <span class="underline">承诺</span> 过一段时间后给你结果，用于异步操作，如网络请求、读取本地文件等。
+</p>
+
+<p>
+Promise 的三种状态：
+</p>
+<ul class="org-ul">
+<li>Pending ，Promise 对象实例创建时候的 <span class="underline">初始状态</span> ；</li>
+<li>Fulfilled ，可以理解为成功的状态 <span class="underline">resolved</span> ；</li>
+<li>Rejected ，可以理解为失败的状态 <span class="underline">rejected</span> 。</li>
+</ul>
+
+<p>
+注意 <b><b>一旦从等待状态变成为其他状态就永远不能更改状态了</b></b> 。看段示例代码：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #F92672;">let</span> <span style="color: #FD971F;">p</span> = <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">Promise</span><span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">(</span>resolve, reject<span style="color: #66D9EF;">)</span> =&gt; <span style="color: #66D9EF;">{</span>
+<span class="linenr"> 2: </span>    reject<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'reject fail....'</span><span style="color: #A6E22E;">)</span>;
+<span class="linenr"> 3: </span>    resolve<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'resolve success....'</span><span style="color: #A6E22E;">)</span>; <span style="color: #75715E;">// </span><span style="color: #75715E;">&#26080;&#25928;&#20195;&#30721;&#19981;&#20250;&#25191;&#34892;</span>
+<span class="linenr"> 4: </span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span>p.then<span style="color: #AE81FF;">(</span>
+<span class="linenr"> 7: </span>    val =&gt; <span style="color: #66D9EF;">{</span>
+<span class="linenr"> 8: </span>        console.log<span style="color: #A6E22E;">(</span>val<span style="color: #A6E22E;">)</span>;
+<span class="linenr"> 9: </span>    <span style="color: #66D9EF;">}</span>,
+<span class="linenr">10: </span>    res =&gt; <span style="color: #66D9EF;">{</span>
+<span class="linenr">11: </span>        console.log<span style="color: #A6E22E;">(</span>res<span style="color: #A6E22E;">)</span>;           <span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; reject fail....</span>
+<span class="linenr">12: </span>    <span style="color: #66D9EF;">}</span>
+<span class="linenr">13: </span><span style="color: #AE81FF;">)</span>
+</pre>
+</div>
+
+<blockquote>
+<p>
+注意：在构造 Promise 的时候，构造函数内部的代码是 <span class="underline">立即执行</span> 的。
+</p>
+</blockquote>
+
+<p>
+<span class="underline">Promise 的链式调用</span> ：
+</p>
+<ul class="org-ul">
+<li>每次调用返回的都是一个新的 Promise 实例（这就是 then 可用链式调用的原因）；</li>
+<li>如果 then 中返回的是一个结果的话，就把这个结果传递下一次 then 中的成功回调；</li>
+<li>如果 then 中出现异常，会走下一个 then 的失败回调；</li>
+<li><b>在 then 中使用了 return ，那么 <span class="underline">return 的值会被 <code>Promise.resolve()</code> 包装</span></b> （见例 1，2）；</li>
+<li>then 中可以不传递参数，如果不传递会透到下一个 then 中（见例 3）；</li>
+<li>catch 会捕获到没有捕获的异常。</li>
+</ul>
+
+<p>
+来看几段示例代码，如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr">1: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">e.g.1</span>
+<span class="linenr">2: </span>Promise.resolve<span style="color: #AE81FF;">(</span>1<span style="color: #AE81FF;">)</span>
+<span class="linenr">3: </span>    .then<span style="color: #AE81FF;">(</span>res =&gt; <span style="color: #66D9EF;">{</span>
+<span class="linenr">4: </span>        console.log<span style="color: #A6E22E;">(</span>res<span style="color: #A6E22E;">)</span>;
+<span class="linenr">5: </span>        <span style="color: #F92672;">return</span> 2;               <span style="color: #75715E;">// </span><span style="color: #75715E;">&#20250;&#34987;&#33258;&#21160;&#21253;&#35013;&#25104; Promise.resolve(2)</span>
+<span class="linenr">6: </span>    <span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">7: </span>    .<span style="color: #F92672;">catch</span><span style="color: #AE81FF;">(</span>err =&gt; 3<span style="color: #AE81FF;">)</span>
+<span class="linenr">8: </span>    .then<span style="color: #AE81FF;">(</span>res =&gt; console.log<span style="color: #66D9EF;">(</span>res<span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">e.g.2</span>
+<span class="linenr"> 2: </span>Promise.resolve<span style="color: #AE81FF;">(</span>1<span style="color: #AE81FF;">)</span>
+<span class="linenr"> 3: </span>    .then<span style="color: #AE81FF;">(</span>x =&gt; x + 1<span style="color: #AE81FF;">)</span>
+<span class="linenr"> 4: </span>    .then<span style="color: #AE81FF;">(</span>x =&gt; <span style="color: #66D9EF;">{</span>
+<span class="linenr"> 5: </span>        <span style="color: #F92672;">throw</span> <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">Error</span><span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'My Error'</span><span style="color: #A6E22E;">)</span>
+<span class="linenr"> 6: </span>    <span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span class="linenr"> 7: </span>    .<span style="color: #F92672;">catch</span><span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">()</span> =&gt; 1<span style="color: #AE81FF;">)</span>
+<span class="linenr"> 8: </span>    .then<span style="color: #AE81FF;">(</span>x =&gt; x + 1<span style="color: #AE81FF;">)</span>
+<span class="linenr"> 9: </span>    .then<span style="color: #AE81FF;">(</span>x =&gt; console.log<span style="color: #66D9EF;">(</span>x<span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>  <span style="color: #75715E;">// </span><span style="color: #75715E;">2</span>
+<span class="linenr">10: </span>    .<span style="color: #F92672;">catch</span><span style="color: #AE81FF;">(</span>console.error<span style="color: #AE81FF;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">e.g.3</span>
+<span class="linenr"> 2: </span><span style="color: #F92672;">let</span> <span style="color: #FD971F;">fs</span> = require<span style="color: #AE81FF;">(</span><span style="color: #E6DB74;">'fs'</span><span style="color: #AE81FF;">)</span>
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #F92672;">function</span> <span style="color: #A6E22E;">read</span><span style="color: #AE81FF;">(</span><span style="color: #FD971F;">url</span><span style="color: #AE81FF;">)</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr"> 5: </span>    <span style="color: #F92672;">return</span> <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">Promise</span><span style="color: #66D9EF;">(</span><span style="color: #A6E22E;">(</span>resolve, reject<span style="color: #A6E22E;">)</span> =&gt; <span style="color: #A6E22E;">{</span>
+<span class="linenr"> 6: </span>        fs.readFile<span style="color: #E6DB74;">(</span>url, <span style="color: #E6DB74;">'utf8'</span>, <span style="color: #FD971F;">(</span>err, data<span style="color: #FD971F;">)</span> =&gt; <span style="color: #FD971F;">{</span>
+<span class="linenr"> 7: </span>            <span style="color: #F92672;">if</span><span style="color: #F92672;">(</span>err<span style="color: #F92672;">)</span> reject<span style="color: #F92672;">(</span>err<span style="color: #F92672;">)</span>
+<span class="linenr"> 8: </span>            resolve<span style="color: #F92672;">(</span>data<span style="color: #F92672;">)</span>
+<span class="linenr"> 9: </span>        <span style="color: #FD971F;">}</span><span style="color: #E6DB74;">)</span>
+<span class="linenr">10: </span>    <span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">)</span>
+<span class="linenr">11: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">12: </span>
+<span class="linenr">13: </span>read<span style="color: #AE81FF;">(</span><span style="color: #E6DB74;">'./name.txt'</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">14: </span>    .then<span style="color: #AE81FF;">(</span>
+<span class="linenr">15: </span>        data =&gt; <span style="color: #F92672;">throw</span> <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">Error</span><span style="color: #66D9EF;">()</span>                <span style="color: #75715E;">// </span><span style="color: #75715E;">then &#20013;&#20986;&#29616;&#24322;&#24120;&#65292;&#20250;&#36208;&#19979;&#19968;&#20010; then &#30340;&#22833;&#36133;&#22238;&#35843;</span>
+<span class="linenr">16: </span>    <span style="color: #AE81FF;">)</span>                                            <span style="color: #75715E;">// </span><span style="color: #75715E;">&#30001;&#20110;&#19979;&#19968;&#20010; then &#27809;&#26377;&#22833;&#36133;&#22238;&#35843;&#65292;&#23601;&#20250;&#32487;&#32493;&#24448;&#19979;&#25214;&#65292;&#22914;&#26524;&#27809;&#26377;&#65292;&#21017;&#34987; catch &#25429;&#33719;</span>
+<span class="linenr">17: </span>    .then<span style="color: #AE81FF;">(</span> data =&gt; console.log<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">'data....'</span><span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">18: </span>    .then<span style="color: #AE81FF;">()</span>
+<span class="linenr">19: </span>    .then<span style="color: #AE81FF;">(</span><span style="color: #AE81FF;">null</span>, err =&gt; console.log<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">'then'</span>, err<span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span> <span style="color: #75715E;">// </span><span style="color: #75715E;">then ERROR</span>
+<span class="linenr">20: </span>    .<span style="color: #F92672;">catch</span><span style="color: #AE81FF;">(</span>err =&gt; console.log<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">'error....'</span><span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+</pre>
+</div>
+
+<p>
+Promise 不仅能够捕获错误，而且也很好地解决了回调地狱的问题，可以把之前的回调地狱例子改写为如下代码：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr"> 1: </span>ajax<span style="color: #AE81FF;">(</span>url<span style="color: #AE81FF;">)</span>
+<span class="linenr"> 2: </span>    .then<span style="color: #AE81FF;">(</span>res =&gt; <span style="color: #66D9EF;">{</span>
+<span class="linenr"> 3: </span>        console.log<span style="color: #A6E22E;">(</span>res<span style="color: #A6E22E;">)</span>
+<span class="linenr"> 4: </span>        <span style="color: #F92672;">return</span> ajax<span style="color: #A6E22E;">(</span>url1<span style="color: #A6E22E;">)</span>
+<span class="linenr"> 5: </span>    <span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span class="linenr"> 6: </span>    .then<span style="color: #AE81FF;">(</span>res =&gt; <span style="color: #66D9EF;">{</span>
+<span class="linenr"> 7: </span>        console.log<span style="color: #A6E22E;">(</span>res<span style="color: #A6E22E;">)</span>
+<span class="linenr"> 8: </span>        <span style="color: #F92672;">return</span> ajax<span style="color: #A6E22E;">(</span>url2<span style="color: #A6E22E;">)</span>
+<span class="linenr"> 9: </span>    <span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">10: </span>    .then<span style="color: #AE81FF;">(</span>res =&gt; console.log<span style="color: #66D9EF;">(</span>res<span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+</pre>
+</div>
+
+<p>
+它也是存在一些缺点的，比如无法取消 Promise ，错误需要通过回调函数捕获。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org504944a" class="outline-3">
+<h3 id="org504944a">Gernerator</h3>
+<div class="outline-text-3" id="text-org504944a">
+<p>
+i.e. 生成器 Gernerators/yield
+</p>
+
+<p>
+Gernerator 函数是 ES6 提供的一种异步编程方案，语法与传统函数完全不同，最大的 <span class="underline">特点</span> 是可以控制函数的执行。
+</p>
+<ul class="org-ul">
+<li>语法上，首先可以理解成， Gernerator 函数是一个 <span class="underline">状态机</span> ，封装了多个内部状态；</li>
+<li>Gernerator 函数除了是状态机，还是一个 <span class="underline">遍历器对象生成函数</span> ；</li>
+<li>可暂停函数， <code>yield</code> 可暂停， <code>next</code> 方法可启动，每次返回的是 <code>yield</code> 后的表达式结果；</li>
+<li><code>yield</code> 表达式本身没有返回值，或者说总是返回 <code>undefined</code> 。 <code>next</code> 方法可以带一个参数，该参数就会被当作上一个 <code>yield</code> 表达式的返回值。</li>
+</ul>
+
+<p>
+来看一段代码示例：
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #F92672;">function</span>* <span style="color: #A6E22E;">foo</span><span style="color: #AE81FF;">(</span>x<span style="color: #AE81FF;">)</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #F92672;">let</span> <span style="color: #FD971F;">y</span> = 2 * <span style="color: #66D9EF;">(</span><span style="color: #F92672;">yield</span> <span style="color: #A6E22E;">(</span>x + 1<span style="color: #A6E22E;">)</span><span style="color: #66D9EF;">)</span>
+<span class="linenr"> 3: </span>    <span style="color: #F92672;">let</span> <span style="color: #FD971F;">z</span> = <span style="color: #F92672;">yield</span> <span style="color: #66D9EF;">(</span>y / 3<span style="color: #66D9EF;">)</span>
+<span class="linenr"> 4: </span>    <span style="color: #F92672;">return</span> <span style="color: #66D9EF;">(</span>x + y + z<span style="color: #66D9EF;">)</span>
+<span class="linenr"> 5: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #F92672;">let</span> <span style="color: #FD971F;">it</span> = foo<span style="color: #AE81FF;">(</span>5<span style="color: #AE81FF;">)</span>
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span>console.log<span style="color: #AE81FF;">(</span>it.next<span style="color: #66D9EF;">()</span><span style="color: #AE81FF;">)</span>          <span style="color: #75715E;">// </span><span style="color: #75715E;">=&gt; {value: 6,  done: false}</span>
+<span class="linenr">10: </span>console.log<span style="color: #AE81FF;">(</span>it.next<span style="color: #66D9EF;">(</span>12<span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>        <span style="color: #75715E;">// </span><span style="color: #75715E;">=&gt; {value: 8,  done: false}</span>
+<span class="linenr">11: </span>console.log<span style="color: #AE81FF;">(</span>it.next<span style="color: #66D9EF;">(</span>13<span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>        <span style="color: #75715E;">// </span><span style="color: #75715E;">=&gt; {value: 42, done: false}</span>
+</pre>
+</div>
+
+<p>
+可能结果和想象的不一致，我们来逐行分析一下上述代码：
+</p>
+<ul class="org-ul">
+<li>首先 Generator 函数调用和普通函数不同，它会 <span class="underline">返回一个迭代器</span> ；</li>
+<li>当执行第一次 <code>next</code> 时，传参会被忽略，并且函数暂停在 <code>yield (x + 1)</code> 处，所以返回 <code>5 + 1 = 6</code> ；</li>
+<li>当执行第二次 <code>next</code> 时，传入的参数 <code>12</code> 就会被当作上一个 <code>yield</code> 表达式的返回值，如果不传参， yield 永远返回 <code>undefined</code> 。此时 <code>let y = 2 * 12</code> ，所以第二个 <code>yield</code>  等于 <code>2 * 12 / 3 = 8</code> ；</li>
+<li>当执行第三次 <code>next</code> 时，传入的参数 <code>13</code> 就会被当作上一个 <code>yield</code> 表达式的返回值，所以 <code>z = 13, x = 5, y = 24</code> ，相加等于 <code>42</code> 。</li>
+</ul>
+
+<p>
+再来看一个例子，假如有三个本地文件，名称及内容如下：
+</p>
+
+<pre class="example">
+# 1.txt
+2.txt                           # 内容
+
+# 2.txt
+3.txt                           # 内容
+
+# 3.txt
+结束                            # 内容
+</pre>
+
+<p>
+下一个请求依赖上一个请求的结果，想通过 Generator 函数依次调用三个文件。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #F92672;">let</span> <span style="color: #FD971F;">fs</span> = require<span style="color: #AE81FF;">(</span><span style="color: #E6DB74;">'fs'</span><span style="color: #AE81FF;">)</span>
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #F92672;">function</span> <span style="color: #A6E22E;">read</span><span style="color: #AE81FF;">(</span><span style="color: #FD971F;">file</span><span style="color: #AE81FF;">)</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr"> 4: </span>    <span style="color: #F92672;">return</span> <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">Promise</span><span style="color: #66D9EF;">(</span><span style="color: #A6E22E;">(</span>resolve, reject<span style="color: #A6E22E;">)</span> =&gt; <span style="color: #A6E22E;">{</span>
+<span class="linenr"> 5: </span>        fs.readFile<span style="color: #E6DB74;">(</span>file, <span style="color: #E6DB74;">'utf8'</span>, <span style="color: #FD971F;">(</span>err, data<span style="color: #FD971F;">)</span> =&gt; <span style="color: #FD971F;">{</span>
+<span class="linenr"> 6: </span>            <span style="color: #F92672;">if</span><span style="color: #F92672;">(</span>err<span style="color: #F92672;">)</span> reject<span style="color: #F92672;">(</span>err<span style="color: #F92672;">)</span>
+<span class="linenr"> 7: </span>            resolve<span style="color: #F92672;">(</span>data<span style="color: #F92672;">)</span>
+<span class="linenr"> 8: </span>        <span style="color: #FD971F;">}</span><span style="color: #E6DB74;">)</span>
+<span class="linenr"> 9: </span>    <span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">)</span>
+<span class="linenr">10: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">11: </span>
+<span class="linenr">12: </span><span style="color: #F92672;">function</span>* <span style="color: #A6E22E;">r</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr">13: </span>    <span style="color: #F92672;">let</span> <span style="color: #FD971F;">r1</span> = <span style="color: #F92672;">yield</span> read<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">'./1.txt'</span><span style="color: #66D9EF;">)</span>
+<span class="linenr">14: </span>    <span style="color: #F92672;">let</span> <span style="color: #FD971F;">r2</span> = <span style="color: #F92672;">yield</span> read<span style="color: #66D9EF;">(</span>r1<span style="color: #66D9EF;">)</span>
+<span class="linenr">15: </span>    <span style="color: #F92672;">let</span> <span style="color: #FD971F;">r3</span> = <span style="color: #F92672;">yield</span> read<span style="color: #66D9EF;">(</span>r2<span style="color: #66D9EF;">)</span>
+<span class="linenr">16: </span>    console.log<span style="color: #66D9EF;">(</span>r1<span style="color: #66D9EF;">)</span>
+<span class="linenr">17: </span>    console.log<span style="color: #66D9EF;">(</span>r2<span style="color: #66D9EF;">)</span>
+<span class="linenr">18: </span>    console.log<span style="color: #66D9EF;">(</span>r3<span style="color: #66D9EF;">)</span>
+<span class="linenr">19: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">20: </span>
+<span class="linenr">21: </span><span style="color: #F92672;">let</span> <span style="color: #FD971F;">it</span> = r<span style="color: #AE81FF;">()</span>
+<span class="linenr">22: </span><span style="color: #F92672;">let</span> <span style="color: #AE81FF;">{</span>value, done<span style="color: #AE81FF;">}</span> = it.next<span style="color: #AE81FF;">()</span>   <span style="color: #75715E;">// </span><span style="color: #75715E;">value &#26159;&#19968;&#20010; promise</span>
+<span class="linenr">23: </span>
+<span class="linenr">24: </span>value.then<span style="color: #AE81FF;">(</span>data =&gt; <span style="color: #66D9EF;">{</span>
+<span class="linenr">25: </span>    console.log<span style="color: #A6E22E;">(</span>data<span style="color: #A6E22E;">)</span>           <span style="color: #75715E;">// </span><span style="color: #75715E;">data &#8594; 2.txt</span>
+<span class="linenr">26: </span>
+<span class="linenr">27: </span>    <span style="color: #F92672;">let</span> <span style="color: #A6E22E;">{</span>value, done<span style="color: #A6E22E;">}</span> = it.next<span style="color: #A6E22E;">(</span>data<span style="color: #A6E22E;">)</span>
+<span class="linenr">28: </span>    value.then<span style="color: #A6E22E;">(</span>data =&gt; <span style="color: #E6DB74;">{</span>
+<span class="linenr">29: </span>        console.log<span style="color: #FD971F;">(</span>data<span style="color: #FD971F;">)</span>       <span style="color: #75715E;">// </span><span style="color: #75715E;">data &#8594; 3.txt'</span>
+<span class="linenr">30: </span>
+<span class="linenr">31: </span>        <span style="color: #F92672;">let</span> <span style="color: #FD971F;">{</span>value, done<span style="color: #FD971F;">}</span> = it.next<span style="color: #FD971F;">(</span>data<span style="color: #FD971F;">)</span>
+<span class="linenr">32: </span>        value.then<span style="color: #FD971F;">(</span>data =&gt; <span style="color: #F92672;">{</span>
+<span class="linenr">33: </span>            console.log<span style="color: #AE81FF;">(</span>data<span style="color: #AE81FF;">)</span>   <span style="color: #75715E;">// </span><span style="color: #75715E;">data &#8594; &#32467;&#26463;</span>
+<span class="linenr">34: </span>        <span style="color: #F92672;">}</span><span style="color: #FD971F;">)</span>
+<span class="linenr">35: </span>    <span style="color: #E6DB74;">}</span><span style="color: #A6E22E;">)</span>
+<span class="linenr">36: </span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">37: </span>
+<span class="linenr">38: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; 2.txt</span>
+<span class="linenr">39: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; 3.txt</span>
+<span class="linenr">40: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; &#32467;&#26463;</span>
+</pre>
+</div>
+
+<p>
+从上面的例子中，可以看出手动迭代 Generator 函数是很麻烦的，逻辑实现有点绕。实际开发中，一般会引入并配置 <span class="underline">co 库</span> &#x2013; 一个为 NodeJS 和浏览器打造的基于生成器的流程控制工具，借助于 Promise ，可以使用更加优雅的方式编写非阻塞代码。
+</p>
+
+<p>
+我们引入 co 库，对上述代码进行改造，如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #F92672;">function</span>* <span style="color: #A6E22E;">r</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #F92672;">let</span> <span style="color: #FD971F;">r1</span> = <span style="color: #F92672;">yield</span> read<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">'./1.txt'</span><span style="color: #66D9EF;">)</span>
+<span class="linenr"> 3: </span>    <span style="color: #F92672;">let</span> <span style="color: #FD971F;">r2</span> = <span style="color: #F92672;">yield</span> read<span style="color: #66D9EF;">(</span>r1<span style="color: #66D9EF;">)</span>
+<span class="linenr"> 4: </span>    <span style="color: #F92672;">let</span> <span style="color: #FD971F;">r3</span> = <span style="color: #F92672;">yield</span> read<span style="color: #66D9EF;">(</span>r2<span style="color: #66D9EF;">)</span>
+<span class="linenr"> 5: </span>    console.log<span style="color: #66D9EF;">(</span>r1<span style="color: #66D9EF;">)</span>
+<span class="linenr"> 6: </span>    console.log<span style="color: #66D9EF;">(</span>r2<span style="color: #66D9EF;">)</span>
+<span class="linenr"> 7: </span>    console.log<span style="color: #66D9EF;">(</span>r3<span style="color: #66D9EF;">)</span>
+<span class="linenr"> 8: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #F92672;">let</span> <span style="color: #FD971F;">co</span> = require<span style="color: #AE81FF;">(</span><span style="color: #E6DB74;">'co'</span><span style="color: #AE81FF;">)</span>                  <span style="color: #75715E;">// </span><span style="color: #75715E;">&#24341;&#20837; co &#24211;</span>
+<span class="linenr">11: </span>co<span style="color: #AE81FF;">(</span>r<span style="color: #66D9EF;">()</span><span style="color: #AE81FF;">)</span>.then<span style="color: #AE81FF;">(</span>data =&gt; console.log<span style="color: #66D9EF;">(</span>data<span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; 2.txt</span>
+<span class="linenr">14: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; 3.txt</span>
+<span class="linenr">15: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; &#32467;&#26463;</span>
+<span class="linenr">16: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; undefined</span>
+</pre>
+</div>
+
+<p>
+我们可以通过 Generator 函数解决回调地狱的问题，把之前的回调地狱的例子用 Generator 函数改写，如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #F92672;">function</span>* <span style="color: #A6E22E;">fetch</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #F92672;">yield</span> ajax<span style="color: #66D9EF;">(</span>url,  <span style="color: #A6E22E;">()</span> =&gt; <span style="color: #A6E22E;">{}</span><span style="color: #66D9EF;">)</span>
+<span class="linenr"> 3: </span>    <span style="color: #F92672;">yield</span> ajax<span style="color: #66D9EF;">(</span>url1, <span style="color: #A6E22E;">()</span> =&gt; <span style="color: #A6E22E;">{}</span><span style="color: #66D9EF;">)</span>
+<span class="linenr"> 4: </span>    <span style="color: #F92672;">yield</span> ajax<span style="color: #66D9EF;">(</span>url2, <span style="color: #A6E22E;">()</span> =&gt; <span style="color: #A6E22E;">{}</span><span style="color: #66D9EF;">)</span>
+<span class="linenr"> 5: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #F92672;">let</span> <span style="color: #FD971F;">it</span> = fetch<span style="color: #AE81FF;">()</span>
+<span class="linenr"> 8: </span><span style="color: #F92672;">let</span> <span style="color: #FD971F;">result1</span> = it.next<span style="color: #AE81FF;">()</span>
+<span class="linenr"> 9: </span><span style="color: #F92672;">let</span> <span style="color: #FD971F;">result2</span> = it.next<span style="color: #AE81FF;">()</span>
+<span class="linenr">10: </span><span style="color: #F92672;">let</span> <span style="color: #FD971F;">result3</span> = it.next<span style="color: #AE81FF;">()</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org42189de" class="outline-3">
+<h3 id="org42189de">Async/Await</h3>
+<div class="outline-text-3" id="text-org42189de">
+<p>
+<span class="underline">1. Async/Await 简介</span>
+</p>
+
+<p>
+使用 async/await ，你可以轻松地达成之前使用 Generator 和 co 函数所做地工作，它有如下特点：
+</p>
+<ul class="org-ul">
+<li>async/await 是基于 Promise 实现的，它不能用于普通地回调函数；</li>
+<li>async/await 与 Promise 一样，是非阻塞的；</li>
+<li>async/await 使得一部代码看起来像同步代码，这正是它的魔力所在。</li>
+</ul>
+
+<p>
+<b>一个函数如果加上 async ，那么该函数就会返回一个 Promise 。</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr">1: </span><span style="color: #F92672;">async</span> <span style="color: #F92672;">function</span> async1<span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr">2: </span>    <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">'1'</span>
+<span class="linenr">3: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">4: </span>
+<span class="linenr">5: </span>console.log<span style="color: #AE81FF;">(</span>async1<span style="color: #66D9EF;">()</span><span style="color: #AE81FF;">)</span>           <span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; Promise {&lt;resolved&gt;: '1'}</span>
+</pre>
+</div>
+
+<p>
+Generator 函数依次调用三个文件那个例子使用 async/await 写法改写，如下：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #F92672;">let</span> <span style="color: #FD971F;">fs</span> = require<span style="color: #AE81FF;">(</span><span style="color: #E6DB74;">'fs'</span><span style="color: #AE81FF;">)</span>
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #F92672;">function</span> <span style="color: #A6E22E;">read</span><span style="color: #AE81FF;">(</span><span style="color: #FD971F;">file</span><span style="color: #AE81FF;">)</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr"> 4: </span>    <span style="color: #F92672;">return</span> <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">Promise</span><span style="color: #66D9EF;">(</span><span style="color: #A6E22E;">(</span>resolve, reject<span style="color: #A6E22E;">)</span> =&gt; <span style="color: #A6E22E;">{</span>
+<span class="linenr"> 5: </span>        fs.readFile<span style="color: #E6DB74;">(</span>file, <span style="color: #E6DB74;">'utf8'</span>, <span style="color: #FD971F;">(</span>err, data<span style="color: #FD971F;">)</span> =&gt; <span style="color: #FD971F;">{</span>
+<span class="linenr"> 6: </span>            <span style="color: #F92672;">if</span><span style="color: #F92672;">(</span>err<span style="color: #F92672;">)</span> reject<span style="color: #F92672;">(</span>err<span style="color: #F92672;">)</span>
+<span class="linenr"> 7: </span>            resolve<span style="color: #F92672;">(</span>data<span style="color: #F92672;">)</span>
+<span class="linenr"> 8: </span>        <span style="color: #FD971F;">}</span><span style="color: #E6DB74;">)</span>
+<span class="linenr"> 9: </span>    <span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">)</span>
+<span class="linenr">10: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">11: </span>
+<span class="linenr">12: </span><span style="color: #F92672;">async</span> <span style="color: #F92672;">function</span> readResult<span style="color: #AE81FF;">(</span><span style="color: #FD971F;">params</span><span style="color: #AE81FF;">)</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr">13: </span>    <span style="color: #F92672;">try</span> <span style="color: #66D9EF;">{</span>
+<span class="linenr">14: </span>        <span style="color: #F92672;">let</span> <span style="color: #FD971F;">p1</span> = <span style="color: #F92672;">await</span> read<span style="color: #A6E22E;">(</span>params, <span style="color: #E6DB74;">'utf8'</span><span style="color: #A6E22E;">)</span> <span style="color: #75715E;">// </span><span style="color: #75715E;">await &#21518;&#38754;&#36319;&#30340;&#26159;&#19968;&#20010; Promise &#23454;&#20363;</span>
+<span class="linenr">15: </span>        <span style="color: #F92672;">let</span> <span style="color: #FD971F;">p2</span> = <span style="color: #F92672;">await</span> read<span style="color: #A6E22E;">(</span>p1, <span style="color: #E6DB74;">'utf8'</span><span style="color: #A6E22E;">)</span>
+<span class="linenr">16: </span>        <span style="color: #F92672;">let</span> <span style="color: #FD971F;">p3</span> = <span style="color: #F92672;">await</span> read<span style="color: #A6E22E;">(</span>p2, <span style="color: #E6DB74;">'utf8'</span><span style="color: #A6E22E;">)</span>
+<span class="linenr">17: </span>        console.log<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'p1'</span>, p1<span style="color: #A6E22E;">)</span>
+<span class="linenr">18: </span>        console.log<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'p2'</span>, p2<span style="color: #A6E22E;">)</span>
+<span class="linenr">19: </span>        console.log<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'p3'</span>, p3<span style="color: #A6E22E;">)</span>
+<span class="linenr">20: </span>
+<span class="linenr">21: </span>        <span style="color: #F92672;">return</span> p3
+<span class="linenr">22: </span>    <span style="color: #66D9EF;">}</span> <span style="color: #F92672;">catch</span> <span style="color: #66D9EF;">(</span>err<span style="color: #66D9EF;">)</span> <span style="color: #66D9EF;">{</span>
+<span class="linenr">23: </span>        console.log<span style="color: #A6E22E;">(</span>err<span style="color: #A6E22E;">)</span>
+<span class="linenr">24: </span>    <span style="color: #66D9EF;">}</span>
+<span class="linenr">25: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">26: </span>
+<span class="linenr">27: </span>readResult<span style="color: #AE81FF;">(</span><span style="color: #E6DB74;">'1.txt'</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">28: </span>    .then<span style="color: #AE81FF;">(</span>
+<span class="linenr">29: </span>        data =&gt; console.log<span style="color: #66D9EF;">(</span>data<span style="color: #66D9EF;">)</span>,
+<span class="linenr">30: </span>        err  =&gt; console.log<span style="color: #66D9EF;">(</span>err<span style="color: #66D9EF;">)</span>
+<span class="linenr">31: </span>    <span style="color: #AE81FF;">)</span>
+<span class="linenr">32: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">p1 2.txt</span>
+<span class="linenr">33: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">p2 3.txt</span>
+<span class="linenr">34: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">p3 &#32467;&#26463;</span>
+<span class="linenr">35: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#32467;&#26463;</span>
+</pre>
+</div>
+
+<p>
+<span class="underline">2. Async/Await 并发请求</span>
+</p>
+
+<p>
+如果请求两个文件，可以通过并发请求：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #F92672;">let</span> <span style="color: #FD971F;">fs</span> = require<span style="color: #AE81FF;">(</span><span style="color: #E6DB74;">'fs'</span><span style="color: #AE81FF;">)</span>
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #F92672;">function</span> <span style="color: #A6E22E;">read</span><span style="color: #AE81FF;">(</span><span style="color: #FD971F;">file</span><span style="color: #AE81FF;">)</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr"> 4: </span>    <span style="color: #F92672;">return</span> <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">Promise</span><span style="color: #66D9EF;">(</span><span style="color: #A6E22E;">(</span>resolve, reject<span style="color: #A6E22E;">)</span> =&gt; <span style="color: #A6E22E;">{</span>
+<span class="linenr"> 5: </span>        fs.readFile<span style="color: #E6DB74;">(</span>file, <span style="color: #E6DB74;">'utf8'</span>, <span style="color: #FD971F;">(</span>err, data<span style="color: #FD971F;">)</span> =&gt; <span style="color: #FD971F;">{</span>
+<span class="linenr"> 6: </span>            <span style="color: #F92672;">if</span><span style="color: #F92672;">(</span>err<span style="color: #F92672;">)</span> reject<span style="color: #F92672;">(</span>err<span style="color: #F92672;">)</span>
+<span class="linenr"> 7: </span>            resolve<span style="color: #F92672;">(</span>data<span style="color: #F92672;">)</span>
+<span class="linenr"> 8: </span>        <span style="color: #FD971F;">}</span><span style="color: #E6DB74;">)</span>
+<span class="linenr"> 9: </span>    <span style="color: #A6E22E;">}</span><span style="color: #66D9EF;">)</span>
+<span class="linenr">10: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">11: </span>
+<span class="linenr">12: </span><span style="color: #F92672;">function</span> <span style="color: #A6E22E;">readAll</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr">13: </span>    read1<span style="color: #66D9EF;">()</span>
+<span class="linenr">14: </span>    read2<span style="color: #66D9EF;">()</span>                     <span style="color: #75715E;">// </span><span style="color: #75715E;">&#36825;&#20010;&#20989;&#25968;&#21516;&#27493;&#25191;&#34892;</span>
+<span class="linenr">15: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">16: </span>
+<span class="linenr">17: </span><span style="color: #F92672;">async</span> <span style="color: #F92672;">function</span> read1<span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr">18: </span>    <span style="color: #F92672;">let</span> <span style="color: #FD971F;">r</span> = <span style="color: #F92672;">await</span> read<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">'1.txt'</span>, <span style="color: #E6DB74;">'utf8'</span><span style="color: #66D9EF;">)</span>
+<span class="linenr">19: </span>    console.log<span style="color: #66D9EF;">(</span>r<span style="color: #66D9EF;">)</span>
+<span class="linenr">20: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">21: </span>
+<span class="linenr">22: </span><span style="color: #F92672;">async</span> <span style="color: #F92672;">function</span> read2<span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
+<span class="linenr">23: </span>    <span style="color: #F92672;">let</span> <span style="color: #FD971F;">r</span> = <span style="color: #F92672;">await</span> read<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">'2.txt'</span>, <span style="color: #E6DB74;">'utf8'</span><span style="color: #66D9EF;">)</span>
+<span class="linenr">24: </span>    console.log<span style="color: #66D9EF;">(</span>r<span style="color: #66D9EF;">)</span>
+<span class="linenr">25: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">26: </span>
+<span class="linenr">27: </span>readAll<span style="color: #AE81FF;">()</span>
+<span class="linenr">28: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; 2.txt</span>
+<span class="linenr">29: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; 3.txt</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4ff3173" class="outline-2">
+<h2 id="org4ff3173">总结</h2>
+<div class="outline-text-2" id="text-org4ff3173">
+<p>
+JavaScript 异步编程进化史： callback → promise → generator → async + await 。
+</p>
+
+<p>
+async/await 函数的实现，就是将 Generator 函数和自动执行器，包装在一个函数里。
+</p>
+
+<p>
+async/await 可以说是异步终极解决方案了，相对于 Promise ， <span class="underline">优势</span> 体现在：
+</p>
+<ul class="org-ul">
+<li>处理 then 的调用链，能够更清晰准确的写出代码；</li>
+<li>并且也能优雅地解决回调地狱问题。</li>
+</ul>
+
+<p>
+当然 async/await 函数也存在一些 <span class="underline">缺点</span> ，因为 await 将异步代码改造成了同步代码，如果多个异步代码没有依赖性却使用了 await 会导致性能上的降低，代码没有依赖性的话，完全可以使用 Promise.all 的方式。
+</p>
+
+<p>
+async/await 函数对 Generator 函数的改进，体现在一下三点：
+</p>
+
+<p>
+<span class="underline">1. 内置执行器</span>
+</p>
+
+<p>
+Generator 函数的执行必须靠执行器，所以才有了 co 函数库，而 async 函数自带执行器。也就是说， async 函数的执行，与普通函数一模一样，只要一行。
+</p>
+
+<p>
+<span class="underline">2. 更广的实用性</span>
+</p>
+
+<p>
+co 函数库约定， yield 命令后面指能是 Thunk 函数或 Promise 对象，而 async 函数的 await 命令后面，可以跟 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时等于同步操作）。
+</p>
+
+<p>
+<span class="underline">3. 更好的语义</span>
+</p>
+
+<p>
+async 和 await ，比起星号 <code>*</code> 和 <code>yield</code> ，语义更清楚了。 async 表示函数里有异步操作， await 表示紧跟在后面的表达式需要等待结果。
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html">http://www.ruanyifeng.com/blog/2014/10/event-loop.html</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+<a href="http://vimeo.com/96425312">http://vimeo.com/96425312</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://juejin.im/post/59e85eebf265da430d571f89">https://juejin.im/post/59e85eebf265da430d571f89</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
+<a href="http://www.ruanyifeng.com/blog/2013/11/stack.html">http://www.ruanyifeng.com/blog/2013/11/stack.html</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5">5</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://github.com/ljianshu/Blog/issues/53">https://github.com/ljianshu/Blog/issues/53</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6">6</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://blog.csdn.net/u011374582/article/details/83069764">https://blog.csdn.net/u011374582/article/details/83069764</a>
+</p></div></div>
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="date">Date: 2020-01-20 Mon 19:31</p>
+<p class="author">Author: Jack Liu</p>
+<p class="date">Created: 2020-05-20 Wed 20:04</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

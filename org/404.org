@@ -1,0 +1,9 @@
+#+SETUPFILE: ../theme-rose.setup
+#+DATE: <2019-12-28 Sat 23:28>
+#+TITLE: 404 Page
+
+[[https://www.rosecoder.com/images/views.gif]]
+
+You got lost : )
+
+*Just Go Home* → [[https://www.rosecoder.com][Home Page]]

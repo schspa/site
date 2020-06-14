@@ -1,0 +1,275 @@
+#+SETUPFILE: ../theme-rose.setup
+#+DATE: <2020-05-21 Thu 15:59>
+#+TITLE: Regular Expression
+
+本文内容以 [[https://www.softwhy.com/article-339-1.html][蚂蚁部落·正则表达式]] 为基础进行摘录、扩展，仅供学习。
+
+** 简介
+
+正则表达式，是一种规则，匹配字符串的规则，为进一步操作匹配的结果做准备。它的应用非常广泛，如实现站点的本地化搜索和 RSS 订阅。
+
+它的功能很强大（强而繁），但一般情况下用到的却比较简单，所以不要试图一下子就完全掌握它，前期只需要了解基本概念和常用操作，其它在使用的过程中不断地深入即可。
+
+** 创建
+
+如何创建一个正则表达式呢？ _字面量方式_ 和 _RegExp 构造函数方式_ 。
+
+#+BEGIN_SRC js -n
+  // 字面量
+  let reg0 = /\bant/
+  let reg1 = /\bant/g             // g 为修饰符
+
+  // 构造函数
+  // - 参数1 ，普通字符串或正则表达式
+  // - 参数2 ，可选，修饰符
+
+  // 第一个参数是字符串，必须符合正则表达式规则！
+  let reg2 = new RegExp('\\bant')
+  let reg3 = new RegExp('\\bant', 'g')
+  let reg4 = new RegExp('ant')
+  let reg5 = new RegExp('ant', 'g')
+
+  // 第一个参数是正则表达式
+  let reg6 = new RegExp(/\b\w/gi)
+#+END_SRC
+
+为什么是 =new RegExp('\\bant')= 中要使用两个 =\\= 呢？先思考一下，将在转义字符中说明。
+
+由于上述这个问题，推荐使用字面量方式创建正则表达式。
+
+** 方法
+
+为了方便后续地了解，我们行介绍一下正则表达式相关的几个方法。
+
+*** test()
+
+此方法可以检测一个字符串是否匹配某个模式，匹配成功返回 =true= ，否则返回 =false= 。
+
+语法结构：
+
+#+BEGIN_EXAMPLE
+  RegExpObject.test(string)       // string 必需，要检测的字符串
+#+END_EXAMPLE
+
+实例代码：
+
+#+BEGIN_SRC js -n
+  let str = 'I love antzone'
+
+  let reg0 = /\d/
+  console.log(reg0.test(str))      // → false
+
+  let reg1 = /\w/
+  console.log(reg1.test(str))      // → true
+#+END_SRC
+
+*** exec()
+
+此方法可以 检索字符串中与正则表达式匹配的内容，返回一个存放匹配内容的数组。
+
+语法结构：
+
+#+BEGIN_EXAMPLE
+  RegExpObject.exec(string)       // string 必需，要检索的字符串
+#+END_EXAMPLE
+
+实例代码：
+
+#+BEGIN_SRC js -n
+  let str = 'antzone'
+
+  let reg0 = /n/
+  console.log(reg0.exec(str))
+  // →  ["n", index: 1, input: "antzone", groups: undefined]
+  // - 成功完成一次匹配，并返回一个数组；
+  // - 数组第一个元素是正则表达式匹配内容；
+  // - index 属性返回匹配内容的在原字符串的起始位置
+  // - input 属性返回 str 原字符串
+
+  let reg1 = /n/g
+  console.log(reg1.exec(str))
+  // →  ["n", "n", index: 1, input: "antzone", groups: undefined]
+
+  let reg2 = /(n)(t)/
+  console.log(reg2.exec(str))
+  // →  ["nt", "n", "t", index: 1, input: "antzone", groups: undefined]
+  // - 数组第一个元素是正则表达式匹配内容；
+  // - 数组第二个元素是第一个子表达式匹配到的内容，
+  // - 第三个元素是第二个子表达式匹配到的内容，以此类推。
+#+END_SRC
+
+** 正则相关字符方法
+
+***  search()
+
+该方法用于检索字符串中指定的子字符串（普通字符串或正则表达式），检索到则返回子字符串在字符串中的位置，否则返回 -1 。
+
+语法结构：
+
+#+BEGIN_EXAMPLE
+  str.search(searchValue)         // searchValue 必需，要检索的子字符串
+  // or
+  str.search(regexp)
+#+END_EXAMPLE
+
+实例代码：
+
+#+BEGIN_SRC js -n
+  let str0 = '本站的url地址是www.softwhy.com'
+  let str1 = '蚂蚁部落'
+
+  let reg = /\w+/g
+  console.log(str0.search(reg))    // → 3
+  console.log(str1.search(reg))    // → -1
+#+END_SRC
+
+*** match()
+
+该方法可以在字符串内查找一个或多个与指定正则表达式匹配的子字符串，返回存放着匹配结果的数组，否则返回 =null= 。
+
+语法结构：
+
+#+BEGIN_EXAMPLE
+  stringObject.match(reg)
+#+END_EXAMPLE
+
+具体结果参数和 [[*exec()][exec() ↑]] 类似，它们在全局匹配的时候有区别，暂略。
+
+*** replace()
+
+该方法可以用指定字符串替换源字符串的指定内容，返回替换后产生的新字符串，不会修改源字符串。
+
+语法结构：
+
+#+BEGIN_EXAMPLE
+  str.replace(oldStr, newStr)
+  // or
+  str.replace(regexp, replacement)
+  // - regexp 必需，正则表达式，用于在源字符串中检索将要被替换的内容；
+  // - replcement 必需，规定用于替换的内容，可以是字符串、正则相关的特殊值和函数。
+#+END_EXAMPLE
+
+实例代码：
+
+#+BEGIN_SRC js -n
+  let str = 'ant8zone'
+
+  let reg = /\d/
+  console.log(str.replace(reg, 'H')) // → antHzone
+#+END_SRC
+
+我们稍微看一下当 =repacement= 为具特殊意义的美元 =$= 符号时：
+- =$1、$2、...$99= ：分别对应正则表达式第一个到第九九个子表达式匹配的内容；
+- =$&= ：正则表达式匹配的字符串。
+
+#+BEGIN_SRC js -n
+  let str0 = 'ant,zone'
+  let newStr0 = str.replace(/(\w+),(\w+)/, '$2 $1')
+  console.log(newStr0)            // → zone ant
+
+  let str1 = 'ant88'
+  let newStr1 = str.replace(/\d+/, '$1$&')
+  console.log(newStr)             // → ant8888
+  // $1 为第一个表达式匹配的内容 88
+  // $$ 则是正则表达式匹配的内容 88
+  // $1$$ 就是 8888 ，用 8888 替换字符中的 88 ，结果自然是 ant8888
+#+END_SRC
+
+*** split()
+
+该方法能够对字符串进行划分，并生成一个数组。
+
+语法结构：
+
+#+BEGIN_EXAMPLE
+  str.split(separator, limit)
+  // - separator ，可选，规定用于分割字符串的子字符串
+  // - limit ，可选，设定字符被分割的次数
+  // or
+  str.split(reg, howmany)
+  // - reg ，必需，正则表达式
+  // - howmany ，可选，规定生成数组的长度
+#+END_EXAMPLE
+
+实例代码：
+
+#+BEGIN_SRC js -n
+  let str0 = 'antzone'
+  console.log(str0.split(/n/))
+  // → ["a", "tzo", "e"]
+
+  let str1 = 'softwhy is good webSite'
+  console.log(str1.split(/\s/))    // → ["softwhy", "is", "good", "webSite"]
+  console.log(str1.split(/\s/), 2) // → ["softwhy", "is"]
+
+  let st2 = 'ant'
+  // \w可以匹配到字符串中的每一个字符，字符两端是空
+  console.log(str.split(/\w/))    // → ["", "", "", ""]
+  // 如果正则表达式包含子表达式，那么返回的数组中包括与这些子表达式匹配的字串
+  console.log(str.split(/(\w)/))  // → ["", "a", "", "n", "", "t", ""]
+#+END_SRC
+
+** 元字符
+
+正则表达式是具有一定规则的字符串，组成正则的字符串可以有普通的字符，也可以有特殊字符（元字符）。
+
+正则表达式的元字符从形成基本可以分为两大类：
+- 本身就有特殊意义，比如 =^、$、.= 等；
+- 通过转义字符使其具有特殊意义，如 =\w、\d= 等。
+
+#+CAPTION: 元字符
+| 元字符 | 结构   | 描述                                                     |
+|--------+--------+----------------------------------------------------------|
+| =.=    | =/.+/= | 匹配除回车符 =\r= 和换行符 =\n= 外的任意字符             |
+| =^=    | =/^x/= | 匹配字符串的起始位置                                     |
+| =$=    | =/x$/= | 匹配字符串的结尾                                         |
+| =\w=   | =/\w/= | 匹配单词字符，等价于 =[a-zA-Z0-9]=                       |
+| =\W=   | =/\W/= | 匹配非字母数字，等价于 =[^a-zA-Z0-9]=                    |
+| =\d=   | =/\d/= | 匹配单个数字字符，等价于 =[0-9]=                         |
+| =\D=   | =/\D/= | 匹配非数字字符，等价于 =[^0-9]=                          |
+| =\s=   | =/\s/= | 匹配空白字符                                             |
+| =\S=   | =/\S/= | 匹配非空白字符                                           |
+| =\b=   | =/\b/= | 匹配字符的边界，即匹配的是一个位置，而不是一个真正的字符 |
+| =\B=   | =/\B/= | 匹配非单词边界                                           |
+| =\0=   | =/\0/= | 即 =null= ，等价于 =\u0000=                              |
+
+其余有： =\n \f \r \t \v \xxx \xnn \uxxxx= 。
+
+** 量词
+
+| 字符      | 结构         | 描述                                         |
+|-----------+--------------+----------------------------------------------|
+| =+=       | =/x+/=       | 可以重复匹配前面匹配的字符 1 次或多次        |
+| =*=       | =/x*/=       | 可以重复匹配前面匹配的字符 0 次或多次        |
+| =?=       | =x?=         | 可以匹配前面匹配的字符 0 次或 1 次           |
+| ={n}=     | =/x{n}/=     | 可以重复前面匹配的内容 n 次                  |
+| ={n, m}=  | =/x{n, m}/=  | 重复前一项匹配至少 n 次，但是不能够超过 m 次 |
+| ={n,}=    | =/x{n,}/=    | 匹配前一项 n 次或者更多次                    |
+| =*?=      | =/x*?/=      |                                              |
+| =+?=      | =/x+?/=      |                                              |
+| =??=      | =/x??/=      |                                              |
+| ={n, m}?= | =/x{n, m}?/= |                                              |
+| ={n,}?=   | =/x{n,}?/=   |                                              |
+
+** 修饰符
+
+| 修饰符 | 结构     | 描述                                            |
+|--------+----------+-------------------------------------------------|
+| =g=    | =/reg/g= | global 执行全局匹配                             |
+| =i=    | =/reg/i= | ignore 忽略大小写的区分                         |
+| =m=    | =/reg/m= | 执行多行匹配                                    |
+| =y=    | =/reg/y= | 正则表达式必须从lastIndex规定的位置开始进行匹配 |
+
+** 分组和选择项
+
+正则表达式中的分组，可以将小括号中的内容作为一个独立整体处理。
+
+正则表达式中，也有选项概念，使用竖杠定义选项，竖杠两侧是具体选项内容，可以一次定义多个选项，比如 =a|b|c|d= 。
+
+** 贪婪匹配和惰性匹配
+
+所谓的贪婪匹配就是在符合规则的条件下，正则表达式尽可能多的匹配内容。
+
+实现贪婪匹配模式的核心是正则表达式重复量词，正是由于它的存在，才有贪婪的可能。
+
+惰性匹配确实比较“懒惰”，它会尽可能少的去匹配字符串中的内容，与正则表达式贪婪匹配恰好相反。

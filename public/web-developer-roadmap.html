@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2020-05-20 Wed 17:16 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web Developer Roadmap</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Jack Liu">
+<link rel="shortcut icon" href="/images/rose-red.png" type="image/x-icon" />
+<link rel="stylesheet" href="/css/animate.min.css" />
+<link rel="stylesheet" href="/css/all.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<script src="/js/jquery.min.js"></script>
+<script src="/js/darkreader.js"></script>
+<script src="/js/main.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Web Developer Roadmap</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgb585441">Introduction</a>
+<ul>
+<li><a href="#org652b29b"><span class="todo TODO">TODO</span> Git - Version Control</a></li>
+<li><a href="#org1b003a5"><span class="todo TODO">TODO</span> Basic Terminal Usage</a></li>
+<li><a href="#orgd9119ec"><span class="todo TODO">TODO</span> Data Structures &amp; Algorithms</a></li>
+<li><a href="#org5b0978d"><span class="todo TODO">TODO</span> GitHub</a></li>
+<li><a href="#orgd3cabcf"><span class="todo REFER">REFER</span> Licenses</a></li>
+<li><a href="#org80af3ce"><span class="done DONE">DONE</span> Semantic Versioning</a></li>
+<li><a href="#orgfb52e75"><span class="todo TODO">TODO</span> SSH</a></li>
+<li><a href="#orgbf4e9e1"><span class="todo TODO">TODO</span> HTTP/HTTPS and APIs</a></li>
+<li><a href="#orge8dc511"><span class="todo TODO">TODO</span> Design Patters</a></li>
+<li><a href="#orgc76de51"><span class="todo TODO">TODO</span> Character Encodings</a></li>
+</ul>
+</li>
+<li><a href="#orgb3acb99">Frontend Roadmap</a>
+<ul>
+<li><a href="#org92ab742"><span class="todo TODO">TODO</span> ! Internet</a></li>
+<li><a href="#org16589df"><span class="todo TODO">TODO</span> HTML</a></li>
+<li><a href="#org9c136d1"><span class="todo TODO">TODO</span> CSS</a></li>
+<li><a href="#org0f64b4a"><span class="todo TODO">TODO</span> JavaScript</a></li>
+<li><a href="#orgab0978b"><span class="todo TODO">TODO</span> Version Control Systems</a></li>
+<li><a href="#org99751bf"><span class="todo TODO">TODO</span> * Web Security Knowledge</a></li>
+<li><a href="#org596c0a5"><span class="todo TODO">TODO</span> Package Managers</a></li>
+<li><a href="#org72fe632"><span class="todo TODO">TODO</span> CSS Architecture</a></li>
+<li><a href="#org04c68d7"><span class="todo TODO">TODO</span> CSS Preprocessor</a></li>
+<li><a href="#orged54f3f"><span class="todo TODO">TODO</span> Build Tools</a></li>
+<li><a href="#org860b2b3"><span class="todo TODO">TODO</span> Pick a Framework</a></li>
+<li><a href="#org9161071"><span class="todo TODO">TODO</span> Modern CSS</a></li>
+<li><a href="#org236ac19"><span class="todo TODO">TODO</span> * Web Components</a></li>
+<li><a href="#orgf18feeb"><span class="todo TODO">TODO</span> CSS Frameworks</a></li>
+<li><a href="#orga5241d5"><span class="todo TODO">TODO</span> Testing your Apps</a></li>
+<li><a href="#org3c0f359"><span class="todo TODO">TODO</span> * Type Checkers</a></li>
+<li><a href="#orgf81212f"><span class="todo TODO">TODO</span> *  Progressive Web Apps</a></li>
+<li><a href="#orgfaf46e3"><span class="todo TODO">TODO</span> * Server Side Rendering (SSR)</a></li>
+<li><a href="#orgeb3d86c"><span class="todo TODO">TODO</span> * GraphQL</a></li>
+<li><a href="#orgb0fe683"><span class="todo TODO">TODO</span> * Static Site Generators</a></li>
+<li><a href="#orga33c2c4"><span class="todo TODO">TODO</span> *  Mobile Applications</a></li>
+<li><a href="#org57058a8"><span class="todo TODO">TODO</span> * Desktop Applications</a></li>
+<li><a href="#org956ea83"><span class="todo TODO">TODO</span> * Web Assembly</a></li>
+</ul>
+</li>
+<li><a href="#org7c42bbf">Back-end Roadmap</a>
+<ul>
+<li><a href="#org934d4af"><span class="todo TODO">TODO</span> ! Internet</a></li>
+<li><a href="#orgc0604ce"><span class="todo TODO">TODO</span> ! Basic Frontend Knowledge</a></li>
+<li><a href="#orgc946007"><span class="todo TODO">TODO</span> ! OS and General Knowledge</a></li>
+<li><a href="#org89dd13d"><span class="todo TODO">TODO</span> Learn a Language</a></li>
+<li><a href="#org85f4d6b"><span class="todo TODO">TODO</span> Version Control Systems</a></li>
+<li><a href="#org392e072"><span class="todo TODO">TODO</span> Relational Databases</a></li>
+<li><a href="#orgddcc322"><span class="todo TODO">TODO</span> More about Databases</a></li>
+<li><a href="#orgd090b1d"><span class="todo TODO">TODO</span> Learn about APIs</a></li>
+<li><a href="#org5049187"><span class="todo TODO">TODO</span> Caching</a></li>
+<li><a href="#orgfe5ae9c"><span class="todo TODO">TODO</span> Web Security Knowledge</a></li>
+<li><a href="#org2b8c513"><span class="todo TODO">TODO</span> Testing</a></li>
+<li><a href="#orgab7134b"><span class="todo TODO">TODO</span> ! CI/CD</a></li>
+<li><a href="#org1d3f6c7"><span class="todo TODO">TODO</span> Design and Development Principles</a></li>
+<li><a href="#orgbbf156c"><span class="todo TODO">TODO</span> Search Engines</a></li>
+<li><a href="#orgdac8809"><span class="todo TODO">TODO</span> * Message Brokers</a></li>
+<li><a href="#org7c80a28"><span class="todo TODO">TODO</span> Containerization vs Virtualization</a></li>
+<li><a href="#org2a7dde7"><span class="todo TODO">TODO</span> * GraphQL</a></li>
+<li><a href="#orgc0333d8"><span class="todo TODO">TODO</span> * Graph Databases</a></li>
+<li><a href="#org699ca6b"><span class="todo TODO">TODO</span> * WebSockets</a></li>
+<li><a href="#org4630fac"><span class="todo TODO">TODO</span> * Web Servers</a></li>
+<li><a href="#org64cfb44"><span class="todo TODO">TODO</span> ! Building for Scale</a></li>
+</ul>
+</li>
+<li><a href="#org80a0604">DevOps Roadmap</a>
+<ul>
+<li><a href="#orgd58cc97"><span class="todo TODO">TODO</span> ! Learn a Programming Language</a></li>
+<li><a href="#orgc482c76"><span class="todo TODO">TODO</span> Understand different OS Concepts</a></li>
+<li><a href="#org928efe1"><span class="todo TODO">TODO</span> Learn about Managing Servers</a></li>
+<li><a href="#orgbba1df0"><span class="todo TODO">TODO</span> Networking, Security and Protocols</a></li>
+<li><a href="#orgdc86bff"><span class="todo TODO">TODO</span> What is and how to setup a <span class="underline">XXX</span></a></li>
+<li><a href="#orgf30c7c4"><span class="todo TODO">TODO</span> ! Learn Infrastructure as Code</a></li>
+<li><a href="#org3a1f9d0"><span class="todo TODO">TODO</span> ! Learn some CI/CD Tool</a></li>
+<li><a href="#org98b4e87"><span class="todo TODO">TODO</span> ! Learn how to monitor software and infrastructure</a></li>
+<li><a href="#orgc36dac9"><span class="todo TODO">TODO</span> ! Cloud Providers</a></li>
+<li><a href="#org1557ac0"><span class="todo TODO">TODO</span> *! Cloud Design Patterns</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+→ 图片转载自 <a href="https://github.com/kamranahmedse/developer-roadmap">developer-roadmap</a>
+</p>
+
+<div class="figure">
+<p><img src="../images/web/developer-roadmap.png" alt="developer-roadmap.png">
+</p>
+</div>
+
+<div id="outline-container-orgb585441" class="outline-2">
+<h2 id="orgb585441">Introduction</h2>
+<div class="outline-text-2" id="text-orgb585441">
+
+<div class="figure">
+<p><img src="../images/web/intro.png" alt="intro.png">
+</p>
+</div>
+
+<blockquote>
+<p>
+注意，文中符号约定如下：
+</p>
+
+<ul class="org-ul">
+<li><code>- [ ] !</code> 为 Personal Recommendation / Option</li>
+<li><code>- [ ] ^</code> 为 Alternative Option - Pick this or purple</li>
+<li><code>- [ ] *</code> 为 Order in roadmap not strict (Learn anytime)</li>
+<li><code>- [ ] x</code> 为 I wouldn't recommend</li>
+</ul>
+</blockquote>
+</div>
+
+<div id="outline-container-org652b29b" class="outline-3">
+<h3 id="org652b29b"><span class="todo TODO">TODO</span> Git - Version Control</h3>
+<div class="outline-text-3" id="text-org652b29b">
+<ul class="org-ul">
+<li>State "SOMEDAY"    from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-05-09 Sat 12:06] </span></span> <br>
+在使用过程中累积一张 Cheat Sheet 。</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1b003a5" class="outline-3">
+<h3 id="org1b003a5"><span class="todo TODO">TODO</span> Basic Terminal Usage</h3>
+<div class="outline-text-3" id="text-org1b003a5">
+<ul class="org-ul">
+<li>State "SOMEDAY"    from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-05-09 Sat 12:08]</span></span></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd9119ec" class="outline-3">
+<h3 id="orgd9119ec"><span class="todo TODO">TODO</span> Data Structures &amp; Algorithms</h3>
+<div class="outline-text-3" id="text-orgd9119ec">
+<ul class="org-ul">
+<li>State "SOMEDAY"    from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-05-09 Sat 12:09] </span></span> <br>
+不懂数据结构和算法的程序员不是一个好厨师。</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5b0978d" class="outline-3">
+<h3 id="org5b0978d"><span class="todo TODO">TODO</span> GitHub</h3>
+<div class="outline-text-3" id="text-org5b0978d">
+<ul class="org-ul">
+<li>State "SOMEDAY"    from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-05-09 Sat 12:10]</span></span></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd3cabcf" class="outline-3">
+<h3 id="orgd3cabcf"><span class="todo REFER">REFER</span> Licenses</h3>
+<div class="outline-text-3" id="text-orgd3cabcf">
+<ul class="org-ul">
+<li>State "REFER"      from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-05-20 Wed 17:16]</span></span></li>
+<li>State "SOMEDAY"    from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-05-09 Sat 12:11]</span></span></li>
+</ul>
+
+<p>
+Choose an open source license, you can visit <a href="https://choosealicense.com/">https://choosealicense.com/</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org80af3ce" class="outline-3">
+<h3 id="org80af3ce"><span class="done DONE">DONE</span> Semantic Versioning</h3>
+<div class="outline-text-3" id="text-org80af3ce">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-05-09 Sat 11:53]</span></span></li>
+</ul>
+<p>
+i.e. 语义版本号
+</p>
+
+<p>
+<span class="underline">传统版本号</span> （Assembly Versioning），由四个部分组成，它分为 <code>主版本号.次版本号.构建号.修订号</code> 四个部分，但是后面的一个或多个部分可以省略，如 <code>1.5.1254.0</code> 表示主版本号 <code>1</code> ，次版本号 <code>5</code> ，在 <code>1.5</code> 的版本下第 <code>1225</code> 次构建，并且在这次构建之后没有进行修订。如果你是一个库的发布者，那么主版本号的改变意味着 API 出现不兼容的修改；次版本号改变意味着 API 出现兼容的修改（通常是新增）。
+</p>
+
+<p>
+<span class="underline">语义版本号</span> （Semantic Versioning），由五个部分组成，它分为 <code>主版本号.次版本号.补丁号.预发布版本标签.构建号</code> ，如下：
+</p>
+
+<pre class="example">
+- 1.0.1
+- 1.0.1-rc
+- 1.0.1-alpha
+- 1.0.1-alpha2
+- 1.0.1-beta.2
+- 1.0.1-beta.5114f85
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgfb52e75" class="outline-3">
+<h3 id="orgfb52e75"><span class="todo TODO">TODO</span> SSH</h3>
+<div class="outline-text-3" id="text-orgfb52e75">
+<ul class="org-ul">
+<li>State "SOMEDAY"    from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-05-09 Sat 12:11]</span></span></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbf4e9e1" class="outline-3">
+<h3 id="orgbf4e9e1"><span class="todo TODO">TODO</span> HTTP/HTTPS and APIs</h3>
+<div class="outline-text-3" id="text-orgbf4e9e1">
+<ul class="org-ul">
+<li>State "SOMEDAY"    from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-05-09 Sat 12:11] </span></span> <br>
+要想富，先修路，HTTP/HTTPS 就是 Web 的主干道。</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge8dc511" class="outline-3">
+<h3 id="orge8dc511"><span class="todo TODO">TODO</span> Design Patters</h3>
+<div class="outline-text-3" id="text-orge8dc511">
+<ul class="org-ul">
+<li>State "SOMEDAY"    from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-05-09 Sat 12:13] </span></span> <br>
+可以慢慢了解。</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc76de51" class="outline-3">
+<h3 id="orgc76de51"><span class="todo TODO">TODO</span> Character Encodings</h3>
+<div class="outline-text-3" id="text-orgc76de51">
+<ul class="org-ul">
+<li>State "SOMEDAY"    from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2020-05-09 Sat 12:14] </span></span> <br>
+了解一下字符编码的历史是很有必要的。</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb3acb99" class="outline-2">
+<h2 id="orgb3acb99">Frontend Roadmap</h2>
+<div class="outline-text-2" id="text-orgb3acb99">
+
+<div class="figure">
+<p><img src="../images/web/frontend.png" alt="frontend.png">
+</p>
+</div>
+</div>
+
+<div id="outline-container-org92ab742" class="outline-3">
+<h3 id="org92ab742"><span class="todo TODO">TODO</span> ! Internet</h3>
+<div class="outline-text-3" id="text-org92ab742">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! How does the internet work?</li>
+<li class="off"><code>[&#xa0;]</code> ! What is HTTP?</li>
+<li class="off"><code>[&#xa0;]</code> ! Browers and how they work?</li>
+<li class="off"><code>[&#xa0;]</code> ! DNS and how it works?</li>
+<li class="off"><code>[&#xa0;]</code> ! What is Domain Name?</li>
+<li class="off"><code>[&#xa0;]</code> ! What is hosting?</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org16589df" class="outline-3">
+<h3 id="org16589df"><span class="todo TODO">TODO</span> HTML</h3>
+<div class="outline-text-3" id="text-org16589df">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Learn the basics</li>
+<li class="off"><code>[&#xa0;]</code> * Writing Semantic HTML</li>
+<li class="off"><code>[&#xa0;]</code> ! Froms and Validations</li>
+<li class="off"><code>[&#xa0;]</code> ! Conventions and Best Practices</li>
+<li class="off"><code>[&#xa0;]</code> * Accessibility</li>
+<li class="off"><code>[&#xa0;]</code> * SEO Basics</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9c136d1" class="outline-3">
+<h3 id="org9c136d1"><span class="todo TODO">TODO</span> CSS</h3>
+<div class="outline-text-3" id="text-org9c136d1">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Learn the basics</li>
+<li class="off"><code>[&#xa0;]</code> ! Making Layouts
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Floats</li>
+<li class="off"><code>[&#xa0;]</code> ! Positioning</li>
+<li class="off"><code>[&#xa0;]</code> ! Display</li>
+<li class="off"><code>[&#xa0;]</code> ! Box Model</li>
+<li class="off"><code>[&#xa0;]</code> ! CSS Grid</li>
+<li class="off"><code>[&#xa0;]</code> ! Flex Box</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ! Responsive design and Media Queries</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0f64b4a" class="outline-3">
+<h3 id="org0f64b4a"><span class="todo TODO">TODO</span> JavaScript</h3>
+<div class="outline-text-3" id="text-org0f64b4a">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Syntax and Basic Construct</li>
+<li class="off"><code>[&#xa0;]</code> ! Learn DOM Manipulation</li>
+<li class="off"><code>[&#xa0;]</code> ! Learn Fetch API / Ajax (XHR)</li>
+<li class="off"><code>[&#xa0;]</code> ! ES6+ and modular JavaScript</li>
+<li class="off"><code>[&#xa0;]</code> ! Understand the concepts
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Hoisting</li>
+<li class="off"><code>[&#xa0;]</code> ! Event Budding</li>
+<li class="off"><code>[&#xa0;]</code> ! Scope</li>
+<li class="off"><code>[&#xa0;]</code> ! Prototype</li>
+<li class="off"><code>[&#xa0;]</code> ! Shadow DOM</li>
+<li class="off"><code>[&#xa0;]</code> ! strict</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgab0978b" class="outline-3">
+<h3 id="orgab0978b"><span class="todo TODO">TODO</span> Version Control Systems</h3>
+<div class="outline-text-3" id="text-orgab0978b">
+<p>
+i.e. What are they and why you should use one
+</p>
+
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Basic Usage of Git</li>
+<li class="off"><code>[&#xa0;]</code> Repo hosting services(i.e. Create account and Learn to use GitHub)
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! GitHub</li>
+<li class="off"><code>[&#xa0;]</code> ^ Gitlab</li>
+<li class="off"><code>[&#xa0;]</code> ^ Bitbucket</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org99751bf" class="outline-3">
+<h3 id="org99751bf"><span class="todo TODO">TODO</span> * Web Security Knowledge</h3>
+<div class="outline-text-3" id="text-org99751bf">
+<p>
+i.e. Get at least a basic knowledge of all of these
+</p>
+
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> * HTTPS</li>
+<li class="off"><code>[&#xa0;]</code> * CORS</li>
+<li class="off"><code>[&#xa0;]</code> * Content Security Policy</li>
+<li class="off"><code>[&#xa0;]</code> * OWASP Security Risks</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org596c0a5" class="outline-3">
+<h3 id="org596c0a5"><span class="todo TODO">TODO</span> Package Managers</h3>
+<div class="outline-text-3" id="text-org596c0a5">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! npm</li>
+<li class="off"><code>[&#xa0;]</code> ! yarn</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org72fe632" class="outline-3">
+<h3 id="org72fe632"><span class="todo TODO">TODO</span> CSS Architecture</h3>
+<div class="outline-text-3" id="text-org72fe632">
+<p>
+i.e. With modern frameworks and CSS-in-JS you don't have to worry about these anymore but still it would be a good idea to get familiarized with BEM at least.
+</p>
+
+<ul class="org-ul">
+<li class="on"><code>[X]</code> * BEM</li>
+<li class="off"><code>[&#xa0;]</code> x OOCSS</li>
+<li class="off"><code>[&#xa0;]</code> x SMACSS</li>
+</ul>
+
+<p>
+<span class="underline">1. BEM</span>
+</p>
+
+<p>
+<a href="http://getbem.com/">BEM</a> (Block Element Modifier) is a simple but more strict naming convention.
+</p>
+<ul class="org-ul">
+<li>Block - To form a CSS class, add a short prefix for namespacing, like <code>.block</code> ;</li>
+<li>Element - CSS class is formed as block name plus two underscores plus element name, like <code>.block__elem</code> ;</li>
+<li>Modifier - CSS class is formed as block's or element's name plus two dashes, like <code>.block--mode</code> or <code>.block__elem--mod</code> and <code>.block--color-black</code> with <code>.block--color-red</code> . Spaces in complicated modifiers are replaced by dash.</li>
+</ul>
+
+<p>
+An example ↓
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html"><span class="linenr">1: </span>&lt;<span style="color: #87D700;">form</span> <span style="color: #FF8C00;">class</span>=<span style="color: #CDC673;">"form form--theme-xmas form--simple"</span>&gt;
+<span class="linenr">2: </span>  &lt;<span style="color: #87D700;">input</span> <span style="color: #FF8C00;">class</span>=<span style="color: #CDC673;">"form__input"</span> <span style="color: #FF8C00;">type</span>=<span style="color: #CDC673;">"text"</span> /&gt;
+<span class="linenr">3: </span>  &lt;<span style="color: #87D700;">input</span>
+<span class="linenr">4: </span>    <span style="color: #FF8C00;">class</span>=<span style="color: #CDC673;">"form__submit form__submit--disabled"</span>
+<span class="linenr">5: </span>    <span style="color: #FF8C00;">type</span>=<span style="color: #CDC673;">"submit"</span> /&gt;
+<span class="linenr">6: </span>&lt;/<span style="color: #87D700;">form</span>&gt;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-css"><span class="linenr">1: </span><span style="color: #87D700;">.form </span><span style="color: #AF87FF;">{</span> <span style="color: #AF87FF;">}</span>
+<span class="linenr">2: </span><span style="color: #87D700;">.form--theme-xmas </span><span style="color: #AF87FF;">{</span> <span style="color: #AF87FF;">}</span>
+<span class="linenr">3: </span><span style="color: #87D700;">.form--simple </span><span style="color: #AF87FF;">{</span> <span style="color: #AF87FF;">}</span>
+<span class="linenr">4: </span><span style="color: #87D700;">.form__input </span><span style="color: #AF87FF;">{</span> <span style="color: #AF87FF;">}</span>
+<span class="linenr">5: </span><span style="color: #87D700;">.form__submit </span><span style="color: #AF87FF;">{</span> <span style="color: #AF87FF;">}</span>
+<span class="linenr">6: </span><span style="color: #87D700;">.form__submit--disabled </span><span style="color: #AF87FF;">{</span> <span style="color: #AF87FF;">}</span>
+</pre>
+</div>
+
+<p>
+<span class="underline">2. Others</span>
+</p>
+
+<ul class="org-ul">
+<li>OOCSS - Separating container and content with CSS "objects";</li>
+<li>SMACSS - Style-guide to write your CSS with five categories for CSS rules;</li>
+<li>SUITCSS - Structured class names and meaningful hyphens;</li>
+<li>Atomic - Breaking down styles into atomic, or indivisble, pieces.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org04c68d7" class="outline-3">
+<h3 id="org04c68d7"><span class="todo TODO">TODO</span> CSS Preprocessor</h3>
+<div class="outline-text-3" id="text-org04c68d7">
+<p>
+i.e. With how the modern frameworks there has been more push towards CSS-in-JS so you may not need these but still a good idea to familiarize yourself.
+</p>
+
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> * Sass</li>
+<li class="off"><code>[&#xa0;]</code> * PostCSS</li>
+<li><del>[ ] x Less</del></li>
+</ul>
+
+<p>
+<span class="underline">1. Sass</span>
+</p>
+
+<p>
+<a href="https://www.sass.hk/">Sass</a> 是一种应用广泛的 CSS 扩展语言。
+</p>
+
+<p>
+<span class="underline">2. PostCSS</span>
+</p>
+
+<p>
+<a href="https://www.postcss.com.cn/">PostCSS</a> 是一个用 JavaScript 工具和插件转换 CSS 代码的工具。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orged54f3f" class="outline-3">
+<h3 id="orged54f3f"><span class="todo TODO">TODO</span> Build Tools</h3>
+<div class="outline-text-3" id="text-orged54f3f">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Task Runners
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! npm scripts</li>
+<li class="off"><code>[&#xa0;]</code> x Gulp</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> Module Bundlers
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Webpack</li>
+<li class="off"><code>[&#xa0;]</code> ^ Rollup</li>
+<li class="off"><code>[&#xa0;]</code> ^ Parcel</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> Linters and Formatters
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> * Prettier</li>
+<li class="off"><code>[&#xa0;]</code> * ESLint</li>
+<li><del>[ ] x StandardJS</del></li>
+</ul></li>
+</ul>
+
+<p>
+<span class="underline">1. Task Runnders</span>
+</p>
+
+<ul class="org-ul">
+<li><a href="http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html">NPM Scripts</a> - npm 允许在 <code>package.json</code> 文件里面使用 <code>scripts</code> 字段定义脚本命令；</li>
+<li><a href="https://www.gulpjs.com.cn/">Gulp</a> 是一个自动化构建工具，开发者可以使用它在项目开发过程中自动执行常见任务。</li>
+</ul>
+
+<p>
+<span class="underline">2. Module Bundlers</span>
+</p>
+
+<ul class="org-ul">
+<li><a href="https://www.webpackjs.com/">Webpack</a> 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)；</li>
+<li><a href="https://www.rollupjs.com/">Rollup</a> 是一个 JavaScript 模块打包器，可以将小块代码编译成大块复杂的代码；</li>
+<li><a href="https://parceljs.org/">Parcel</a> - 一种极速零配置 Web 应用打包工具。</li>
+</ul>
+
+<p>
+<span class="underline">3. Linters and Formatters</span>
+</p>
+
+<ul class="org-ul">
+<li><a href="https://prettier.io/">Prettier</a> is an opinionated code formatter;</li>
+<li><a href="https://eslint.bootcss.com/">ESLint</a> - 一种可组装的 JavaScript 和 JSX 检查工具。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org860b2b3" class="outline-3">
+<h3 id="org860b2b3"><span class="todo TODO">TODO</span> Pick a Framework</h3>
+<div class="outline-text-3" id="text-org860b2b3">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! React.js
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Redux</li>
+<li class="off"><code>[&#xa0;]</code> ^ MobX</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ^ Angular
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ^ RxJS</li>
+<li class="off"><code>[&#xa0;]</code> ^ NgR</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ^ Vue.js
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> VueX</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9161071" class="outline-3">
+<h3 id="org9161071"><span class="todo TODO">TODO</span> Modern CSS</h3>
+<div class="outline-text-3" id="text-org9161071">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Styled Component</li>
+<li class="off"><code>[&#xa0;]</code> ! CSS Modules</li>
+<li class="off"><code>[&#xa0;]</code> ^ Styled JSX</li>
+<li class="off"><code>[&#xa0;]</code> ^ Emotion</li>
+<li class="off"><code>[&#xa0;]</code> x Radium</li>
+<li class="off"><code>[&#xa0;]</code> x Glamorous</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org236ac19" class="outline-3">
+<h3 id="org236ac19"><span class="todo TODO">TODO</span> * Web Components</h3>
+<div class="outline-text-3" id="text-org236ac19">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> * HTML Templates</li>
+<li class="off"><code>[&#xa0;]</code> * Custom Elements</li>
+<li class="off"><code>[&#xa0;]</code> * Shadow DOM</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf18feeb" class="outline-3">
+<h3 id="orgf18feeb"><span class="todo TODO">TODO</span> CSS Frameworks</h3>
+<div class="outline-text-3" id="text-orgf18feeb">
+<p>
+JS based and better to use with your framework based JavaScript applications.
+</p>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Reactstrap</li>
+<li class="off"><code>[&#xa0;]</code> ! Material UI</li>
+<li class="off"><code>[&#xa0;]</code> ^ Tailwind CSS</li>
+<li class="off"><code>[&#xa0;]</code> ^ Chakra UI</li>
+</ul>
+
+<p>
+CSS first frameworks which don't come with JavaScript components by default.
+</p>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Bootstrap</li>
+<li class="off"><code>[&#xa0;]</code> ^ Materialize CSS</li>
+<li class="off"><code>[&#xa0;]</code> ^ Bulma</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga5241d5" class="outline-3">
+<h3 id="orga5241d5"><span class="todo TODO">TODO</span> Testing your Apps</h3>
+<div class="outline-text-3" id="text-orga5241d5">
+<p>
+i.e. Learn the difference between <span class="underline">Unit</span>, <span class="underline">Integration</span> and <span class="underline">Functional</span> tests and learn how to write them with the tools listed on the left.
+</p>
+
+<p>
+You can fill all your testing needs with just these.
+</p>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Jest</li>
+<li class="off"><code>[&#xa0;]</code> ! react-testing-library</li>
+<li class="off"><code>[&#xa0;]</code> ! Cypress</li>
+<li class="off"><code>[&#xa0;]</code> ! Enzyme</li>
+<li>-------------------------------------------------------------&#x2013;&#x2014;</li>
+<li class="off"><code>[&#xa0;]</code> x Mocha</li>
+<li class="off"><code>[&#xa0;]</code> x Chai</li>
+<li class="off"><code>[&#xa0;]</code> x Ava</li>
+<li class="off"><code>[&#xa0;]</code> x Jasmine</li>
+</ul>
+
+<p>
+<span class="underline">1. Testing Framework</span>
+</p>
+
+<ul class="org-ul">
+<li><a href="https://jestjs.io/">Jest</a> is a delightful JavaScript Testing Framework with a focus on simplicity;</li>
+<li><a href="https://testing-library.com/">React Testing Library</a> - Simple and complete testing utilities that encourage good testing practices;</li>
+<li><a href="https://www.cypress.io/">Cypress</a> is a next generation front end testing tool built for the modern web;</li>
+<li><a href="https://enzymejs.github.io/enzyme/">Enzyme</a> is a JavaScript Testing utility for React that makes it easier to test your React Components' output.</li>
+</ul>
+
+<p>
+<span class="underline">2. Others</span>
+</p>
+
+<ul class="org-ul">
+<li><a href="https://mochajs.org/">Mocha</a> is a feature-rich JavaScript test framework running on NodeJS and in the browser, making asynchronous testing simple and fun;</li>
+<li><a href="https://www.chaijs.com/">Chai</a> is a BDD/TDD assertion library for node and the browser that can be delightfully paired with any JavaScript testing framework;</li>
+<li><a href="https://github.com/avajs/ava">Ava</a> is a test runner for Node.js with a concise API, detailed error output, embrace of new language features and process isolation that lets you develop with confidence;</li>
+<li><a href="https://jasmine.github.io/">Jasmine</a> - Behavior-Diven JavaScript.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3c0f359" class="outline-3">
+<h3 id="org3c0f359"><span class="todo TODO">TODO</span> * Type Checkers</h3>
+<div class="outline-text-3" id="text-org3c0f359">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> !* TypeScript</li>
+<li class="off"><code>[&#xa0;]</code> x Flow</li>
+</ul>
+
+<p>
+<span class="underline">1. TypeScript</span>
+</p>
+
+<p>
+<a href="https://www.tslang.cn/">TypeScript</a> is a typed superset of JavaScript that compiles to plain JavaScript.
+</p>
+
+<p>
+<span class="underline">2. FLow</span>
+</p>
+
+<p>
+<a href="https://flow.org/">Flow</a> is a static type checker for JavaScript.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf81212f" class="outline-3">
+<h3 id="orgf81212f"><span class="todo TODO">TODO</span> *  Progressive Web Apps</h3>
+<div class="outline-text-3" id="text-orgf81212f">
+<p>
+Learn different Web APIs used in PWAs.
+</p>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> * Storage</li>
+<li class="off"><code>[&#xa0;]</code> * Web Sockets</li>
+<li class="off"><code>[&#xa0;]</code> * Service Workers</li>
+<li class="off"><code>[&#xa0;]</code> * Location</li>
+<li class="off"><code>[&#xa0;]</code> * Notifications</li>
+<li class="off"><code>[&#xa0;]</code> * Device Orientation</li>
+<li class="off"><code>[&#xa0;]</code> * Payments</li>
+<li class="off"><code>[&#xa0;]</code> * Credentials</li>
+</ul>
+
+<p>
+Calculating, Measuring and improving performance
+</p>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> * PRPL Pattern</li>
+<li class="off"><code>[&#xa0;]</code> * RAIL Model</li>
+<li class="off"><code>[&#xa0;]</code> * Performance Metrics</li>
+<li class="off"><code>[&#xa0;]</code> * Using Lighthouse</li>
+<li class="off"><code>[&#xa0;]</code> * Using DevTools</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfaf46e3" class="outline-3">
+<h3 id="orgfaf46e3"><span class="todo TODO">TODO</span> * Server Side Rendering (SSR)</h3>
+<div class="outline-text-3" id="text-orgfaf46e3">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! React.js
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Next.js</li>
+<li class="off"><code>[&#xa0;]</code> x After.js</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ^ Angular
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ^ Universal</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ^ Vue.js
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ^ Nuxt.js</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgeb3d86c" class="outline-3">
+<h3 id="orgeb3d86c"><span class="todo TODO">TODO</span> * GraphQL</h3>
+<div class="outline-text-3" id="text-orgeb3d86c">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Apollo</li>
+<li class="off"><code>[&#xa0;]</code> ^ Relay Modern</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb0fe683" class="outline-3">
+<h3 id="orgb0fe683"><span class="todo TODO">TODO</span> * Static Site Generators</h3>
+<div class="outline-text-3" id="text-orgb0fe683">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Next.js</li>
+<li class="off"><code>[&#xa0;]</code> ! GatsbyJS</li>
+<li class="off"><code>[&#xa0;]</code> ^ Nuxt.js</li>
+<li class="off"><code>[&#xa0;]</code> ^ Vuepres</li>
+<li><del>[ ] ^ Jekyll</del></li>
+<li><del>[ ] ^ Hugo</del></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga33c2c4" class="outline-3">
+<h3 id="orga33c2c4"><span class="todo TODO">TODO</span> *  Mobile Applications</h3>
+<div class="outline-text-3" id="text-orga33c2c4">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! React Native</li>
+<li class="off"><code>[&#xa0;]</code> NativeScript</li>
+<li class="off"><code>[&#xa0;]</code> Flutter</li>
+<li class="off"><code>[&#xa0;]</code> Ionic</li>
+</ul>
+
+<p>
+About that.
+</p>
+<ul class="org-ul">
+<li><a href="https://reactnative.cn/">React Native</a> - create native IOS and Android apps with JavaScript；</li>
+<li><a href="https://www.nativescript.org/">NativeScript</a> - create native IOS and Android apps with JavaScript;</li>
+<li><a href="https://flutterchina.club/">Flutter</a> - Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase;</li>
+<li><a href="https://ionicframework.com/">Ionic</a> - Ionic Framework is an open source UI toolkit for building performant, high-quality mobile and desktop apps using web technologies — HTML, CSS, and JavaScript — with integrations for popular frameworks like Angular and React.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org57058a8" class="outline-3">
+<h3 id="org57058a8"><span class="todo TODO">TODO</span> * Desktop Applications</h3>
+<div class="outline-text-3" id="text-org57058a8">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Electron</li>
+<li><del>[ ] x Cario</del></li>
+<li><del>[ ] x Proton Native</del></li>
+</ul>
+
+<p>
+<a href="http://www.electronjs.org/">Electron</a> create desktop apps cross platform with JavaScript, html and css.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org956ea83" class="outline-3">
+<h3 id="org956ea83"><span class="todo TODO">TODO</span> * Web Assembly</h3>
+<div class="outline-text-3" id="text-org956ea83">
+<p>
+Web Assembly or WASM is the binary instructions generated from higher level languages such as GO, C, C++ or Rust. It is faster than JavaScript and WASM 1.0 has already shipped in the major browser W3C accepted it as an offical standard at the end of 2019. It will still toke quite some time to go mainstream though.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7c42bbf" class="outline-2">
+<h2 id="org7c42bbf">Back-end Roadmap</h2>
+<div class="outline-text-2" id="text-org7c42bbf">
+
+<div class="figure">
+<p><img src="../images/web/backend.png" alt="backend.png">
+</p>
+</div>
+</div>
+
+<div id="outline-container-org934d4af" class="outline-3">
+<h3 id="org934d4af"><span class="todo TODO">TODO</span> ! Internet</h3>
+<div class="outline-text-3" id="text-org934d4af">
+<p>
+同上 <a href="#org92ab742">! Internet ↑</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc0604ce" class="outline-3">
+<h3 id="orgc0604ce"><span class="todo TODO">TODO</span> ! Basic Frontend Knowledge</h3>
+<div class="outline-text-3" id="text-orgc0604ce">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! HTML</li>
+<li class="off"><code>[&#xa0;]</code> ! CSS</li>
+<li class="off"><code>[&#xa0;]</code> ! JavaScript</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc946007" class="outline-3">
+<h3 id="orgc946007"><span class="todo TODO">TODO</span> ! OS and General Knowledge</h3>
+<div class="outline-text-3" id="text-orgc946007">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Termial Usage</li>
+<li class="off"><code>[&#xa0;]</code> ! How OSs work in General</li>
+<li class="off"><code>[&#xa0;]</code> ! Process Management</li>
+<li class="off"><code>[&#xa0;]</code> ! Threads and Concurrency</li>
+<li class="off"><code>[&#xa0;]</code> ! Basic Terminal Comman
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! grep</li>
+<li class="off"><code>[&#xa0;]</code> ! awk</li>
+<li class="off"><code>[&#xa0;]</code> ! sed</li>
+<li class="off"><code>[&#xa0;]</code> ! lsof</li>
+<li class="off"><code>[&#xa0;]</code> ! curl</li>
+<li class="off"><code>[&#xa0;]</code> ! wget</li>
+<li class="off"><code>[&#xa0;]</code> ! tail</li>
+<li class="off"><code>[&#xa0;]</code> ! head</li>
+<li class="off"><code>[&#xa0;]</code> ! less</li>
+<li class="off"><code>[&#xa0;]</code> ! find</li>
+<li class="off"><code>[&#xa0;]</code> ! ssh</li>
+<li class="off"><code>[&#xa0;]</code> ! kill</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ! Memory Management</li>
+<li class="off"><code>[&#xa0;]</code> ! Interprocess Communication</li>
+<li class="off"><code>[&#xa0;]</code> ! I/O Management</li>
+<li class="off"><code>[&#xa0;]</code> ! POSIX Basics</li>
+<li class="off"><code>[&#xa0;]</code> ! Basic Networking Concepts</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org89dd13d" class="outline-3">
+<h3 id="org89dd13d"><span class="todo TODO">TODO</span> Learn a Language</h3>
+<div class="outline-text-3" id="text-org89dd13d">
+<p>
+i.e. Make sure to learn it's quirks. Core detail about it's runtime. e.g. concurrency, memory model etc.
+</p>
+
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ^ Java</li>
+<li class="off"><code>[&#xa0;]</code> ^ C#</li>
+<li class="off"><code>[&#xa0;]</code> ^ PHP</li>
+<li class="off"><code>[&#xa0;]</code> ^ Rust</li>
+<li class="off"><code>[&#xa0;]</code> ^ Go</li>
+<li class="off"><code>[&#xa0;]</code> ! JavaScript</li>
+<li class="off"><code>[&#xa0;]</code> ^ Python</li>
+<li class="off"><code>[&#xa0;]</code> ^ Ruby</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org85f4d6b" class="outline-3">
+<h3 id="org85f4d6b"><span class="todo TODO">TODO</span> Version Control Systems</h3>
+<div class="outline-text-3" id="text-org85f4d6b">
+<p>
+同上 <a href="#orgab0978b">Version Control Systems ↑</a> 。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org392e072" class="outline-3">
+<h3 id="org392e072"><span class="todo TODO">TODO</span> Relational Databases</h3>
+<div class="outline-text-3" id="text-org392e072">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! PostgreSQL</li>
+<li class="off"><code>[&#xa0;]</code> ^ MySQL</li>
+<li class="off"><code>[&#xa0;]</code> ^ MariaDB</li>
+<li class="off"><code>[&#xa0;]</code> ^ MS SQL</li>
+<li class="off"><code>[&#xa0;]</code> ^ Oracle</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgddcc322" class="outline-3">
+<h3 id="orgddcc322"><span class="todo TODO">TODO</span> More about Databases</h3>
+<div class="outline-text-3" id="text-orgddcc322">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! ORMs</li>
+<li class="off"><code>[&#xa0;]</code> ! ACID</li>
+<li class="off"><code>[&#xa0;]</code> ! Transactions</li>
+<li class="off"><code>[&#xa0;]</code> ! N+1 Problem</li>
+<li class="off"><code>[&#xa0;]</code> ! Database Normalization</li>
+<li class="off"><code>[&#xa0;]</code> ! Indexes and how they work</li>
+<li class="off"><code>[&#xa0;]</code> * Data Replication</li>
+<li class="off"><code>[&#xa0;]</code> * Sharding Strategies</li>
+<li class="off"><code>[&#xa0;]</code> * CAP Theorem</li>
+</ul>
+
+<p>
+NoSQL Databases.
+</p>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! MongoDB</li>
+<li class="off"><code>[&#xa0;]</code> ^ RethinkDB</li>
+<li class="off"><code>[&#xa0;]</code> ^ CouchDB</li>
+<li class="off"><code>[&#xa0;]</code> ^ DynamoDB</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd090b1d" class="outline-3">
+<h3 id="orgd090b1d"><span class="todo TODO">TODO</span> Learn about APIs</h3>
+<div class="outline-text-3" id="text-orgd090b1d">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> * HATEOAS</li>
+<li class="off"><code>[&#xa0;]</code> * Open API Spec and Swagger</li>
+<li class="off"><code>[&#xa0;]</code> ! Authentication
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> * Cookie Based</li>
+<li class="off"><code>[&#xa0;]</code> ! OAuth</li>
+<li class="off"><code>[&#xa0;]</code> ! Basic Authentication</li>
+<li class="off"><code>[&#xa0;]</code> ! Token Authentication</li>
+<li class="off"><code>[&#xa0;]</code> ! JWT</li>
+<li class="off"><code>[&#xa0;]</code> * OpenID</li>
+<li class="off"><code>[&#xa0;]</code> * SAML</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ! REST (i.e. Read Ray Fielding's Paper)</li>
+<li class="off"><code>[&#xa0;]</code> ! JSON APIs</li>
+<li class="off"><code>[&#xa0;]</code> * SOAP</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5049187" class="outline-3">
+<h3 id="org5049187"><span class="todo TODO">TODO</span> Caching</h3>
+<div class="outline-text-3" id="text-org5049187">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! CDN</li>
+<li class="off"><code>[&#xa0;]</code> Server Side
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Redis</li>
+<li class="off"><code>[&#xa0;]</code> ^ Memcached</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ! Client Side</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfe5ae9c" class="outline-3">
+<h3 id="orgfe5ae9c"><span class="todo TODO">TODO</span> Web Security Knowledge</h3>
+<div class="outline-text-3" id="text-orgfe5ae9c">
+<p>
+Hashing Algorithms.
+</p>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! MD5 and why not to use it</li>
+<li class="off"><code>[&#xa0;]</code> ! SHA Family</li>
+<li class="off"><code>[&#xa0;]</code> ! scrypt</li>
+<li class="off"><code>[&#xa0;]</code> ! bcrypt</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2b8c513" class="outline-3">
+<h3 id="org2b8c513"><span class="todo TODO">TODO</span> Testing</h3>
+<div class="outline-text-3" id="text-org2b8c513">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Integration Testing</li>
+<li class="off"><code>[&#xa0;]</code> ! Unit Testing</li>
+<li class="off"><code>[&#xa0;]</code> ! Functional Testing</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgab7134b" class="outline-3">
+<h3 id="orgab7134b"><span class="todo TODO">TODO</span> ! CI/CD</h3>
+</div>
+
+<div id="outline-container-org1d3f6c7" class="outline-3">
+<h3 id="org1d3f6c7"><span class="todo TODO">TODO</span> Design and Development Principles</h3>
+<div class="outline-text-3" id="text-org1d3f6c7">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> * GOF Design Patterns</li>
+<li class="off"><code>[&#xa0;]</code> * Domain Driven Design</li>
+<li class="off"><code>[&#xa0;]</code> * Test Driven Development</li>
+<li class="off"><code>[&#xa0;]</code> ! SOLID</li>
+<li class="off"><code>[&#xa0;]</code> ! KISS</li>
+<li class="off"><code>[&#xa0;]</code> ! YAGNI</li>
+<li class="off"><code>[&#xa0;]</code> ! DRY</li>
+</ul>
+
+<p>
+Architectural Patterns.
+</p>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Monolithic Apps</li>
+<li class="off"><code>[&#xa0;]</code> ! Microservices</li>
+<li class="off"><code>[&#xa0;]</code> ! SOA</li>
+<li class="off"><code>[&#xa0;]</code> * CQRS and Event Sourcing</li>
+<li class="off"><code>[&#xa0;]</code> ! Serverless</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbbf156c" class="outline-3">
+<h3 id="orgbbf156c"><span class="todo TODO">TODO</span> Search Engines</h3>
+<div class="outline-text-3" id="text-orgbbf156c">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Elasticsearch</li>
+<li class="off"><code>[&#xa0;]</code> ^ Solr</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdac8809" class="outline-3">
+<h3 id="orgdac8809"><span class="todo TODO">TODO</span> * Message Brokers</h3>
+<div class="outline-text-3" id="text-orgdac8809">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> *! RabbitMQ</li>
+<li class="off"><code>[&#xa0;]</code> ^ Kafka</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7c80a28" class="outline-3">
+<h3 id="org7c80a28"><span class="todo TODO">TODO</span> Containerization vs Virtualization</h3>
+<div class="outline-text-3" id="text-org7c80a28">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Docker</li>
+<li class="off"><code>[&#xa0;]</code> x rkt</li>
+<li class="off"><code>[&#xa0;]</code> x LXC</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2a7dde7" class="outline-3">
+<h3 id="org2a7dde7"><span class="todo TODO">TODO</span> * GraphQL</h3>
+<div class="outline-text-3" id="text-org2a7dde7">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> *! Apollo</li>
+<li class="off"><code>[&#xa0;]</code> ^ Relay Modern</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc0333d8" class="outline-3">
+<h3 id="orgc0333d8"><span class="todo TODO">TODO</span> * Graph Databases</h3>
+<div class="outline-text-3" id="text-orgc0333d8">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> * Neo4j</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org699ca6b" class="outline-3">
+<h3 id="org699ca6b"><span class="todo TODO">TODO</span> * WebSockets</h3>
+</div>
+
+<div id="outline-container-org4630fac" class="outline-3">
+<h3 id="org4630fac"><span class="todo TODO">TODO</span> * Web Servers</h3>
+<div class="outline-text-3" id="text-org4630fac">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> *! Nginx</li>
+<li class="off"><code>[&#xa0;]</code> ^ Apache</li>
+<li class="off"><code>[&#xa0;]</code> ^ Caddy</li>
+<li class="off"><code>[&#xa0;]</code> ^ MS IIS</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org64cfb44" class="outline-3">
+<h3 id="org64cfb44"><span class="todo TODO">TODO</span> ! Building for Scale</h3>
+<div class="outline-text-3" id="text-org64cfb44">
+<p>
+i.e. General topics that you should learn and care about for the sustainability of the product.
+</p>
+
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Mitigation Strategies
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Graceful</li>
+<li class="off"><code>[&#xa0;]</code> Degradation</li>
+<li class="off"><code>[&#xa0;]</code> Throttling</li>
+<li class="off"><code>[&#xa0;]</code> Backpressure</li>
+<li class="off"><code>[&#xa0;]</code> Loadshifting</li>
+<li class="off"><code>[&#xa0;]</code> Circuit Breaker</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> Understand the Diff
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Instrumentation</li>
+<li class="off"><code>[&#xa0;]</code> Monitoring</li>
+<li class="off"><code>[&#xa0;]</code> Telemetry</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ! Migration Strategies</li>
+<li class="off"><code>[&#xa0;]</code> ! Horizontal vs Vertical Scaling</li>
+<li class="off"><code>[&#xa0;]</code> ! Building with Observability in mind (i.e. Metrics logging and other observable items that could help you in debugging and solving the issues when things go wrong.)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org80a0604" class="outline-2">
+<h2 id="org80a0604">DevOps Roadmap</h2>
+<div class="outline-text-2" id="text-org80a0604">
+
+<div class="figure">
+<p><img src="../images/web/devops.png" alt="devops.png">
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd58cc97" class="outline-3">
+<h3 id="orgd58cc97"><span class="todo TODO">TODO</span> ! Learn a Programming Language</h3>
+<div class="outline-text-3" id="text-orgd58cc97">
+<p>
+i.e. It doesn't matter which language you pick, key is to get some programming knowledge for automation.
+</p>
+
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ^ Python</li>
+<li class="off"><code>[&#xa0;]</code> ^ Ruby</li>
+<li class="off"><code>[&#xa0;]</code> ^ Node.js</li>
+<li class="off"><code>[&#xa0;]</code> ! Go</li>
+<li class="off"><code>[&#xa0;]</code> ^ Rust</li>
+<li class="off"><code>[&#xa0;]</code> ^ C</li>
+<li class="off"><code>[&#xa0;]</code> ^ C++</li>
+</ul>
+
+<blockquote>
+<p>
+Go 竟然深入运维领域了…… Shell 已经沦落到不能做为一个选项了？
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgc482c76" class="outline-3">
+<h3 id="orgc482c76"><span class="todo TODO">TODO</span> Understand different OS Concepts</h3>
+<div class="outline-text-3" id="text-orgc482c76">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Process Management</li>
+<li class="off"><code>[&#xa0;]</code> ! Threads and Concurrency</li>
+<li class="off"><code>[&#xa0;]</code> ! Sockets</li>
+<li class="off"><code>[&#xa0;]</code> ! POSIX Basics</li>
+<li class="off"><code>[&#xa0;]</code> ! Networking Concepts</li>
+<li class="off"><code>[&#xa0;]</code> ! Startup Managment (initd)</li>
+<li class="off"><code>[&#xa0;]</code> ! Service Management (systemd)</li>
+<li class="off"><code>[&#xa0;]</code> ! I/O Management</li>
+<li class="off"><code>[&#xa0;]</code> ! Virtualization</li>
+<li class="off"><code>[&#xa0;]</code> ! Memory/Storage</li>
+<li class="off"><code>[&#xa0;]</code> ! File Systems</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org928efe1" class="outline-3">
+<h3 id="org928efe1"><span class="todo TODO">TODO</span> Learn about Managing Servers</h3>
+<div class="outline-text-3" id="text-org928efe1">
+<p>
+i.e. Get some adminstration knowledge in some OS. Go with any Linux distro. Pick Ubuntu if you have a little no experience with Linux.
+</p>
+
+<p>
+Operating System.
+</p>
+<ul class="org-ul">
+<li>Linux
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ^ SUSE Linux</li>
+<li class="off"><code>[&#xa0;]</code> ^ Debian</li>
+<li class="off"><code>[&#xa0;]</code> ^ Fedora</li>
+<li class="off"><code>[&#xa0;]</code> ! Ubuntu</li>
+<li class="off"><code>[&#xa0;]</code> ! CentOS</li>
+<li class="off"><code>[&#xa0;]</code> ! RHEL</li>
+</ul></li>
+<li>Unix
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! FreeBSD</li>
+<li class="off"><code>[&#xa0;]</code> ^ OpenBSD</li>
+<li class="off"><code>[&#xa0;]</code> ^ NetBSD</li>
+</ul></li>
+<li>Windows</li>
+</ul>
+
+<p>
+Learn to live in Termial.
+</p>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Learn Bash Scripting</li>
+<li class="off"><code>[&#xa0;]</code> ! Vim/Nano/PowerShell/Emacs</li>
+<li class="off"><code>[&#xa0;]</code> ! Text Manipulation Tools
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> awk</li>
+<li class="off"><code>[&#xa0;]</code> sed</li>
+<li class="off"><code>[&#xa0;]</code> grep</li>
+<li class="off"><code>[&#xa0;]</code> sort</li>
+<li class="off"><code>[&#xa0;]</code> uniq</li>
+<li class="off"><code>[&#xa0;]</code> cat</li>
+<li class="off"><code>[&#xa0;]</code> cut</li>
+<li class="off"><code>[&#xa0;]</code> echo</li>
+<li class="off"><code>[&#xa0;]</code> fmt</li>
+<li class="off"><code>[&#xa0;]</code> tr</li>
+<li class="off"><code>[&#xa0;]</code> nl</li>
+<li class="off"><code>[&#xa0;]</code> egrep</li>
+<li class="off"><code>[&#xa0;]</code> fgrep</li>
+<li class="off"><code>[&#xa0;]</code> wc</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ! Process Monitoring
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ps</li>
+<li class="off"><code>[&#xa0;]</code> top</li>
+<li class="off"><code>[&#xa0;]</code> htop</li>
+<li class="off"><code>[&#xa0;]</code> atop</li>
+<li class="off"><code>[&#xa0;]</code> lsof</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ! Network
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> nmap</li>
+<li class="off"><code>[&#xa0;]</code> tcpdump</li>
+<li class="off"><code>[&#xa0;]</code> ping</li>
+<li class="off"><code>[&#xa0;]</code> mtr</li>
+<li class="off"><code>[&#xa0;]</code> traceroute</li>
+<li class="off"><code>[&#xa0;]</code> dig</li>
+<li class="off"><code>[&#xa0;]</code> airmon</li>
+<li class="off"><code>[&#xa0;]</code> airodump</li>
+<li class="off"><code>[&#xa0;]</code> dig</li>
+<li class="off"><code>[&#xa0;]</code> iptables</li>
+<li class="off"><code>[&#xa0;]</code> netstat</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> * Compiling apps from source (i.e. gcc, make and other related stuff)</li>
+<li class="off"><code>[&#xa0;]</code> ! System Performance
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> nmon</li>
+<li class="off"><code>[&#xa0;]</code> iostat</li>
+<li class="off"><code>[&#xa0;]</code> sar</li>
+<li class="off"><code>[&#xa0;]</code> vmstat</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ! Others
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> strace</li>
+<li class="off"><code>[&#xa0;]</code> dtrace</li>
+<li class="off"><code>[&#xa0;]</code> systemtop</li>
+<li class="off"><code>[&#xa0;]</code> uname</li>
+<li class="off"><code>[&#xa0;]</code> df</li>
+<li class="off"><code>[&#xa0;]</code> history</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbba1df0" class="outline-3">
+<h3 id="orgbba1df0"><span class="todo TODO">TODO</span> Networking, Security and Protocols</h3>
+<div class="outline-text-3" id="text-orgbba1df0">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! HTTP</li>
+<li class="off"><code>[&#xa0;]</code> ! HTTPS</li>
+<li class="off"><code>[&#xa0;]</code> ! FTP</li>
+<li class="off"><code>[&#xa0;]</code> ! SSL/TLS</li>
+<li class="off"><code>[&#xa0;]</code> ! SSH</li>
+<li class="off"><code>[&#xa0;]</code> ! Prot Forwarding</li>
+<li class="off"><code>[&#xa0;]</code> * Emails
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> SMTP</li>
+<li class="off"><code>[&#xa0;]</code> IMAPS</li>
+<li class="off"><code>[&#xa0;]</code> POP3S</li>
+<li>----------------------------&#x2013;&#x2014;</li>
+<li class="off"><code>[&#xa0;]</code> DMARC</li>
+<li class="off"><code>[&#xa0;]</code> SPF</li>
+<li class="off"><code>[&#xa0;]</code> Domain Keys</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgdc86bff" class="outline-3">
+<h3 id="orgdc86bff"><span class="todo TODO">TODO</span> What is and how to setup a <span class="underline">XXX</span></h3>
+<div class="outline-text-3" id="text-orgdc86bff">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Reverse Proxy</li>
+<li class="off"><code>[&#xa0;]</code> ! Forward Proxy</li>
+<li class="off"><code>[&#xa0;]</code> ! Caching Serve</li>
+<li class="off"><code>[&#xa0;]</code> ! Load Balancer</li>
+<li class="off"><code>[&#xa0;]</code> ! Firewall</li>
+<li class="off"><code>[&#xa0;]</code> ! Web Server
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ^ IIS</li>
+<li class="off"><code>[&#xa0;]</code> ! Nginx</li>
+<li class="off"><code>[&#xa0;]</code> ^ Apache</li>
+<li class="off"><code>[&#xa0;]</code> ^ Tomcat</li>
+<li class="off"><code>[&#xa0;]</code> !Caddy</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf30c7c4" class="outline-3">
+<h3 id="orgf30c7c4"><span class="todo TODO">TODO</span> ! Learn Infrastructure as Code</h3>
+<div class="outline-text-3" id="text-orgf30c7c4">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Containers
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Docker</li>
+<li class="off"><code>[&#xa0;]</code> ^ rkt</li>
+<li class="off"><code>[&#xa0;]</code> ^ LXC</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ! Configuration Management
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Ansible</li>
+<li class="off"><code>[&#xa0;]</code> ^ Chef</li>
+<li class="off"><code>[&#xa0;]</code> ^ Salt</li>
+<li class="off"><code>[&#xa0;]</code> ^ Puppet</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ! Container Orchestration
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Kubernetes</li>
+<li class="off"><code>[&#xa0;]</code> ^ Docker Swarm</li>
+<li class="off"><code>[&#xa0;]</code> ^ Mesos</li>
+<li class="off"><code>[&#xa0;]</code> ^ Nomad</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ! Infrastructure Provisioning
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Terraform</li>
+<li class="off"><code>[&#xa0;]</code> ^ CloudFormation</li>
+<li class="off"><code>[&#xa0;]</code> ^ Pulumi</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ! Service Mesh
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Istio</li>
+<li class="off"><code>[&#xa0;]</code> ^ Envoy</li>
+<li class="off"><code>[&#xa0;]</code> ^ Linkerd</li>
+<li class="off"><code>[&#xa0;]</code> ! Consul</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3a1f9d0" class="outline-3">
+<h3 id="org3a1f9d0"><span class="todo TODO">TODO</span> ! Learn some CI/CD Tool</h3>
+<div class="outline-text-3" id="text-org3a1f9d0">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Gitlab CI</li>
+<li class="off"><code>[&#xa0;]</code> ! GitHub Actions</li>
+<li class="off"><code>[&#xa0;]</code> ^ Bamboo</li>
+<li class="off"><code>[&#xa0;]</code> ^ Azure DevOps</li>
+<li>----------------------------&#x2013;&#x2014;</li>
+<li class="off"><code>[&#xa0;]</code> ! Jenkins</li>
+<li class="off"><code>[&#xa0;]</code> ^ Travis CI</li>
+<li class="off"><code>[&#xa0;]</code> ^ TeamCity</li>
+<li class="off"><code>[&#xa0;]</code> ! Circle CI</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org98b4e87" class="outline-3">
+<h3 id="org98b4e87"><span class="todo TODO">TODO</span> ! Learn how to monitor software and infrastructure</h3>
+<div class="outline-text-3" id="text-org98b4e87">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Infrastructure Monitoring
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Prometheus</li>
+<li class="off"><code>[&#xa0;]</code> ^ Nagios</li>
+<li class="off"><code>[&#xa0;]</code> ! Grafana</li>
+<li class="off"><code>[&#xa0;]</code> ^ Zabbix</li>
+<li class="off"><code>[&#xa0;]</code> ^ Monit</li>
+<li class="off"><code>[&#xa0;]</code> ^ Datadog</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> ! Application Monitoring
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Jaeger</li>
+<li class="off"><code>[&#xa0;]</code> ! New Relic</li>
+<li class="off"><code>[&#xa0;]</code> ^ AppDynamics</li>
+<li class="off"><code>[&#xa0;]</code> ^ Instana</li>
+<li class="off"><code>[&#xa0;]</code> ^ OpenTracing</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> Logs Managment
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! Elastic Stack</li>
+<li class="off"><code>[&#xa0;]</code> ^ Graylog</li>
+<li class="off"><code>[&#xa0;]</code> ^ Splunk</li>
+<li class="off"><code>[&#xa0;]</code> ^ Popertrail</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc36dac9" class="outline-3">
+<h3 id="orgc36dac9"><span class="todo TODO">TODO</span> ! Cloud Providers</h3>
+<div class="outline-text-3" id="text-orgc36dac9">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ! AWS</li>
+<li class="off"><code>[&#xa0;]</code> ^ Google Cloud</li>
+<li class="off"><code>[&#xa0;]</code> ^ Azure</li>
+<li class="off"><code>[&#xa0;]</code> ^ Heroku</li>
+<li class="off"><code>[&#xa0;]</code> x Alibaba Cloud</li>
+<li>----------------------------&#x2013;&#x2014;</li>
+<li class="off"><code>[&#xa0;]</code> ! Digital Oceam</li>
+<li class="off"><code>[&#xa0;]</code> ^ Linode</li>
+<li class="off"><code>[&#xa0;]</code> ^ Vultr</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1557ac0" class="outline-3">
+<h3 id="org1557ac0"><span class="todo TODO">TODO</span> *! Cloud Design Patterns</h3>
+<div class="outline-text-3" id="text-org1557ac0">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Avaliablity</li>
+<li class="off"><code>[&#xa0;]</code> Data Management</li>
+<li class="off"><code>[&#xa0;]</code> Design and Implementation</li>
+<li class="off"><code>[&#xa0;]</code> Management and Monitoring</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2019-12-30 Mon 22:58</p>
+<p class="author">Author: Jack Liu</p>
+<p class="date">Created: 2020-05-20 Wed 17:16</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

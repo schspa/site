@@ -1,0 +1,784 @@
+#+SETUPFILE: ../theme-rose.setup
+#+DATE: <2019-12-30 Mon 22:58>
+#+TITLE: Web Developer Roadmap
+
+→ 图片转载自 [[https://github.com/kamranahmedse/developer-roadmap][developer-roadmap]]
+
+[[../images/web/developer-roadmap.png]]
+
+** Introduction
+
+[[../images/web/intro.png]]
+
+#+BEGIN_QUOTE
+注意，文中符号约定如下：
+
+- =- [ ] != 为 Personal Recommendation / Option
+- =- [ ] ^= 为 Alternative Option - Pick this or purple
+- =- [ ] *= 为 Order in roadmap not strict (Learn anytime)
+- =- [ ] x= 为 I wouldn't recommend
+#+END_QUOTE
+
+*** TODO Git - Version Control
+
+    - State "SOMEDAY"    from "TODO"       [2020-05-09 Sat 12:06] \\
+      在使用过程中累积一张 Cheat Sheet 。
+*** TODO Basic Terminal Usage
+
+    - State "SOMEDAY"    from "TODO"       [2020-05-09 Sat 12:08]
+*** TODO Data Structures & Algorithms
+
+    - State "SOMEDAY"    from "TODO"       [2020-05-09 Sat 12:09] \\
+      不懂数据结构和算法的程序员不是一个好厨师。
+*** TODO GitHub
+
+    - State "SOMEDAY"    from "TODO"       [2020-05-09 Sat 12:10]
+*** REFER Licenses
+
+    - State "REFER"      from "TODO"       [2020-05-20 Wed 17:16]
+    - State "SOMEDAY"    from "TODO"       [2020-05-09 Sat 12:11]
+
+Choose an open source license, you can visit https://choosealicense.com/.
+
+*** DONE Semantic Versioning
+
+    - State "DONE"       from "TODO"       [2020-05-09 Sat 11:53]
+i.e. 语义版本号
+
+_传统版本号_ （Assembly Versioning），由四个部分组成，它分为 =主版本号.次版本号.构建号.修订号= 四个部分，但是后面的一个或多个部分可以省略，如 =1.5.1254.0= 表示主版本号 =1= ，次版本号 =5= ，在 =1.5= 的版本下第 =1225= 次构建，并且在这次构建之后没有进行修订。如果你是一个库的发布者，那么主版本号的改变意味着 API 出现不兼容的修改；次版本号改变意味着 API 出现兼容的修改（通常是新增）。
+
+_语义版本号_ （Semantic Versioning），由五个部分组成，它分为 =主版本号.次版本号.补丁号.预发布版本标签.构建号= ，如下：
+
+#+BEGIN_EXAMPLE
+- 1.0.1
+- 1.0.1-rc
+- 1.0.1-alpha
+- 1.0.1-alpha2
+- 1.0.1-beta.2
+- 1.0.1-beta.5114f85
+#+END_EXAMPLE
+
+*** TODO SSH
+
+    - State "SOMEDAY"    from "TODO"       [2020-05-09 Sat 12:11]
+*** TODO HTTP/HTTPS and APIs
+
+    - State "SOMEDAY"    from "TODO"       [2020-05-09 Sat 12:11] \\
+      要想富，先修路，HTTP/HTTPS 就是 Web 的主干道。
+*** TODO Design Patters
+
+    - State "SOMEDAY"    from "TODO"       [2020-05-09 Sat 12:13] \\
+      可以慢慢了解。
+*** TODO Character Encodings
+    - State "SOMEDAY"    from "TODO"       [2020-05-09 Sat 12:14] \\
+      了解一下字符编码的历史是很有必要的。
+** Frontend Roadmap
+
+[[../images/web/frontend.png]]
+
+*** TODO ! Internet
+
+- [ ] ! How does the internet work?
+- [ ] ! What is HTTP?
+- [ ] ! Browers and how they work?
+- [ ] ! DNS and how it works?
+- [ ] ! What is Domain Name?
+- [ ] ! What is hosting?
+
+*** TODO HTML
+
+- [ ] ! Learn the basics
+- [ ] * Writing Semantic HTML
+- [ ] ! Froms and Validations
+- [ ] ! Conventions and Best Practices
+- [ ] * Accessibility
+- [ ] * SEO Basics
+
+*** TODO CSS
+
+- [ ] ! Learn the basics
+- [ ] ! Making Layouts
+  - [ ] ! Floats
+  - [ ] ! Positioning
+  - [ ] ! Display
+  - [ ] ! Box Model
+  - [ ] ! CSS Grid
+  - [ ] ! Flex Box
+- [ ] ! Responsive design and Media Queries
+
+*** TODO JavaScript
+
+- [ ] ! Syntax and Basic Construct
+- [ ] ! Learn DOM Manipulation
+- [ ] ! Learn Fetch API / Ajax (XHR)
+- [ ] ! ES6+ and modular JavaScript
+- [ ] ! Understand the concepts
+  - [ ] ! Hoisting
+  - [ ] ! Event Budding
+  - [ ] ! Scope
+  - [ ] ! Prototype
+  - [ ] ! Shadow DOM
+  - [ ] ! strict
+
+*** TODO Version Control Systems
+
+i.e. What are they and why you should use one
+
+- [ ] ! Basic Usage of Git
+- [ ] Repo hosting services(i.e. Create account and Learn to use GitHub)
+  - [ ] ! GitHub
+  - [ ] ^ Gitlab
+  - [ ] ^ Bitbucket
+
+*** TODO * Web Security Knowledge
+
+i.e. Get at least a basic knowledge of all of these
+
+- [ ] * HTTPS
+- [ ] * CORS
+- [ ] * Content Security Policy
+- [ ] * OWASP Security Risks
+
+*** TODO Package Managers
+
+- [ ] ! npm
+- [ ] ! yarn
+
+*** TODO CSS Architecture
+
+i.e. With modern frameworks and CSS-in-JS you don't have to worry about these anymore but still it would be a good idea to get familiarized with BEM at least.
+
+- [X] * BEM
+- [ ] x OOCSS
+- [ ] x SMACSS
+
+_1. BEM_
+
+[[http://getbem.com/][BEM]] (Block Element Modifier) is a simple but more strict naming convention.
+- Block - To form a CSS class, add a short prefix for namespacing, like =.block= ;
+- Element - CSS class is formed as block name plus two underscores plus element name, like =.block__elem= ;
+- Modifier - CSS class is formed as block's or element's name plus two dashes, like =.block--mode= or =.block__elem--mod= and =.block--color-black= with =.block--color-red= . Spaces in complicated modifiers are replaced by dash.
+
+An example ↓
+
+#+BEGIN_SRC html -n
+  <form class="form form--theme-xmas form--simple">
+    <input class="form__input" type="text" />
+    <input
+      class="form__submit form__submit--disabled"
+      type="submit" />
+  </form>
+#+END_SRC
+
+#+BEGIN_SRC css -n
+  .form { }
+  .form--theme-xmas { }
+  .form--simple { }
+  .form__input { }
+  .form__submit { }
+  .form__submit--disabled { }
+#+END_SRC
+
+_2. Others_
+
+- OOCSS - Separating container and content with CSS "objects";
+- SMACSS - Style-guide to write your CSS with five categories for CSS rules;
+- SUITCSS - Structured class names and meaningful hyphens;
+- Atomic - Breaking down styles into atomic, or indivisble, pieces.
+
+*** TODO CSS Preprocessor
+
+i.e. With how the modern frameworks there has been more push towards CSS-in-JS so you may not need these but still a good idea to familiarize yourself.
+
+- [ ] * Sass
+- [ ] * PostCSS
+- +[ ] x Less+
+
+_1. Sass_
+
+[[https://www.sass.hk/][Sass]] 是一种应用广泛的 CSS 扩展语言。
+
+_2. PostCSS_
+
+[[https://www.postcss.com.cn/][PostCSS]] 是一个用 JavaScript 工具和插件转换 CSS 代码的工具。
+
+*** TODO Build Tools
+
+- [ ] Task Runners
+  - [ ] ! npm scripts
+  - [ ] x Gulp
+- [ ] Module Bundlers
+  - [ ] ! Webpack
+  - [ ] ^ Rollup
+  - [ ] ^ Parcel
+- [ ] Linters and Formatters
+  - [ ] * Prettier
+  - [ ] * ESLint
+  - +[ ] x StandardJS+
+
+_1. Task Runnders_
+
+- [[http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html][NPM Scripts]] - npm 允许在 =package.json= 文件里面使用 =scripts= 字段定义脚本命令；
+- [[https://www.gulpjs.com.cn/][Gulp]] 是一个自动化构建工具，开发者可以使用它在项目开发过程中自动执行常见任务。
+
+_2. Module Bundlers_
+
+- [[https://www.webpackjs.com/][Webpack]] 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)；
+- [[https://www.rollupjs.com/][Rollup]] 是一个 JavaScript 模块打包器，可以将小块代码编译成大块复杂的代码；
+- [[https://parceljs.org/][Parcel]] - 一种极速零配置 Web 应用打包工具。
+
+_3. Linters and Formatters_
+
+- [[https://prettier.io/][Prettier]] is an opinionated code formatter;
+- [[https://eslint.bootcss.com/][ESLint]] - 一种可组装的 JavaScript 和 JSX 检查工具。
+
+*** TODO Pick a Framework
+
+- [ ] ! React.js
+  - [ ] ! Redux
+  - [ ] ^ MobX
+- [ ] ^ Angular
+  - [ ] ^ RxJS
+  - [ ] ^ NgR
+- [ ] ^ Vue.js
+  - [ ] VueX
+
+*** TODO Modern CSS
+
+- [ ] ! Styled Component
+- [ ] ! CSS Modules
+- [ ] ^ Styled JSX
+- [ ] ^ Emotion
+- [ ] x Radium
+- [ ] x Glamorous
+
+*** TODO * Web Components
+
+- [ ] * HTML Templates
+- [ ] * Custom Elements
+- [ ] * Shadow DOM
+
+*** TODO CSS Frameworks
+
+JS based and better to use with your framework based JavaScript applications.
+- [ ] ! Reactstrap
+- [ ] ! Material UI
+- [ ] ^ Tailwind CSS
+- [ ] ^ Chakra UI
+
+CSS first frameworks which don't come with JavaScript components by default.
+- [ ] ! Bootstrap
+- [ ] ^ Materialize CSS
+- [ ] ^ Bulma
+
+*** TODO Testing your Apps
+
+i.e. Learn the difference between _Unit_, _Integration_ and _Functional_ tests and learn how to write them with the tools listed on the left.
+
+You can fill all your testing needs with just these.
+- [ ] ! Jest
+- [ ] ! react-testing-library
+- [ ] ! Cypress
+- [ ] ! Enzyme
+- ------------------------------------------------------------------
+- [ ] x Mocha
+- [ ] x Chai
+- [ ] x Ava
+- [ ] x Jasmine
+
+_1. Testing Framework_
+
+- [[https://jestjs.io/][Jest]] is a delightful JavaScript Testing Framework with a focus on simplicity;
+- [[https://testing-library.com/][React Testing Library]] - Simple and complete testing utilities that encourage good testing practices;
+- [[https://www.cypress.io/][Cypress]] is a next generation front end testing tool built for the modern web;
+- [[https://enzymejs.github.io/enzyme/][Enzyme]] is a JavaScript Testing utility for React that makes it easier to test your React Components' output.
+
+_2. Others_
+
+- [[https://mochajs.org/][Mocha]] is a feature-rich JavaScript test framework running on NodeJS and in the browser, making asynchronous testing simple and fun;
+- [[https://www.chaijs.com/][Chai]] is a BDD/TDD assertion library for node and the browser that can be delightfully paired with any JavaScript testing framework;
+- [[https://github.com/avajs/ava][Ava]] is a test runner for Node.js with a concise API, detailed error output, embrace of new language features and process isolation that lets you develop with confidence;
+- [[https://jasmine.github.io/][Jasmine]] - Behavior-Diven JavaScript.
+
+*** TODO * Type Checkers
+
+- [ ] !* TypeScript
+- [ ] x Flow
+
+_1. TypeScript_
+
+[[https://www.tslang.cn/][TypeScript]] is a typed superset of JavaScript that compiles to plain JavaScript.
+
+_2. FLow_
+
+[[https://flow.org/][Flow]] is a static type checker for JavaScript.
+
+*** TODO *  Progressive Web Apps
+
+Learn different Web APIs used in PWAs.
+- [ ] * Storage
+- [ ] * Web Sockets
+- [ ] * Service Workers
+- [ ] * Location
+- [ ] * Notifications
+- [ ] * Device Orientation
+- [ ] * Payments
+- [ ] * Credentials
+
+Calculating, Measuring and improving performance
+- [ ] * PRPL Pattern
+- [ ] * RAIL Model
+- [ ] * Performance Metrics
+- [ ] * Using Lighthouse
+- [ ] * Using DevTools
+
+*** TODO * Server Side Rendering (SSR)
+
+- [ ] ! React.js
+  - [ ] ! Next.js
+  - [ ] x After.js
+- [ ] ^ Angular
+  - [ ] ^ Universal
+- [ ] ^ Vue.js
+  - [ ] ^ Nuxt.js
+
+*** TODO * GraphQL
+
+- [ ] ! Apollo
+- [ ] ^ Relay Modern
+
+*** TODO * Static Site Generators
+
+- [ ] ! Next.js
+- [ ] ! GatsbyJS
+- [ ] ^ Nuxt.js
+- [ ] ^ Vuepres
+- +[ ] ^ Jekyll+
+- +[ ] ^ Hugo+
+
+*** TODO *  Mobile Applications
+
+- [ ] ! React Native
+- [ ] NativeScript
+- [ ] Flutter
+- [ ] Ionic
+
+About that.
+- [[https://reactnative.cn/][React Native]] - create native IOS and Android apps with JavaScript；
+- [[https://www.nativescript.org/][NativeScript]] - create native IOS and Android apps with JavaScript;
+- [[https://flutterchina.club/][Flutter]] - Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase;
+- [[https://ionicframework.com/][Ionic]] - Ionic Framework is an open source UI toolkit for building performant, high-quality mobile and desktop apps using web technologies — HTML, CSS, and JavaScript — with integrations for popular frameworks like Angular and React.
+
+*** TODO * Desktop Applications
+
+- [ ] ! Electron
+- +[ ] x Cario+
+- +[ ] x Proton Native+
+
+[[http://www.electronjs.org/][Electron]] create desktop apps cross platform with JavaScript, html and css.
+
+*** TODO * Web Assembly
+
+Web Assembly or WASM is the binary instructions generated from higher level languages such as GO, C, C++ or Rust. It is faster than JavaScript and WASM 1.0 has already shipped in the major browser W3C accepted it as an offical standard at the end of 2019. It will still toke quite some time to go mainstream though.
+
+** Back-end Roadmap
+
+[[../images/web/backend.png]]
+
+*** TODO ! Internet
+
+同上 [[*! Internet][! Internet ↑]]
+
+*** TODO ! Basic Frontend Knowledge
+
+- [ ] ! HTML
+- [ ] ! CSS
+- [ ] ! JavaScript
+
+*** TODO ! OS and General Knowledge
+
+- [ ] ! Termial Usage
+- [ ] ! How OSs work in General
+- [ ] ! Process Management
+- [ ] ! Threads and Concurrency
+- [ ] ! Basic Terminal Comman
+  - [ ] ! grep
+  - [ ] ! awk
+  - [ ] ! sed
+  - [ ] ! lsof
+  - [ ] ! curl
+  - [ ] ! wget
+  - [ ] ! tail
+  - [ ] ! head
+  - [ ] ! less
+  - [ ] ! find
+  - [ ] ! ssh
+  - [ ] ! kill
+- [ ] ! Memory Management
+- [ ] ! Interprocess Communication
+- [ ] ! I/O Management
+- [ ] ! POSIX Basics
+- [ ] ! Basic Networking Concepts
+
+*** TODO Learn a Language
+
+i.e. Make sure to learn it's quirks. Core detail about it's runtime. e.g. concurrency, memory model etc.
+
+- [ ] ^ Java
+- [ ] ^ C#
+- [ ] ^ PHP
+- [ ] ^ Rust
+- [ ] ^ Go
+- [ ] ! JavaScript
+- [ ] ^ Python
+- [ ] ^ Ruby
+
+*** TODO Version Control Systems
+
+同上 [[*Version Control Systems][Version Control Systems ↑]] 。
+
+*** TODO Relational Databases
+
+- [ ] ! PostgreSQL
+- [ ] ^ MySQL
+- [ ] ^ MariaDB
+- [ ] ^ MS SQL
+- [ ] ^ Oracle
+
+*** TODO More about Databases
+
+- [ ] ! ORMs
+- [ ] ! ACID
+- [ ] ! Transactions
+- [ ] ! N+1 Problem
+- [ ] ! Database Normalization
+- [ ] ! Indexes and how they work
+- [ ] * Data Replication
+- [ ] * Sharding Strategies
+- [ ] * CAP Theorem
+
+NoSQL Databases.
+- [ ] ! MongoDB
+- [ ] ^ RethinkDB
+- [ ] ^ CouchDB
+- [ ] ^ DynamoDB
+
+*** TODO Learn about APIs
+
+- [ ] * HATEOAS
+- [ ] * Open API Spec and Swagger
+- [ ] ! Authentication
+  - [ ] * Cookie Based
+  - [ ] ! OAuth
+  - [ ] ! Basic Authentication
+  - [ ] ! Token Authentication
+  - [ ] ! JWT
+  - [ ] * OpenID
+  - [ ] * SAML
+- [ ] ! REST (i.e. Read Ray Fielding's Paper)
+- [ ] ! JSON APIs
+- [ ] * SOAP
+
+*** TODO Caching
+
+- [ ] ! CDN
+- [ ] Server Side
+  - [ ] ! Redis
+  - [ ] ^ Memcached
+- [ ] ! Client Side
+
+*** TODO Web Security Knowledge
+
+Hashing Algorithms.
+- [ ] ! MD5 and why not to use it
+- [ ] ! SHA Family
+- [ ] ! scrypt
+- [ ] ! bcrypt
+
+*** TODO Testing
+
+- [ ] ! Integration Testing
+- [ ] ! Unit Testing
+- [ ] ! Functional Testing
+
+*** TODO ! CI/CD
+
+*** TODO Design and Development Principles
+
+- [ ] * GOF Design Patterns
+- [ ] * Domain Driven Design
+- [ ] * Test Driven Development
+- [ ] ! SOLID
+- [ ] ! KISS
+- [ ] ! YAGNI
+- [ ] ! DRY
+
+Architectural Patterns.
+- [ ] ! Monolithic Apps
+- [ ] ! Microservices
+- [ ] ! SOA
+- [ ] * CQRS and Event Sourcing
+- [ ] ! Serverless
+
+*** TODO Search Engines
+
+- [ ] ! Elasticsearch
+- [ ] ^ Solr
+
+*** TODO * Message Brokers
+
+- [ ] *! RabbitMQ
+- [ ] ^ Kafka
+
+*** TODO Containerization vs Virtualization
+
+- [ ] ! Docker
+- [ ] x rkt
+- [ ] x LXC
+
+*** TODO * GraphQL
+
+- [ ] *! Apollo
+- [ ] ^ Relay Modern
+
+*** TODO * Graph Databases
+
+- [ ] * Neo4j
+
+*** TODO * WebSockets
+
+*** TODO * Web Servers
+
+- [ ] *! Nginx
+- [ ] ^ Apache
+- [ ] ^ Caddy
+- [ ] ^ MS IIS
+
+*** TODO ! Building for Scale
+
+i.e. General topics that you should learn and care about for the sustainability of the product.
+
+- [ ] ! Mitigation Strategies
+  - [ ] Graceful
+  - [ ] Degradation
+  - [ ] Throttling
+  - [ ] Backpressure
+  - [ ] Loadshifting
+  - [ ] Circuit Breaker
+- [ ] Understand the Diff
+  - [ ] Instrumentation
+  - [ ] Monitoring
+  - [ ] Telemetry
+- [ ] ! Migration Strategies
+- [ ] ! Horizontal vs Vertical Scaling
+- [ ] ! Building with Observability in mind (i.e. Metrics logging and other observable items that could help you in debugging and solving the issues when things go wrong.)
+
+** DevOps Roadmap
+
+[[../images/web/devops.png]]
+
+*** TODO ! Learn a Programming Language
+
+i.e. It doesn't matter which language you pick, key is to get some programming knowledge for automation.
+
+- [ ] ^ Python
+- [ ] ^ Ruby
+- [ ] ^ Node.js
+- [ ] ! Go
+- [ ] ^ Rust
+- [ ] ^ C
+- [ ] ^ C++
+
+#+BEGIN_QUOTE
+Go 竟然深入运维领域了…… Shell 已经沦落到不能做为一个选项了？
+#+END_QUOTE
+*** TODO Understand different OS Concepts
+
+- [ ] ! Process Management
+- [ ] ! Threads and Concurrency
+- [ ] ! Sockets
+- [ ] ! POSIX Basics
+- [ ] ! Networking Concepts
+- [ ] ! Startup Managment (initd)
+- [ ] ! Service Management (systemd)
+- [ ] ! I/O Management
+- [ ] ! Virtualization
+- [ ] ! Memory/Storage
+- [ ] ! File Systems
+
+*** TODO Learn about Managing Servers
+
+i.e. Get some adminstration knowledge in some OS. Go with any Linux distro. Pick Ubuntu if you have a little no experience with Linux.
+
+Operating System.
+- Linux
+  - [ ] ^ SUSE Linux
+  - [ ] ^ Debian
+  - [ ] ^ Fedora
+  - [ ] ! Ubuntu
+  - [ ] ! CentOS
+  - [ ] ! RHEL
+- Unix
+  - [ ] ! FreeBSD
+  - [ ] ^ OpenBSD
+  - [ ] ^ NetBSD
+- Windows
+
+Learn to live in Termial.
+- [ ] ! Learn Bash Scripting
+- [ ] ! Vim/Nano/PowerShell/Emacs
+- [ ] ! Text Manipulation Tools
+  - [ ] awk
+  - [ ] sed
+  - [ ] grep
+  - [ ] sort
+  - [ ] uniq
+  - [ ] cat
+  - [ ] cut
+  - [ ] echo
+  - [ ] fmt
+  - [ ] tr
+  - [ ] nl
+  - [ ] egrep
+  - [ ] fgrep
+  - [ ] wc
+- [ ] ! Process Monitoring
+  - [ ] ps
+  - [ ] top
+  - [ ] htop
+  - [ ] atop
+  - [ ] lsof
+- [ ] ! Network
+  - [ ] nmap
+  - [ ] tcpdump
+  - [ ] ping
+  - [ ] mtr
+  - [ ] traceroute
+  - [ ] dig
+  - [ ] airmon
+  - [ ] airodump
+  - [ ] dig
+  - [ ] iptables
+  - [ ] netstat
+- [ ] * Compiling apps from source (i.e. gcc, make and other related stuff)
+- [ ] ! System Performance
+  - [ ] nmon
+  - [ ] iostat
+  - [ ] sar
+  - [ ] vmstat
+- [ ] ! Others
+  - [ ] strace
+  - [ ] dtrace
+  - [ ] systemtop
+  - [ ] uname
+  - [ ] df
+  - [ ] history
+
+*** TODO Networking, Security and Protocols
+
+- [ ] ! HTTP
+- [ ] ! HTTPS
+- [ ] ! FTP
+- [ ] ! SSL/TLS
+- [ ] ! SSH
+- [ ] ! Prot Forwarding
+- [ ] * Emails
+  - [ ] SMTP
+  - [ ] IMAPS
+  - [ ] POP3S
+  - ---------------------------------
+  - [ ] DMARC
+  - [ ] SPF
+  - [ ] Domain Keys
+
+*** TODO What is and how to setup a _XXX_
+
+- [ ] ! Reverse Proxy
+- [ ] ! Forward Proxy
+- [ ] ! Caching Serve
+- [ ] ! Load Balancer
+- [ ] ! Firewall
+- [ ] ! Web Server
+  - [ ] ^ IIS
+  - [ ] ! Nginx
+  - [ ] ^ Apache
+  - [ ] ^ Tomcat
+  - [ ] !Caddy
+
+*** TODO ! Learn Infrastructure as Code
+
+- [ ] ! Containers
+  - [ ] ! Docker
+  - [ ] ^ rkt
+  - [ ] ^ LXC
+- [ ] ! Configuration Management
+  - [ ] ! Ansible
+  - [ ] ^ Chef
+  - [ ] ^ Salt
+  - [ ] ^ Puppet
+- [ ] ! Container Orchestration
+  - [ ] ! Kubernetes
+  - [ ] ^ Docker Swarm
+  - [ ] ^ Mesos
+  - [ ] ^ Nomad
+- [ ] ! Infrastructure Provisioning
+  - [ ] ! Terraform
+  - [ ] ^ CloudFormation
+  - [ ] ^ Pulumi
+- [ ] ! Service Mesh
+  - [ ] ! Istio
+  - [ ] ^ Envoy
+  - [ ] ^ Linkerd
+  - [ ] ! Consul
+
+*** TODO ! Learn some CI/CD Tool
+
+- [ ] ! Gitlab CI
+- [ ] ! GitHub Actions
+- [ ] ^ Bamboo
+- [ ] ^ Azure DevOps
+- ---------------------------------
+- [ ] ! Jenkins
+- [ ] ^ Travis CI
+- [ ] ^ TeamCity
+- [ ] ! Circle CI
+
+*** TODO ! Learn how to monitor software and infrastructure
+
+- [ ] ! Infrastructure Monitoring
+  - [ ] ! Prometheus
+  - [ ] ^ Nagios
+  - [ ] ! Grafana
+  - [ ] ^ Zabbix
+  - [ ] ^ Monit
+  - [ ] ^ Datadog
+- [ ] ! Application Monitoring
+  - [ ] ! Jaeger
+  - [ ] ! New Relic
+  - [ ] ^ AppDynamics
+  - [ ] ^ Instana
+  - [ ] ^ OpenTracing
+- [ ] Logs Managment
+  - [ ] ! Elastic Stack
+  - [ ] ^ Graylog
+  - [ ] ^ Splunk
+  - [ ] ^ Popertrail
+
+*** TODO ! Cloud Providers
+
+- [ ] ! AWS
+- [ ] ^ Google Cloud
+- [ ] ^ Azure
+- [ ] ^ Heroku
+- [ ] x Alibaba Cloud
+- ---------------------------------
+- [ ] ! Digital Oceam
+- [ ] ^ Linode
+- [ ] ^ Vultr
+
+*** TODO *! Cloud Design Patterns
+
+- [ ] Avaliablity
+- [ ] Data Management
+- [ ] Design and Implementation
+- [ ] Management and Monitoring

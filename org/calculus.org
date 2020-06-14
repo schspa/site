@@ -1,0 +1,39 @@
+#+SETUPFILE: ../theme-rose.setup
+#+DATE: <2020-05-30 Sat 00:29>
+#+TITLE: Calculus
+
+i.e. 微积分
+
+** 序言[fn:1]
+
+*微积分的历程：什么是微积分？所要解决的 4 个主要问题是哪些？*
+
+#+BEGIN_EXPORT html
+<img
+src="/images/mpc/calculus.jpg"
+width="30%"
+style=""
+/>
+#+END_EXPORT
+
+微积分的系统发展是在 17 世纪才开始的，而它就是一门研究、计算变化的科学，主要分为两类：微分（Differential Calculus）和积分（Integral Caculus），两者是分析中的两种基本的极限过程，实际互为逆运算。
+
+微积分是以数学方式深刻理解 _连续变化_ 的重要工具，也是透过对“无穷”的理解与掌握发展出来的一套计算方法。
+
+微积分要解决的 4 个问题：
+1. 怎样求曲线的切线？
+2. 怎样计算曲线下面积？
+3. 如何计算物体在某个位置上的速度、加速度？
+4. 找出最优解？ - 函数的最大值或最小值问题
+
+** 微积分到底是什么[fn:2]
+
+#+BEGIN_QUOTE
+→ [[https://www.zhihu.com/question/336322284/answer/918067537][*微积分到底是什么*]] 超好的回答！！！这篇文章刷新了我对于微积分的认知，不由得又想起以前学习微积分的那种辛苦，哎，真的是道术之别。对微积分感兴趣的朋友，强烈推荐阅读一下原链接，以下内容仅是对原文内容的摘录。
+#+END_QUOTE
+* Footnotes
+
+[fn:2] https://www.zhihu.com/question/336322284/answer/918067537
+
+[fn:1] https://baijiahao.baidu.com/s?id=1635324920642666721&wfr=spider&for=pc
+
