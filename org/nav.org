@@ -2,24 +2,25 @@
 #+DATE: <2020-04-10 Fri 20:56>
 #+TITLE: Navigations
 
-| [[./index.org][Virgo]]          | [[http://fanyi.youdao.com/][有道翻译]]       | [[http://www.fhdq.net/][符号大全]]       | [[http://asciiflow.com/][ASCIIFlow]]      | [[https://emacs-china.org/][Emacs China]] |
-| [[https://github.com/loveminimal][Github]]         | [[https://www.bilibili.com/][Bilibili]]       | [[https://www.youtube.com/][YouTube]]        | [[https://www.meijutt.tv/][天天美剧]]       | [[https://www.gushiwen.org/][古诗文网]]    |
-| [[https://www.crx4chrome.com/][Crx4Chrome]]     | [[https://www.zhihu.com/][知乎]]           | [[https://cloud.tencent.com/developer/labs][腾讯云]]         | [[https://cloud.huawei.com/home#/notepad/task/2f0739e3$ee3c$4049$8422$461c7e46d116/none][华为云]]         | [[http://www.etymon.cn/index.html][英语字根]]    |
-| [[http://www.cnpctest.com/rcyy900.htm][英语日常用语]]   | [[http://www.yinwang.org/][当然我在扯淡]]   | [[https://manateelazycat.github.io/index.html][ManateeLazyCat]] | [[https://www.liaoxuefeng.com/][廖雪峰]]         | [[http://www.ruanyifeng.com/blog/developer/][阮一峰]]      |
-| [[http://xahlee.org/][李杀网]]         | [[https://objcoding.com/][后端进阶]]       | [[http://smacs.github.io/][水木社区 Emacs]] | [[http://mashibing.com/][马士兵]]         | [[https://coolshell.cn/][酷壳]]        |
-| [[http://blog.udn.com/MengyuanWang/article][王孟源的部落格]] | [[https://code2048.com/][神秘的程序员们]] | [[https://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html][汤姆大叔的博客]] | [[http://www.lining0806.com/][宁哥的小站]]     |             |
-| [[https://bitsofco.de/][Bitsofco]]       | [[http://es6.ruanyifeng.com/][ES6 RYF]]        | [[http://www.runoob.com/][菜鸟教程]]       | [[https://man.linuxde.net/][Linux 命令大全]] |             |
-| [[http://www.softwhy.com/][蚂蚁部落]]       | [[http://www.bootcss.com/][BootCSS]]        | [[https://www.bootcdn.cn/][BootCDN]]        | [[https://www.interviewcake.com/data-structures-reference][Interview Cake]] |             |
-| [[https://learnxinyminutes.com/][Learn X in Y]]   | [[https://cn.vuejs.org/index.html][Vue Doc]]        | [[https://element.eleme.cn/#/zh-CN/component/installation][ElementUI]]      | [[https://www.antdv.com/docs/vue/introduce-cn/][Ant Design Vue]] | [[https://www.kancloud.cn/yunye/axios/234845][Axios]]       |
-| [[http://mockjs.com/examples.html][MockJS]]         | [[http://docs.form.xiaoyaoji.cn/][FormMaking]]     | [[https://www.bejson.com/ui/compress_img/][图压缩]]         |                |             |
-| [[https://daneden.github.io/animate.css/][AnimateCSS]]     | [[https://fontawesome.com/][FontAwesome]]    | [[http://www.iconfont.cn/][iconfont]]       | [[http://www.melpa.org/#/][Melpa]]          | [[https://vimawesome.com/][VimAwesome]]  |
-| [[https://chocolatey.org/packages][Chocolatey]]     | [[http://tool.c7sky.com/webcolor/][Web Color]]      | [[https://pixabay.com/zh/][Pixabay]]        |                |             |
-| [[http://www.fonts.net.cn/][字体之家]]       | [[http://www.musictool.top/][音乐聚合]]       | [[https://theoldreader.com/][RSS]]            | [[http://www.nginx.cn/doc/][Nginx Doc]]      |             |
-| [[http://doc.norang.ca/org-mode.html][Org Mode Plain]] | [[https://geekinney.com/][Geenkinney]]     | [[https://blog.yiyuemo.com/][AngelDevil]]     | [[https://www.lijigang.com/][LiJigang]]       |             |
+| [[./index.org][Virgo]]          | [[http://fanyi.youdao.com/][有道翻译]]       | [[http://www.fhdq.net/][符号大全]]       | [[https://emacs-china.org/][Emacs China]]    |            |
+| [[https://github.com/loveminimal][Github]]         | [[https://www.bilibili.com/][Bilibili]]       | [[https://www.youtube.com/][YouTube]]        | [[https://www.meijutt.tv/][天天美剧]]       | [[https://www.gushiwen.org/][古诗文网]]   |
+| [[https://www.crx4chrome.com/][Crx4Chrome]]     | [[https://www.zhihu.com/][知乎]]           | [[https://cloud.tencent.com/developer/labs][腾讯云]]         | [[https://cloud.huawei.com/home#/notepad/task/2f0739e3$ee3c$4049$8422$461c7e46d116/none][华为云]]         | [[http://www.etymon.cn/index.html][英语字根]]   |
+| [[http://www.cnpctest.com/rcyy900.htm][英语日常用语]]   | [[http://www.yinwang.org/][当然我在扯淡]]   | [[https://manateelazycat.github.io/index.html][ManateeLazyCat]] | [[https://www.liaoxuefeng.com/][廖雪峰]]         | [[http://www.ruanyifeng.com/blog/developer/][阮一峰]]     |
+| [[http://xahlee.org/][李杀网]]         | [[https://objcoding.com/][后端进阶]]       | [[http://smacs.github.io/][水木社区 Emacs]] | [[http://mashibing.com/][马士兵]]         | [[https://coolshell.cn/][酷壳]]       |
+| [[http://blog.udn.com/MengyuanWang/article][王孟源的部落格]] | [[https://code2048.com/][神秘的程序员们]] | [[https://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html][汤姆大叔的博客]] | [[http://www.lining0806.com/][宁哥的小站]]     |            |
+| [[https://bitsofco.de/][Bitsofco]]       | [[http://es6.ruanyifeng.com/][ES6 RYF]]        | [[http://www.runoob.com/][菜鸟教程]]       | [[https://man.linuxde.net/][Linux 命令大全]] |            |
+| [[http://www.softwhy.com/][蚂蚁部落]]       | [[http://www.bootcss.com/][BootCSS]]        | [[https://www.bootcdn.cn/][BootCDN]]        | [[https://www.interviewcake.com/data-structures-reference][Interview Cake]] |            |
+| [[https://learnxinyminutes.com/][Learn X in Y]]   | [[https://cn.vuejs.org/index.html][Vue Doc]]        | [[https://element.eleme.cn/#/zh-CN/component/installation][ElementUI]]      | [[https://www.antdv.com/docs/vue/introduce-cn/][Ant Design Vue]] | [[https://www.kancloud.cn/yunye/axios/234845][Axios]]      |
+| [[http://mockjs.com/examples.html][MockJS]]         | [[http://docs.form.xiaoyaoji.cn/][FormMaking]]     | [[https://www.bejson.com/ui/compress_img/][图压缩]]         |                |            |
+| [[https://daneden.github.io/animate.css/][AnimateCSS]]     | [[https://fontawesome.com/][FontAwesome]]    | [[http://www.iconfont.cn/][iconfont]]       | [[http://www.melpa.org/#/][Melpa]]          | [[https://vimawesome.com/][VimAwesome]] |
+| [[https://chocolatey.org/packages][Chocolatey]]     | [[http://tool.c7sky.com/webcolor/][Web Color]]      | [[https://pixabay.com/zh/][Pixabay]]        |                |            |
+| [[http://www.fonts.net.cn/][字体之家]]       | [[http://www.musictool.top/][音乐聚合]]       | [[https://theoldreader.com/][RSS]]            | [[http://www.nginx.cn/doc/][Nginx Doc]]      |            |
+| [[http://doc.norang.ca/org-mode.html][Org Mode Plain]] | [[https://geekinney.com/][Geenkinney]]     | [[https://blog.yiyuemo.com/][AngelDevil]]     | [[https://www.lijigang.com/][LiJigang]]       |            |
 
 *Bookmarks InboX*
 
 - *合抱之木，生于毫末；九层之台，起于累土；千里之行，始于足下。*
+- [[https://www.jianshu.com/p/c894ea00dfec][使用require.context实现前端工程自动化]]
 - [[https://www.cnblogs.com/kainhuck/p/11608966.html][archlinux下安装mysql]]
 - [[https://juejin.im/post/5b8905456fb9a01a105966b4][彻底搞懂word-break、word-wrap、white-space]]
 - [[https://www.jianshu.com/p/2a3728cded4c?utm_campaign=maleskine&utm_content=note&utm_medium=reader_share&utm_source=weixin][JavaScript 中如何实现深度克隆]]

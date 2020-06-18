@@ -26,11 +26,11 @@ A [[./org-to-site-tutor.org][pure site]] based on org mode.
 | [[./get-things-done.org][Get Things Done]]       |
 | [[./gtd-management-system.org][GTD Management System]] |
 
-| Web                   |
-|-----------------------|
-| [[./web-developer-roadmap.org][Web Developer Roadmap]] |
-| [[./module-of-front-end.org][Module of Front End]]   |
-| [[./async-and-sync.org][Async and Sync]]        |
+| Web                     |
+|-------------------------|
+| [[./web-developer-roadmap.org][Web Developer Roadmap]]   |
+| [[./module-of-front-end.org][Module of Front End]]     |
+| [[./async-and-sync.org][Async and Sync]]          |
 
 | 读书 |
 |------|

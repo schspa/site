@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2020-06-14 Sun 15:56 -->
+<!-- 2020-06-15 Mon 15:54 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Module Of Front End</title>
@@ -22,30 +22,31 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5c4b417">模块化的基础</a></li>
-<li><a href="#org6131578">服务器端模块化</a>
+<li><a href="#org70e5c02">序言</a></li>
+<li><a href="#org84e18b8">模块化的基础</a></li>
+<li><a href="#orge946385">服务器端模块化</a>
 <ul>
-<li><a href="#org23e2614">CommonJS</a></li>
-<li><a href="#orga45e6a5">NodeJS 如何实现不同模块可以使用相同的变量名</a></li>
-<li><a href="#org13061c6">模块的输出 module.exports 如何实现</a></li>
-<li><a href="#orgc6673c6">exports 和 module.exports 的异同</a></li>
+<li><a href="#org7722d27">CommonJS</a></li>
+<li><a href="#orgae45937">NodeJS 如何实现不同模块可以使用相同的变量名</a></li>
+<li><a href="#org8f44198">模块的输出 module.exports 如何实现</a></li>
+<li><a href="#org0057af5">exports 和 module.exports 的异同</a></li>
 </ul>
 </li>
-<li><a href="#orge0ceedc">浏览器端模块化</a>
+<li><a href="#org76a4c91">浏览器端模块化</a>
 <ul>
-<li><a href="#org877e7a5">AMD·RequireJS</a></li>
-<li><a href="#org0b4290e">CMD·SeaJS</a></li>
+<li><a href="#org24f8592">AMD·RequireJS</a></li>
+<li><a href="#orgbbfb0d7">CMD·SeaJS</a></li>
 </ul>
 </li>
-<li><a href="#org37d9418">ES6 模块化</a></li>
-<li><a href="#org81167e8">总结</a></li>
+<li><a href="#orgef45211">ES6 模块化</a></li>
+<li><a href="#org4cee149">总结</a></li>
 </ul>
 </div>
 </div>
-<p>
-→ <a href="https://www.cnblogs.com/dolphinX/p/4381855.html">前端模块化</a>
-</p>
 
+<div id="outline-container-org70e5c02" class="outline-2">
+<h2 id="org70e5c02">序言</h2>
+<div class="outline-text-2" id="text-org70e5c02">
 <p>
 1995 年 5 月， Brendan Eich 只用了 10 天，就设计完成了 JavaScript 的第一版，so 对于 JavaScript 的规范化，不要要求太多，比如，它早期根本没有考虑模块化……
 </p>
@@ -57,10 +58,12 @@
 <p>
 下面一起来看一下， JavaScript 模块化规范的血泪历程！
 </p>
+</div>
+</div>
 
-<div id="outline-container-org5c4b417" class="outline-2">
-<h2 id="org5c4b417">模块化的基础</h2>
-<div class="outline-text-2" id="text-org5c4b417">
+<div id="outline-container-org84e18b8" class="outline-2">
+<h2 id="org84e18b8">模块化的基础<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h2>
+<div class="outline-text-2" id="text-org84e18b8">
 <p>
 <span class="underline">1. 函数封装</span>
 </p>
@@ -70,13 +73,13 @@
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr">1: </span><span style="color: #F92672;">function</span> <span style="color: #A6E22E;">fn1</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
-<span class="linenr">2: </span>    <span style="color: #75715E;">// </span><span style="color: #75715E;">....</span>
-<span class="linenr">3: </span><span style="color: #AE81FF;">}</span>
+<pre class="src src-js"><span class="linenr">1: </span><span style="color: #FF1493;">function</span> <span style="color: #87D700;">fn1</span><span style="color: #AF87FF;">()</span> <span style="color: #AF87FF;">{</span>
+<span class="linenr">2: </span>    <span style="color: #8B8878;">// </span><span style="color: #8B8878;">....</span>
+<span class="linenr">3: </span><span style="color: #AF87FF;">}</span>
 <span class="linenr">4: </span>
-<span class="linenr">5: </span><span style="color: #F92672;">function</span> <span style="color: #A6E22E;">fn2</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
-<span class="linenr">6: </span>    <span style="color: #75715E;">// </span><span style="color: #75715E;">....</span>
-<span class="linenr">7: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">5: </span><span style="color: #FF1493;">function</span> <span style="color: #87D700;">fn2</span><span style="color: #AF87FF;">()</span> <span style="color: #AF87FF;">{</span>
+<span class="linenr">6: </span>    <span style="color: #8B8878;">// </span><span style="color: #8B8878;">....</span>
+<span class="linenr">7: </span><span style="color: #AF87FF;">}</span>
 </pre>
 </div>
 
@@ -93,17 +96,17 @@
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">moduleInObj</span> = <span style="color: #AE81FF;">{</span>
-<span class="linenr"> 2: </span>    var1: <span style="color: #E6DB74;">'Tom'</span>,
-<span class="linenr"> 3: </span>    var2: <span style="color: #E6DB74;">'Jerry'</span>,
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">moduleInObj</span> = <span style="color: #AF87FF;">{</span>
+<span class="linenr"> 2: </span>    var1: <span style="color: #CDC673;">'Tom'</span>,
+<span class="linenr"> 3: </span>    var2: <span style="color: #CDC673;">'Jerry'</span>,
 <span class="linenr"> 4: </span>
-<span class="linenr"> 5: </span>    <span style="color: #A6E22E;">fn1</span>: <span style="color: #F92672;">function</span><span style="color: #66D9EF;">()</span> <span style="color: #66D9EF;">{</span>
-<span class="linenr"> 6: </span>        <span style="color: #75715E;">// </span><span style="color: #75715E;">....</span>
-<span class="linenr"> 7: </span>    <span style="color: #66D9EF;">}</span>,
-<span class="linenr"> 8: </span>    <span style="color: #A6E22E;">fn2</span>: <span style="color: #F92672;">function</span><span style="color: #66D9EF;">()</span> <span style="color: #66D9EF;">{</span>
-<span class="linenr"> 9: </span>        <span style="color: #75715E;">// </span><span style="color: #75715E;">....</span>
-<span class="linenr">10: </span>    <span style="color: #66D9EF;">}</span>
-<span class="linenr">11: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr"> 5: </span>    <span style="color: #87D700;">fn1</span>: <span style="color: #FF1493;">function</span><span style="color: #5FD7FF;">()</span> <span style="color: #5FD7FF;">{</span>
+<span class="linenr"> 6: </span>        <span style="color: #8B8878;">// </span><span style="color: #8B8878;">....</span>
+<span class="linenr"> 7: </span>    <span style="color: #5FD7FF;">}</span>,
+<span class="linenr"> 8: </span>    <span style="color: #87D700;">fn2</span>: <span style="color: #FF1493;">function</span><span style="color: #5FD7FF;">()</span> <span style="color: #5FD7FF;">{</span>
+<span class="linenr"> 9: </span>        <span style="color: #8B8878;">// </span><span style="color: #8B8878;">....</span>
+<span class="linenr">10: </span>    <span style="color: #5FD7FF;">}</span>
+<span class="linenr">11: </span><span style="color: #AF87FF;">}</span>
 </pre>
 </div>
 
@@ -124,24 +127,24 @@
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">moduleInIIEF</span> = <span style="color: #AE81FF;">(</span><span style="color: #F92672;">function</span><span style="color: #66D9EF;">()</span> <span style="color: #66D9EF;">{</span>
-<span class="linenr"> 2: </span>    <span style="color: #F92672;">var</span> <span style="color: #FD971F;">var1</span> = <span style="color: #E6DB74;">'Tom'</span>;
-<span class="linenr"> 3: </span>    <span style="color: #F92672;">var</span> <span style="color: #FD971F;">var2</span> = <span style="color: #E6DB74;">'Jerry'</span>;
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">moduleInIIEF</span> = <span style="color: #AF87FF;">(</span><span style="color: #FF1493;">function</span><span style="color: #5FD7FF;">()</span> <span style="color: #5FD7FF;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">var1</span> = <span style="color: #CDC673;">'Tom'</span>;
+<span class="linenr"> 3: </span>    <span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">var2</span> = <span style="color: #CDC673;">'Jerry'</span>;
 <span class="linenr"> 4: </span>
-<span class="linenr"> 5: </span>    <span style="color: #F92672;">function</span> <span style="color: #A6E22E;">fn1</span><span style="color: #A6E22E;">()</span> <span style="color: #A6E22E;">{</span>
-<span class="linenr"> 6: </span>        <span style="color: #75715E;">// </span><span style="color: #75715E;">....</span>
-<span class="linenr"> 7: </span>    <span style="color: #A6E22E;">}</span>
+<span class="linenr"> 5: </span>    <span style="color: #FF1493;">function</span> <span style="color: #87D700;">fn1</span><span style="color: #87D700;">()</span> <span style="color: #87D700;">{</span>
+<span class="linenr"> 6: </span>        <span style="color: #8B8878;">// </span><span style="color: #8B8878;">....</span>
+<span class="linenr"> 7: </span>    <span style="color: #87D700;">}</span>
 <span class="linenr"> 8: </span>
-<span class="linenr"> 9: </span>    <span style="color: #F92672;">function</span> <span style="color: #A6E22E;">fn2</span><span style="color: #A6E22E;">()</span> <span style="color: #A6E22E;">{</span>
-<span class="linenr">10: </span>        <span style="color: #75715E;">// </span><span style="color: #75715E;">....</span>
-<span class="linenr">11: </span>    <span style="color: #A6E22E;">}</span>
+<span class="linenr"> 9: </span>    <span style="color: #FF1493;">function</span> <span style="color: #87D700;">fn2</span><span style="color: #87D700;">()</span> <span style="color: #87D700;">{</span>
+<span class="linenr">10: </span>        <span style="color: #8B8878;">// </span><span style="color: #8B8878;">....</span>
+<span class="linenr">11: </span>    <span style="color: #87D700;">}</span>
 <span class="linenr">12: </span>
-<span class="linenr">13: </span>    <span style="color: #75715E;">// </span><span style="color: #75715E;">&#21482;&#26292;&#38706;&#24819;&#35201;&#26292;&#38706;&#30340;&#21464;&#37327;&#25110;&#20989;&#25968;</span>
-<span class="linenr">14: </span>    <span style="color: #F92672;">return</span> <span style="color: #A6E22E;">{</span>
+<span class="linenr">13: </span>    <span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#21482;&#26292;&#38706;&#24819;&#35201;&#26292;&#38706;&#30340;&#21464;&#37327;&#25110;&#20989;&#25968;</span>
+<span class="linenr">14: </span>    <span style="color: #FF1493;">return</span> <span style="color: #87D700;">{</span>
 <span class="linenr">15: </span>        var1: var1,
 <span class="linenr">16: </span>        fn2: fn2
-<span class="linenr">17: </span>    <span style="color: #A6E22E;">}</span>
-<span class="linenr">18: </span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">17: </span>    <span style="color: #87D700;">}</span>
+<span class="linenr">18: </span><span style="color: #5FD7FF;">}</span><span style="color: #AF87FF;">)</span>
 </pre>
 </div>
 
@@ -159,13 +162,13 @@
 </div>
 </div>
 
-<div id="outline-container-org6131578" class="outline-2">
-<h2 id="org6131578">服务器端模块化</h2>
-<div class="outline-text-2" id="text-org6131578">
+<div id="outline-container-orge946385" class="outline-2">
+<h2 id="orge946385">服务器端模块化</h2>
+<div class="outline-text-2" id="text-orge946385">
 </div>
-<div id="outline-container-org23e2614" class="outline-3">
-<h3 id="org23e2614">CommonJS</h3>
-<div class="outline-text-3" id="text-org23e2614">
+<div id="outline-container-org7722d27" class="outline-3">
+<h3 id="org7722d27">CommonJS</h3>
+<div class="outline-text-3" id="text-org7722d27">
 <p>
 CommonJS 是 NodeJS 在服务端的模块化规范：
 </p>
@@ -176,24 +179,24 @@ CommonJS 是 NodeJS 在服务端的模块化规范：
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">moduleInCommonJS.js</span>
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #8B8878;">// </span><span style="color: #8B8878;">moduleInCommonJS.js</span>
 <span class="linenr"> 2: </span>
-<span class="linenr"> 3: </span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">var1</span> = <span style="color: #E6DB74;">'Tom'</span>;
-<span class="linenr"> 4: </span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">var2</span> = <span style="color: #E6DB74;">'Jerry'</span>;
+<span class="linenr"> 3: </span><span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">var1</span> = <span style="color: #CDC673;">'Tom'</span>;
+<span class="linenr"> 4: </span><span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">var2</span> = <span style="color: #CDC673;">'Jerry'</span>;
 <span class="linenr"> 5: </span>
-<span class="linenr"> 6: </span><span style="color: #F92672;">function</span> <span style="color: #A6E22E;">fn1</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
-<span class="linenr"> 7: </span>    <span style="color: #75715E;">// </span><span style="color: #75715E;">....</span>
-<span class="linenr"> 8: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr"> 6: </span><span style="color: #FF1493;">function</span> <span style="color: #87D700;">fn1</span><span style="color: #AF87FF;">()</span> <span style="color: #AF87FF;">{</span>
+<span class="linenr"> 7: </span>    <span style="color: #8B8878;">// </span><span style="color: #8B8878;">....</span>
+<span class="linenr"> 8: </span><span style="color: #AF87FF;">}</span>
 <span class="linenr"> 9: </span>
-<span class="linenr">10: </span><span style="color: #F92672;">function</span> <span style="color: #A6E22E;">fn2</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
-<span class="linenr">11: </span>    <span style="color: #75715E;">// </span><span style="color: #75715E;">....</span>
-<span class="linenr">12: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">10: </span><span style="color: #FF1493;">function</span> <span style="color: #87D700;">fn2</span><span style="color: #AF87FF;">()</span> <span style="color: #AF87FF;">{</span>
+<span class="linenr">11: </span>    <span style="color: #8B8878;">// </span><span style="color: #8B8878;">....</span>
+<span class="linenr">12: </span><span style="color: #AF87FF;">}</span>
 <span class="linenr">13: </span>
-<span class="linenr">14: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#36890;&#36807; module.exports &#23545;&#35937;&#26292;&#38706;&#27169;&#22359;&#20869;&#23481;</span>
-<span class="linenr">15: </span>module.exports = <span style="color: #AE81FF;">{</span>
+<span class="linenr">14: </span><span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#36890;&#36807; module.exports &#23545;&#35937;&#26292;&#38706;&#27169;&#22359;&#20869;&#23481;</span>
+<span class="linenr">15: </span>module.exports = <span style="color: #AF87FF;">{</span>
 <span class="linenr">16: </span>    fn1: fn1,
 <span class="linenr">17: </span>    fn2: fn2
-<span class="linenr">18: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">18: </span><span style="color: #AF87FF;">}</span>
 </pre>
 </div>
 
@@ -202,11 +205,11 @@ CommonJS 是 NodeJS 在服务端的模块化规范：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr">1: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#20351;&#29992; require &#21152;&#36733; moduleInCommonJS</span>
-<span class="linenr">2: </span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">moudleInCommonJS</span> = require<span style="color: #AE81FF;">(</span><span style="color: #E6DB74;">'./moduleInCommonJS.js'</span><span style="color: #AE81FF;">)</span>;
+<pre class="src src-js"><span class="linenr">1: </span><span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#20351;&#29992; require &#21152;&#36733; moduleInCommonJS</span>
+<span class="linenr">2: </span><span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">moudleInCommonJS</span> = require<span style="color: #AF87FF;">(</span><span style="color: #CDC673;">'./moduleInCommonJS.js'</span><span style="color: #AF87FF;">)</span>;
 <span class="linenr">3: </span>
-<span class="linenr">4: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#35843;&#29992;&#27169;&#22359;&#30340;&#20989;&#25968;</span>
-<span class="linenr">5: </span>moduleInCommonJS.fn1<span style="color: #AE81FF;">()</span>;
+<span class="linenr">4: </span><span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#35843;&#29992;&#27169;&#22359;&#30340;&#20989;&#25968;</span>
+<span class="linenr">5: </span>moduleInCommonJS.fn1<span style="color: #AF87FF;">()</span>;
 </pre>
 </div>
 
@@ -224,9 +227,9 @@ CommonJS 中的 <code>require</code> 加载是 <span class="underline">同步的
 </div>
 </div>
 
-<div id="outline-container-orga45e6a5" class="outline-3">
-<h3 id="orga45e6a5">NodeJS 如何实现不同模块可以使用相同的变量名<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></h3>
-<div class="outline-text-3" id="text-orga45e6a5">
+<div id="outline-container-orgae45937" class="outline-3">
+<h3 id="orgae45937">NodeJS 如何实现不同模块可以使用相同的变量名<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h3>
+<div class="outline-text-3" id="text-orgae45937">
 <p>
 JavaScript 语言本身并没有一种机制来保证不同的模块可以使用相同的变量名，那么 Node.js 是如何实现这一点的呢？
 </p>
@@ -244,10 +247,10 @@ JavaScript 是一种函数式编程语言，它支持闭包 &#x2013; 把一段 J
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr">1: </span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">s</span> = <span style="color: #E6DB74;">'Hello'</span>
-<span class="linenr">2: </span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">name</span> = <span style="color: #E6DB74;">'world'</span>
+<pre class="src src-js"><span class="linenr">1: </span><span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">s</span> = <span style="color: #CDC673;">'Hello'</span>
+<span class="linenr">2: </span><span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">name</span> = <span style="color: #CDC673;">'world'</span>
 <span class="linenr">3: </span>
-<span class="linenr">4: </span>console.log<span style="color: #AE81FF;">(</span>s + <span style="color: #E6DB74;">' '</span> + name + <span style="color: #E6DB74;">'!'</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">4: </span>console.log<span style="color: #AF87FF;">(</span>s + <span style="color: #CDC673;">' '</span> + name + <span style="color: #CDC673;">'!'</span><span style="color: #AF87FF;">)</span>
 </pre>
 </div>
 
@@ -256,14 +259,14 @@ JavaScript 是一种函数式编程语言，它支持闭包 &#x2013; 把一段 J
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr">1: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">function</span> <span style="color: #66D9EF;">()</span> <span style="color: #66D9EF;">{</span>
-<span class="linenr">2: </span>    <span style="color: #75715E;">// </span><span style="color: #75715E;">&#35835;&#21462;&#30340; hello.js &#20195;&#30721;</span>
-<span class="linenr">3: </span>    <span style="color: #F92672;">var</span> <span style="color: #FD971F;">s</span> = <span style="color: #E6DB74;">'Hello'</span>
-<span class="linenr">4: </span>    <span style="color: #F92672;">var</span> <span style="color: #FD971F;">name</span> = <span style="color: #E6DB74;">'world'</span>
+<pre class="src src-js"><span class="linenr">1: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">function</span> <span style="color: #5FD7FF;">()</span> <span style="color: #5FD7FF;">{</span>
+<span class="linenr">2: </span>    <span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#35835;&#21462;&#30340; hello.js &#20195;&#30721;</span>
+<span class="linenr">3: </span>    <span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">s</span> = <span style="color: #CDC673;">'Hello'</span>
+<span class="linenr">4: </span>    <span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">name</span> = <span style="color: #CDC673;">'world'</span>
 <span class="linenr">5: </span>
-<span class="linenr">6: </span>    console.log<span style="color: #A6E22E;">(</span>s + <span style="color: #E6DB74;">' '</span> + name + <span style="color: #E6DB74;">'!'</span><span style="color: #A6E22E;">)</span>
-<span class="linenr">7: </span>    <span style="color: #75715E;">// </span><span style="color: #75715E;">hello.js &#20195;&#30721;&#32467;&#26463;</span>
-<span class="linenr">8: </span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)()</span>
+<span class="linenr">6: </span>    console.log<span style="color: #87D700;">(</span>s + <span style="color: #CDC673;">' '</span> + name + <span style="color: #CDC673;">'!'</span><span style="color: #87D700;">)</span>
+<span class="linenr">7: </span>    <span style="color: #8B8878;">// </span><span style="color: #8B8878;">hello.js &#20195;&#30721;&#32467;&#26463;</span>
+<span class="linenr">8: </span><span style="color: #5FD7FF;">}</span><span style="color: #AF87FF;">)()</span>
 </pre>
 </div>
 
@@ -273,9 +276,9 @@ JavaScript 是一种函数式编程语言，它支持闭包 &#x2013; 把一段 J
 </div>
 </div>
 
-<div id="outline-container-org13061c6" class="outline-3">
-<h3 id="org13061c6">模块的输出 module.exports 如何实现</h3>
-<div class="outline-text-3" id="text-org13061c6">
+<div id="outline-container-org8f44198" class="outline-3">
+<h3 id="org8f44198">模块的输出 module.exports 如何实现</h3>
+<div class="outline-text-3" id="text-org8f44198">
 <p>
 Node 利用 JavaScript 的函数式编程的特性，轻而易举实现了模块的隔离。但是，模块的输出 <code>module.exports</code> 怎么实现呢？
 </p>
@@ -285,28 +288,28 @@ Node 利用 JavaScript 的函数式编程的特性，轻而易举实现了模块
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#20934;&#22791; module &#23545;&#35937;</span>
-<span class="linenr"> 2: </span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">module</span> = <span style="color: #AE81FF;">{</span>
-<span class="linenr"> 3: </span>    id: <span style="color: #E6DB74;">'hello'</span>,
-<span class="linenr"> 4: </span>    exports: <span style="color: #66D9EF;">{}</span>
-<span class="linenr"> 5: </span><span style="color: #AE81FF;">}</span>
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#20934;&#22791; module &#23545;&#35937;</span>
+<span class="linenr"> 2: </span><span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">module</span> = <span style="color: #AF87FF;">{</span>
+<span class="linenr"> 3: </span>    id: <span style="color: #CDC673;">'hello'</span>,
+<span class="linenr"> 4: </span>    exports: <span style="color: #5FD7FF;">{}</span>
+<span class="linenr"> 5: </span><span style="color: #AF87FF;">}</span>
 <span class="linenr"> 6: </span>
-<span class="linenr"> 7: </span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">load</span> = <span style="color: #F92672;">function</span><span style="color: #AE81FF;">(</span><span style="color: #FD971F;">module</span><span style="color: #AE81FF;">)</span> <span style="color: #AE81FF;">{</span>
-<span class="linenr"> 8: </span>    <span style="color: #75715E;">// </span><span style="color: #75715E;">&#35835;&#21462;&#30340; hello.js &#20195;&#30721;</span>
-<span class="linenr"> 9: </span>    <span style="color: #F92672;">function</span> <span style="color: #A6E22E;">greet</span><span style="color: #66D9EF;">(</span><span style="color: #FD971F;">name</span><span style="color: #66D9EF;">)</span> <span style="color: #66D9EF;">{</span>
-<span class="linenr">10: </span>        console.log<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'Hello, '</span> + name + <span style="color: #E6DB74;">'!'</span><span style="color: #A6E22E;">)</span>
-<span class="linenr">11: </span>    <span style="color: #66D9EF;">}</span>
+<span class="linenr"> 7: </span><span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">load</span> = <span style="color: #FF1493;">function</span><span style="color: #AF87FF;">(</span><span style="color: #FF8C00;">module</span><span style="color: #AF87FF;">)</span> <span style="color: #AF87FF;">{</span>
+<span class="linenr"> 8: </span>    <span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#35835;&#21462;&#30340; hello.js &#20195;&#30721;</span>
+<span class="linenr"> 9: </span>    <span style="color: #FF1493;">function</span> <span style="color: #87D700;">greet</span><span style="color: #5FD7FF;">(</span><span style="color: #FF8C00;">name</span><span style="color: #5FD7FF;">)</span> <span style="color: #5FD7FF;">{</span>
+<span class="linenr">10: </span>        console.log<span style="color: #87D700;">(</span><span style="color: #CDC673;">'Hello, '</span> + name + <span style="color: #CDC673;">'!'</span><span style="color: #87D700;">)</span>
+<span class="linenr">11: </span>    <span style="color: #5FD7FF;">}</span>
 <span class="linenr">12: </span>
 <span class="linenr">13: </span>    module.exports = greet
-<span class="linenr">14: </span>    <span style="color: #75715E;">// </span><span style="color: #75715E;">hello.js &#20195;&#30721;&#32467;&#26463;</span>
+<span class="linenr">14: </span>    <span style="color: #8B8878;">// </span><span style="color: #8B8878;">hello.js &#20195;&#30721;&#32467;&#26463;</span>
 <span class="linenr">15: </span>
-<span class="linenr">16: </span>    <span style="color: #F92672;">return</span> module.exports
-<span class="linenr">17: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">16: </span>    <span style="color: #FF1493;">return</span> module.exports
+<span class="linenr">17: </span><span style="color: #AF87FF;">}</span>
 <span class="linenr">18: </span>
-<span class="linenr">19: </span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">exported</span> = load<span style="color: #AE81FF;">(</span>moudle<span style="color: #AE81FF;">)</span>
+<span class="linenr">19: </span><span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">exported</span> = load<span style="color: #AF87FF;">(</span>moudle<span style="color: #AF87FF;">)</span>
 <span class="linenr">20: </span>
-<span class="linenr">21: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#20445;&#23384; module</span>
-<span class="linenr">22: </span>save<span style="color: #AE81FF;">(</span>module, exported<span style="color: #AE81FF;">)</span>
+<span class="linenr">21: </span><span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#20445;&#23384; module</span>
+<span class="linenr">22: </span>save<span style="color: #AF87FF;">(</span>module, exported<span style="color: #AF87FF;">)</span>
 </pre>
 </div>
 
@@ -326,19 +329,19 @@ Node 会把 <code>module</code> 变量保存到某个地方，i.e. Node 保存�
 </div>
 </div>
 
-<div id="outline-container-orgc6673c6" class="outline-3">
-<h3 id="orgc6673c6">exports 和 module.exports 的异同</h3>
-<div class="outline-text-3" id="text-orgc6673c6">
+<div id="outline-container-org0057af5" class="outline-3">
+<h3 id="org0057af5">exports 和 module.exports 的异同</h3>
+<div class="outline-text-3" id="text-org0057af5">
 <p>
 默认情况下，Node 准备的 <code>export</code> 变量和 <code>module.exports</code> 变量实际上是同一个变量，并且初始化为空对象 <code>{}</code> ，如此你就可以直接往里面加东西，如：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr">1: </span>exports.foo = <span style="color: #F92672;">function</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span> <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">'foo'</span> <span style="color: #AE81FF;">}</span>
-<span class="linenr">2: </span>exports.bar = <span style="color: #F92672;">function</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span> <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">'bar'</span> <span style="color: #AE81FF;">}</span>
+<pre class="src src-js"><span class="linenr">1: </span>exports.foo = <span style="color: #FF1493;">function</span><span style="color: #AF87FF;">()</span> <span style="color: #AF87FF;">{</span> <span style="color: #FF1493;">return</span> <span style="color: #CDC673;">'foo'</span> <span style="color: #AF87FF;">}</span>
+<span class="linenr">2: </span>exports.bar = <span style="color: #FF1493;">function</span><span style="color: #AF87FF;">()</span> <span style="color: #AF87FF;">{</span> <span style="color: #FF1493;">return</span> <span style="color: #CDC673;">'bar'</span> <span style="color: #AF87FF;">}</span>
 <span class="linenr">3: </span>
-<span class="linenr">4: </span>module.exports.foo = <span style="color: #F92672;">function</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span> <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">'foo'</span> <span style="color: #AE81FF;">}</span>
-<span class="linenr">5: </span>module.exports.bar = <span style="color: #F92672;">function</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span> <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">'bar'</span> <span style="color: #AE81FF;">}</span>
+<span class="linenr">4: </span>module.exports.foo = <span style="color: #FF1493;">function</span><span style="color: #AF87FF;">()</span> <span style="color: #AF87FF;">{</span> <span style="color: #FF1493;">return</span> <span style="color: #CDC673;">'foo'</span> <span style="color: #AF87FF;">}</span>
+<span class="linenr">5: </span>module.exports.bar = <span style="color: #FF1493;">function</span><span style="color: #AF87FF;">()</span> <span style="color: #AF87FF;">{</span> <span style="color: #FF1493;">return</span> <span style="color: #CDC673;">'bar'</span> <span style="color: #AF87FF;">}</span>
 </pre>
 </div>
 
@@ -347,8 +350,8 @@ Node 会把 <code>module</code> 变量保存到某个地方，i.e. Node 保存�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr">1: </span>module.exports = <span style="color: #F92672;">function</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span> <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">'foo'</span> <span style="color: #AE81FF;">}</span>; <span style="color: #75715E;">// </span><span style="color: #75715E;">&#10004;</span>
-<span class="linenr">2: </span>exports = <span style="color: #F92672;">function</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span> <span style="color: #F92672;">return</span> <span style="color: #E6DB74;">'foo};          // &#10008;</span>
+<pre class="src src-js"><span class="linenr">1: </span>module.exports = <span style="color: #FF1493;">function</span><span style="color: #AF87FF;">()</span> <span style="color: #AF87FF;">{</span> <span style="color: #FF1493;">return</span> <span style="color: #CDC673;">'foo'</span> <span style="color: #AF87FF;">}</span>; <span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#10004;</span>
+<span class="linenr">2: </span>exports = <span style="color: #FF1493;">function</span><span style="color: #AF87FF;">()</span> <span style="color: #AF87FF;">{</span> <span style="color: #FF1493;">return</span> <span style="color: #CDC673;">'foo};          // &#10008;</span>
 </pre>
 </div>
 
@@ -357,7 +360,7 @@ Node 会把 <code>module</code> 变量保存到某个地方，i.e. Node 保存�
 </p>
 
 <p>
-其实，从 <a href="#org13061c6">模块的输出 module.exports 如何实现 ↑</a> 章节的 <code>load</code> 加载函数中就可以知道，最终返回的只有 <code>module.exports</code> ！ <code>exports</code> 不过是指向 <code>module.exports</code> ，也就是说， <code>exports</code> 的内存地址中的值存储的是指向 <code>module.exports</code> 的指针， <code>module.exports</code> 中的值才是真正返回的对象。
+其实，从 <a href="#org8f44198">模块的输出 module.exports 如何实现 ↑</a> 章节的 <code>load</code> 加载函数中就可以知道，最终返回的只有 <code>module.exports</code> ！ <code>exports</code> 不过是指向 <code>module.exports</code> ，也就是说， <code>exports</code> 的内存地址中的值存储的是指向 <code>module.exports</code> 的指针， <code>module.exports</code> 中的值才是真正返回的对象。
 </p>
 
 <pre class="example">
@@ -377,9 +380,9 @@ otherObjectOne
 </div>
 </div>
 
-<div id="outline-container-orge0ceedc" class="outline-2">
-<h2 id="orge0ceedc">浏览器端模块化</h2>
-<div class="outline-text-2" id="text-orge0ceedc">
+<div id="outline-container-org76a4c91" class="outline-2">
+<h2 id="org76a4c91">浏览器端模块化</h2>
+<div class="outline-text-2" id="text-org76a4c91">
 <p>
 浏览器端，加载 JavaScript 文件的方式，是在文档头部插入 <code>&lt;script&gt;</code> 标签，但是脚本标签天生 <span class="underline">异步</span> ，传统的 CommonJS 模块在浏览器环境中就变成了 <span class="underline">普通的 <code>.js</code> 文件</span> &#x2013; 即没有避免全局变量污染，也没有解决依赖性。
 </p>
@@ -397,9 +400,9 @@ otherObjectOne
 </p>
 </div>
 
-<div id="outline-container-org877e7a5" class="outline-3">
-<h3 id="org877e7a5">AMD·RequireJS</h3>
-<div class="outline-text-3" id="text-org877e7a5">
+<div id="outline-container-org24f8592" class="outline-3">
+<h3 id="org24f8592">AMD·RequireJS</h3>
+<div class="outline-text-3" id="text-org24f8592">
 <p>
 → <a href="https://requirejs.org/">RequireJS</a>
 </p>
@@ -492,7 +495,7 @@ Proj
 </p>
 
 <div class="org-src-container">
-<pre class="src src-html"><span class="linenr">1: </span>&lt;<span style="color: #A6E22E;">scrpit</span> <span style="color: #FD971F;">data-main</span>=<span style="color: #E6DB74;">"./main"</span> <span style="color: #FD971F;">src</span>=<span style="color: #E6DB74;">"js/lib/require.js"</span> defer async&gt;&lt;/<span style="color: #A6E22E;">scrpit</span>&gt;
+<pre class="src src-html"><span class="linenr">1: </span>&lt;<span style="color: #87D700;">scrpit</span> <span style="color: #FF8C00;">data-main</span>=<span style="color: #CDC673;">"./main"</span> <span style="color: #FF8C00;">src</span>=<span style="color: #CDC673;">"js/lib/require.js"</span> defer async&gt;&lt;/<span style="color: #87D700;">scrpit</span>&gt;
 </pre>
 </div>
 
@@ -505,27 +508,27 @@ Proj
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr"> 1: </span>require.config<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span>
-<span class="linenr"> 2: </span>    baseUrl: <span style="color: #E6DB74;">'./js/'</span>,
-<span class="linenr"> 3: </span>    paths: <span style="color: #A6E22E;">{</span>
-<span class="linenr"> 4: </span>        <span style="color: #E6DB74;">'jquery'</span>: <span style="color: #E6DB74;">'lib/jquery'</span>
-<span class="linenr"> 5: </span>    <span style="color: #A6E22E;">}</span>
-<span class="linenr"> 6: </span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>;
+<pre class="src src-js"><span class="linenr"> 1: </span>require.config<span style="color: #AF87FF;">(</span><span style="color: #5FD7FF;">{</span>
+<span class="linenr"> 2: </span>    baseUrl: <span style="color: #CDC673;">'./js/'</span>,
+<span class="linenr"> 3: </span>    paths: <span style="color: #87D700;">{</span>
+<span class="linenr"> 4: </span>        <span style="color: #CDC673;">'jquery'</span>: <span style="color: #CDC673;">'lib/jquery'</span>
+<span class="linenr"> 5: </span>    <span style="color: #87D700;">}</span>
+<span class="linenr"> 6: </span><span style="color: #5FD7FF;">}</span><span style="color: #AF87FF;">)</span>;
 <span class="linenr"> 7: </span>
-<span class="linenr"> 8: </span>require<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">[</span><span style="color: #E6DB74;">'jquery'</span><span style="color: #66D9EF;">]</span>, <span style="color: #F92672;">function</span><span style="color: #66D9EF;">(</span><span style="color: #FD971F;">$</span><span style="color: #66D9EF;">)</span> <span style="color: #66D9EF;">{</span>
-<span class="linenr"> 9: </span>    <span style="color: #75715E;">// </span><span style="color: #75715E;">jquery &#8594; $</span>
-<span class="linenr">10: </span>    $<span style="color: #A6E22E;">(</span>document<span style="color: #A6E22E;">)</span>.ready<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">()</span> =&gt; <span style="color: #E6DB74;">{</span>
-<span class="linenr">11: </span>        console.log<span style="color: #FD971F;">(</span><span style="color: #E6DB74;">'Hello World.'</span><span style="color: #FD971F;">)</span>;
-<span class="linenr">12: </span>    <span style="color: #E6DB74;">}</span><span style="color: #A6E22E;">)</span>
-<span class="linenr">13: </span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>
+<span class="linenr"> 8: </span>require<span style="color: #AF87FF;">(</span><span style="color: #5FD7FF;">[</span><span style="color: #CDC673;">'jquery'</span><span style="color: #5FD7FF;">]</span>, <span style="color: #FF1493;">function</span><span style="color: #5FD7FF;">(</span><span style="color: #FF8C00;">$</span><span style="color: #5FD7FF;">)</span> <span style="color: #5FD7FF;">{</span>
+<span class="linenr"> 9: </span>    <span style="color: #8B8878;">// </span><span style="color: #8B8878;">jquery &#8594; $</span>
+<span class="linenr">10: </span>    $<span style="color: #87D700;">(</span>document<span style="color: #87D700;">)</span>.ready<span style="color: #87D700;">(</span><span style="color: #CDC673;">()</span> =&gt; <span style="color: #CDC673;">{</span>
+<span class="linenr">11: </span>        console.log<span style="color: #FF8C00;">(</span><span style="color: #CDC673;">'Hello World.'</span><span style="color: #FF8C00;">)</span>;
+<span class="linenr">12: </span>    <span style="color: #CDC673;">}</span><span style="color: #87D700;">)</span>
+<span class="linenr">13: </span><span style="color: #5FD7FF;">}</span><span style="color: #AF87FF;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0b4290e" class="outline-3">
-<h3 id="org0b4290e">CMD·SeaJS</h3>
-<div class="outline-text-3" id="text-org0b4290e">
+<div id="outline-container-orgbbfb0d7" class="outline-3">
+<h3 id="orgbbfb0d7">CMD·SeaJS</h3>
+<div class="outline-text-3" id="text-orgbbfb0d7">
 <p>
 → <a href="https://seajs.github.io/seajs/docs/">SeaJS</a>
 </p>
@@ -572,14 +575,14 @@ CMD 推崇 <span class="underline">就近依赖</span> ，只有在用到某个�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr">1: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; hello.js</span>
-<span class="linenr">2: </span>define<span style="color: #AE81FF;">(</span><span style="color: #F92672;">function</span><span style="color: #66D9EF;">(</span><span style="color: #FD971F;">require</span>, <span style="color: #FD971F;">exports</span>, <span style="color: #FD971F;">module</span><span style="color: #66D9EF;">)</span> <span style="color: #66D9EF;">{</span>
-<span class="linenr">3: </span>    <span style="color: #F92672;">var</span> <span style="color: #FD971F;">$</span> = require<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'jquery'</span><span style="color: #A6E22E;">)</span>;
+<pre class="src src-js"><span class="linenr">1: </span><span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#8594; hello.js</span>
+<span class="linenr">2: </span>define<span style="color: #AF87FF;">(</span><span style="color: #FF1493;">function</span><span style="color: #5FD7FF;">(</span><span style="color: #FF8C00;">require</span>, <span style="color: #FF8C00;">exports</span>, <span style="color: #FF8C00;">module</span><span style="color: #5FD7FF;">)</span> <span style="color: #5FD7FF;">{</span>
+<span class="linenr">3: </span>    <span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">$</span> = require<span style="color: #87D700;">(</span><span style="color: #CDC673;">'jquery'</span><span style="color: #87D700;">)</span>;
 <span class="linenr">4: </span>
-<span class="linenr">5: </span>    exports.sayHello = <span style="color: #F92672;">function</span><span style="color: #A6E22E;">()</span> <span style="color: #A6E22E;">{</span>
-<span class="linenr">6: </span>        $<span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">'#hello'</span><span style="color: #E6DB74;">)</span>.toogle<span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">'slow'</span><span style="color: #E6DB74;">)</span>;
-<span class="linenr">7: </span>    <span style="color: #A6E22E;">}</span>;
-<span class="linenr">8: </span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>;
+<span class="linenr">5: </span>    exports.sayHello = <span style="color: #FF1493;">function</span><span style="color: #87D700;">()</span> <span style="color: #87D700;">{</span>
+<span class="linenr">6: </span>        $<span style="color: #CDC673;">(</span><span style="color: #CDC673;">'#hello'</span><span style="color: #CDC673;">)</span>.toogle<span style="color: #CDC673;">(</span><span style="color: #CDC673;">'slow'</span><span style="color: #CDC673;">)</span>;
+<span class="linenr">7: </span>    <span style="color: #87D700;">}</span>;
+<span class="linenr">8: </span><span style="color: #5FD7FF;">}</span><span style="color: #AF87FF;">)</span>;
 </pre>
 </div>
 
@@ -588,15 +591,15 @@ CMD 推崇 <span class="underline">就近依赖</span> ，只有在用到某个�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr">1: </span>seajs.config<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">{</span>
-<span class="linenr">2: </span>    alias: <span style="color: #A6E22E;">{</span>
-<span class="linenr">3: </span>        <span style="color: #E6DB74;">'jquery'</span>: <span style="color: #E6DB74;">'http:/modules.seajs.org/jquery/1.7.2/jquery.js'</span>
-<span class="linenr">4: </span>    <span style="color: #A6E22E;">}</span>
-<span class="linenr">5: </span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>;
+<pre class="src src-js"><span class="linenr">1: </span>seajs.config<span style="color: #AF87FF;">(</span><span style="color: #5FD7FF;">{</span>
+<span class="linenr">2: </span>    alias: <span style="color: #87D700;">{</span>
+<span class="linenr">3: </span>        <span style="color: #CDC673;">'jquery'</span>: <span style="color: #CDC673;">'http:/modules.seajs.org/jquery/1.7.2/jquery.js'</span>
+<span class="linenr">4: </span>    <span style="color: #87D700;">}</span>
+<span class="linenr">5: </span><span style="color: #5FD7FF;">}</span><span style="color: #AF87FF;">)</span>;
 <span class="linenr">6: </span>
-<span class="linenr">7: </span>seajs.use<span style="color: #AE81FF;">(</span><span style="color: #66D9EF;">[</span><span style="color: #E6DB74;">'./hello'</span>, <span style="color: #E6DB74;">'jquery'</span><span style="color: #66D9EF;">]</span>, <span style="color: #F92672;">function</span><span style="color: #66D9EF;">(</span><span style="color: #FD971F;">hello</span>, <span style="color: #FD971F;">$</span><span style="color: #66D9EF;">)</span> <span style="color: #66D9EF;">{</span>
-<span class="linenr">8: </span>    $<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">'#beautiful-sea'</span><span style="color: #A6E22E;">)</span>.click<span style="color: #A6E22E;">(</span>hello.sayHello<span style="color: #A6E22E;">)</span>;
-<span class="linenr">9: </span><span style="color: #66D9EF;">}</span><span style="color: #AE81FF;">)</span>;
+<span class="linenr">7: </span>seajs.use<span style="color: #AF87FF;">(</span><span style="color: #5FD7FF;">[</span><span style="color: #CDC673;">'./hello'</span>, <span style="color: #CDC673;">'jquery'</span><span style="color: #5FD7FF;">]</span>, <span style="color: #FF1493;">function</span><span style="color: #5FD7FF;">(</span><span style="color: #FF8C00;">hello</span>, <span style="color: #FF8C00;">$</span><span style="color: #5FD7FF;">)</span> <span style="color: #5FD7FF;">{</span>
+<span class="linenr">8: </span>    $<span style="color: #87D700;">(</span><span style="color: #CDC673;">'#beautiful-sea'</span><span style="color: #87D700;">)</span>.click<span style="color: #87D700;">(</span>hello.sayHello<span style="color: #87D700;">)</span>;
+<span class="linenr">9: </span><span style="color: #5FD7FF;">}</span><span style="color: #AF87FF;">)</span>;
 </pre>
 </div>
 
@@ -623,9 +626,9 @@ CMD 加载完某个依赖模块后并不执行，只是下载而已，在所有�
 </div>
 </div>
 
-<div id="outline-container-org37d9418" class="outline-2">
-<h2 id="org37d9418">ES6 模块化<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h2>
-<div class="outline-text-2" id="text-org37d9418">
+<div id="outline-container-orgef45211" class="outline-2">
+<h2 id="orgef45211">ES6 模块化<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></h2>
+<div class="outline-text-2" id="text-orgef45211">
 <p>
 ES6 模块的设计思想是尽量的 <span class="underline">静态化</span> ，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。 CommondJS 和 AMD 模块，都只能在运行时确定这些东西。比如， CommonJS 模块就是对象，输入时必须查找对象属性。
 </p>
@@ -639,13 +642,13 @@ ES6 的模块化语法： <code>export</code> 命令用于规定模块的对外�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr">1: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#23450;&#20041;&#27169;&#22359; math.js</span>
-<span class="linenr">2: </span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">basicNum</span> = 0;
-<span class="linenr">3: </span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">add</span> = <span style="color: #F92672;">function</span><span style="color: #AE81FF;">(</span><span style="color: #FD971F;">a</span>, <span style="color: #FD971F;">b</span><span style="color: #AE81FF;">)</span> <span style="color: #AE81FF;">{</span>
-<span class="linenr">4: </span>    <span style="color: #F92672;">return</span> a + b;
-<span class="linenr">5: </span><span style="color: #AE81FF;">}</span>;
+<pre class="src src-js"><span class="linenr">1: </span><span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#23450;&#20041;&#27169;&#22359; math.js</span>
+<span class="linenr">2: </span><span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">basicNum</span> = 0;
+<span class="linenr">3: </span><span style="color: #FF1493;">var</span> <span style="color: #FF8C00;">add</span> = <span style="color: #FF1493;">function</span><span style="color: #AF87FF;">(</span><span style="color: #FF8C00;">a</span>, <span style="color: #FF8C00;">b</span><span style="color: #AF87FF;">)</span> <span style="color: #AF87FF;">{</span>
+<span class="linenr">4: </span>    <span style="color: #FF1493;">return</span> a + b;
+<span class="linenr">5: </span><span style="color: #AF87FF;">}</span>;
 <span class="linenr">6: </span>
-<span class="linenr">7: </span><span style="color: #F92672;">export</span> <span style="color: #AE81FF;">{</span>basicNum, add<span style="color: #AE81FF;">}</span>;
+<span class="linenr">7: </span><span style="color: #FF1493;">export</span> <span style="color: #AF87FF;">{</span>basicNum, add<span style="color: #AF87FF;">}</span>;
 </pre>
 </div>
 
@@ -654,12 +657,12 @@ ES6 的模块化语法： <code>export</code> 命令用于规定模块的对外�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr">1: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#24341;&#29992;&#27169;&#22359;</span>
-<span class="linenr">2: </span><span style="color: #F92672;">import</span> <span style="color: #AE81FF;">{</span> basicNum, add <span style="color: #AE81FF;">}</span> from <span style="color: #E6DB74;">'./math'</span>;
+<pre class="src src-js"><span class="linenr">1: </span><span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#24341;&#29992;&#27169;&#22359;</span>
+<span class="linenr">2: </span><span style="color: #FF1493;">import</span> <span style="color: #AF87FF;">{</span> basicNum, add <span style="color: #AF87FF;">}</span> from <span style="color: #CDC673;">'./math'</span>;
 <span class="linenr">3: </span>
-<span class="linenr">4: </span><span style="color: #F92672;">function</span> <span style="color: #A6E22E;">test</span><span style="color: #AE81FF;">(</span><span style="color: #FD971F;">ele</span><span style="color: #AE81FF;">)</span> <span style="color: #AE81FF;">{</span>
-<span class="linenr">5: </span>    ele.textContent = add<span style="color: #66D9EF;">(</span>99 + basicNum<span style="color: #66D9EF;">)</span>;
-<span class="linenr">6: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr">4: </span><span style="color: #FF1493;">function</span> <span style="color: #87D700;">test</span><span style="color: #AF87FF;">(</span><span style="color: #FF8C00;">ele</span><span style="color: #AF87FF;">)</span> <span style="color: #AF87FF;">{</span>
+<span class="linenr">5: </span>    ele.textContent = add<span style="color: #5FD7FF;">(</span>99 + basicNum<span style="color: #5FD7FF;">)</span>;
+<span class="linenr">6: </span><span style="color: #AF87FF;">}</span>
 </pre>
 </div>
 
@@ -668,10 +671,10 @@ ES6 的模块化语法： <code>export</code> 命令用于规定模块的对外�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr">1: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">export-default.js</span>
-<span class="linenr">2: </span><span style="color: #F92672;">export</span> <span style="color: #F92672;">default</span> <span style="color: #F92672;">function</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
-<span class="linenr">3: </span>    console.log<span style="color: #66D9EF;">(</span><span style="color: #E6DB74;">'Hello World'</span><span style="color: #66D9EF;">)</span>;
-<span class="linenr">4: </span><span style="color: #AE81FF;">}</span>
+<pre class="src src-js"><span class="linenr">1: </span><span style="color: #8B8878;">// </span><span style="color: #8B8878;">export-default.js</span>
+<span class="linenr">2: </span><span style="color: #FF1493;">export</span> <span style="color: #FF1493;">default</span> <span style="color: #FF1493;">function</span><span style="color: #AF87FF;">()</span> <span style="color: #AF87FF;">{</span>
+<span class="linenr">3: </span>    console.log<span style="color: #5FD7FF;">(</span><span style="color: #CDC673;">'Hello World'</span><span style="color: #5FD7FF;">)</span>;
+<span class="linenr">4: </span><span style="color: #AF87FF;">}</span>
 </pre>
 </div>
 
@@ -680,10 +683,10 @@ ES6 的模块化语法： <code>export</code> 命令用于规定模块的对外�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr">1: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">import-default.js</span>
-<span class="linenr">2: </span><span style="color: #F92672;">import</span> customName from <span style="color: #E6DB74;">'./export-default'</span>;
+<pre class="src src-js"><span class="linenr">1: </span><span style="color: #8B8878;">// </span><span style="color: #8B8878;">import-default.js</span>
+<span class="linenr">2: </span><span style="color: #FF1493;">import</span> customName from <span style="color: #CDC673;">'./export-default'</span>;
 <span class="linenr">3: </span>
-<span class="linenr">4: </span>customName<span style="color: #AE81FF;">()</span>;                   <span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; 'Hello World'</span>
+<span class="linenr">4: </span>customName<span style="color: #AF87FF;">()</span>;                   <span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#8594; 'Hello World'</span>
 </pre>
 </div>
 
@@ -704,19 +707,19 @@ ES6 的模块化语法： <code>export</code> 命令用于规定模块的对外�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">lib.js</span>
-<span class="linenr"> 2: </span><span style="color: #F92672;">export</span> <span style="color: #F92672;">let</span> <span style="color: #FD971F;">conuter</span> = 3;
-<span class="linenr"> 3: </span><span style="color: #F92672;">export</span> <span style="color: #F92672;">function</span> incCounter<span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
+<pre class="src src-js"><span class="linenr"> 1: </span><span style="color: #8B8878;">// </span><span style="color: #8B8878;">lib.js</span>
+<span class="linenr"> 2: </span><span style="color: #FF1493;">export</span> <span style="color: #FF1493;">let</span> <span style="color: #FF8C00;">conuter</span> = 3;
+<span class="linenr"> 3: </span><span style="color: #FF1493;">export</span> <span style="color: #FF1493;">function</span> incCounter<span style="color: #AF87FF;">()</span> <span style="color: #AF87FF;">{</span>
 <span class="linenr"> 4: </span>    counter++;
-<span class="linenr"> 5: </span><span style="color: #AE81FF;">}</span>
+<span class="linenr"> 5: </span><span style="color: #AF87FF;">}</span>
 <span class="linenr"> 6: </span>
-<span class="linenr"> 7: </span><span style="color: #75715E;">// </span><span style="color: #75715E;">&#22312; main.js &#20013;&#21152;&#36733; lib.js</span>
-<span class="linenr"> 8: </span><span style="color: #F92672;">import</span> <span style="color: #AE81FF;">{</span> counter, incCounter <span style="color: #AE81FF;">}</span> from <span style="color: #E6DB74;">'./lib'</span>;
+<span class="linenr"> 7: </span><span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#22312; main.js &#20013;&#21152;&#36733; lib.js</span>
+<span class="linenr"> 8: </span><span style="color: #FF1493;">import</span> <span style="color: #AF87FF;">{</span> counter, incCounter <span style="color: #AF87FF;">}</span> from <span style="color: #CDC673;">'./lib'</span>;
 <span class="linenr"> 9: </span>
-<span class="linenr">10: </span>console.log<span style="color: #AE81FF;">(</span>counter<span style="color: #AE81FF;">)</span>;           <span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; 3</span>
+<span class="linenr">10: </span>console.log<span style="color: #AF87FF;">(</span>counter<span style="color: #AF87FF;">)</span>;           <span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#8594; 3</span>
 <span class="linenr">11: </span>
-<span class="linenr">12: </span>incCounter<span style="color: #AE81FF;">()</span>;
-<span class="linenr">13: </span>console.log<span style="color: #AE81FF;">(</span>counter<span style="color: #AE81FF;">)</span>;           <span style="color: #75715E;">// </span><span style="color: #75715E;">&#8594; 4</span>
+<span class="linenr">12: </span>incCounter<span style="color: #AF87FF;">()</span>;
+<span class="linenr">13: </span>console.log<span style="color: #AF87FF;">(</span>counter<span style="color: #AF87FF;">)</span>;           <span style="color: #8B8878;">// </span><span style="color: #8B8878;">&#8594; 4</span>
 </pre>
 </div>
 
@@ -730,9 +733,9 @@ ES6 的模块化语法： <code>export</code> 命令用于规定模块的对外�
 </div>
 </div>
 
-<div id="outline-container-org81167e8" class="outline-2">
-<h2 id="org81167e8">总结</h2>
-<div class="outline-text-2" id="text-org81167e8">
+<div id="outline-container-org4cee149" class="outline-2">
+<h2 id="org4cee149">总结</h2>
+<div class="outline-text-2" id="text-org4cee149">
 <p>
 小结一下：
 </p>
@@ -749,10 +752,14 @@ ES6 的模块化语法： <code>export</code> 命令用于规定模块的对外�
 <div id="text-footnotes">
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-<a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1023027697415616">https://www.liaoxuefeng.com/wiki/1022910821149312/1023027697415616</a>
+<a href="https://www.cnblogs.com/dolphinX/p/4381855.html">https://www.cnblogs.com/dolphinX/p/4381855.html</a>
 </p></div></div>
 
 <div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1023027697415616">https://www.liaoxuefeng.com/wiki/1022910821149312/1023027697415616</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
 <a href="https://github.com/ljianshu/Blog/issues/48">https://github.com/ljianshu/Blog/issues/48</a>
 </p></div></div>
 
@@ -761,7 +768,7 @@ ES6 的模块化语法： <code>export</code> 命令用于规定模块的对外�
 <div id="postamble" class="status">
 <p class="date">Date: 2020-01-19 Sun 19:49</p>
 <p class="author">Author: Jack Liu</p>
-<p class="date">Created: 2020-06-14 Sun 15:56</p>
+<p class="date">Created: 2020-06-15 Mon 15:54</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

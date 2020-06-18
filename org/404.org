@@ -2,7 +2,7 @@
 #+DATE: <2019-12-28 Sat 23:28>
 #+TITLE: 404 Page
 
-[[https://www.rosecoder.com/images/bg/views.gif]]
+[[https://www.rosesor.com/images/bg/views.gif]]
 
 You got lost : )
 

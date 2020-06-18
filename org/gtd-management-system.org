@@ -6,7 +6,7 @@
 
 ** GTD
 
-详细了解 GTD 可以阅读 [[./get-things-done-zh.org][Get Things Done 中文版 ←]] 。
+详细了解 GTD 可以阅读 [[./get-things-done.org][Get Things Done ←]] 。
 
 #+BEGIN_EXPORT html
 <img

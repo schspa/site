@@ -2,7 +2,7 @@
 #+DATE: <2020-01-19 Sun 19:49>
 #+TITLE: Module Of Front End
 
-→ [[https://www.cnblogs.com/dolphinX/p/4381855.html][前端模块化]]
+** 序言
 
 1995 年 5 月， Brendan Eich 只用了 10 天，就设计完成了 JavaScript 的第一版，so 对于 JavaScript 的规范化，不要要求太多，比如，它早期根本没有考虑模块化……
 
@@ -10,7 +10,7 @@
 
 下面一起来看一下， JavaScript 模块化规范的血泪历程！
 
-** 模块化的基础
+** 模块化的基础[fn:3]
 
 _1. 函数封装_
 
@@ -474,6 +474,8 @@ _2. ES6 模块和 CommonJS 模块的差异_
 - ES6 在语言标准的层面上，实现了模块功能，而且实现得相当简单，完全可以取代 CommonJS 和 AMD 规范，成为浏览器和服务器通用的模块解决方案。
 
 * Footnotes
+
+[fn:3] https://www.cnblogs.com/dolphinX/p/4381855.html
 
 [fn:2] https://www.liaoxuefeng.com/wiki/1022910821149312/1023027697415616
 
