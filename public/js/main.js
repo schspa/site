@@ -19,6 +19,7 @@ let CARDPAGES = [
     'web-developer-roadmap',
     'java-developer-roadmap',
     'gtd-management-system',
+    'cs-classes',
 ];
 
 // Activate/Deactivate global card style
