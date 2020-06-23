@@ -21,6 +21,7 @@ A [[./org-to-site-tutor.org][pure site]] based on org mode.
 | [[./source-code-compile.org][Source Code Compile]] |
 | [[./document-style.org][Document Style]]      |
 | [[./cs-classes.org][CS Classes]]          |
+| [[./cs-tree.org][CS Tree]]             |
 
 | [[./gtd.org][GTD]]                   |
 |-----------------------|

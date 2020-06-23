@@ -365,7 +365,7 @@ th:last-child, td:last-child { border-right: rgba(255, 255, 255, 0); }
     transition: all .3s ease-in-out;
 }
 
-.js-outline-3:nth-child(even) { background-color: rgba(255, 255, 255, .2); }
+.js-outline-3:nth-child(even) { background-color: rgba(200, 200, 200, .1); }
 .js-outline-3:nth-child(odd)  { background-color: rgba(255, 255, 255, .5); }
 .js-outline-3:nth-child(odd) pre { border: 2px solid #ddd; }
 .js-outline-3:nth-child(odd) .js-code-src { z-index: 0; }
