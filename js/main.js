@@ -19,7 +19,7 @@ let CARDPAGES = [
     'web-developer-roadmap',
     'java-developer-roadmap',
     'gtd-management-system',
-    'cs-classes',
+    'thinking-in-computer-science',
 ];
 
 // Activate/Deactivate global card style

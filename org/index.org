@@ -12,21 +12,20 @@ A [[./org-to-site-tutor.org][pure site]] based on org mode.
 
 [[./nav.org][_Nav_]] ➭ [[./idea.org][_Idea_]] ➯ [[./wiki.org][_Wiki_]]
 
-| Misc                |
-|---------------------|
-| [[./tmux.org][Tmux]]                |
-| [[./wubi.org][WuBi Cheat Sheet]]    |
-| [[./xue-wubi.org][Learn WuBi]]          |
-| [[./manjaro-linux.org][Manjaro Linux]]       |
-| [[./source-code-compile.org][Source Code Compile]] |
-| [[./document-style.org][Document Style]]      |
-| [[./cs-classes.org][CS Classes]]          |
-| [[./cs-tree.org][CS Tree]]             |
+| Misc                         |
+|------------------------------|
+| [[./tmux.org][Tmux]]                         |
+| [[./wubi.org][WuBi Cheat Sheet]]             |
+| [[./xue-wubi.org][Learn WuBi]]                   |
+| [[./manjaro-linux.org][Manjaro Linux]]                |
+| [[./source-code-compile.org][Source Code Compile]]          |
+| [[./document-style.org][Document Style]]               |
+| [[./thinking-in-computer-science.org][Thinking in Computer Science]] |
 
 | [[./gtd.org][GTD]]                   |
 |-----------------------|
 | [[./get-things-done.org][Get Things Done]]       |
-| [[./gtd-management-system.org][GTD Management System]] |
+| [[./gtd-management-system.org][Gtd Management System]] |
 
 | Web                     |
 |-------------------------|
