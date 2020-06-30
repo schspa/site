@@ -21,6 +21,7 @@ A [[./org-to-site-tutor.org][pure site]] based on org mode.
 | [[./source-code-compile.org][Source Code Compile]]          |
 | [[./document-style.org][Document Style]]               |
 | [[./thinking-in-computer-science.org][Thinking in Computer Science]] |
+| [[./vue-cli-plus.org][Vue Cli Plus]]                 |
 
 | [[./gtd.org][GTD]]                   |
 |-----------------------|
