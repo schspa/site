@@ -2,113 +2,24 @@
 #+DATE: <2020-04-10 Fri 20:56>
 #+TITLE: Navigations
 
-| [[./index.org][Virgo]]          | [[http://fanyi.youdao.com/][有道翻译]]       | [[http://www.fhdq.net/][符号大全]]       | [[https://emacs-china.org/][Emacs China]]    | [[https://app.diagrams.net/][Draw]]       |
-| [[https://github.com/loveminimal][Github]]         | [[https://www.bilibili.com/][Bilibili]]       | [[https://www.youtube.com/][YouTube]]        | [[https://www.meijutt.tv/][天天美剧]]       | [[https://www.gushiwen.org/][古诗文网]]   |
-| [[https://www.crx4chrome.com/][Crx4Chrome]]     | [[https://www.zhihu.com/][知乎]]           | [[https://cloud.tencent.com/developer/labs][腾讯云]]         | [[https://cloud.huawei.com/home#/notepad/task/2f0739e3$ee3c$4049$8422$461c7e46d116/none][华为云]]         | [[http://www.etymon.cn/index.html][英语字根]]   |
-| [[http://www.cnpctest.com/rcyy900.htm][英语日常用语]]   | [[http://www.yinwang.org/][当然我在扯淡]]   | [[https://manateelazycat.github.io/index.html][ManateeLazyCat]] | [[https://www.liaoxuefeng.com/][廖雪峰]]         | [[http://www.ruanyifeng.com/blog/developer/][阮一峰]]     |
-| [[http://xahlee.org/][李杀网]]         | [[https://objcoding.com/][后端进阶]]       | [[http://smacs.github.io/][水木社区 Emacs]] | [[http://mashibing.com/][马士兵]]         | [[https://coolshell.cn/][酷壳]]       |
-| [[http://blog.udn.com/MengyuanWang/article][王孟源的部落格]] | [[https://code2048.com/][神秘的程序员们]] | [[https://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html][汤姆大叔的博客]] | [[http://www.lining0806.com/][宁哥的小站]]     |            |
-| [[https://bitsofco.de/][Bitsofco]]       | [[http://es6.ruanyifeng.com/][ES6 RYF]]        | [[http://www.runoob.com/][菜鸟教程]]       | [[https://man.linuxde.net/][Linux 命令大全]] |            |
-| [[http://www.softwhy.com/][蚂蚁部落]]       | [[http://www.bootcss.com/][BootCSS]]        | [[https://www.bootcdn.cn/][BootCDN]]        | [[https://www.interviewcake.com/data-structures-reference][Interview Cake]] |            |
-| [[https://learnxinyminutes.com/][Learn X in Y]]   | [[https://cn.vuejs.org/index.html][Vue Doc]]        | [[https://element.eleme.cn/#/zh-CN/component/installation][ElementUI]]      | [[https://www.antdv.com/docs/vue/introduce-cn/][Ant Design Vue]] | [[https://www.kancloud.cn/yunye/axios/234845][Axios]]      |
-| [[http://mockjs.com/examples.html][MockJS]]         | [[http://docs.form.xiaoyaoji.cn/][FormMaking]]     | [[https://www.bejson.com/ui/compress_img/][图压缩]]         |                |            |
-| [[https://daneden.github.io/animate.css/][AnimateCSS]]     | [[https://fontawesome.com/][FontAwesome]]    | [[http://www.iconfont.cn/][iconfont]]       | [[http://www.melpa.org/#/][Melpa]]          | [[https://vimawesome.com/][VimAwesome]] |
-| [[https://chocolatey.org/packages][Chocolatey]]     | [[http://tool.c7sky.com/webcolor/][Web Color]]      | [[https://pixabay.com/zh/][Pixabay]]        |                |            |
-| [[http://www.fonts.net.cn/][字体之家]]       | [[http://www.musictool.top/][音乐聚合]]       | [[https://theoldreader.com/][RSS]]            | [[http://www.nginx.cn/doc/][Nginx Doc]]      |            |
-| [[http://doc.norang.ca/org-mode.html][Org Mode Plain]] | [[https://geekinney.com/][Geenkinney]]     | [[https://blog.yiyuemo.com/][AngelDevil]]     | [[https://www.lijigang.com/][LiJigang]]       |            |
+| C/N  | A          | B        | C              | D        | E              |
+|------+------------+----------+----------------+----------+----------------|
+| 我的 | [[./index.org][Virgo]]      | [[https://www.bilibili.com/][Bilibili]] | [[https://emacs-china.org/][Emacs China]]    | [[https://github.com/loveminimal][Github]]   | [[https://www.zhihu.com/][知乎]]           |
+|      | [[https://cloud.huawei.com/home#/notepad/task/2f0739e3$ee3c$4049$8422$461c7e46d116/none][华为云]]     | [[https://cloud.tencent.com/developer/labs][腾讯云]]   | [[https://www.youtube.com/][YouTube]]        |          |                |
+|------+------------+----------+----------------+----------+----------------|
+| 工具 | [[http://fanyi.youdao.com/][有道翻译]]   | [[http://www.fhdq.net/][符号大全]] | [[https://www.bejson.com/ui/compress_img/][图压缩]]         | [[https://app.diagrams.net/][Draw]]     | [[https://man.linuxde.net/][Linux 命令大全]] |
+|      | [[http://tool.c7sky.com/webcolor/][Web Color]]  | [[https://pixabay.com/zh/][Pixabay]]  | [[http://www.fonts.net.cn/][字体之家]]       |          |                |
+|------+------------+----------+----------------+----------+----------------|
+| 娱乐 | [[http://www.etymon.cn/index.html][英语字根]]   |          | [[http://www.musictool.top/][音乐聚合]]       | [[https://www.meijutt.tv/][天天美剧]] | [[https://www.gushiwen.org/][古诗文网]]       |
+|------+------------+----------+----------------+----------+----------------|
+| 插件 | [[https://www.crx4chrome.com/][Crx4Chrome]] |          | [[https://vimawesome.com/][VimAwesome]]     | [[http://www.melpa.org/#/][Melpa]]    | [[https://chocolatey.org/packages][Chocolatey]]     |
+|------+------------+----------+----------------+----------+----------------|
+| 教程 | [[http://www.runoob.com/][菜鸟教程]]   | [[http://es6.ruanyifeng.com/][ES6]]      | [[https://www.liaoxuefeng.com/][廖雪峰]]         | [[http://www.softwhy.com/][蚂蚁部落]] | [[https://www.interviewcake.com/data-structures-reference][Interview Cake]] |
+|      | [[http://www.nginx.cn/doc/][Nginx Doc]]  |          |                |          |                |
+|------+------------+----------+----------------+----------+----------------|
+| 博客 | [[https://bitsofco.de/][Bitsofco]]   | [[http://www.ruanyifeng.com/blog/developer/][阮一峰]]   | [[http://www.yinwang.org/][当然我在扯淡]]   | [[http://xahlee.org/][李杀网]]   | [[https://coolshell.cn/][酷壳]]           |
+|      | [[https://geekinney.com/][Geenkinney]] | [[https://www.lijigang.com/][LiJigang]] | [[https://manateelazycat.github.io/index.html][ManateeLazyCat]] |          |                |
 
-*Bookmarks InboX*
+ *Bookmarks InboX*
 
-- *合抱之木，生于毫末；九层之台，起于累土；千里之行，始于足下。*
-- [[https://www.jianshu.com/p/dad014ab40ee][js 将图片转换为base64编码]]
-- [[https://www.jianshu.com/p/c894ea00dfec][使用require.context实现前端工程自动化]]
-- [[https://www.cnblogs.com/kainhuck/p/11608966.html][archlinux下安装mysql]]
-- [[https://juejin.im/post/5b8905456fb9a01a105966b4][彻底搞懂word-break、word-wrap、white-space]]
-- [[https://www.jianshu.com/p/2a3728cded4c?utm_campaign=maleskine&utm_content=note&utm_medium=reader_share&utm_source=weixin][JavaScript 中如何实现深度克隆]]
-- [[https://segmentfault.com/a/1190000011882933][简单说通过 CSS 实现文字渐变色的两种方式]]
-- [[https://kuanyui.github.io/2016/02/24/dynamic-scoping-and-lexical-scoping/][搞懂 Lexical scoping 與 Dynamic scoping 的差異與用途]]
-- [[https://www.zhangxinxu.com/wordpress/2010/01/css3-border-image][CSS3 border-image详解、应用及jQuery插件]]
-- [[https://segmentfault.com/a/1190000017007631][vue项目刷新当前页面]]
-- [[https://www.jianshu.com/p/bf862535dd30][关于css3中linear-gradient中的百分比]]
-- [[https://www.cnblogs.com/penghuwan/p/6665140.html][webpack流行的前端模块化工具webpack初探]]
-- [[https://blog.csdn.net/snsHL9db69ccu1aIKl9r/article/details/86610754][我经历过 Webpack 1、2、3、4 变迁后，深度拆解了Webpack]]
-- [[https://segmentfault.com/a/1190000010349749][webpack模块化原理-commonjs]]
-- [[https://www.cnblogs.com/RuMengkai/p/6667321.html][Gulp和Webpack对比 - 茹孟凯 - 博客园]]
-
-- [[https://blog.csdn.net/w390058785/article/details/80522383][ES6 中的 for of 用法]]
-- [[http://www.imooc.com/article/271863?block_id=tuijian_wz][JavaScript遍历器]]
-- [[http://www.codeceo.com/article/about-javascript-traversal.html][JavaScript 中的遍历详解]]
-- [[http://www.codeceo.com/article/javascript-traversal.html][JavaScript 各种遍历方式详解]]
-- [[https://webpack.docschina.org/guides/dependency-management/][Webpack 管理依赖]]
-
-- [[https://www.jianshu.com/p/bc6795ae0731][vue使用模拟数据接口mock.js和json-server]]
-- [[https://www.jianshu.com/p/7094c477207d][Vue实战（三）Mock服务JSON Server]]
-- [[https://www.cnblogs.com/steamed-twisted-roll/p/10823871.html][vue项目中使用mockjs+axios模拟后台数据返回]]
-- [[https://blog.csdn.net/qq_40323256/article/details/101916476][Vue-cli中用mockjs axios实现前后端分离]]
-- [[https://www.jianshu.com/p/c5568910e946][VUE项目中使用MOCK]]
-- [[https://www.jianshu.com/p/c894ea00dfec][使用require.context实现前端工程自动化 - 简书]]
-- [[https://blog.csdn.net/sd19871122/article/details/97391932][object对象keys(), values() entries()]]
-- [[http://mockjs.com/examples.html][数据模板定义]]
-- [[https://blog.csdn.net/vv_bug/article/details/84140536][前端入门之(axios解析)_JavaScript_vv_bug-CSDN博客]]
-- [[https://www.cnblogs.com/nogodie/p/9853660.html][vue中使用axios最详细教程 - 华猿 - 博客园]]
-- [[https://segmentfault.com/a/1190000013128858][vue全局使用axios的方法 - 个人文章 - SegmentFault 思否]]
-- [[https://www.jianshu.com/p/affdd9fa6a2a][vue中使用axios - 简书]]
-- [[https://www.cnblogs.com/jvziking/p/11474555.html][vue中引入mock.js - Hakuna__Matata - 博客园]]
-- [[https://www.jianshu.com/p/c5568910e946][VUE项目中使用MOCK - 简书]]
-- [[https://www.jianshu.com/p/8bc48f8fde75][ajax和axios、fetch的区别 - 简书]]
-- [[https://segmentfault.com/a/1190000012836882][Jquery ajax, Axios, Fetch区别之我见 - 汤姆C - SegmentFault 思否]]
-- [[https://www.cnblogs.com/daoket/p/10205084.html][axios.js 源码分析]]
-- [[https://cloud.tencent.com/developer/article/1483445][一步一步解析Axios源码，从入门到原理]]
-- [[https://github.com/ronffy/axios-tutorial][axios实例应用及源码剖析 - xhr篇 （走心教程）]]
-
-- [[https://cloud.tencent.com/developer/article/1618451][源码速读！一看就会、一写就废的 Promise 实现]]
-- [[https://www.jianshu.com/p/43de678e918a][Promise实现原理（附源码）]]
-- [[https://blog.csdn.net/java_faep/article/details/78082802][服务器端Session和客户端Session（和Cookie区别）]]
-- [[https://blog.csdn.net/JEFF_luyiduan/article/details/88890962][Axios（自定义配置新建一个 axios 实例并且封装起来）]]
-- [[https://jwt.io/introduction/][Introduction to JSON Web Tokens]]
-- [[https://blog.csdn.net/weixin_42873937/article/details/82460997][使用JWT实现单点登录（完全跨域方案）]]
-- [[https://www.cnblogs.com/cjsblog/p/9277677.html][认识 JWT]]
-- [[https://www.cnblogs.com/xuxinstyle/p/9675541.html][深入理解 Token]]
-- [[https://blog.csdn.net/GeniusXYT/article/details/100106204][从购买域名到nginx,flask搭建自己的网站]]
-- [[https://www.oschina.net/translate/serving-flask-with-nginx-on-ubuntu][在 Ubuntu 上使用 Nginx 部署 Flask 应用]]
-- [[https://www.jianshu.com/p/aed6b5204225][通过Nginx部署flask项目和静态站点]]
-- [[https://segmentfault.com/a/1190000012918535?utm_source=tag-newest][基于Linux环境搭建Nginx+uWSGI+Python框架方法介绍]]
-- [[https://www.cnblogs.com/chenhuabin/p/10118199.html][Python中 ~if __name__=='__main__':~ 理解与总结]]
-- [[https://www.jianshu.com/p/197bb7e9f7ca][微信小程序webview问题集锦]]
-- [[https://github.com/ronffy/axios-tutorial][axios实例应用及源码剖析 - xhr篇 （走心教程）]]
-- [[https://blog.csdn.net/qq_36042938/article/details/91981643][Vue 中如何定义全局的工具类]]
-- [[https://www.cnblogs.com/lvdabao/p/es6-promise-1.html][大白话讲解Promise（一） - 吕大豹 - 博客园]]
-- [[https://cloud.tencent.com/document/product/400/4143#2.-nginx-.E8.AF.81.E4.B9.A6.E9.83.A8.E7.BD.B2][SSL 证书 证书安装指引 - 操作指南 - 文档平台 - 腾讯云]]
-- [[https://www.cnblogs.com/xiekeli/p/5607107.html][基于Token的WEB后台认证机制 - 红心李 - 博客园]]
-- [[https://blog.csdn.net/haochangdi123/article/details/80274210][vue-cli详解 - 小毛驴的博客 - CSDN博客]]
-- [[https://www.cnblogs.com/xuxinstyle/p/9675541.html][深入理解token - 后知、后觉 - 博客园]]
-- [[https://www.jianshu.com/p/20e46dc1e9d1][浏览器滚动事件 - 简书]]
-- [[https://blog.csdn.net/u010404725/article/details/96508959][html遮罩实现 - 机智的豪哥专栏 - CSDN博客]]
-- [[http://lmbj.net/blog/static-site-search/][静态博客之站内搜索 · 老默笔记]]
-- [[https://www.jianshu.com/p/c7014c4bf272][网站分享插件 - 简书]]
-- [[https://www.cnblogs.com/boyuguoblog/p/7655066.html][用jquery实现楼层滚动对应导航高亮 - ＊小七儿＊ - 博客园]]
-- [[https://www.cnblogs.com/qdhxhz/p/8910174.html][nginx入门教程 - 雨点的名字 - 博客园]]
-- [[https://www.jianshu.com/p/b6a9ac892577][Web Storage API - 简书]]
-- [[https://www.w3cschool.cn/nginx/][Nginx 入门指南_w3cschool]]
-- [[https://www.jb51.net/css/672226.html][使用CSS实现逼真的水波纹点击效果_CSS教程_CSS_网页制作_脚本之家]]
-- [[http://www.sohu.com/a/305429048_661013][终于找到了一篇文章！通俗地讲解计算机工作原理_操作]]
-- [[https://www.cnblogs.com/yangguoe/p/9268315.html][工厂函数 - 前端极客 - 博客园]]
-- [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Command-Arguments.html][Prefix Command Arguments - GNU Emacs Lisp Reference Manual]]
-- [[https://blog.csdn.net/weixin_34289744/article/details/85183512][Vue CLI 3开发中屏蔽烦人的EsLint错误_weixin_34289744的博客-CSDN博客]]
-- [[https://www.cnblogs.com/dupd/p/7735450.html][优秀的基于VUE移动端UI框架合集 - 杜培东 - 博客园]]
-- [[http://www.ptbird.cn/vue-draggable-dragging.html][Vue 拖拽组件 vuedraggable 和 vue-dragging - Postbird - 招猫逗狗的开发者]]
-- [[https://blog.csdn.net/qq_32447321/article/details/79186824][让nginx上的静态网页在访问的时候没有html后缀;nginx rewrite规则]]
-- [[https://www.cnblogs.com/leomYili/p/6346526.html?utm_source=itdadao&utm_medium=referral][jsPlumb.jsAPI阅读笔记(官方文档翻译)]]
-- [[https://docs.jsplumbtoolkit.com/toolkit/current/index.html][jsPlumb Toolkit]]
-- [[https://www.runoob.com/jqueryui/api-draggable.html][jQuery UI API - 可拖拽小部件（Draggable Widget）]]
-- [[http://www.imooc.com/article/255176?block_id=tuijian_wz][jQuery+jsPlumb几个响应事件整理]]
-- [[https://blog.csdn.net/wang1006008051/article/details/78157325?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task][html中form表单的使用方法和介绍]]
-- [[https://www.cnblogs.com/baiyygynui/p/8463771.html][FormData 对象上传二进制文件]]
-- [[https://www.cnblogs.com/bonly-ge/p/9259322.html][FormData的使用以及用ajax提交的注意事项]]
-- [[https://scarletsky.github.io/2016/07/03/download-file-using-javascript/][如何用 JavaScript 下载文件]]
-- [[https://www.2cto.com/kf/201409/333401.html][一张图轻松搞懂javascript event对象的clientX,offsetX,screenX,pageX区别]]
-- [[http://www.uml.org.cn/zjjs/201805142.asp][详解REST架构风格]]
-- [[https://www.jianshu.com/p/d965c80fe901][实现拖拽列表-微信小程序]]
-- [[https://blog.csdn.net/Jason_A/article/details/86216247][H5图片上传实现（实现版）]]
-- [[https://www.jianshu.com/p/bc29f25f305c][在 emacs 中调用外部程序]]
-- [[https://blog.csdn.net/weixin_41646716/article/details/90069562][vue @click.native和@click.stop和@click.self]]
+- 合抱之木，生于毫末；九层之台，起于累土；千里之行，始于足下。

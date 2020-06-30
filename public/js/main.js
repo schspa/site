@@ -17,9 +17,6 @@ let CARDPAGES = [
     'idea', 'diary', 'joker', 'gtd', 'story',
     'wiki',
     'web-developer-roadmap',
-    'java-developer-roadmap',
-    'gtd-management-system',
-    'thinking-in-computer-science',
 ];
 
 // Activate/Deactivate global card style
@@ -270,7 +267,7 @@ $(document).ready(() => {
 
         // Bookmark tips
         $('#content p').addClass('js-nav-bookmarks')
-        let _bmLen = $('li').length,
+        let _bmLen = $('li').length - 1,
             _tip = '';
 
         _tip = _bmLen > 20 ? '（🔥太多了，赶快处理吧，亲！）' : '（😤状态还不错！）'
