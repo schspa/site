@@ -12,19 +12,19 @@ A [[./org-to-site-tutor.org][pure site]] based on org mode.
 
 [[./nav.org][_Nav_]] ➭ [[./idea.org][_Idea_]] ➯ [[./wiki.org][_Wiki_]]
 
-| Misc                         |
-|------------------------------|
-| [[./tmux.org][Tmux]]                         |
-| [[./manjaro-linux.org][Manjaro Linux]]                |
-| [[./source-code-compile.org][Source Code Compile]]          |
+| Misc                |
+|---------------------|
+| [[./tmux.org][Tmux]]                |
+| [[./manjaro-linux.org][Manjaro Linux]]       |
+| [[./source-code-compile.org][Source Code Compile]] |
 
 | GTD             |
 |-----------------|
 | [[./get-things-done.org][Get Things Done]] |
 
-| Web                     |
-|-------------------------|
-| [[./web-developer-roadmap.org][Web Developer Roadmap]]   |
+| Web                   |
+|-----------------------|
+| [[./web-developer-roadmap.org][Web Developer Roadmap]] |
 
 | 读书 |
 |------|
