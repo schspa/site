@@ -141,7 +141,7 @@ _#. 电路实现_
 #+BEGIN_EXPORT html
 <img
 src="/images/cs/integrated-circuit.jpg"
-width="50%"
+width="40%"
 style=""
 />
 #+END_EXPORT
@@ -167,3 +167,20 @@ _#. 函数库与操作系统_
 20 世纪 60 年代，随着计算机工业化的普及，计算机越来越多地被用作一个组织不同作业的处理，很快，能够自动安排作业时续和执行的特殊软件出现了，这些既控制硬件又负责作业时序安排的软件被称为 _操作系统_ 。
 
 在不断地完善中，操作系统又引入了时间共享机制 -- 并发。这使得多个不同用户可以“同时”地使用机器执行他们自己的程序，看起来像是每个人都有一部自己的计算机。操作系统控制的设备也在不断增加，其中之一便是硬盘，为此操作系统又引入了文件管理和目录管理（文件夹），大大简化了这类永久储存性设备的应用。最后，操作系统发展的最后一个步骤就是为程序提供标准图形用户界面，尽管没有什么技术原因表明操作系统必须得提供这些界面。
+** C 语言
+
+#+BEGIN_EXPORT html
+<img
+src="/images/cs/Ken_Thompson_and_Dennis_Ritchie--1973.jpg"
+width="36%"
+style=""
+/>
+#+END_EXPORT
+
+#+BEGIN_EXPORT html
+<img
+src="/images/cs/c-so-easy.jpg"
+width="60%"
+style=""
+/>
+#+END_EXPORT
