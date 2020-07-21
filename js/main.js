@@ -132,6 +132,8 @@ $(document).ready(() => {
     let _udate = $('#postamble .date')[1].innerText.substring(8)
     $('#postamble .date')[1].innerText = 'Updated: ' + _udate
 
+    // $('#postamble .date')[0].innerText = 'Created: ' + $('#postamble .date')[0].innerText.substring(5)
+
     // Listen mousewheel event
     // ---------------------------------
     // Firefox
