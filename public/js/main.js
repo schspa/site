@@ -129,7 +129,7 @@ $(document).ready(() => {
     // Customize page footer
     $('.validation').html('<a href="http://beian.miit.gov.cn" target="_blank">豫ICP备19025929号</a>');   // Update copyright.
     $('.timestamp-wrapper').parent().addClass('gtd-timestamp')
-    let _udate = $('#postamble .date')[1].innerText.split(':')[1]
+    let _udate = $('#postamble .date')[1].innerText.substring(8)
     $('#postamble .date')[1].innerText = 'Updated: ' + _udate
 
     // Listen mousewheel event
