@@ -107,6 +107,11 @@ $(document).ready(() => {
                     $(this).find('tbody').fadeToggle();
                 })
             }
+
+            // Show post counts of current category
+            let _len = $(this).parent().find('td').length
+            let _text = $(this).find('th').text()
+            $(this).find('th').html(`${_text} <span style="font-size: 12px; color: #ace; float: right;">(${_len})</span>`)
         })
 
         // Show/Hide wechat QRcode
