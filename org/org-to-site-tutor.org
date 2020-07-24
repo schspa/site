@@ -14,7 +14,7 @@ Emacs China 中的描述，比较散乱，这里整理一下。我尽量把所�
 
 _1. 预计更新_
 
-- [ ] 本地全局搜索功能；
+- [ ] 本地全局搜索功能（[[http://182.61.145.178:4000/][Hurricane's 实现]]）；
 - [ ] 添加 RSS 、sitemap 、robots.txt
 
 _2. 过往更新_
@@ -94,7 +94,7 @@ _2. 拷贝 Emacs 配置到你的配置中_
 
 Emacs 是一个强大的 _“编辑器”_ ，或者说 _“操作系统”_ ，它具备强大的可扩展性，拥有丰富的插件， Org Mode 便是其中的佼佼者。 Org Mode 拥有优秀的文本组织方式，并且可以输出多种文本格式，如 =.md= 、 =.txt= 、 =.html= 等。
 
-这个站点 [[https://www.rosecoder.com][Virgo]] 的生成方式其实很简单，灵感来自于多方面。感谢 [[https://github.com/fniessen/org-html-themes][org-html-themes]] 项目，Virgo 的生成和组织结构都借鉴了该项目。感谢 [[https://emacs-china.org/][Emacs China]] 社区的朋友，它们提供了许多不错的建议和指导。
+这个站点的生成方式其实很简单，灵感来自于多方面。感谢 [[https://github.com/fniessen/org-html-themes][org-html-themes]] 项目，Virgo 的生成和组织结构都借鉴了该项目。感谢 [[https://emacs-china.org/][Emacs China]] 社区的朋友，他们提供了许多不错的建议和指导。
 
 ** 文件组织方式
 
@@ -104,6 +104,10 @@ Emacs 是一个强大的 _“编辑器”_ ，或者说 _“操作系统”_ ，
   site
   |
   |-- org                         # .org 文件
+  |   |-- xxx.org
+  |
+  |-- assets                      # 其它静态文件
+  |   |-- doctor.mp3
   |
   |-- css                         # 样式文件，已配置
   |   |-- style.css
@@ -117,6 +121,8 @@ Emacs 是一个强大的 _“编辑器”_ ，或者说 _“操作系统”_ ，
   |
   |-- theme-rose.setup            # 头文件
   |
+  |-- xxx.sh                      # 可选的执行脚本，如 copy.sh、update.sh
+  |
   |-- public                      # 发布后生成的 .html 文件及静态文件
   |
   |-- ...
@@ -128,7 +134,7 @@ Emacs 是一个强大的 _“编辑器”_ ，或者说 _“操作系统”_ ，
 
 这样做有什么好处呢？
 
-在 Emacs 中比较容易跳转，并且同一份 Emacs 配置可以方便地跨平台使用。我在 Windows 上主要使用 =git-bash= ，直接运行 =cd= 命令的时候就会跳到这个目录，该目录  =C:\Users\jack\AppData\Roaming= 被称为漫游家目录。如此，当我切换到 Linux 上使用的时候，就免去了额外的跳转目录思考，在写一些公用脚本的时候也会方便许多。
+在 Windows 下，Emacs 的配置默认生效的目录就是 =C:\Users\jack\AppData\Roaming= ，该目录被称为漫游家目录。如此，将 site 文件夹也放在这个目录，就会有很多的好处，比如， =.emacs.d= 和 =site= 的相对位置是固定的，基于此你可以做一些定制化的便捷性操作（写一些操作脚本等），并且在切换到 Linux 上使用的时候，保持了操作行为的统一。
 
 ** Emacs 中的配置
 
@@ -158,7 +164,7 @@ Emacs 是一个强大的 _“编辑器”_ ，或者说 _“操作系统”_ ，
     (setq
      ;; org-html-doctype "html5"
      ;; org-export-default-language "ch"
-     user-full-name "Jack Liu"))
+     user-full-name "Jack Liu"))          ;; 将 "Jack Liu" 更换成你自己的的名称，网站脚注处的 Author 值
 #+END_SRC
 
 *** ox-publish
@@ -228,15 +234,22 @@ Emacs 是一个强大的 _“编辑器”_ ，或者说 _“操作系统”_ ，
              :recursive t
              :publishing-function org-publish-attachment
              )
+            ("webfonts"
+             :base-directory "~/site/webfonts/"
+             :base-extension "eot\\|svg\\|ttf\\|woff\\|woff2"
+             :publishing-directory "~/site/public/webfonts/"
+             :recursive t
+             :publishing-function org-publish-attachment
+             )
 
-            ("website" :components ("orgfiles" "js" "css" "images"))
-            ("statics" :components ("js" "css" "images" "assets"))
+            ("website" :components ("orgfiles" "js" "css" "images" "assets" "webfonts"))
+            ("statics" :components ("js" "css" "images" "assets" "webfonts"))
             )))
 #+END_SRC
 
 *** 默认输出设置
 
-Emacs 默认的 =ox-publish= 会输出一些默认格式，因为比价原生，我们把它禁止掉，只保留对于代码块的高亮。
+Emacs 默认的 =ox-publish= 会输出一些默认格式，因为比较原生，我们把它禁止掉，只保留对于代码块的高亮。
 
 #+BEGIN_SRC elisp -n
   (progn
