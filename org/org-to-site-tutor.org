@@ -490,7 +490,7 @@ _1. 添加当前 Repo 为新的远程库_
 
 - 执行 =git remote -v= ，展示当前仓库已经连接的远程库；
 - 执行 =git remote add virgo https://github.com/loveminimal/site.git= ，添加该远程库；
-- 再次执行 =git remore -v= ，检查是否添加成功。
+- 再次执行 =git remote -v= ，检查是否添加成功。
 
 _2. 在 bash 终端执行脚本_
 

@@ -1,6 +1,6 @@
 #+SETUPFILE: ../theme-rose.setup
 #+DATE: <2019-12-28 Sat 23:03>
-#+TITLE: Rosesor
+#+TITLE: Virgo
 
 # #+BEGIN_EXPORT html
 # <audio preload="metadata" autoplay>
