@@ -20,6 +20,14 @@ _1. 预计更新_
 _2. 过往更新_
 
 #+BEGIN_QUOTE
+- 新增批注样式，如右侧所示，使用方法见附录 [[*%E5%8F%B3%E4%BE%A7%E6%89%B9%E6%B3%A8%E6%A0%B7%E5%BC%8F][右侧批注样式 ↓]]（2020-07-27 Mon 11:01）
+
+#+BEGIN_EXPORT html
+<note>
+这就是批注喽，哈哈，可以充分利用右侧的空间。
+</note>
+#+END_EXPORT
+
 - 新增 =user.config.js= ，把一些配置项（微博、GitHub、Author 等），方便使用（2020-07-26 Sun 22:36）
 - 新增执行脚本 =copy.sh= ，用来在 Emacs 外部同步拷贝图片、JS、CSS 等资源文件（2020-05-29 Fri 21:04）
 - 新增一个执行脚本 =update.sh= ，原因详见 [[*%E5%85%B3%E4%BA%8E%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC][关于执行脚本 ↓]]  (2020-05-26 Tue 16:45)
@@ -36,12 +44,6 @@ _2. 过往更新_
 #+END_QUOTE
 
 ** 起步
-
-#+BEGIN_EXPORT html
-<note>
-这就是批注喽，哈哈，可以充分利用右侧的空间。
-</note>
-#+END_EXPORT
 
 #+BEGIN_QUOTE
 这个章节中，我们会叙述如何 _让项目先运行起来_ ，这才是主要的，不是吗？放心，我们会在后续章节中介绍细节。
@@ -512,3 +514,23 @@ _2. 在 bash 终端执行脚本_
 #+END_SRC
 
 放心，它会保存你的文章状态，并在拉取更新后恢复它。
+*** 右侧批注样式
+
+其实，使用很简单，我们把要加的批注写在 =<note>...</note>= 中就可以了，放心，在渲染的时候已经做好了处理，如下：
+
+#+BEGIN_EXPORT html
+<note>
+Tips：诸如此类经常需要插入的片段，可以尝试使用 abbr 或 yasnippets 哦，推荐后者 :)
+</note>
+#+END_EXPORT
+
+#+BEGIN_SRC html -n
+#+BEGIN_EXPORT html
+<note>
+这就是批注喽，哈哈，可以充分利用右侧的空间。
+</note>
+#+END_EXPORT
+#+END_SRC
+
+原理就是，在 Org Mode 中输出 HTML 片段，指定了自定义的标签 =<note>= （用来后续的 DOM 操作）。在浏览器渲染的过程中，无效的标签符并不会做为普通文本绘制出来，但其内的内容却可以。
+

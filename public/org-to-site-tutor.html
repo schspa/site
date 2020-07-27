@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2020-07-27 Mon 10:45 -->
+<!-- 2020-07-27 Mon 11:15 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Org To Site Tutor</title>
@@ -54,6 +54,7 @@
 <ul>
 <li><a href="#org47f49dd">网站功能图示</a></li>
 <li><a href="#org7c9f32c">关于执行脚本</a></li>
+<li><a href="#orgc0029fc">右侧批注样式</a></li>
 </ul>
 </li>
 </ul>
@@ -89,6 +90,14 @@ Emacs China 中的描述，比较散乱，这里整理一下。我尽量把所�
 
 <blockquote>
 <ul class="org-ul">
+<li>新增批注样式，如右侧所示，使用方法见附录 <a href="#orgc0029fc">右侧批注样式 ↓</a>（2020-07-27 Mon 11:01）</li>
+</ul>
+
+<note>
+这就是批注喽，哈哈，可以充分利用右侧的空间。
+</note>
+
+<ul class="org-ul">
 <li>新增 <code>user.config.js</code> ，把一些配置项（微博、GitHub、Author 等），方便使用（2020-07-26 Sun 22:36）</li>
 <li>新增执行脚本 <code>copy.sh</code> ，用来在 Emacs 外部同步拷贝图片、JS、CSS 等资源文件（2020-05-29 Fri 21:04）</li>
 <li>新增一个执行脚本 <code>update.sh</code> ，原因详见 <a href="#org7c9f32c">关于执行脚本 ↓</a>  (2020-05-26 Tue 16:45)</li>
@@ -110,10 +119,6 @@ Emacs China 中的描述，比较散乱，这里整理一下。我尽量把所�
 <div id="outline-container-org19adc28" class="outline-2">
 <h2 id="org19adc28">起步</h2>
 <div class="outline-text-2" id="text-org19adc28">
-<note>
-这就是批注喽，哈哈，可以充分利用右侧的空间。
-</note>
-
 <blockquote>
 <p>
 这个章节中，我们会叙述如何 <span class="underline">让项目先运行起来</span> ，这才是主要的，不是吗？放心，我们会在后续章节中介绍细节。
@@ -783,12 +788,37 @@ style="box-shadow: 3px 3px 5px #aaa; float: right;"
 </p>
 </div>
 </div>
+<div id="outline-container-orgc0029fc" class="outline-3">
+<h3 id="orgc0029fc">右侧批注样式</h3>
+<div class="outline-text-3" id="text-orgc0029fc">
+<p>
+其实，使用很简单，我们把要加的批注写在 <code>&lt;note&gt;...&lt;/note&gt;</code> 中就可以了，放心，在渲染的时候已经做好了处理，如下：
+</p>
+
+<note>
+Tips：诸如此类经常需要插入的片段，可以尝试使用 abbr 或 yasnippets 哦，推荐后者 :)
+</note>
+
+<div class="org-src-container">
+<pre class="src src-html"><span class="linenr">1: </span>#+BEGIN_EXPORT html
+<span class="linenr">2: </span>&lt;<span style="color: #87D700;">note</span>&gt;
+<span class="linenr">3: </span>&#36825;&#23601;&#26159;&#25209;&#27880;&#21949;&#65292;&#21704;&#21704;&#65292;&#21487;&#20197;&#20805;&#20998;&#21033;&#29992;&#21491;&#20391;&#30340;&#31354;&#38388;&#12290;
+<span class="linenr">4: </span>&lt;/<span style="color: #87D700;">note</span>&gt;
+<span class="linenr">5: </span>#+END_EXPORT
+</pre>
+</div>
+
+<p>
+原理就是，在 Org Mode 中输出 HTML 片段，指定了自定义的标签 <code>&lt;note&gt;</code> （用来后续的 DOM 操作）。在浏览器渲染的过程中，无效的标签符并不会做为普通文本绘制出来，但其内的内容却可以。
+</p>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2020-01-01 Wed 14:26</p>
 <p class="author">Author: Jack Liu</p>
-<p class="date">Created: 2020-07-27 Mon 10:45</p>
+<p class="date">Created: 2020-07-27 Mon 11:15</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

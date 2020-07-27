@@ -30,6 +30,7 @@ A [[./org-to-site-tutor.org][pure site]] based on org mode.
 |------|
 | [[./yi-jing.org][易经]] |
 | [[./lao-zi.org][老子]] |
+| [[./philosophy.org][哲学]] |
 
 #+BEGIN_EXPORT html
 <div class="me">
