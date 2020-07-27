@@ -126,6 +126,11 @@ $(document).ready(() => {
         // })
     }
 
+    // Customize annotations
+    $('note').each(function() {
+        $(this).addClass('js-note')
+    })
+
     // Customize contacts way
     $('.me .contact #weibo').attr('href', '//weibo.com/u/' + USERCONFIG.weibo)
     $('.me #wechat img').attr('src', '/images/' + USERCONFIG.wechat)

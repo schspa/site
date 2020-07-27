@@ -33,13 +33,14 @@ body, #content::before,#postamble::before { background: url('../images/bg/girl.j
     padding: 0 .16rem;
     line-height: 1.6;
     font-size: .16rem;
-    font-family: Monaco, Consolas, "kaiti";
+    /* font-family: Monaco, Consolas, "kaiti"; */
+    font-family: Consolas, "kaiti";
 
     /* overflow: hidden; */
 }
 
 /* Self annotations */
-note {
+.js-note {
     position: absolute;
     right: -30%;
     width: 30%;
@@ -49,10 +50,11 @@ note {
     padding: 6px;
     color: #666;
     box-sizing: border-box;
-    background-color: rgba(250, 250, 250, .9);
+    background-color: rgba(250, 250, 240, .9);
+    font-size: 14px;
 }
 
-note::before {
+.js-note::before {
     content: '☜';
     position: absolute;
     top: -36px;
@@ -462,6 +464,17 @@ th:last-child, td:last-child { border-right: rgba(255, 255, 255, 0); }
     body, #content::before, #postamble::before { background: url('../images/bg/rose.jpg') center center / cover no-repeat fixed; }
 
     #content, #postamble { width: 91%; }
+    #postamble::before,
+    #content::before {
+        width: 100%;
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        filter: blur(20px);
+        margin: -30px;
+        z-index: -1;
+    }
 
     .title {
         font-size: .28rem;
@@ -511,5 +524,11 @@ th:last-child, td:last-child { border-right: rgba(255, 255, 255, 0); }
         /* font-style: oblique; */
         font-size: .14rem;
         /* color: #666; */
+    }
+
+    .js-note,
+    .js-note::before {
+        position: initial;
+        float: right;
     }
 }
