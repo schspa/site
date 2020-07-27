@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2020-07-27 Mon 09:36 -->
+<!-- 2020-07-27 Mon 10:45 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Org To Site Tutor</title>
@@ -23,37 +23,37 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6637954">更新日志</a></li>
-<li><a href="#org55239ce">起步</a></li>
-<li><a href="#org1490593">简介</a></li>
-<li><a href="#org7d6357a">文件组织方式</a></li>
-<li><a href="#org699f414">Emacs 中的配置</a>
+<li><a href="#org37f492d">更新日志</a></li>
+<li><a href="#org19adc28">起步</a></li>
+<li><a href="#org5680f30">简介</a></li>
+<li><a href="#orgbebe47b">文件组织方式</a></li>
+<li><a href="#org6591a48">Emacs 中的配置</a>
 <ul>
-<li><a href="#org54634a0">htmlize</a></li>
-<li><a href="#orgefc2860">ox-html</a></li>
-<li><a href="#orgee53ea6">ox-publish</a></li>
-<li><a href="#orgf549b43">默认输出设置</a></li>
+<li><a href="#org26ea7af">htmlize</a></li>
+<li><a href="#orgda2538b">ox-html</a></li>
+<li><a href="#orgfa7c9bb">ox-publish</a></li>
+<li><a href="#org047ca0c">默认输出设置</a></li>
 </ul>
 </li>
-<li><a href="#orgaf1d3db">自定义函数</a>
+<li><a href="#org8a0e159">自定义函数</a>
 <ul>
-<li><a href="#orgb7d8c87">保存并输出页面</a></li>
-<li><a href="#org252a0ab">预览当前页面</a></li>
-<li><a href="#org4bb38e7">删除 Org 及 Html</a></li>
+<li><a href="#orga1fff42">保存并输出页面</a></li>
+<li><a href="#org600f5ac">预览当前页面</a></li>
+<li><a href="#org99a90a0">删除 Org 及 Html</a></li>
 </ul>
 </li>
-<li><a href="#org46ef656">自定义宏</a>
+<li><a href="#org06688cc">自定义宏</a>
 <ul>
-<li><a href="#org7e15760">删除当前文章</a></li>
+<li><a href="#org195e846">删除当前文章</a></li>
 </ul>
 </li>
-<li><a href="#org412fb17">自定义模式</a></li>
-<li><a href="#org268db66">图片</a></li>
-<li><a href="#org4332bb4">总结</a></li>
-<li><a href="#org4db0cec">附录</a>
+<li><a href="#orgb9c0188">自定义模式</a></li>
+<li><a href="#org067c28a">图片</a></li>
+<li><a href="#org8c9c60c">总结</a></li>
+<li><a href="#orgc5c1cad">附录</a>
 <ul>
-<li><a href="#org0623567">网站功能图示</a></li>
-<li><a href="#orgc18239e">关于执行脚本</a></li>
+<li><a href="#org47f49dd">网站功能图示</a></li>
+<li><a href="#org7c9f32c">关于执行脚本</a></li>
 </ul>
 </li>
 </ul>
@@ -61,10 +61,8 @@
 </div>
 <p>
 <a href="https://emacs-china.org/t/org-mode-site-v0-0-1/11409">→ 为什么会有这个页面呢？ :)</a>
-</p>
 
-<p>
-<b>如果你是第一次访问这个页面，强烈建议先跳转至附录的 <a href="#org0623567">网站功能图示 ↓</a> 章节，浏览一下站点的功能使用概要 :)</b>
+<b>如果你是第一次访问这个页面，强烈建议先跳转至附录的 <a href="#org47f49dd">网站功能图示 ↓</a> 章节，浏览一下站点的功能使用概要 :)</b>
 </p>
 
 <blockquote>
@@ -73,9 +71,9 @@ Emacs China 中的描述，比较散乱，这里整理一下。我尽量把所�
 </p>
 </blockquote>
 
-<div id="outline-container-org6637954" class="outline-2">
-<h2 id="org6637954">更新日志</h2>
-<div class="outline-text-2" id="text-org6637954">
+<div id="outline-container-org37f492d" class="outline-2">
+<h2 id="org37f492d">更新日志</h2>
+<div class="outline-text-2" id="text-org37f492d">
 <p>
 <span class="underline">1. 预计更新</span>
 </p>
@@ -93,7 +91,7 @@ Emacs China 中的描述，比较散乱，这里整理一下。我尽量把所�
 <ul class="org-ul">
 <li>新增 <code>user.config.js</code> ，把一些配置项（微博、GitHub、Author 等），方便使用（2020-07-26 Sun 22:36）</li>
 <li>新增执行脚本 <code>copy.sh</code> ，用来在 Emacs 外部同步拷贝图片、JS、CSS 等资源文件（2020-05-29 Fri 21:04）</li>
-<li>新增一个执行脚本 <code>update.sh</code> ，原因详见 <a href="#orgc18239e">关于执行脚本 ↓</a>  (2020-05-26 Tue 16:45)</li>
+<li>新增一个执行脚本 <code>update.sh</code> ，原因详见 <a href="#org7c9f32c">关于执行脚本 ↓</a>  (2020-05-26 Tue 16:45)</li>
 <li>双击代码块开始复制，10s 后自动恢复行号（原来的悬浮隐藏有的体验不好）（2020-05-17 Sun 13:04）</li>
 <li>激活毛玻璃风格（总看纯白色，有点腻歪了……）（2020-05-16 Sat 21:05）</li>
 <li>对带行号代码块的处理（复制时隐藏行号，确保复制内容只含代码）（2020-04-17 Fri 15:04）</li>
@@ -101,17 +99,17 @@ Emacs China 中的描述，比较散乱，这里整理一下。我尽量把所�
 <li>调整 <a href="./idea.html">IDEA 页面 ←</a> 样式（2020-04-04 Sat 02:36）</li>
 <li>本地化依赖库，实现点击查看页面全屏尺寸图片（2020-04-03 Fri 21:58）</li>
 <li>显示当前代码块类型（2020-04-02 Thu 15:02）</li>
-<li>添加 <a href="#org0623567">网站功能图示 ↓</a> (2020-03-27 Fri 19:49)</li>
-<li>录制 <a href="#org7e15760">删除当前文章的宏 ↓</a> （2020-03-22 Sun 18:55）</li>
+<li>添加 <a href="#org47f49dd">网站功能图示 ↓</a> (2020-03-27 Fri 19:49)</li>
+<li>录制 <a href="#org195e846">删除当前文章的宏 ↓</a> （2020-03-22 Sun 18:55）</li>
 <li><a href="https://www.bilibili.com/video/av90738660">视频闲聊这个项目</a> （2020-03-04 Wed 22:46）</li>
 </ul>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org55239ce" class="outline-2">
-<h2 id="org55239ce">起步</h2>
-<div class="outline-text-2" id="text-org55239ce">
+<div id="outline-container-org19adc28" class="outline-2">
+<h2 id="org19adc28">起步</h2>
+<div class="outline-text-2" id="text-org19adc28">
 <note>
 这就是批注喽，哈哈，可以充分利用右侧的空间。
 </note>
@@ -127,14 +125,14 @@ Emacs China 中的描述，比较散乱，这里整理一下。我尽量把所�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#36827;&#20837;&#23478;&#30446;&#24405;</span>
-<span class="linenr">2: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#8594; Windows</span>
-<span class="linenr">3: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">C:\Users\&lt;&#29992;&#25143;&#21517;&gt;\AppData\Roaming\site</span>
-<span class="linenr">4: </span><span style="color: #F92672;">cd</span> C:\Users\jack\AppData\Roaming
-<span class="linenr">5: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#8594; Gnu/linux &amp; MacOS</span>
-<span class="linenr">6: </span><span style="color: #F92672;">cd</span> ~
+<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#36827;&#20837;&#23478;&#30446;&#24405;</span>
+<span class="linenr">2: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#8594; Windows</span>
+<span class="linenr">3: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">C:\Users\&lt;&#29992;&#25143;&#21517;&gt;\AppData\Roaming\site</span>
+<span class="linenr">4: </span><span style="color: #FF1493;">cd</span> C:\Users\jack\AppData\Roaming
+<span class="linenr">5: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#8594; Gnu/linux &amp; MacOS</span>
+<span class="linenr">6: </span><span style="color: #FF1493;">cd</span> ~
 <span class="linenr">7: </span>
-<span class="linenr">8: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#20811;&#38534;&#39033;&#30446;&#21040;&#23478;&#30446;&#24405;</span>
+<span class="linenr">8: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#20811;&#38534;&#39033;&#30446;&#21040;&#23478;&#30446;&#24405;</span>
 <span class="linenr">9: </span>git clone https://github.com/loveminimal/site.git site
 </pre>
 </div>
@@ -151,7 +149,7 @@ Emacs China 中的描述，比较散乱，这里整理一下。我尽量把所�
 </blockquote>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#20811;&#38534; Emacs &#37197;&#32622;&#21040;&#23478;&#30446;&#24405;</span>
+<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#20811;&#38534; Emacs &#37197;&#32622;&#21040;&#23478;&#30446;&#24405;</span>
 <span class="linenr">2: </span>git clone https://github.com/loveminimal/emacs.d.git .emacs.d
 </pre>
 </div>
@@ -173,12 +171,12 @@ Emacs China 中的描述，比较散乱，这里整理一下。我尽量把所�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">unless</span> <span style="color: #66D9EF;">(</span>package-installed-p 'use-package<span style="color: #66D9EF;">)</span>
-<span class="linenr">2: </span>  <span style="color: #66D9EF;">(</span>package-refresh-contents<span style="color: #66D9EF;">)</span>
-<span class="linenr">3: </span>  <span style="color: #66D9EF;">(</span>package-install 'use-package<span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">unless</span> <span style="color: #5FD7FF;">(</span>package-installed-p 'use-package<span style="color: #5FD7FF;">)</span>
+<span class="linenr">2: </span>  <span style="color: #5FD7FF;">(</span>package-refresh-contents<span style="color: #5FD7FF;">)</span>
+<span class="linenr">3: </span>  <span style="color: #5FD7FF;">(</span>package-install 'use-package<span style="color: #5FD7FF;">)</span><span style="color: #AF87FF;">)</span>
 <span class="linenr">4: </span>
-<span class="linenr">5: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">eval-when-compile</span>
-<span class="linenr">6: </span>  <span style="color: #66D9EF;">(</span><span style="color: #F92672;">require</span> '<span style="color: #AE81FF;">use-package</span><span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">5: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">eval-when-compile</span>
+<span class="linenr">6: </span>  <span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">require</span> '<span style="color: #AF87FF;">use-package</span><span style="color: #5FD7FF;">)</span><span style="color: #AF87FF;">)</span>
 </pre>
 </div>
 
@@ -196,9 +194,9 @@ Emacs China 中的描述，比较散乱，这里整理一下。我尽量把所�
 </div>
 </div>
 
-<div id="outline-container-org1490593" class="outline-2">
-<h2 id="org1490593">简介</h2>
-<div class="outline-text-2" id="text-org1490593">
+<div id="outline-container-org5680f30" class="outline-2">
+<h2 id="org5680f30">简介</h2>
+<div class="outline-text-2" id="text-org5680f30">
 <p>
 本文旨在介绍如何利用 <code>org-publish</code> 把 <code>.org</code> 文件生成为 <code>.html</code> ，以及如何解决静态文件（主要是图片）的缩放问题。
 </p>
@@ -213,9 +211,9 @@ Emacs 是一个强大的 <span class="underline">“编辑器”</span> ，或�
 </div>
 </div>
 
-<div id="outline-container-org7d6357a" class="outline-2">
-<h2 id="org7d6357a">文件组织方式</h2>
-<div class="outline-text-2" id="text-org7d6357a">
+<div id="outline-container-orgbebe47b" class="outline-2">
+<h2 id="orgbebe47b">文件组织方式</h2>
+<div class="outline-text-2" id="text-orgbebe47b">
 <p>
 <a href="https://github.com/loveminimal/site">→ loveminimal/site</a>
 </p>
@@ -266,9 +264,9 @@ site
 </div>
 </div>
 
-<div id="outline-container-org699f414" class="outline-2">
-<h2 id="org699f414">Emacs 中的配置</h2>
-<div class="outline-text-2" id="text-org699f414">
+<div id="outline-container-org6591a48" class="outline-2">
+<h2 id="org6591a48">Emacs 中的配置</h2>
+<div class="outline-text-2" id="text-org6591a48">
 <blockquote>
 <p>
 目前，并没有把在 Emacs 中的配置，组织成插件，比较分散，这个主题用来介绍 Virgo 站点生成所需要的配置。
@@ -280,180 +278,180 @@ site
 </p>
 </div>
 
-<div id="outline-container-org54634a0" class="outline-3">
-<h3 id="org54634a0">htmlize</h3>
-<div class="outline-text-3" id="text-org54634a0">
+<div id="outline-container-org26ea7af" class="outline-3">
+<h3 id="org26ea7af">htmlize</h3>
+<div class="outline-text-3" id="text-org26ea7af">
 <p>
 该插件用来转换并打开生成的 <code>.html</code> 文件。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">use-package</span> <span style="color: #AE81FF;">htmlize</span>
-<span class="linenr">2: </span>  <span style="color: #F92672;">:ensure</span> t
-<span class="linenr">3: </span>  <span style="color: #75715E;">;; </span><span style="color: #75715E;">:config</span>
-<span class="linenr">4: </span>  <span style="color: #75715E;">;; </span><span style="color: #75715E;">(setq htmlize-output-type 'font)</span>
-<span class="linenr">5: </span>  <span style="color: #AE81FF;">)</span>
+<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">use-package</span> <span style="color: #AF87FF;">htmlize</span>
+<span class="linenr">2: </span>  <span style="color: #FF1493;">:ensure</span> t
+<span class="linenr">3: </span>  <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">:config</span>
+<span class="linenr">4: </span>  <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">(setq htmlize-output-type 'font)</span>
+<span class="linenr">5: </span>  <span style="color: #AF87FF;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgefc2860" class="outline-3">
-<h3 id="orgefc2860">ox-html</h3>
-<div class="outline-text-3" id="text-orgefc2860">
+<div id="outline-container-orgda2538b" class="outline-3">
+<h3 id="orgda2538b">ox-html</h3>
+<div class="outline-text-3" id="text-orgda2538b">
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">use-package</span> <span style="color: #AE81FF;">ox-html</span>
-<span class="linenr">2: </span>  <span style="color: #F92672;">:config</span>
-<span class="linenr">3: </span>  <span style="color: #66D9EF;">(</span><span style="color: #F92672;">setq</span>
-<span class="linenr">4: </span>   <span style="color: #75715E;">;; </span><span style="color: #75715E;">org-html-doctype "html5"</span>
-<span class="linenr">5: </span>   <span style="color: #75715E;">;; </span><span style="color: #75715E;">org-export-default-language "ch"</span>
-<span class="linenr">6: </span>   user-full-name <span style="color: #E6DB74;">"Jack Liu"</span><span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>          <span style="color: #75715E;">;; </span><span style="color: #75715E;">&#23558; "Jack Liu" &#26356;&#25442;&#25104;&#20320;&#33258;&#24049;&#30340;&#30340;&#21517;&#31216;&#65292;&#32593;&#31449;&#33050;&#27880;&#22788;&#30340; Author &#20540;</span>
+<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">use-package</span> <span style="color: #AF87FF;">ox-html</span>
+<span class="linenr">2: </span>  <span style="color: #FF1493;">:config</span>
+<span class="linenr">3: </span>  <span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">setq</span>
+<span class="linenr">4: </span>   <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">org-html-doctype "html5"</span>
+<span class="linenr">5: </span>   <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">org-export-default-language "ch"</span>
+<span class="linenr">6: </span>   user-full-name <span style="color: #CDC673;">"Jack Liu"</span><span style="color: #5FD7FF;">)</span><span style="color: #AF87FF;">)</span>          <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">&#23558; "Jack Liu" &#26356;&#25442;&#25104;&#20320;&#33258;&#24049;&#30340;&#30340;&#21517;&#31216;&#65292;&#32593;&#31449;&#33050;&#27880;&#22788;&#30340; Author &#20540;</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgee53ea6" class="outline-3">
-<h3 id="orgee53ea6">ox-publish</h3>
-<div class="outline-text-3" id="text-orgee53ea6">
+<div id="outline-container-orgfa7c9bb" class="outline-3">
+<h3 id="orgfa7c9bb">ox-publish</h3>
+<div class="outline-text-3" id="text-orgfa7c9bb">
 <p>
 这个是 Emacs 中内置的输出功能，它也是 Virgo 站点生成的核心所在。为了不让大家感到困扰，我把 Virgo 没有用到的一些配置代码全部删除了，如果你想了解更多可以查看 <a href="https://github.com/loveminimal/emacs.d/blob/master/lisp/init-orgs.el">init-orgs.el</a> 文件。强烈建议按照默认的配置使用，等熟悉之后再自定义。
 </p>
 
 <p>
-如 <a href="#org7d6357a">↑ 文件组织方式</a> 所述，把 <code>site</code> 文件夹放在家目录，配置中设置 <code>:base-directory</code> 等时设置目录比较方便。
+如 <a href="#orgbebe47b">↑ 文件组织方式</a> 所述，把 <code>site</code> 文件夹放在家目录，配置中设置 <code>:base-directory</code> 等时设置目录比较方便。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="linenr"> 1: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">use-package</span> <span style="color: #AE81FF;">ox-publish</span>
-<span class="linenr"> 2: </span>  <span style="color: #F92672;">:config</span>
+<pre class="src src-elisp"><span class="linenr"> 1: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">use-package</span> <span style="color: #AF87FF;">ox-publish</span>
+<span class="linenr"> 2: </span>  <span style="color: #FF1493;">:config</span>
 <span class="linenr"> 3: </span>
-<span class="linenr"> 4: </span>  <span style="color: #66D9EF;">(</span><span style="color: #F92672;">setq</span> org-publish-project-alist
-<span class="linenr"> 5: </span>        '<span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">"orgfiles"</span>
-<span class="linenr"> 6: </span>           <span style="color: #75715E;">;; </span><span style="color: #75715E;">; Sources and destinations for files.</span>
-<span class="linenr"> 7: </span>           <span style="color: #F92672;">:base-directory</span> <span style="color: #E6DB74;">"~/site/org/"</span>          <span style="color: #75715E;">;; </span><span style="color: #75715E;">** &#28304;  .org &#25991;&#20214;&#25918;&#32622;&#30340;&#30446;&#24405;</span>
-<span class="linenr"> 8: </span>           <span style="color: #F92672;">:publishing-directory</span> <span style="color: #E6DB74;">"~/site/public/"</span> <span style="color: #75715E;">;; </span><span style="color: #75715E;">** &#29983;&#25104;&#30340;&#31449;&#28857;&#25991;&#20214;&#25918;&#32622;&#30340;&#30446;&#24405;</span>
-<span class="linenr"> 9: </span>           <span style="color: #75715E;">;; </span><span style="color: #75715E;">; Selecting files</span>
-<span class="linenr">10: </span>           <span style="color: #F92672;">:base-extension</span> <span style="color: #E6DB74;">"org"</span>
-<span class="linenr">11: </span>           <span style="color: #F92672;">:recursive</span> t
-<span class="linenr">12: </span>           <span style="color: #75715E;">;; </span><span style="color: #75715E;">; Publishing action</span>
-<span class="linenr">13: </span>           <span style="color: #F92672;">:publishing-function</span> org-html-publish-to-html
+<span class="linenr"> 4: </span>  <span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">setq</span> org-publish-project-alist
+<span class="linenr"> 5: </span>        '<span style="color: #87D700;">(</span><span style="color: #CDC673;">(</span><span style="color: #CDC673;">"orgfiles"</span>
+<span class="linenr"> 6: </span>           <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">; Sources and destinations for files.</span>
+<span class="linenr"> 7: </span>           <span style="color: #FF1493;">:base-directory</span> <span style="color: #CDC673;">"~/site/org/"</span>          <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">** &#28304;  .org &#25991;&#20214;&#25918;&#32622;&#30340;&#30446;&#24405;</span>
+<span class="linenr"> 8: </span>           <span style="color: #FF1493;">:publishing-directory</span> <span style="color: #CDC673;">"~/site/public/"</span> <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">** &#29983;&#25104;&#30340;&#31449;&#28857;&#25991;&#20214;&#25918;&#32622;&#30340;&#30446;&#24405;</span>
+<span class="linenr"> 9: </span>           <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">; Selecting files</span>
+<span class="linenr">10: </span>           <span style="color: #FF1493;">:base-extension</span> <span style="color: #CDC673;">"org"</span>
+<span class="linenr">11: </span>           <span style="color: #FF1493;">:recursive</span> t
+<span class="linenr">12: </span>           <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">; Publishing action</span>
+<span class="linenr">13: </span>           <span style="color: #FF1493;">:publishing-function</span> org-html-publish-to-html
 <span class="linenr">14: </span>
-<span class="linenr">15: </span>           <span style="color: #75715E;">;; </span><span style="color: #75715E;">;;; Options for the exporters</span>
+<span class="linenr">15: </span>           <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">;;; Options for the exporters</span>
 <span class="linenr">16: </span>
-<span class="linenr">17: </span>           <span style="color: #75715E;">;; </span><span style="color: #75715E;">; Generic properties</span>
-<span class="linenr">18: </span>           <span style="color: #F92672;">:headline-levels</span> 4
-<span class="linenr">19: </span>           <span style="color: #F92672;">:section-numbers</span> nil
-<span class="linenr">20: </span>           <span style="color: #F92672;">:with-author</span> <span style="color: #E6DB74;">"Jack Liu"</span>                <span style="color: #75715E;">;; </span><span style="color: #75715E;">** &#31449;&#28857;&#25317;&#26377;&#32773;&#21517;&#31216;</span>
-<span class="linenr">21: </span>           <span style="color: #F92672;">:with-priority</span> t
-<span class="linenr">22: </span>           <span style="color: #F92672;">:with-toc</span> t
+<span class="linenr">17: </span>           <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">; Generic properties</span>
+<span class="linenr">18: </span>           <span style="color: #FF1493;">:headline-levels</span> 4
+<span class="linenr">19: </span>           <span style="color: #FF1493;">:section-numbers</span> nil
+<span class="linenr">20: </span>           <span style="color: #FF1493;">:with-author</span> <span style="color: #CDC673;">"Jack Liu"</span>                <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">** &#31449;&#28857;&#25317;&#26377;&#32773;&#21517;&#31216;</span>
+<span class="linenr">21: </span>           <span style="color: #FF1493;">:with-priority</span> t
+<span class="linenr">22: </span>           <span style="color: #FF1493;">:with-toc</span> t
 <span class="linenr">23: </span>
-<span class="linenr">24: </span>           <span style="color: #75715E;">;; </span><span style="color: #75715E;">; HTML specific properties</span>
-<span class="linenr">25: </span>           <span style="color: #F92672;">:html-doctype</span> <span style="color: #E6DB74;">"html5"</span>
+<span class="linenr">24: </span>           <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">; HTML specific properties</span>
+<span class="linenr">25: </span>           <span style="color: #FF1493;">:html-doctype</span> <span style="color: #CDC673;">"html5"</span>
 <span class="linenr">26: </span>
-<span class="linenr">27: </span>           <span style="color: #75715E;">;; </span><span style="color: #75715E;">; Other options</span>
-<span class="linenr">28: </span>           <span style="color: #F92672;">:table-of-contents</span> t
-<span class="linenr">29: </span>           <span style="color: #E6DB74;">)</span>
+<span class="linenr">27: </span>           <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">; Other options</span>
+<span class="linenr">28: </span>           <span style="color: #FF1493;">:table-of-contents</span> t
+<span class="linenr">29: </span>           <span style="color: #CDC673;">)</span>
 <span class="linenr">30: </span>
-<span class="linenr">31: </span>          <span style="color: #75715E;">;; </span><span style="color: #75715E;">static assets</span>
-<span class="linenr">32: </span>          <span style="color: #75715E;">;; </span><span style="color: #75715E;">&#38745;&#24577;&#25991;&#20214;&#36755;&#20986;&#35774;&#32622;</span>
-<span class="linenr">33: </span>          <span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">"js"</span>
-<span class="linenr">34: </span>           <span style="color: #F92672;">:base-directory</span> <span style="color: #E6DB74;">"~/site/js/"</span>
-<span class="linenr">35: </span>           <span style="color: #F92672;">:base-extension</span> <span style="color: #E6DB74;">"js"</span>
-<span class="linenr">36: </span>           <span style="color: #F92672;">:publishing-directory</span> <span style="color: #E6DB74;">"~/site/public/js/"</span>
-<span class="linenr">37: </span>           <span style="color: #F92672;">:recursive</span> t
-<span class="linenr">38: </span>           <span style="color: #F92672;">:publishing-function</span> org-publish-attachment
-<span class="linenr">39: </span>           <span style="color: #E6DB74;">)</span>
-<span class="linenr">40: </span>          <span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">"css"</span>
-<span class="linenr">41: </span>           <span style="color: #F92672;">:base-directory</span> <span style="color: #E6DB74;">"~/site/css/"</span>
-<span class="linenr">42: </span>           <span style="color: #F92672;">:base-extension</span> <span style="color: #E6DB74;">"css"</span>
-<span class="linenr">43: </span>           <span style="color: #F92672;">:publishing-directory</span> <span style="color: #E6DB74;">"~/site/public/css/"</span>
-<span class="linenr">44: </span>           <span style="color: #F92672;">:recursive</span> t
-<span class="linenr">45: </span>           <span style="color: #F92672;">:publishing-function</span> org-publish-attachment
-<span class="linenr">46: </span>           <span style="color: #E6DB74;">)</span>
-<span class="linenr">47: </span>          <span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">"images"</span>
-<span class="linenr">48: </span>           <span style="color: #F92672;">:base-directory</span> <span style="color: #E6DB74;">"~/site/images/"</span>
-<span class="linenr">49: </span>           <span style="color: #F92672;">:base-extension</span> <span style="color: #E6DB74;">"jpg</span><span style="color: #AE81FF;">\\</span><span style="color: #E6DB74;">|</span><span style="color: #E6DB74;">gif</span><span style="color: #AE81FF;">\\</span><span style="color: #E6DB74;">|</span><span style="color: #E6DB74;">png</span><span style="color: #AE81FF;">\\</span><span style="color: #E6DB74;">|</span><span style="color: #E6DB74;">svg</span><span style="color: #AE81FF;">\\</span><span style="color: #E6DB74;">|</span><span style="color: #E6DB74;">gif"</span>
-<span class="linenr">50: </span>           <span style="color: #F92672;">:publishing-directory</span> <span style="color: #E6DB74;">"~/site/public/images/"</span>
-<span class="linenr">51: </span>           <span style="color: #F92672;">:recursive</span> t
-<span class="linenr">52: </span>           <span style="color: #F92672;">:publishing-function</span> org-publish-attachment
-<span class="linenr">53: </span>           <span style="color: #E6DB74;">)</span>
-<span class="linenr">54: </span>          <span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">"assets"</span>
-<span class="linenr">55: </span>           <span style="color: #F92672;">:base-directory</span> <span style="color: #E6DB74;">"~/site/assets/"</span>
-<span class="linenr">56: </span>           <span style="color: #F92672;">:base-extension</span> <span style="color: #E6DB74;">"mp3"</span>
-<span class="linenr">57: </span>           <span style="color: #F92672;">:publishing-directory</span> <span style="color: #E6DB74;">"~/site/public/assets/"</span>
-<span class="linenr">58: </span>           <span style="color: #F92672;">:recursive</span> t
-<span class="linenr">59: </span>           <span style="color: #F92672;">:publishing-function</span> org-publish-attachment
-<span class="linenr">60: </span>           <span style="color: #E6DB74;">)</span>
-<span class="linenr">61: </span>          <span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">"webfonts"</span>
-<span class="linenr">62: </span>           <span style="color: #F92672;">:base-directory</span> <span style="color: #E6DB74;">"~/site/webfonts/"</span>
-<span class="linenr">63: </span>           <span style="color: #F92672;">:base-extension</span> <span style="color: #E6DB74;">"eot</span><span style="color: #AE81FF;">\\</span><span style="color: #E6DB74;">|</span><span style="color: #E6DB74;">svg</span><span style="color: #AE81FF;">\\</span><span style="color: #E6DB74;">|</span><span style="color: #E6DB74;">ttf</span><span style="color: #AE81FF;">\\</span><span style="color: #E6DB74;">|</span><span style="color: #E6DB74;">woff</span><span style="color: #AE81FF;">\\</span><span style="color: #E6DB74;">|</span><span style="color: #E6DB74;">woff2"</span>
-<span class="linenr">64: </span>           <span style="color: #F92672;">:publishing-directory</span> <span style="color: #E6DB74;">"~/site/public/webfonts/"</span>
-<span class="linenr">65: </span>           <span style="color: #F92672;">:recursive</span> t
-<span class="linenr">66: </span>           <span style="color: #F92672;">:publishing-function</span> org-publish-attachment
-<span class="linenr">67: </span>           <span style="color: #E6DB74;">)</span>
+<span class="linenr">31: </span>          <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">static assets</span>
+<span class="linenr">32: </span>          <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">&#38745;&#24577;&#25991;&#20214;&#36755;&#20986;&#35774;&#32622;</span>
+<span class="linenr">33: </span>          <span style="color: #CDC673;">(</span><span style="color: #CDC673;">"js"</span>
+<span class="linenr">34: </span>           <span style="color: #FF1493;">:base-directory</span> <span style="color: #CDC673;">"~/site/js/"</span>
+<span class="linenr">35: </span>           <span style="color: #FF1493;">:base-extension</span> <span style="color: #CDC673;">"js"</span>
+<span class="linenr">36: </span>           <span style="color: #FF1493;">:publishing-directory</span> <span style="color: #CDC673;">"~/site/public/js/"</span>
+<span class="linenr">37: </span>           <span style="color: #FF1493;">:recursive</span> t
+<span class="linenr">38: </span>           <span style="color: #FF1493;">:publishing-function</span> org-publish-attachment
+<span class="linenr">39: </span>           <span style="color: #CDC673;">)</span>
+<span class="linenr">40: </span>          <span style="color: #CDC673;">(</span><span style="color: #CDC673;">"css"</span>
+<span class="linenr">41: </span>           <span style="color: #FF1493;">:base-directory</span> <span style="color: #CDC673;">"~/site/css/"</span>
+<span class="linenr">42: </span>           <span style="color: #FF1493;">:base-extension</span> <span style="color: #CDC673;">"css"</span>
+<span class="linenr">43: </span>           <span style="color: #FF1493;">:publishing-directory</span> <span style="color: #CDC673;">"~/site/public/css/"</span>
+<span class="linenr">44: </span>           <span style="color: #FF1493;">:recursive</span> t
+<span class="linenr">45: </span>           <span style="color: #FF1493;">:publishing-function</span> org-publish-attachment
+<span class="linenr">46: </span>           <span style="color: #CDC673;">)</span>
+<span class="linenr">47: </span>          <span style="color: #CDC673;">(</span><span style="color: #CDC673;">"images"</span>
+<span class="linenr">48: </span>           <span style="color: #FF1493;">:base-directory</span> <span style="color: #CDC673;">"~/site/images/"</span>
+<span class="linenr">49: </span>           <span style="color: #FF1493;">:base-extension</span> <span style="color: #CDC673;">"jpg</span><span style="color: #AF87FF;">\\</span><span style="color: #CDC673;">|</span><span style="color: #CDC673;">gif</span><span style="color: #AF87FF;">\\</span><span style="color: #CDC673;">|</span><span style="color: #CDC673;">png</span><span style="color: #AF87FF;">\\</span><span style="color: #CDC673;">|</span><span style="color: #CDC673;">svg</span><span style="color: #AF87FF;">\\</span><span style="color: #CDC673;">|</span><span style="color: #CDC673;">gif"</span>
+<span class="linenr">50: </span>           <span style="color: #FF1493;">:publishing-directory</span> <span style="color: #CDC673;">"~/site/public/images/"</span>
+<span class="linenr">51: </span>           <span style="color: #FF1493;">:recursive</span> t
+<span class="linenr">52: </span>           <span style="color: #FF1493;">:publishing-function</span> org-publish-attachment
+<span class="linenr">53: </span>           <span style="color: #CDC673;">)</span>
+<span class="linenr">54: </span>          <span style="color: #CDC673;">(</span><span style="color: #CDC673;">"assets"</span>
+<span class="linenr">55: </span>           <span style="color: #FF1493;">:base-directory</span> <span style="color: #CDC673;">"~/site/assets/"</span>
+<span class="linenr">56: </span>           <span style="color: #FF1493;">:base-extension</span> <span style="color: #CDC673;">"mp3"</span>
+<span class="linenr">57: </span>           <span style="color: #FF1493;">:publishing-directory</span> <span style="color: #CDC673;">"~/site/public/assets/"</span>
+<span class="linenr">58: </span>           <span style="color: #FF1493;">:recursive</span> t
+<span class="linenr">59: </span>           <span style="color: #FF1493;">:publishing-function</span> org-publish-attachment
+<span class="linenr">60: </span>           <span style="color: #CDC673;">)</span>
+<span class="linenr">61: </span>          <span style="color: #CDC673;">(</span><span style="color: #CDC673;">"webfonts"</span>
+<span class="linenr">62: </span>           <span style="color: #FF1493;">:base-directory</span> <span style="color: #CDC673;">"~/site/webfonts/"</span>
+<span class="linenr">63: </span>           <span style="color: #FF1493;">:base-extension</span> <span style="color: #CDC673;">"eot</span><span style="color: #AF87FF;">\\</span><span style="color: #CDC673;">|</span><span style="color: #CDC673;">svg</span><span style="color: #AF87FF;">\\</span><span style="color: #CDC673;">|</span><span style="color: #CDC673;">ttf</span><span style="color: #AF87FF;">\\</span><span style="color: #CDC673;">|</span><span style="color: #CDC673;">woff</span><span style="color: #AF87FF;">\\</span><span style="color: #CDC673;">|</span><span style="color: #CDC673;">woff2"</span>
+<span class="linenr">64: </span>           <span style="color: #FF1493;">:publishing-directory</span> <span style="color: #CDC673;">"~/site/public/webfonts/"</span>
+<span class="linenr">65: </span>           <span style="color: #FF1493;">:recursive</span> t
+<span class="linenr">66: </span>           <span style="color: #FF1493;">:publishing-function</span> org-publish-attachment
+<span class="linenr">67: </span>           <span style="color: #CDC673;">)</span>
 <span class="linenr">68: </span>
-<span class="linenr">69: </span>          <span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">"website"</span> <span style="color: #F92672;">:components</span> <span style="color: #FD971F;">(</span><span style="color: #E6DB74;">"orgfiles"</span> <span style="color: #E6DB74;">"js"</span> <span style="color: #E6DB74;">"css"</span> <span style="color: #E6DB74;">"images"</span> <span style="color: #E6DB74;">"assets"</span> <span style="color: #E6DB74;">"webfonts"</span><span style="color: #FD971F;">)</span><span style="color: #E6DB74;">)</span>
-<span class="linenr">70: </span>          <span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">"statics"</span> <span style="color: #F92672;">:components</span> <span style="color: #FD971F;">(</span><span style="color: #E6DB74;">"js"</span> <span style="color: #E6DB74;">"css"</span> <span style="color: #E6DB74;">"images"</span> <span style="color: #E6DB74;">"assets"</span> <span style="color: #E6DB74;">"webfonts"</span><span style="color: #FD971F;">)</span><span style="color: #E6DB74;">)</span>
-<span class="linenr">71: </span>          <span style="color: #A6E22E;">)</span><span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">69: </span>          <span style="color: #CDC673;">(</span><span style="color: #CDC673;">"website"</span> <span style="color: #FF1493;">:components</span> <span style="color: #FF8C00;">(</span><span style="color: #CDC673;">"orgfiles"</span> <span style="color: #CDC673;">"js"</span> <span style="color: #CDC673;">"css"</span> <span style="color: #CDC673;">"images"</span> <span style="color: #CDC673;">"assets"</span> <span style="color: #CDC673;">"webfonts"</span><span style="color: #FF8C00;">)</span><span style="color: #CDC673;">)</span>
+<span class="linenr">70: </span>          <span style="color: #CDC673;">(</span><span style="color: #CDC673;">"statics"</span> <span style="color: #FF1493;">:components</span> <span style="color: #FF8C00;">(</span><span style="color: #CDC673;">"js"</span> <span style="color: #CDC673;">"css"</span> <span style="color: #CDC673;">"images"</span> <span style="color: #CDC673;">"assets"</span> <span style="color: #CDC673;">"webfonts"</span><span style="color: #FF8C00;">)</span><span style="color: #CDC673;">)</span>
+<span class="linenr">71: </span>          <span style="color: #87D700;">)</span><span style="color: #5FD7FF;">)</span><span style="color: #AF87FF;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgf549b43" class="outline-3">
-<h3 id="orgf549b43">默认输出设置</h3>
-<div class="outline-text-3" id="text-orgf549b43">
+<div id="outline-container-org047ca0c" class="outline-3">
+<h3 id="org047ca0c">默认输出设置</h3>
+<div class="outline-text-3" id="text-org047ca0c">
 <p>
 Emacs 默认的 <code>ox-publish</code> 会输出一些默认格式，因为比较原生，我们把它禁止掉，只保留对于代码块的高亮。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">progn</span>
-<span class="linenr">2: </span>  <span style="color: #E6DB74;">"Settings of `</span><span style="color: #AE81FF;">org-export</span><span style="color: #E6DB74;">'."</span>
-<span class="linenr">3: </span>  <span style="color: #66D9EF;">(</span><span style="color: #F92672;">setq</span> org-export-in-background t
-<span class="linenr">4: </span>        <span style="color: #75715E;">;; </span><span style="color: #75715E;">Hide html built-in style and script.</span>
-<span class="linenr">5: </span>        org-html-htmlize-output-type 'inline-css <span style="color: #75715E;">;; </span><span style="color: #75715E;">&#20445;&#30041;&#20195;&#30721;&#22359;&#39640;&#20142;</span>
+<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">progn</span>
+<span class="linenr">2: </span>  <span style="color: #CDC673;">"Settings of `</span><span style="color: #AF87FF;">org-export</span><span style="color: #CDC673;">'."</span>
+<span class="linenr">3: </span>  <span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">setq</span> org-export-in-background t
+<span class="linenr">4: </span>        <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">Hide html built-in style and script.</span>
+<span class="linenr">5: </span>        org-html-htmlize-output-type 'inline-css <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">&#20445;&#30041;&#20195;&#30721;&#22359;&#39640;&#20142;</span>
 <span class="linenr">6: </span>        org-html-head-include-default-style nil
 <span class="linenr">7: </span>        org-html-head-include-scripts nil
-<span class="linenr">8: </span>        <span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">8: </span>        <span style="color: #5FD7FF;">)</span><span style="color: #AF87FF;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgaf1d3db" class="outline-2">
-<h2 id="orgaf1d3db">自定义函数</h2>
-<div class="outline-text-2" id="text-orgaf1d3db">
+<div id="outline-container-org8a0e159" class="outline-2">
+<h2 id="org8a0e159">自定义函数</h2>
+<div class="outline-text-2" id="text-org8a0e159">
 </div>
-<div id="outline-container-orgb7d8c87" class="outline-3">
-<h3 id="orgb7d8c87">保存并输出页面</h3>
-<div class="outline-text-3" id="text-orgb7d8c87">
+<div id="outline-container-orga1fff42" class="outline-3">
+<h3 id="orga1fff42">保存并输出页面</h3>
+<div class="outline-text-3" id="text-orga1fff42">
 <p>
 为了减少频繁重复性的操作，我们对默认的输出函数进行了一些封装，如下：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="linenr"> 1: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">defun</span> <span style="color: #A6E22E;">save-and-publish-website</span><span style="color: #66D9EF;">()</span>
-<span class="linenr"> 2: </span>    <span style="color: #E6DB74;">"Save all buffers and publish."</span>
-<span class="linenr"> 3: </span>  <span style="color: #66D9EF;">(</span><span style="color: #F92672;">interactive</span><span style="color: #66D9EF;">)</span>
-<span class="linenr"> 4: </span>  <span style="color: #66D9EF;">(</span><span style="color: #F92672;">when</span> <span style="color: #A6E22E;">(</span>yes-or-no-p <span style="color: #E6DB74;">"Really save and publish current project?"</span><span style="color: #A6E22E;">)</span>
-<span class="linenr"> 5: </span>    <span style="color: #A6E22E;">(</span>save-some-buffers t<span style="color: #A6E22E;">)</span>
-<span class="linenr"> 6: </span>    <span style="color: #A6E22E;">(</span>org-publish-project <span style="color: #E6DB74;">"website"</span> t<span style="color: #A6E22E;">)</span>
-<span class="linenr"> 7: </span>    <span style="color: #A6E22E;">(</span>message <span style="color: #E6DB74;">"Site published done."</span><span style="color: #A6E22E;">)</span><span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+<pre class="src src-elisp"><span class="linenr"> 1: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">defun</span> <span style="color: #87D700;">save-and-publish-website</span><span style="color: #5FD7FF;">()</span>
+<span class="linenr"> 2: </span>    <span style="color: #CDC673;">"Save all buffers and publish."</span>
+<span class="linenr"> 3: </span>  <span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">interactive</span><span style="color: #5FD7FF;">)</span>
+<span class="linenr"> 4: </span>  <span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">when</span> <span style="color: #87D700;">(</span>yes-or-no-p <span style="color: #CDC673;">"Really save and publish current project?"</span><span style="color: #87D700;">)</span>
+<span class="linenr"> 5: </span>    <span style="color: #87D700;">(</span>save-some-buffers t<span style="color: #87D700;">)</span>
+<span class="linenr"> 6: </span>    <span style="color: #87D700;">(</span>org-publish-project <span style="color: #CDC673;">"website"</span> t<span style="color: #87D700;">)</span>
+<span class="linenr"> 7: </span>    <span style="color: #87D700;">(</span>message <span style="color: #CDC673;">"Site published done."</span><span style="color: #87D700;">)</span><span style="color: #5FD7FF;">)</span><span style="color: #AF87FF;">)</span>
 <span class="linenr"> 8: </span>
-<span class="linenr"> 9: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">defun</span> <span style="color: #A6E22E;">save-and-publish-file</span> <span style="color: #66D9EF;">()</span>
-<span class="linenr">10: </span>    <span style="color: #E6DB74;">"save current buffer and publish."</span>
-<span class="linenr">11: </span>  <span style="color: #66D9EF;">(</span><span style="color: #F92672;">interactive</span><span style="color: #66D9EF;">)</span>
-<span class="linenr">12: </span>  <span style="color: #66D9EF;">(</span>save-buffer t<span style="color: #66D9EF;">)</span>
-<span class="linenr">13: </span>  <span style="color: #66D9EF;">(</span>org-publish-current-file t<span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+<span class="linenr"> 9: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">defun</span> <span style="color: #87D700;">save-and-publish-file</span> <span style="color: #5FD7FF;">()</span>
+<span class="linenr">10: </span>    <span style="color: #CDC673;">"save current buffer and publish."</span>
+<span class="linenr">11: </span>  <span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">interactive</span><span style="color: #5FD7FF;">)</span>
+<span class="linenr">12: </span>  <span style="color: #5FD7FF;">(</span>save-buffer t<span style="color: #5FD7FF;">)</span>
+<span class="linenr">13: </span>  <span style="color: #5FD7FF;">(</span>org-publish-current-file t<span style="color: #5FD7FF;">)</span><span style="color: #AF87FF;">)</span>
 <span class="linenr">14: </span>
-<span class="linenr">15: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">defun</span> <span style="color: #A6E22E;">save-and-publish-statics</span> <span style="color: #66D9EF;">()</span>
-<span class="linenr">16: </span>  <span style="color: #E6DB74;">"Just copy statics like js, css, and image file .etc."</span>
-<span class="linenr">17: </span>  <span style="color: #66D9EF;">(</span><span style="color: #F92672;">interactive</span><span style="color: #66D9EF;">)</span>
-<span class="linenr">18: </span>  <span style="color: #66D9EF;">(</span>org-publish-project <span style="color: #E6DB74;">"statics"</span> t<span style="color: #66D9EF;">)</span>
-<span class="linenr">19: </span>  <span style="color: #66D9EF;">(</span>message <span style="color: #E6DB74;">"Copy statics done."</span><span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+<span class="linenr">15: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">defun</span> <span style="color: #87D700;">save-and-publish-statics</span> <span style="color: #5FD7FF;">()</span>
+<span class="linenr">16: </span>  <span style="color: #CDC673;">"Just copy statics like js, css, and image file .etc."</span>
+<span class="linenr">17: </span>  <span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">interactive</span><span style="color: #5FD7FF;">)</span>
+<span class="linenr">18: </span>  <span style="color: #5FD7FF;">(</span>org-publish-project <span style="color: #CDC673;">"statics"</span> t<span style="color: #5FD7FF;">)</span>
+<span class="linenr">19: </span>  <span style="color: #5FD7FF;">(</span>message <span style="color: #CDC673;">"Copy statics done."</span><span style="color: #5FD7FF;">)</span><span style="color: #AF87FF;">)</span>
 </pre>
 </div>
 
@@ -472,17 +470,17 @@ Emacs 默认的 <code>ox-publish</code> 会输出一些默认格式，因为比�
 </div>
 </div>
 
-<div id="outline-container-org252a0ab" class="outline-3">
-<h3 id="org252a0ab">预览当前页面</h3>
-<div class="outline-text-3" id="text-org252a0ab">
+<div id="outline-container-org600f5ac" class="outline-3">
+<h3 id="org600f5ac">预览当前页面</h3>
+<div class="outline-text-3" id="text-org600f5ac">
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">defun</span> <span style="color: #A6E22E;">preview-current-buffer-in-browser</span> <span style="color: #66D9EF;">()</span>
-<span class="linenr">2: </span>  <span style="color: #E6DB74;">"Open current buffer as html."</span>
-<span class="linenr">3: </span>  <span style="color: #66D9EF;">(</span><span style="color: #F92672;">interactive</span><span style="color: #66D9EF;">)</span>
-<span class="linenr">4: </span>  <span style="color: #66D9EF;">(</span><span style="color: #F92672;">let</span> <span style="color: #A6E22E;">(</span><span style="color: #E6DB74;">(</span>fileurl <span style="color: #FD971F;">(</span>concat <span style="color: #E6DB74;">"http://127.0.0.1:8080/"</span> <span style="color: #F92672;">(</span>file-name-base <span style="color: #AE81FF;">(</span>buffer-name<span style="color: #AE81FF;">)</span><span style="color: #F92672;">)</span> <span style="color: #E6DB74;">".html"</span><span style="color: #FD971F;">)</span><span style="color: #E6DB74;">)</span><span style="color: #A6E22E;">)</span>
-<span class="linenr">5: </span>    <span style="color: #A6E22E;">(</span>save-and-publish-file<span style="color: #A6E22E;">)</span>
-<span class="linenr">6: </span>    <span style="color: #A6E22E;">(</span><span style="color: #F92672;">unless</span> <span style="color: #E6DB74;">(</span>httpd-running-p<span style="color: #E6DB74;">)</span> <span style="color: #E6DB74;">(</span>httpd-start<span style="color: #E6DB74;">)</span><span style="color: #A6E22E;">)</span>
-<span class="linenr">7: </span>    <span style="color: #A6E22E;">(</span>browse-url fileurl<span style="color: #A6E22E;">)</span><span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">defun</span> <span style="color: #87D700;">preview-current-buffer-in-browser</span> <span style="color: #5FD7FF;">()</span>
+<span class="linenr">2: </span>  <span style="color: #CDC673;">"Open current buffer as html."</span>
+<span class="linenr">3: </span>  <span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">interactive</span><span style="color: #5FD7FF;">)</span>
+<span class="linenr">4: </span>  <span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">let</span> <span style="color: #87D700;">(</span><span style="color: #CDC673;">(</span>fileurl <span style="color: #FF8C00;">(</span>concat <span style="color: #CDC673;">"http://127.0.0.1:8080/"</span> <span style="color: #FF1493;">(</span>file-name-base <span style="color: #AF87FF;">(</span>buffer-name<span style="color: #AF87FF;">)</span><span style="color: #FF1493;">)</span> <span style="color: #CDC673;">".html"</span><span style="color: #FF8C00;">)</span><span style="color: #CDC673;">)</span><span style="color: #87D700;">)</span>
+<span class="linenr">5: </span>    <span style="color: #87D700;">(</span>save-and-publish-file<span style="color: #87D700;">)</span>
+<span class="linenr">6: </span>    <span style="color: #87D700;">(</span><span style="color: #FF1493;">unless</span> <span style="color: #CDC673;">(</span>httpd-running-p<span style="color: #CDC673;">)</span> <span style="color: #CDC673;">(</span>httpd-start<span style="color: #CDC673;">)</span><span style="color: #87D700;">)</span>
+<span class="linenr">7: </span>    <span style="color: #87D700;">(</span>browse-url fileurl<span style="color: #87D700;">)</span><span style="color: #5FD7FF;">)</span><span style="color: #AF87FF;">)</span>
 </pre>
 </div>
 
@@ -491,10 +489,10 @@ Emacs 默认的 <code>ox-publish</code> 会输出一些默认格式，因为比�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">use-package</span> <span style="color: #AE81FF;">simple-httpd</span>
-<span class="linenr">2: </span>  <span style="color: #F92672;">:ensure</span> t
-<span class="linenr">3: </span>  <span style="color: #F92672;">:config</span>
-<span class="linenr">4: </span>  <span style="color: #66D9EF;">(</span><span style="color: #F92672;">setq</span> httpd-root <span style="color: #E6DB74;">"~/site/public"</span><span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>    <span style="color: #75715E;">;; </span><span style="color: #75715E;">Set default server directory</span>
+<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">use-package</span> <span style="color: #AF87FF;">simple-httpd</span>
+<span class="linenr">2: </span>  <span style="color: #FF1493;">:ensure</span> t
+<span class="linenr">3: </span>  <span style="color: #FF1493;">:config</span>
+<span class="linenr">4: </span>  <span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">setq</span> httpd-root <span style="color: #CDC673;">"~/site/public"</span><span style="color: #5FD7FF;">)</span><span style="color: #AF87FF;">)</span>    <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">Set default server directory</span>
 </pre>
 </div>
 
@@ -504,50 +502,50 @@ Emacs 默认的 <code>ox-publish</code> 会输出一些默认格式，因为比�
 </div>
 </div>
 
-<div id="outline-container-org4bb38e7" class="outline-3">
-<h3 id="org4bb38e7">删除 Org 及 Html</h3>
-<div class="outline-text-3" id="text-org4bb38e7">
+<div id="outline-container-org99a90a0" class="outline-3">
+<h3 id="org99a90a0">删除 Org 及 Html</h3>
+<div class="outline-text-3" id="text-org99a90a0">
 <p>
 有时候，我们会对 <code>.org</code> 文件进行删除操作，为了使网站也删除这个页面，就需要删除其对应的 <code>.html</code> 文件，然而，每次都进行这样的步骤是一件令人讨厌的事。现在，我们可以使用下面这个函数，它会删除当前 <code>.org</code> 文件，且同时删除其生成的 <code>.html</code> 文件。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="linenr"> 1: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">defun</span> <span style="color: #A6E22E;">delete-org-and-html</span> <span style="color: #66D9EF;">()</span>
-<span class="linenr"> 2: </span><span style="color: #E6DB74;">"Delete the relative html when it exists."</span>
-<span class="linenr"> 3: </span><span style="color: #66D9EF;">(</span><span style="color: #F92672;">interactive</span><span style="color: #66D9EF;">)</span>
-<span class="linenr"> 4: </span><span style="color: #66D9EF;">(</span><span style="color: #F92672;">when</span> <span style="color: #A6E22E;">(</span>yes-or-no-p <span style="color: #E6DB74;">"Really delete current org and the relative html?"</span><span style="color: #A6E22E;">)</span>
+<pre class="src src-elisp"><span class="linenr"> 1: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">defun</span> <span style="color: #87D700;">delete-org-and-html</span> <span style="color: #5FD7FF;">()</span>
+<span class="linenr"> 2: </span><span style="color: #CDC673;">"Delete the relative html when it exists."</span>
+<span class="linenr"> 3: </span><span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">interactive</span><span style="color: #5FD7FF;">)</span>
+<span class="linenr"> 4: </span><span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">when</span> <span style="color: #87D700;">(</span>yes-or-no-p <span style="color: #CDC673;">"Really delete current org and the relative html?"</span><span style="color: #87D700;">)</span>
 <span class="linenr"> 5: </span>
-<span class="linenr"> 6: </span>  <span style="color: #A6E22E;">(</span><span style="color: #F92672;">let</span> <span style="color: #E6DB74;">(</span><span style="color: #FD971F;">(</span>fileurl <span style="color: #F92672;">(</span>concat <span style="color: #E6DB74;">"~/site/public/"</span> <span style="color: #AE81FF;">(</span>file-name-base <span style="color: #66D9EF;">(</span>buffer-name<span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span> <span style="color: #E6DB74;">".html"</span><span style="color: #F92672;">)</span><span style="color: #FD971F;">)</span><span style="color: #E6DB74;">)</span>
-<span class="linenr"> 7: </span>    <span style="color: #E6DB74;">(</span><span style="color: #F92672;">if</span> <span style="color: #FD971F;">(</span>file-exists-p fileurl<span style="color: #FD971F;">)</span>
-<span class="linenr"> 8: </span>        <span style="color: #FD971F;">(</span>delete-file fileurl<span style="color: #FD971F;">)</span><span style="color: #E6DB74;">)</span>
-<span class="linenr"> 9: </span>    <span style="color: #E6DB74;">(</span>delete-file <span style="color: #FD971F;">(</span>buffer-file-name<span style="color: #FD971F;">)</span><span style="color: #E6DB74;">)</span>
-<span class="linenr">10: </span>    <span style="color: #E6DB74;">(</span>kill-this-buffer<span style="color: #E6DB74;">)</span>
-<span class="linenr">11: </span>    <span style="color: #E6DB74;">(</span>message <span style="color: #E6DB74;">"Delete org and the relative html done."</span><span style="color: #E6DB74;">)</span><span style="color: #A6E22E;">)</span><span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+<span class="linenr"> 6: </span>  <span style="color: #87D700;">(</span><span style="color: #FF1493;">let</span> <span style="color: #CDC673;">(</span><span style="color: #FF8C00;">(</span>fileurl <span style="color: #FF1493;">(</span>concat <span style="color: #CDC673;">"~/site/public/"</span> <span style="color: #AF87FF;">(</span>file-name-base <span style="color: #5FD7FF;">(</span>buffer-name<span style="color: #5FD7FF;">)</span><span style="color: #AF87FF;">)</span> <span style="color: #CDC673;">".html"</span><span style="color: #FF1493;">)</span><span style="color: #FF8C00;">)</span><span style="color: #CDC673;">)</span>
+<span class="linenr"> 7: </span>    <span style="color: #CDC673;">(</span><span style="color: #FF1493;">if</span> <span style="color: #FF8C00;">(</span>file-exists-p fileurl<span style="color: #FF8C00;">)</span>
+<span class="linenr"> 8: </span>        <span style="color: #FF8C00;">(</span>delete-file fileurl<span style="color: #FF8C00;">)</span><span style="color: #CDC673;">)</span>
+<span class="linenr"> 9: </span>    <span style="color: #CDC673;">(</span>delete-file <span style="color: #FF8C00;">(</span>buffer-file-name<span style="color: #FF8C00;">)</span><span style="color: #CDC673;">)</span>
+<span class="linenr">10: </span>    <span style="color: #CDC673;">(</span>kill-this-buffer<span style="color: #CDC673;">)</span>
+<span class="linenr">11: </span>    <span style="color: #CDC673;">(</span>message <span style="color: #CDC673;">"Delete org and the relative html done."</span><span style="color: #CDC673;">)</span><span style="color: #87D700;">)</span><span style="color: #5FD7FF;">)</span><span style="color: #AF87FF;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org46ef656" class="outline-2">
-<h2 id="org46ef656">自定义宏</h2>
-<div class="outline-text-2" id="text-org46ef656">
+<div id="outline-container-org06688cc" class="outline-2">
+<h2 id="org06688cc">自定义宏</h2>
+<div class="outline-text-2" id="text-org06688cc">
 </div>
-<div id="outline-container-org7e15760" class="outline-3">
-<h3 id="org7e15760">删除当前文章</h3>
-<div class="outline-text-3" id="text-org7e15760">
+<div id="outline-container-org195e846" class="outline-3">
+<h3 id="org195e846">删除当前文章</h3>
+<div class="outline-text-3" id="text-org195e846">
 <p>
 目前，我们在 <code>./index.org</code> 的列表 <code>Table</code> 中管理所有的文章。通过执行这个宏 <code>mc/delete-this-post</code> ，可以同时删除当前光标下的 <code>.org</code> 文件及其对应的 <code>.html</code> 文件。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AE81FF;">(</span>fset 'mc/delete-this-post
-<span class="linenr">2: </span>   <span style="color: #E6DB74;">" fo pdydd"</span><span style="color: #AE81FF;">)</span>
+<pre class="src src-elisp"><span class="linenr">1: </span><span style="color: #AF87FF;">(</span>fset 'mc/delete-this-post
+<span class="linenr">2: </span>   <span style="color: #CDC673;">" fo pdydd"</span><span style="color: #AF87FF;">)</span>
 </pre>
 </div>
 
 <p>
-注：这个宏依赖于 <a href="#org4bb38e7">delete-org-and-html ↑</a> 这个函数。
+注：这个宏依赖于 <a href="#org99a90a0">delete-org-and-html ↑</a> 这个函数。
 </p>
 
 <blockquote>
@@ -569,9 +567,9 @@ Emacs 默认的 <code>ox-publish</code> 会输出一些默认格式，因为比�
 </div>
 </div>
 
-<div id="outline-container-org412fb17" class="outline-2">
-<h2 id="org412fb17">自定义模式</h2>
-<div class="outline-text-2" id="text-org412fb17">
+<div id="outline-container-orgb9c0188" class="outline-2">
+<h2 id="orgb9c0188">自定义模式</h2>
+<div class="outline-text-2" id="text-orgb9c0188">
 <p>
 <a href="https://github.com/kaushalmodi/ox-hugo/blob/master/org-hugo-auto-export-mode.el">→ org-hugo-auto-export-mode</a>
 </p>
@@ -585,24 +583,24 @@ Emacs 默认的 <code>ox-publish</code> 会输出一些默认格式，因为比�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span class="linenr"> 1: </span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">define-minor-mode</span> <span style="color: #A6E22E;">auto-save-and-publish-file-mode</span>
-<span class="linenr"> 2: </span>  <span style="color: #E6DB74;">"Toggle auto save and publish current file."</span>
-<span class="linenr"> 3: </span>  <span style="color: #F92672;">:global</span> nil
-<span class="linenr"> 4: </span>  <span style="color: #F92672;">:lighter</span> <span style="color: #E6DB74;">""</span>
-<span class="linenr"> 5: </span>  <span style="color: #66D9EF;">(</span><span style="color: #F92672;">if</span> auto-save-and-publish-file-mode
-<span class="linenr"> 6: </span>      <span style="color: #75715E;">;; </span><span style="color: #75715E;">When the mode is enabled</span>
-<span class="linenr"> 7: </span>      <span style="color: #A6E22E;">(</span><span style="color: #F92672;">progn</span>
-<span class="linenr"> 8: </span>        <span style="color: #E6DB74;">(</span>add-hook 'after-save-hook #'save-and-publish-file <span style="color: #F92672;">:append</span> <span style="color: #F92672;">:local</span><span style="color: #E6DB74;">)</span><span style="color: #A6E22E;">)</span>
-<span class="linenr"> 9: </span>    <span style="color: #75715E;">;; </span><span style="color: #75715E;">When the mode is disabled</span>
-<span class="linenr">10: </span>    <span style="color: #A6E22E;">(</span>remove-hook 'after-save-hook #'save-and-publish-file <span style="color: #F92672;">:local</span><span style="color: #A6E22E;">)</span><span style="color: #66D9EF;">)</span><span style="color: #AE81FF;">)</span>
+<pre class="src src-elisp"><span class="linenr"> 1: </span><span style="color: #AF87FF;">(</span><span style="color: #FF1493;">define-minor-mode</span> <span style="color: #87D700;">auto-save-and-publish-file-mode</span>
+<span class="linenr"> 2: </span>  <span style="color: #CDC673;">"Toggle auto save and publish current file."</span>
+<span class="linenr"> 3: </span>  <span style="color: #FF1493;">:global</span> nil
+<span class="linenr"> 4: </span>  <span style="color: #FF1493;">:lighter</span> <span style="color: #CDC673;">""</span>
+<span class="linenr"> 5: </span>  <span style="color: #5FD7FF;">(</span><span style="color: #FF1493;">if</span> auto-save-and-publish-file-mode
+<span class="linenr"> 6: </span>      <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">When the mode is enabled</span>
+<span class="linenr"> 7: </span>      <span style="color: #87D700;">(</span><span style="color: #FF1493;">progn</span>
+<span class="linenr"> 8: </span>        <span style="color: #CDC673;">(</span>add-hook 'after-save-hook #'save-and-publish-file <span style="color: #FF1493;">:append</span> <span style="color: #FF1493;">:local</span><span style="color: #CDC673;">)</span><span style="color: #87D700;">)</span>
+<span class="linenr"> 9: </span>    <span style="color: #8B8878;">;; </span><span style="color: #8B8878;">When the mode is disabled</span>
+<span class="linenr">10: </span>    <span style="color: #87D700;">(</span>remove-hook 'after-save-hook #'save-and-publish-file <span style="color: #FF1493;">:local</span><span style="color: #87D700;">)</span><span style="color: #5FD7FF;">)</span><span style="color: #AF87FF;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org268db66" class="outline-2">
-<h2 id="org268db66">图片</h2>
-<div class="outline-text-2" id="text-org268db66">
+<div id="outline-container-org067c28a" class="outline-2">
+<h2 id="org067c28a">图片</h2>
+<div class="outline-text-2" id="text-org067c28a">
 <blockquote>
 <p>
 NOTE: 这个章节只是补充，可以不了解。
@@ -633,16 +631,16 @@ NOTE: 这个章节只是补充，可以不了解。
 </div>
 </div>
 
-<div id="outline-container-org4332bb4" class="outline-2">
-<h2 id="org4332bb4">总结</h2>
-<div class="outline-text-2" id="text-org4332bb4">
+<div id="outline-container-org8c9c60c" class="outline-2">
+<h2 id="org8c9c60c">总结</h2>
+<div class="outline-text-2" id="text-org8c9c60c">
 <p>
 总体来说，比较简单，也不需要下载多少额外的插件，充分利用 Emacs 本身拥有的功能。综上所述，我们来总结一下步骤：
 </p>
 <ol class="org-ol">
 <li><code>git clone https://github.com/loveminimal/site.git ~/site</code> ，即把 site 文件夹放在家目录；</li>
-<li>把 <a href="#org699f414">↑ Emacs 中的配置</a> 的配置添加到 Emacs 的配置文件中；</li>
-<li>在 Emacs 中执行封装的 <a href="#orgaf1d3db">↑ 自定义函数</a> 即可。</li>
+<li>把 <a href="#org6591a48">↑ Emacs 中的配置</a> 的配置添加到 Emacs 的配置文件中；</li>
+<li>在 Emacs 中执行封装的 <a href="#org8a0e159">↑ 自定义函数</a> 即可。</li>
 </ol>
 
 <p>
@@ -651,13 +649,13 @@ NOTE: 这个章节只是补充，可以不了解。
 </div>
 </div>
 
-<div id="outline-container-org4db0cec" class="outline-2">
-<h2 id="org4db0cec">附录</h2>
-<div class="outline-text-2" id="text-org4db0cec">
+<div id="outline-container-orgc5c1cad" class="outline-2">
+<h2 id="orgc5c1cad">附录</h2>
+<div class="outline-text-2" id="text-orgc5c1cad">
 </div>
-<div id="outline-container-org0623567" class="outline-3">
-<h3 id="org0623567">网站功能图示</h3>
-<div class="outline-text-3" id="text-org0623567">
+<div id="outline-container-org47f49dd" class="outline-3">
+<h3 id="org47f49dd">网站功能图示</h3>
+<div class="outline-text-3" id="text-org47f49dd">
 <img
 src="/images/tutor/page1.jpg"
 width="49%"
@@ -723,9 +721,9 @@ style="box-shadow: 3px 3px 5px #aaa; float: right;"
 </p>
 </div>
 </div>
-<div id="outline-container-orgc18239e" class="outline-3">
-<h3 id="orgc18239e">关于执行脚本</h3>
-<div class="outline-text-3" id="text-orgc18239e">
+<div id="outline-container-org7c9f32c" class="outline-3">
+<h3 id="org7c9f32c">关于执行脚本</h3>
+<div class="outline-text-3" id="text-org7c9f32c">
 <p>
 为什么会有这个脚本？我们来看这样一种场景。
 </p>
@@ -775,7 +773,7 @@ style="box-shadow: 3px 3px 5px #aaa; float: right;"
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #75715E;"># </span><span style="color: #75715E;">&#22312; site &#31449;&#28857;&#30446;&#24405;&#19979;&#65292;&#25191;&#34892;</span>
+<pre class="src src-sh"><span class="linenr">1: </span><span style="color: #8B8878;"># </span><span style="color: #8B8878;">&#22312; site &#31449;&#28857;&#30446;&#24405;&#19979;&#65292;&#25191;&#34892;</span>
 <span class="linenr">2: </span>./update.sh
 </pre>
 </div>
@@ -790,7 +788,7 @@ style="box-shadow: 3px 3px 5px #aaa; float: right;"
 <div id="postamble" class="status">
 <p class="date">Date: 2020-01-01 Wed 14:26</p>
 <p class="author">Author: Jack Liu</p>
-<p class="date">Created: 2020-07-27 Mon 09:36</p>
+<p class="date">Created: 2020-07-27 Mon 10:45</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
