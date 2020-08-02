@@ -34,7 +34,7 @@ body, #content::before,#postamble::before { background: url('../images/bg/rose.j
     line-height: 1.6;
     font-size: .16rem;
     /* font-family: Monaco, Consolas, "kaiti"; */
-    font-family: Consolas, "kaiti";
+    font-family: Consolas, Monaco, "kaiti";
 
     /* overflow: hidden; */
 }
