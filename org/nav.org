@@ -17,7 +17,7 @@
 | 教程 | [[http://www.runoob.com/][菜鸟教程]]   | [[http://es6.ruanyifeng.com/][ES6]]          | [[https://www.liaoxuefeng.com/][廖雪峰]]         | [[http://www.softwhy.com/][蚂蚁部落]] | [[https://www.interviewcake.com/data-structures-reference][Interview Cake]] |
 |      | [[http://www.nginx.cn/doc/][Nginx Doc]]  | [[http://c.biancheng.net/][C 语言中文网]] |                |          |                |
 |------+------------+--------------+----------------+----------+----------------|
-| 博客 | [[https://bitsofco.de/][Bitsofco]]   | [[http://www.ruanyifeng.com/blog/developer/][阮一峰]]       | [[http://www.yinwang.org/][当然我在扯淡]]   | [[http://xahlee.org/][李杀网]]   | [[https://coolshell.cn/][酷壳]]           |
+| 博客 | [[https://bitsofco.de/][Bitsofco]]   | [[http://www.ruanyifeng.com/blog/developer/][阮一峰]]       | [[http://xahlee.org/][李杀网]]         | [[https://coolshell.cn/][酷壳]]     |                |
 |      | [[https://geekinney.com/][Geenkinney]] | [[https://www.lijigang.com/][LiJigang]]     | [[https://manateelazycat.github.io/index.html][ManateeLazyCat]] |          |                |
 
  *Bookmarks InboX*
