@@ -11,7 +11,9 @@ html { font-size: 100px; }
 /* html, body { height: 100%; } */
 
 /* Background options */
-body, #content::before,#postamble::before { background: url('../images/bg/rose.jpg') center center / cover no-repeat fixed;}
+body, #content::before,#postamble::before {
+    background: url('../images/bg/rn.jpg') center center / cover no-repeat fixed;
+}
 
 #postamble::before,
 #content::before {
