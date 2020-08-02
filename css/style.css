@@ -401,6 +401,8 @@ th:last-child, td:last-child { border-right: rgba(255, 255, 255, 0); }
     font-size: .12rem;
 }
 
+.js-outline-3 h3:before { content: ""; }
+
 .js-outline-3:hover { box-shadow: 5px 5px 9px #ccc; }
 
 /* Navigations page style */
