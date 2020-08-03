@@ -12,7 +12,7 @@ html { font-size: 100px; }
 
 /* Background options */
 body, #content::before,#postamble::before {
-    background: url('../images/bg/girl1.jpg') center center / cover no-repeat fixed;
+    background: url('../images/bg/rn.jpg') center center / cover no-repeat fixed;
 }
 
 #postamble::before,
@@ -44,7 +44,7 @@ body, #content::before,#postamble::before {
 /* Self annotations */
 .js-note {
     position: absolute;
-    right: -30%;
+    right: -30.5%;
     width: 30%;
     /* border: 2px solid #19f; */
     box-shadow: 0 0 3px #369;
