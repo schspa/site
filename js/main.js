@@ -299,10 +299,10 @@ $(document).ready(() => {
     }
 
     // Custom content and postamble margin but home&nav of PC
-    if (ISPC && (!isCurPage('nav') && !ISHOME)) {
-        $('#content').css('margin-left', '10%')
-        $('#postamble').css('margin-left', '10%')
-    }
+//     if (ISPC && (!isCurPage('nav') && !ISHOME)) {
+//         $('#content').css('margin-left', '10%')
+//         $('#postamble').css('margin-left', '10%')
+//     }
 })
 
 // Resolve current theme color
