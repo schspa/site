@@ -17,6 +17,7 @@ A [[./org-to-site-tutor.org][pure site]] based on org mode.
 | [[./tmux.org][Tmux]]                |
 | [[./manjaro-linux.org][Manjaro Linux]]       |
 | [[./source-code-compile.org][Source Code Compile]] |
+| [[./marxism.org][Marxism]]             |
 
 | GTD             |
 |-----------------|
