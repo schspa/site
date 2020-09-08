@@ -409,7 +409,7 @@ function createNavButton() {
         .addClass('nav-btn')
         .appendTo('body')
         .click(() => {
-            location.href = './index.html';
+            location.href = '/index.html';
             // history.go(-1);
         });
 }
